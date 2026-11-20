@@ -98,3 +98,5 @@ This is a suggestion from the ranking and the dependencies between projects, not
 - Whether public reads exist for the chromosome 2 LOH idea (project 13).
 
 Every [to confirm] item is also listed in the STATUS.md of its project.
+
+A checked list of public download links is in [data/DOWNLOADS.md](data/DOWNLOADS.md).

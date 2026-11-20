@@ -98,3 +98,5 @@
 - 项目 13 里 2 号染色体 LOH 的想法，公开读段是否存在。
 
 所有 [待确认] 项也列在各项目自己的 STATUS.md 里。
+
+已核对的公开下载链接清单见 [data/DOWNLOADS.md](data/DOWNLOADS.md)。
