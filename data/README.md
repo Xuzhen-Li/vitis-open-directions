@@ -28,3 +28,5 @@ Each public dataset is prepared once here and reused by the projects.
 | [DS22](DS22-phenotypes-and-gwas-summaries/) | Public grape phenotypes, GWAS summary statistics and variant call sets | 21 |
 
 Snapshot of all Vitaceae assemblies in NCBI: [`assemblies_vitaceae_ncbi_20261114.tsv`](assemblies_vitaceae_ncbi_20261114.tsv).
+
+A checked list of public download links and archive lookups is in [`DOWNLOADS.md`](DOWNLOADS.md) (2026-11-20, UTC+8).
