@@ -63,3 +63,5 @@
 ## 许可
 
 文字和表格：[CC BY 4.0](LICENSE)。数据集按各数据模块写明的许可使用。
+
+**第一次来？** 各项目现状、建议的重启顺序和工作规则见 [START_HERE.zh.md](START_HERE.zh.md)。[English](START_HERE.md)

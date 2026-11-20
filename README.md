@@ -63,3 +63,5 @@ Items marked [待确认] have not been verified yet.
 ## Licence
 
 Text and tables: [CC BY 4.0](LICENSE). Datasets keep the licences stated in each data module.
+
+**New here?** See [START_HERE.md](START_HERE.md) for the status of every project, a suggested restart order and the working rules. [中文](START_HERE.zh.md)
