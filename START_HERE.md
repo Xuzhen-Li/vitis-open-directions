@@ -4,7 +4,7 @@ For a new maintainer or model taking over this repository. [中文](START_HERE.z
 
 This repository holds grapevine (*Vitis*) genomics projects that use public data only. Each project is a runnable plan. Some projects continue earlier attempts that stopped before a confirmed result; this page says where each one stands, what to do first, and the rules to follow. Nothing here contains results.
 
-Status as of 2026-11-20 (UTC+8). Items marked [to confirm] were not verified; the older [待确认] tag in other files means the same.
+Status as of 2026-11-21 (UTC+8). Items marked [to confirm] were not verified; the older [待确认] tag in other files means the same.
 
 ## Read in this order
 
@@ -20,9 +20,9 @@ Status as of 2026-11-20 (UTC+8). Items marked [to confirm] were not verified; th
 
 | Folder | What it holds |
 |---|---|
-| [data/](data/) | DS01 to DS22: one public dataset per folder, with accessions, size, licence, download and QC |
+| [data/](data/) | DS01 to DS23: one public dataset per folder, with accessions, size, licence, download and QC |
 | [analyses/](analyses/) | AM01 to AM26: reusable steps with tools, commands, outputs and rough resources |
-| [projects/](projects/) | 22 projects, one folder each: README (the plan) and STATUS (where it stands) |
+| [projects/](projects/) | 26 projects, one folder each: README (the plan) and STATUS (where it stands). Projects 23 to 26 have a STATUS page only |
 | [docs/](docs/) | ranking, index, preregistration template, job template, evidence log template, not-kept list |
 
 ## Status of the projects
@@ -60,7 +60,7 @@ Labels: **Not started** = plan only. **Plan fixed** = detailed design written ea
 
 ## Suggested restart order
 
-This is a suggestion from the ranking and the dependencies between projects, not a decision. Change it if the owner prefers.
+This is a suggestion from the ranking and the dependencies between projects, not a decision. Change it if the repository maintainer prefers.
 
 1. **Groundwork.** AM01 (download with checksums) and AM05 (assembly QC) for DS01, DS02, DS03 and DS16. These feed projects 01, 02, 03, 05, 06, 07, 14, 17 and 18.
 2. **Assembly-only, small compute:** 01, 02 and 18 together (they share AM10 and the chromosome 7 fusion check), then 03.
@@ -94,12 +94,12 @@ This is a suggestion from the ranking and the dependencies between projects, not
 - Do not hard-code paths in scripts. Keep paths in a local config and use manifests.
 - Many small addenda made one design hard to follow. Keep one preregistration per restart and put the final rules in it.
 
-## Open items for the owner [to confirm]
+## Open items for the repository maintainer [to confirm]
 
 - Which projects to run, and in which order.
 - Whether project 14 and the vitis-te catalogue should be merged or split.
 - Which of the families LOX, MLO, PPO and CBF belong in project 07.
-- Sources for mutation rate, generation time and the OMArk lineage data.
+- Sources for mutation rate and generation time. (The OMArk lineage data now has a recorded source; see data/DOWNLOADS.md and docs/DEFAULTS.md.)
 - Whether public reads exist for the chromosome 2 LOH idea (project 13).
 - Whether DS11 reads can be exported from NGDC by hand (projects 08, 10, 23, 24).
 - The question that defines project 26, and whether project 25 stays a methods survey beside project 14 and the vitis-te catalogue.

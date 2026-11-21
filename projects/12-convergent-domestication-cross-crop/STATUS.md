@@ -19,7 +19,7 @@ No analysis has been run. The direction came out of a literature survey that com
 
 ## Sources read
 
-- The references listed in the project README.
+- DOIs checked as Crossref records on 2026-11-21 (docs/SOURCES_CHECKED_20261121.md); full texts not read.
 
 ## Public inputs
 

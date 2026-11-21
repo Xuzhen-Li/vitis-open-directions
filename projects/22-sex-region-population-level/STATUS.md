@@ -18,7 +18,7 @@ No analysis has been run. The project is demoted in the ranking: the cross-genus
 
 ## Sources read
 
-- The references listed in the project README and docs/NOT_KEPT.md.
+- DOIs checked as Crossref records on 2026-11-21 (docs/SOURCES_CHECKED_20261121.md); full texts not read.
 
 ## Public inputs
 

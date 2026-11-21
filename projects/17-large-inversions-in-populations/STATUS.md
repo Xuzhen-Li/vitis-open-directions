@@ -8,7 +8,7 @@ An earlier line preregistered a spanning-read test for one large inversion on ch
 
 ## Design settled earlier (reference only; write a new preregistration before running)
 
-- Spanning-read test: align reads to the whole genome first, then pull reads at the inverted-repeat windows around each breakpoint. Presets: ONT map-ont, HiFi map-hifi, CLR map-pb. Anchors at least 10 kb. Assign a read to a haplotype only with at least 2 informative SNPs and at least 80% agreement. Use a decision table of five mutually exclusive outcomes; judge hap1, hap2 and the merged set separately; report the two breakpoints separately.
+- Spanning-read test: align reads to the whole genome first, then pull reads at the inverted-repeat windows around each breakpoint. Presets: ONT map-ont, HiFi map-hifi, CLR map-pb. Anchors at least 10 kb of unique sequence outside both breakpoint repeats; judge the call from the strand and order of primary and supplementary alignments of the same read [to confirm]. Assign a read to a haplotype only with at least 2 informative SNPs and at least 80% agreement. Use a decision table of five mutually exclusive outcomes; judge hap1, hap2 and the merged set separately; report the two breakpoints separately.
 - Population genotyping: classify each deduplicated individual as heterozygous, homozygous inverted, homozygous not inverted, or undetermined,.
 - Chromosome 2 (PN T2T against one cultivar): three explanations kept side by side (deletion, copy-neutral LOH, assembly problem); see project 13.
 - Check read identity before use: a long-read run whose BioSample differs from the reference accession cannot be assumed to be the reference genotype.
@@ -28,7 +28,7 @@ An earlier line preregistered a spanning-read test for one large inversion on ch
 
 ## Open items
 
-- Long-read runs noted earlier: SRR31308326 and SRR29686478 (ONT, BioSample differs from the reference); ERR7997743 (a PN40024 CLR run, side evidence only). None was checked against ENA here [to confirm].
+- Long-read runs noted earlier: SRR31308326 (PacBio RS II subreads per ENA) and SRR29686478 (PromethION; BioSample differs from the reference); ERR7997743 (a PN40024 CLR run, side evidence only). None was checked against ENA here [to confirm].
 - Coordinates of the chromosome 11 inversion against published pangenome papers [to confirm].
 - CLR threshold citation [to confirm].
 
@@ -43,7 +43,7 @@ An earlier line preregistered a spanning-read test for one large inversion on ch
 
 | Module | Dataset | Headline accessions (from the module) |
 |---|---|---|
-| [DS02](../../data/DS02-grapepan-v1/) | Grapepan v1.0: T2T haplotypes, graphs and a 466-accession resequencing panel | Zenodo 10851547, Zenodo 10846425, PRJNA1018808, PRJNA1018809, PRJNA1029477, PRJNA1029480, PRJNA1130629, PRJNA1130651 |
+| [DS02](../../data/DS02-grapepan-v1/) | Grapepan v1.0: T2T haplotypes, graphs and a 466-accession resequencing panel | Zenodo 10851547, Zenodo 10846425, PRJNA1018808, PRJNA1018809, PRJNA1029477, PRJNA1029480, PRJNA1130629, PRJNA1130651 (see the exact list in data/DOWNLOADS.md) |
 | [DS03](../../data/DS03-vitis-super-pangenome-72/) | Vitis super-pangenome: 72 haplotype-resolved accessions | Zenodo 13982444, PRJNA1021789 |
 | [DS07](../../data/DS07-cultivated-16-pangenome/) | Cultivated grapevine pangenome (16 cultivars, Plastivigne) | PRJEB100755, PRJEB95058, PRJEB107006 |
 | [DS10](../../data/DS10-reseq-472-vitis/) | Resequencing of 472 Vitis accessions (and the 2017 domestication panel) | PRJNA393611, PRJNA388292 |

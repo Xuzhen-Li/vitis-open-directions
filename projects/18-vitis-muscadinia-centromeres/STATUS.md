@@ -13,7 +13,7 @@ An earlier line stopped before its pilot. The satellite annotation tool TRASH wa
 - H2 position change: place the centromere between two collinear single-copy genes and use that as the trait.
 - H3 CRM Gypsy invasion: enrichment in the centromere region tested with phylogenetic generalised least squares against root-to-tip Ks.
 - H2b fusion point: check only the two anchor segments on *Vitis* chr7 (shared with project 01).
-- Validation: CENH3 ChIP-seq (Bowtie2, MAPQ at least 30, MACS2 broad peaks); require agreement with published coordinates by Jaccard overlap. Species without ChIP data are called candidate repeats only; this applies to non-European grapes, *Muscadinia* and outgroups.
+- Validation: CENH3 ChIP-seq (Bowtie2; main analysis keeps one placement per read and uses input for enrichment, MAPQ at least 30 as a separate layer for uniquely placed positions; MACS2 broad peaks) [to confirm]; require agreement with published coordinates by Jaccard overlap. Species without ChIP data are called candidate repeats only; this applies to non-European grapes, *Muscadinia* and outgroups.
 
 ## Next steps
 
@@ -41,7 +41,7 @@ An earlier line stopped before its pilot. The satellite annotation tool TRASH wa
 | Module | Dataset | Headline accessions (from the module) |
 |---|---|---|
 | [DS01](../../data/DS01-pn40024-references/) | PN40024 references: PN_T2T (v5), PN40024.v4 and 12X | GCF_030704535.1, GCA_030704535.1, PRJNA882193, PRJCA012093, PRJEB45423, GCF_000003745.3, PRJEA18785 |
-| [DS02](../../data/DS02-grapepan-v1/) | Grapepan v1.0: T2T haplotypes, graphs and a 466-accession resequencing panel | Zenodo 10851547, Zenodo 10846425, PRJNA1018808, PRJNA1018809, PRJNA1029477, PRJNA1029480, PRJNA1130629, PRJNA1130651 |
+| [DS02](../../data/DS02-grapepan-v1/) | Grapepan v1.0: T2T haplotypes, graphs and a 466-accession resequencing panel | Zenodo 10851547, Zenodo 10846425, PRJNA1018808, PRJNA1018809, PRJNA1029477, PRJNA1029480, PRJNA1130629, PRJNA1130651 (see the exact list in data/DOWNLOADS.md) |
 | [DS03](../../data/DS03-vitis-super-pangenome-72/) | Vitis super-pangenome: 72 haplotype-resolved accessions | Zenodo 13982444, PRJNA1021789 |
 | [DS05](../../data/DS05-vitaceae-family-genomes/) | Vitaceae family chromosome-level genomes | PRJEB88780, PRJNA1219332, PRJNA1021789, figshare 33329247, Zenodo 18590277 |
 | [DS08](../../data/DS08-muscadinia-genomes/) | Muscadinia rotundifolia assemblies and reads | Zenodo 3866087, PRJNA593045, Zenodo 7944874, PRJNA935741, PRJNA780568 |

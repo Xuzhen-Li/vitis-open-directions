@@ -26,7 +26,7 @@ For resequencing panels follow the project README (AM03 shared site set, AM04 wi
 
 ## Next steps
 
-1. Build one sample sheet per panel from ENA reports (DS10, DS11, DS12) with checksums.
+1. Build one sample sheet per panel from ENA reports (DS10, DS12, DS02 resequencing panel) with checksums. DS11 reads cannot be listed without an NGDC login; add DS11 after a run list is exported by hand (data/DOWNLOADS.md).
 2. Genotype a shared site set (AM03); run AM04.
 3. Compare with VIVC names; mark duplicates and conflicting labels.
 4. Publish the table as the sample pool used by projects 09, 10, 13, 15, 16 and 17.
@@ -51,7 +51,7 @@ For resequencing panels follow the project README (AM03 shared site set, AM04 wi
 | [DS10](../../data/DS10-reseq-472-vitis/) | Resequencing of 472 Vitis accessions (and the 2017 domestication panel) | PRJNA393611, PRJNA388292 |
 | [DS11](../../data/DS11-reseq-3525-dong2023/) | Resequencing of 3,525 grapevine accessions (Dong et al. 2023) | CRA006917, PRJCA009314, CRA006898 |
 | [DS12](../../data/DS12-reseq-204-magris2021/) | Resequencing of 204 V. vinifera accessions (Magris et al. 2021) | PRJNA373967, PRJNA390884, PRJNA385116, PRJNA321480 |
-| [DS02](../../data/DS02-grapepan-v1/) | Grapepan v1.0: T2T haplotypes, graphs and a 466-accession resequencing panel | Zenodo 10851547, Zenodo 10846425, PRJNA1018808, PRJNA1018809, PRJNA1029477, PRJNA1029480, PRJNA1130629, PRJNA1130651 |
+| [DS02](../../data/DS02-grapepan-v1/) | Grapepan v1.0: T2T haplotypes, graphs and a 466-accession resequencing panel | Zenodo 10851547, Zenodo 10846425, PRJNA1018808, PRJNA1018809, PRJNA1029477, PRJNA1029480, PRJNA1130629, PRJNA1130651 (see the exact list in data/DOWNLOADS.md) |
 | [DS03](../../data/DS03-vitis-super-pangenome-72/) | Vitis super-pangenome: 72 haplotype-resolved accessions | Zenodo 13982444, PRJNA1021789 |
 | [DS01](../../data/DS01-pn40024-references/) | PN40024 references: PN_T2T (v5), PN40024.v4 and 12X | GCF_030704535.1, GCA_030704535.1, PRJNA882193, PRJCA012093, PRJEB45423, GCF_000003745.3, PRJEA18785 |
 

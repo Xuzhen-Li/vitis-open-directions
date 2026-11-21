@@ -4,14 +4,14 @@
 
 ## Where it stands
 
-A full design and a locked preregistration existed for an assembly-based version of this project. No main-set output was ever produced. The line stopped while fixing the annotation step and the rules for clones. Parts of the idea overlap with the TE catalogue repository (vitis-te); decide the split before starting [to confirm].
+A full design and a locked preregistration existed for an assembly-based version of this project. No main-set output was ever produced. The line stopped while fixing the annotation step and the rules for clones. Parts of the idea overlap with the TE catalogue repository (vitis-te); the default split is in docs/DEFAULTS.md [to confirm whether to merge].
 
 ## Design settled earlier (reference only; write a new preregistration before running)
 
 - Unit of analysis: individuals (assemblies), after collapsing clones. Two haplotypes of one individual count as one layer. Without an outgroup the polarity is unknown, so call the result presence/absence polymorphism, not insertion.
 - Alignment: minimap2 asm5 between haplotypes and asm10 for the outgroup (asm20 as sensitivity); keep indels of at least 300 bp. Present side: at least 80% of the fragment annotated by RepeatMasker as one family. Absent side: an empty gap with collinear 5 kb flanks, MAPQ at least 20 and no N.
 - Classes: confirmed (4 to 6 bp target-site duplication), probable, solo-LTR, excision footprint, undetermined. Merge calls of the same family within 50 bp into one site.
-- LTR age: only for intact LTR elements with a duplication; K2P distance d between 5 prime and 3 prime LTR; T = d / 2r, reported as a range with sources for r and generation time [to confirm].
+- LTR age: only for intact LTR elements with a duplication; K2P distance d between 5 prime and 3 prime LTR; T = d / 2r, reported as a range with a source for r. State the unit of r: a generation time is needed only if r is per site per generation [to confirm].
 - Primary endpoint (method check): difference in median d between polymorphic and shared LTR elements, one-sided Mann-Whitney plus a within-family permutation (10,000); supported if p below 0.01 and the direction agrees in at least two of three large families.
 - Controls: plant 200 known elements with duplications (recall at least 90%, breakpoint error at most 50 bp), 100 solo-LTRs (recall at least 90%), duplicate-pair false sites at most 5% of the main median, simulated LTR pairs recovering the d slope between 0.95 and 1.05. If power is below 80% the endpoint becomes descriptive.
 - Annotation: one EDTA run per assembly with a custom library only; prefix each library entry with the assembly name; cluster with cd-hit-est 80-80-80; no copy-number filter on full-length copies. panEDTA calls EDTA with annotation on and needs a RepeatMasker output per genome, which conflicts with this design.
@@ -24,7 +24,7 @@ A full design and a locked preregistration existed for an assembly-based version
 
 ## Next steps
 
-1. Decide with the vitis-te catalogue what is reused and what is built here [to confirm].
+1. Use the default split in docs/DEFAULTS.md: build the insertion library here; reuse vitis-te documents and scripts after reading them [to confirm].
 2. AM01, AM05; build a manifest with sequence checksums and check them before the first run.
 3. Test the EDTA fix on synthetic sequence only; then run the pilot on two assemblies to set parameters.
 4. Run controls before the main set; use AM19 and AM07 for graph genotyping of insertions.
@@ -48,7 +48,7 @@ A full design and a locked preregistration existed for an assembly-based version
 
 | Module | Dataset | Headline accessions (from the module) |
 |---|---|---|
-| [DS02](../../data/DS02-grapepan-v1/) | Grapepan v1.0: T2T haplotypes, graphs and a 466-accession resequencing panel | Zenodo 10851547, Zenodo 10846425, PRJNA1018808, PRJNA1018809, PRJNA1029477, PRJNA1029480, PRJNA1130629, PRJNA1130651 |
+| [DS02](../../data/DS02-grapepan-v1/) | Grapepan v1.0: T2T haplotypes, graphs and a 466-accession resequencing panel | Zenodo 10851547, Zenodo 10846425, PRJNA1018808, PRJNA1018809, PRJNA1029477, PRJNA1029480, PRJNA1130629, PRJNA1130651 (see the exact list in data/DOWNLOADS.md) |
 | [DS03](../../data/DS03-vitis-super-pangenome-72/) | Vitis super-pangenome: 72 haplotype-resolved accessions | Zenodo 13982444, PRJNA1021789 |
 | [DS07](../../data/DS07-cultivated-16-pangenome/) | Cultivated grapevine pangenome (16 cultivars, Plastivigne) | PRJEB100755, PRJEB95058, PRJEB107006 |
 | [DS10](../../data/DS10-reseq-472-vitis/) | Resequencing of 472 Vitis accessions (and the 2017 domestication panel) | PRJNA393611, PRJNA388292 |
