@@ -12,7 +12,7 @@ An earlier scan of near-complete angiosperm and Vitaceae assemblies used a fixed
 - Two layers. Clean layer: a 7-bp window equals a rotation exactly. Degraded layer: at most one mismatch per 7-bp window. Arrays of the vertebrate-type TTAGGG repeat only enter the degraded layer; report TTAGGG as a separate control motif instead of adding it to the main motif, and subtract it only from clean-layer positions.
 - Segment rule: take runs of at least 7 consecutive window start positions that all match (one full cycle of the 7 phases); merge runs on the same layer and strand when the gap is 7 bp or less; keep a segment only if it is at least 50 bp long and at least 80% of its bases are covered by matching windows.
 - Scan in 10 Mb chunks that overlap by 14 bp and merge across chunk edges. Read FASTA files in byte blocks, because some assemblies store each chromosome on one line.
-- The strand column of the degraded layer leans to the positive strand; do not use it for strand analysis.
+- The strand column of the degraded layer leans to the positive strand; do not use it for strand analysis. The cause was not found; scan both strands separately [to confirm the cause].
 - Gates before any main result is read: a grid test on known sequence, a decoy-motif negative control, a positive control on an Arabidopsis T2T assembly, and a comparison on a few near-complete assemblies with known chromosome ends. Fix pass levels in the preregistration, and do not change them after seeing results.
 - Motif checks: the main motif was not confirmed from the sources opened for grasses (maize, rice, sorghum), Brassica and Capsella, so these were left out of the denominator for the share of chromosome ends with a telomere [to confirm]. Tomato carries a TTAGGG-type variant.
 
@@ -50,7 +50,7 @@ An earlier scan of near-complete angiosperm and Vitaceae assemblies used a fixed
 | Module | Dataset | Headline accessions (from the module) |
 |---|---|---|
 | [DS01](../../data/DS01-pn40024-references/) | PN40024 references: PN_T2T (v5), PN40024.v4 and 12X | GCF_030704535.1, GCA_030704535.1, PRJNA882193, PRJCA012093, PRJEB45423, GCF_000003745.3, PRJEA18785 |
-| [DS02](../../data/DS02-grapepan-v1/) | Grapepan v1.0: T2T haplotypes, graphs and a 466-accession resequencing panel | Zenodo 10851547, Zenodo 10846425, PRJNA1018808, PRJNA1018809, PRJNA1029477, PRJNA1029480, PRJNA1130629, PRJNA1130651 |
+| [DS02](../../data/DS02-grapepan-v1/) | Grapepan v1.0: T2T haplotypes, graphs and a 466-accession resequencing panel | Zenodo 10851547, Zenodo 10846425, PRJNA1018808, PRJNA1018809, PRJNA1029477, PRJNA1029480, PRJNA1130629, PRJNA1130651 (see the exact list in data/DOWNLOADS.md) |
 | [DS03](../../data/DS03-vitis-super-pangenome-72/) | Vitis super-pangenome: 72 haplotype-resolved accessions | Zenodo 13982444, PRJNA1021789 |
 | [DS05](../../data/DS05-vitaceae-family-genomes/) | Vitaceae family chromosome-level genomes | PRJEB88780, PRJNA1219332, PRJNA1021789, figshare 33329247, Zenodo 18590277 |
 | [DS07](../../data/DS07-cultivated-16-pangenome/) | Cultivated grapevine pangenome (16 cultivars, Plastivigne) | PRJEB100755, PRJEB95058, PRJEB107006 |

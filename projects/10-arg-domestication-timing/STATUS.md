@@ -22,7 +22,7 @@ An earlier line tried to date domestication-related alleles with ancestral recom
 
 ## Next steps
 
-1. AM04 to remove clones; AM03 to call variants; phase with SHAPEIT5; polarise (AM26).
+1. AM04 to remove clones; AM03 to call variants; phase with SHAPEIT5; polarise (AM26). Start with the panels that can be downloaded (DS10, DS12, DS04); add DS11 only after a run list is exported by hand (data/DOWNLOADS.md).
 2. Write the calibration plan and pass rule in the preregistration before any real-data ARG run.
 3. Run the simulations (AM14) and compare ARG methods (Relate and tsdate) on them.
 4. Only if calibration passes, date alleles on real data; otherwise go to the methods paper.

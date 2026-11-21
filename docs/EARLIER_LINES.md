@@ -17,7 +17,7 @@ Several projects here continue earlier attempts that ran with other data or tool
 | Large inversion on chromosome 11: spanning reads and population genotyping | [project 17](../projects/17-large-inversions-in-populations/STATUS.md) | Test code did not pass its check |
 | Centromere satellite turnover across Vitaceae | [project 18](../projects/18-vitis-muscadinia-centromeres/STATUS.md) | Paused on tool installation and ChIP download |
 | Download list of near-complete angiosperm assemblies | [DS17](../data/DS17-angiosperm-near-complete-assemblies/) | Rebuild the list from NCBI; do not assume the old files exist |
-| Population recombination maps and pedigree-based recombination | not in this repository | Handled elsewhere; see [NOT_KEPT](NOT_KEPT.md) |
+| Population recombination maps and pedigree-based recombination | [project 24](../projects/24-recombination-maps/STATUS.md) and [project 23](../projects/23-family-parentage/STATUS.md) | Method-level plan only; see [METHOD_LINES](METHOD_LINES.md) |
 
 Data downloaded by earlier attempts are not part of this repository and may not exist anywhere you can reach. Download again from the public archives, with a manifest and checksums (AM01).
 

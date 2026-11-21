@@ -11,7 +11,7 @@ This repository is the analysis guide for three catalogue repositories. The cata
 | [gene-function-annotation](https://github.com/Xuzhen-Li/gene-function-annotation) | Gene function annotation tools and workflows |
 | vitis-open-directions (this one) | Public datasets, shared analysis steps and ranked projects |
 
-Status: draft v0.3.2 (2026-11-14). Scores were frozen on 2026-11-14; later changes are logged in the ranking page. Novelty checks and estimates remain drafts.
+Status: draft v0.3.2 (2026-11-14). Scores were frozen on 2026-11-14; later changes are logged in the ranking page. Novelty checks and estimates remain drafts. Pages and status tables were last updated on 2026-11-21.
 
 ## Ways in
 
@@ -60,7 +60,7 @@ Ranked by the sum of public-data feasibility, novelty, and effort scores (see do
 
 ## Scope
 
-Public data only: INSDC (NCBI, ENA, DDBJ), NGDC, GEO, Zenodo, figshare, and similar archives. No unpublished data or results are included, and the planned figures state hypotheses and criteria only. Organelle genomes, TE library construction, and population recombination maps are handled elsewhere; project 10 uses published linkage maps, or LD-based rates only as an internal input.
+Public data only: INSDC (NCBI, ENA, DDBJ), NGDC, GEO, Zenodo, figshare, and similar archives. No unpublished data or results are included, and the planned figures state hypotheses and criteria only. Organelle genomes, TE library construction, and population recombination maps have method-level pages in projects 23 to 26 (see docs/METHOD_LINES.md); project 10 uses published linkage maps, or LD-based rates only as an input.
 
 Items marked [待确认] have not been verified yet.
 
