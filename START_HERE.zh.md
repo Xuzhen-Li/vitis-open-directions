@@ -10,20 +10,20 @@
 
 1. [README.md](README.md)：仓库是什么，项目怎么排序。
 2. 本页：状态总表、重启顺序、工作规则、教训。
-3. [docs/EARLIER_LINES.md](docs/EARLIER_LINES.md)：早先的工作对应哪个项目文件夹（英文）。
+3. [examples/vitis/EARLIER_LINES.md](examples/vitis/EARLIER_LINES.md)：早先的工作对应哪个项目文件夹（英文）。
 4. 你要做的项目：先读 `projects/NN-.../README.md`（方案），再读 `projects/NN-.../STATUS.md`（现状和第一步）。
-5. 它用到的模块：[data/](data/)（公开数据集）、[analyses/](analyses/)（工具、命令、资源）。
-6. [docs/PREREGISTRATION.md](docs/PREREGISTRATION.md)、[docs/EVIDENCE_LOG_TEMPLATE.md](docs/EVIDENCE_LOG_TEMPLATE.md)、[docs/HPC_JOBS.md](docs/HPC_JOBS.md)、[docs/DATA_PREP.md](docs/DATA_PREP.md)。
-7. [docs/RANKING.md](docs/RANKING.md) 和 [docs/NOT_KEPT.md](docs/NOT_KEPT.md)：为什么这样排序，哪些方向没有收。
+5. 它用到的模块：[examples/vitis/data/](examples/vitis/data/)（公开数据集）、[examples/vitis/analyses/](examples/vitis/analyses/)（工具、命令、资源）。
+6. [templates/PREREGISTRATION.md](templates/PREREGISTRATION.md)、[templates/EVIDENCE_LOG_TEMPLATE.md](templates/EVIDENCE_LOG_TEMPLATE.md)、[templates/HPC_JOBS.md](templates/HPC_JOBS.md)、[templates/DATA_PREP.md](templates/DATA_PREP.md)。
+7. [examples/vitis/RANKING.md](examples/vitis/RANKING.md) 和 [examples/vitis/NOT_KEPT.md](examples/vitis/NOT_KEPT.md)：为什么这样排序，哪些方向没有收。
 
 ## 目录结构
 
 | 文件夹 | 内容 |
 |---|---|
-| [data/](data/) | DS01 到 DS23：每个文件夹一个公开数据集，写登录号、大小、许可、下载和质控 |
-| [analyses/](analyses/) | AM01 到 AM26：可复用的分析步骤，写工具、命令、输出和大致资源 |
-| [projects/](projects/) | 26 个项目，每个一个文件夹：README（方案）和 STATUS（现状）；项目 23 至 26 目前只有 STATUS |
-| [docs/](docs/) | 排序、索引、预注册模板、作业模板、证据日志模板、未收入清单 |
+| [examples/vitis/data/](examples/vitis/data/) | DS01 到 DS23：每个文件夹一个公开数据集，写登录号、大小、许可、下载和质控 |
+| [examples/vitis/analyses/](examples/vitis/analyses/) | AM01 到 AM26：可复用的分析步骤，写工具、命令、输出和大致资源 |
+| [examples/vitis/projects/](examples/vitis/projects/) | 26 个项目，每个一个文件夹：README（方案）和 STATUS（现状）；项目 23 至 26 目前只有 STATUS |
+| [examples/vitis/](examples/vitis/) | 排序、索引、预注册模板、作业模板、证据日志模板、未收入清单 |
 
 ## 各项目状态
 
@@ -31,32 +31,32 @@
 
 | # | 项目 | 状态 | 一句话 |
 |---|---|---|---|
-| 01 | [端粒与间质端粒重复](projects/01-telomere-and-interstitial-telomeric-repeats/STATUS.md) | 跑过部分 | 早先的扫描因诱饵对照没过，按描述性收尾；要当作新研究重做 |
-| 02 | [rDNA 阵列](projects/02-rdna-arrays/STATUS.md) | 跑过部分 | 只做了元数据和合并步骤的一部分；先做描述性的闭合/开放目录 |
-| 03 | [florendovirus 插入](projects/03-endogenous-florendoviruses/STATUS.md) | 未开始 | 方案完整；先在两个组装上试跑 |
-| 04 | [公开 RNA-seq 里的病毒](projects/04-virus-discovery-in-public-data/STATUS.md) | 未开始 | 方案完整；先定好防 index hopping 的对照 |
-| 05 | [基因有无变异审计](projects/05-gene-pav-across-pangenomes/STATUS.md) | 方案已定 | 完整设计已写好，工具只装了一半，没有结果；重来时只留一份预注册 |
-| 06 | [NLR 目录](projects/06-vitis-pan-nlrome/STATUS.md) | 方案已定 | 设计已写好；先数技术重复对有几对 |
-| 07 | [STS、TPS、CCD、LOX 家族](projects/07-metabolic-gene-families/STATUS.md) | 跑过部分 | 早先 STS 检验的功效太低，香气稿暂停；在公开单倍型上重来 |
-| 08 | [统一的样本身份表](projects/08-harmonised-sample-panel/STATUS.md) | 跑过部分 | 身份流程设计好了，正式运行没跑完；在公开面板上重建 |
-| 09 | [浆果颜色位点图基因组](projects/09-berry-colour-locus-graph/STATUS.md) | 未开始 | 快速项目；先定位位点、建局部图 |
-| 10 | [ARG 与驯化定年](projects/10-arg-domestication-timing/STATUS.md) | 跑过部分 | 校准不支持直接定年；先写校准方案，方法学论文作兜底 |
-| 11 | [序列到表达模型](projects/11-sequence-to-function-models/STATUS.md) | 未开始 | 要等项目 19 的表达表，并需要 GPU |
-| 12 | [跨作物趋同驯化](projects/12-convergent-domestication-cross-crop/STATUS.md) | 未开始 | 先选作物、先定零模型 |
-| 13 | [体细胞突变谱](projects/13-somatic-mutation-spectra-across-cultivars/STATUS.md) | 未开始 | 先做克隆清单和掩蔽区；2 号染色体 LOH 的想法先放着 |
-| 14 | [TE 插入多态](projects/14-te-insertion-polymorphisms-cultivated/STATUS.md) | 方案已定 | 设计和对照已写好，没有产出；注释工具环境失败；要和 vitis-te 目录分工 |
-| 15 | [图基因组上的渐渗](projects/15-graph-introgression/STATUS.md) | 未开始 | 先定供体面板 |
-| 16 | [图上的遗传和克隆结构变异](projects/16-graph-sv-load/STATUS.md) | 未开始 | 图基因分型加三联体；ROH 与负荷那条线并入 AM12 |
-| 17 | [大倒位](projects/17-large-inversions-in-populations/STATUS.md) | 跑过部分 | 跨越读段检验设计好了，代码没通过检查；要用项目 08 的样本池 |
-| 18 | [着丝粒](projects/18-vitis-muscadinia-centromeres/STATUS.md) | 暂停 | TRASH 没装成，ChIP 下载没完成 |
-| 19 | [T2T 上的公开 RNA-seq](projects/19-public-rnaseq-on-t2t/STATUS.md) | 未开始 | 先做表达图谱，QTL 放后面 |
-| 20 | [古代种子上图](projects/20-ancient-seeds-on-graph/STATUS.md) | 未开始 | 先逐个登录号确认有没有原始读段 |
-| 21 | [GWAS 元分析](projects/21-gwas-meta-and-cross-ancestry-prediction/STATUS.md) | 未开始 | 只做清点；数据不公开就停 |
-| 22 | [性别决定区](projects/22-sex-region-population-level/STATUS.md) | 未开始 | 已降级；先查性别记录 |
-| 23 | [亲子与亲缘关系质控（公开记录）](projects/23-family-parentage/STATUS.md) | 方案已定 | 设计已写、未运行；只用公开记录，私有家系不进本仓库；阳性对照是 DS18 的三联体 |
-| 24 | [系谱与连锁不平衡重组图谱](projects/24-recombination-maps/STATUS.md) | 方案已定 | 设计已写、未运行；系谱量和 LD 量分开；公开路线用已发表图谱和公开面板 |
-| 25 | [TE 注释方法、整理与自动化](projects/25-te-annotation-methods/STATUS.md) | 方案已定 | 方法调查提纲已写；本仓库尚无文稿；与项目 14、vitis-te 的分工在 docs/DEFAULTS.md 有默认 |
-| 26 | [线粒体基因组、核内线粒体插入与异质](projects/26-mitochondrial-genomes/STATUS.md) | 未开始 | 已列出拟定的起步设计和公开输入；决定项目走向的问题还没定 |
+| 01 | [端粒与间质端粒重复](examples/vitis/projects/01-telomere-and-interstitial-telomeric-repeats/STATUS.md) | 跑过部分 | 早先的扫描因诱饵对照没过，按描述性收尾；要当作新研究重做 |
+| 02 | [rDNA 阵列](examples/vitis/projects/02-rdna-arrays/STATUS.md) | 跑过部分 | 只做了元数据和合并步骤的一部分；先做描述性的闭合/开放目录 |
+| 03 | [florendovirus 插入](examples/vitis/projects/03-endogenous-florendoviruses/STATUS.md) | 未开始 | 方案完整；先在两个组装上试跑 |
+| 04 | [公开 RNA-seq 里的病毒](examples/vitis/projects/04-virus-discovery-in-public-data/STATUS.md) | 未开始 | 方案完整；先定好防 index hopping 的对照 |
+| 05 | [基因有无变异审计](examples/vitis/projects/05-gene-pav-across-pangenomes/STATUS.md) | 方案已定 | 完整设计已写好，工具只装了一半，没有结果；重来时只留一份预注册 |
+| 06 | [NLR 目录](examples/vitis/projects/06-vitis-pan-nlrome/STATUS.md) | 方案已定 | 设计已写好；先数技术重复对有几对 |
+| 07 | [STS、TPS、CCD、LOX 家族](examples/vitis/projects/07-metabolic-gene-families/STATUS.md) | 跑过部分 | 早先 STS 检验的功效太低，香气稿暂停；在公开单倍型上重来 |
+| 08 | [统一的样本身份表](examples/vitis/projects/08-harmonised-sample-panel/STATUS.md) | 跑过部分 | 身份流程设计好了，正式运行没跑完；在公开面板上重建 |
+| 09 | [浆果颜色位点图基因组](examples/vitis/projects/09-berry-colour-locus-graph/STATUS.md) | 未开始 | 快速项目；先定位位点、建局部图 |
+| 10 | [ARG 与驯化定年](examples/vitis/projects/10-arg-domestication-timing/STATUS.md) | 跑过部分 | 校准不支持直接定年；先写校准方案，方法学论文作兜底 |
+| 11 | [序列到表达模型](examples/vitis/projects/11-sequence-to-function-models/STATUS.md) | 未开始 | 要等项目 19 的表达表，并需要 GPU |
+| 12 | [跨作物趋同驯化](examples/vitis/projects/12-convergent-domestication-cross-crop/STATUS.md) | 未开始 | 先选作物、先定零模型 |
+| 13 | [体细胞突变谱](examples/vitis/projects/13-somatic-mutation-spectra-across-cultivars/STATUS.md) | 未开始 | 先做克隆清单和掩蔽区；2 号染色体 LOH 的想法先放着 |
+| 14 | [TE 插入多态](examples/vitis/projects/14-te-insertion-polymorphisms-cultivated/STATUS.md) | 方案已定 | 设计和对照已写好，没有产出；注释工具环境失败；要和 vitis-te 目录分工 |
+| 15 | [图基因组上的渐渗](examples/vitis/projects/15-graph-introgression/STATUS.md) | 未开始 | 先定供体面板 |
+| 16 | [图上的遗传和克隆结构变异](examples/vitis/projects/16-graph-sv-load/STATUS.md) | 未开始 | 图基因分型加三联体；ROH 与负荷那条线并入 AM12 |
+| 17 | [大倒位](examples/vitis/projects/17-large-inversions-in-populations/STATUS.md) | 跑过部分 | 跨越读段检验设计好了，代码没通过检查；要用项目 08 的样本池 |
+| 18 | [着丝粒](examples/vitis/projects/18-vitis-muscadinia-centromeres/STATUS.md) | 暂停 | TRASH 没装成，ChIP 下载没完成 |
+| 19 | [T2T 上的公开 RNA-seq](examples/vitis/projects/19-public-rnaseq-on-t2t/STATUS.md) | 未开始 | 先做表达图谱，QTL 放后面 |
+| 20 | [古代种子上图](examples/vitis/projects/20-ancient-seeds-on-graph/STATUS.md) | 未开始 | 先逐个登录号确认有没有原始读段 |
+| 21 | [GWAS 元分析](examples/vitis/projects/21-gwas-meta-and-cross-ancestry-prediction/STATUS.md) | 未开始 | 只做清点；数据不公开就停 |
+| 22 | [性别决定区](examples/vitis/projects/22-sex-region-population-level/STATUS.md) | 未开始 | 已降级；先查性别记录 |
+| 23 | [亲子与亲缘关系质控（公开记录）](examples/vitis/projects/23-family-parentage/STATUS.md) | 方案已定 | 设计已写、未运行；只用公开记录，私有家系不进本仓库；阳性对照是 DS18 的三联体 |
+| 24 | [系谱与连锁不平衡重组图谱](examples/vitis/projects/24-recombination-maps/STATUS.md) | 方案已定 | 设计已写、未运行；系谱量和 LD 量分开；公开路线用已发表图谱和公开面板 |
+| 25 | [TE 注释方法、整理与自动化](examples/vitis/projects/25-te-annotation-methods/STATUS.md) | 方案已定 | 方法调查提纲已写；本仓库尚无文稿；与项目 14、vitis-te 的分工在 docs/DEFAULTS.md 有默认 |
+| 26 | [线粒体基因组、核内线粒体插入与异质](examples/vitis/projects/26-mitochondrial-genomes/STATUS.md) | 未开始 | 已列出拟定的起步设计和公开输入；决定项目走向的问题还没定 |
 
 ## 建议的重启顺序
 
@@ -72,13 +72,13 @@
 
 ## 工作规则
 
-- 先写判据，再看结果。填好 [docs/PREREGISTRATION.md](docs/PREREGISTRATION.md)，带日期提交，再运行。每次重启都写新的预注册；早先尝试的判据只作参考。
+- 先写判据，再看结果。填好 [templates/PREREGISTRATION.md](templates/PREREGISTRATION.md)，带日期提交，再运行。每次重启都写新的预注册；早先尝试的判据只作参考。
 - 看到结果之后做的任何改动都算事后修改：在日志里写明，结果只能当探索性的。
-- 每个项目写证据日志（[docs/EVIDENCE_LOG_TEMPLATE.md](docs/EVIDENCE_LOG_TEMPLATE.md)），只追加，不改旧条目；写错了就加一条新条目指向旧条目。
+- 每个项目写证据日志（[templates/EVIDENCE_LOG_TEMPLATE.md](templates/EVIDENCE_LOG_TEMPLATE.md)），只追加，不改旧条目；写错了就加一条新条目指向旧条目。
 - 每条引用必须是你自己打开过的 DOI 或网址，DOI 要用 Crossref 或 DataCite 核对；没核对的标 [待确认]。不编文献、登录号和数字。
 - 看主要结果之前先跑阳性和阴性对照，通过标准事先定好。
 - 写代码的人或程序不检查自己的代码，由另一个来检查。
-- 不覆盖、不删除输出。每次运行一个新文件夹，以 .DONE 或 .FAILED 结尾（[docs/HPC_JOBS.md](docs/HPC_JOBS.md)）。每个下载的文件都记 sha256 清单。
+- 不覆盖、不删除输出。每次运行一个新文件夹，以 .DONE 或 .FAILED 结尾（[templates/HPC_JOBS.md](templates/HPC_JOBS.md)）。每个下载的文件都记 sha256 清单。
 - 只用公开数据。不要提交私有数据、样本明细、结果、主机名、本地路径或密钥。
 - 用平实的话写。不点名、不贬低其他团队，引用他们的论文时保持中性。
 - 更新 STATUS.md 时，在文末加一节带日期的内容，旧文字保留，其余交给 git 历史。
@@ -107,6 +107,17 @@
 
 所有 [待确认] 项也列在各项目自己的 STATUS.md 里。
 
-已核对的公开下载链接清单见 [data/DOWNLOADS.md](data/DOWNLOADS.md)。
+已核对的公开下载链接清单见 [examples/vitis/data/DOWNLOADS.md](examples/vitis/data/DOWNLOADS.md)。
 
-状态补记，2026-11-21（UTC+8）：新增项目 23 至 26，只写到方法层面。待定事项的默认选项见 [docs/DEFAULTS.md](docs/DEFAULTS.md)（英文）。四条方法线见 [docs/METHOD_LINES.md](docs/METHOD_LINES.md)（英文）。STATUS 页只指向 README 的那些项目，其核对过的来源见 [docs/SOURCES_CHECKED_20261121.md](docs/SOURCES_CHECKED_20261121.md)。本补记与上文旧句子不一致处（例如项目数量），以本补记为准。
+状态补记，2026-11-21（UTC+8）：新增项目 23 至 26，只写到方法层面。待定事项的默认选项见 [examples/vitis/DEFAULTS.md](examples/vitis/DEFAULTS.md)（英文）。四条方法线见 [examples/vitis/METHOD_LINES.md](examples/vitis/METHOD_LINES.md)（英文）。STATUS 页只指向 README 的那些项目，其核对过的来源见 [examples/vitis/SOURCES_CHECKED_20261121.md](examples/vitis/SOURCES_CHECKED_20261121.md)。本补记与上文旧句子不一致处（例如项目数量），以本补记为准。
+
+## 2026-11-21 起的目录结构和阅读顺序
+
+2026-11-21 起，葡萄内容移到 [examples/vitis/](examples/vitis/)，通用模板移到 [templates/](templates/)，并在 [framework/](framework/) 新增了适用于任何物种的方法。本页链接已更新。纯文本路径如 `projects/NN-.../README.md` 现在指 `examples/vitis/projects/NN-.../README.md`。上面目录结构表里 `examples/vitis/` 那一行对应原来的 `docs/` 文件夹：排序、索引和未收入清单在 `examples/vitis/`，预注册、作业和证据日志模板在 `templates/`。
+
+读完 [README.zh.md](README.zh.md) 和本页之后，按任务分两条路：
+
+- **A. 换一个物种。** 读 [framework/GAP_FRAMEWORK.zh.md](framework/GAP_FRAMEWORK.zh.md) 和 [framework/EVALUATION_RUBRIC.zh.md](framework/EVALUATION_RUBRIC.zh.md)，再按 [framework/SPECIES_TRANSFER_GUIDE.zh.md](framework/SPECIES_TRANSFER_GUIDE.zh.md) 使用 [templates/](templates/) 里的模板。没有外网时，所有没有实测的登录号和 DOI 标 [待确认]，并按指南写出可在登录节点运行的查询命令。
+- **B. 做一个葡萄项目。** 按 [examples/vitis/README.zh.md](examples/vitis/README.zh.md) 里「怎样开始一个葡萄项目」的步骤走。项目 23 到 26 没有 README，也没有分数：读 [examples/vitis/METHOD_LINES.md](examples/vitis/METHOD_LINES.md) 和该项目的 STATUS。
+
+[examples/vitis/EARLIER_LINES.md](examples/vitis/EARLIER_LINES.md) 主要用于追溯项目来历。把项目 01 到 26 放进六个维度的映射表（建议的合并和降级标 [待确认]）在 [examples/vitis/README.zh.md](examples/vitis/README.zh.md)。
