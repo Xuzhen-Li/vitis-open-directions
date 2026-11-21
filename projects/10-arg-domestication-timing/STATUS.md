@@ -72,3 +72,10 @@ An earlier line tried to date domestication-related alleles with ancestral recom
 - Cite only DOIs and URLs you opened yourself. Mark anything else [to confirm].
 - Never overwrite outputs: one new run folder per run, ending in .DONE or .FAILED ([docs/HPC_JOBS.md](../../docs/HPC_JOBS.md)).
 - Do not commit private data, sample details, results, host names or local paths.
+
+## Update 2026-11-21 (UTC+8)
+
+Added as appended lines; the text above is unchanged.
+
+- DS11 reads cannot be listed without an NGDC login (see data/DOWNLOADS.md; on 2026-11-21 the directory https://download.cncb.ac.cn/gsa/CRA006917/ returned HTTP 404). Run the first pass on DS10, DS12 and the DS02 resequencing panel, and treat DS11 as an extension queue that is added when a run list for PRJCA009314 has been exported by hand.
+- Project 24 states how LD-based rates would be produced on public panels; this project keeps using published linkage maps, and LD-based rates only as an input.

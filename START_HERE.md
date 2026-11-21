@@ -53,6 +53,10 @@ Labels: **Not started** = plan only. **Plan fixed** = detailed design written ea
 | 20 | [Ancient seeds on a graph](projects/20-ancient-seeds-on-graph/STATUS.md) | Not started | Check raw reads accession by accession first |
 | 21 | [GWAS meta-analysis](projects/21-gwas-meta-and-cross-ancestry-prediction/STATUS.md) | Not started | Inventory only; stop if the data are not public |
 | 22 | [Sex region](projects/22-sex-region-population-level/STATUS.md) | Not started | Demoted; check the sex records first |
+| 23 | [Family parentage and relationship QC](projects/23-family-parentage/STATUS.md) | Plan fixed | Design written, not run; public records only; the private families stay out; positive control is the DS18 trio |
+| 24 | [Pedigree and LD recombination maps](projects/24-recombination-maps/STATUS.md) | Plan fixed | Design written, not run; the pedigree quantity and the LD-based quantity are kept apart; public route through published maps and public panels |
+| 25 | [TE annotation methods, curation and automation](projects/25-te-annotation-methods/STATUS.md) | Plan fixed | Outline of a methods survey written; no manuscript in this repository; split with project 14 and vitis-te has a default in docs/DEFAULTS.md |
+| 26 | [Mitochondrial genomes, NUMTs and heteroplasmy](projects/26-mitochondrial-genomes/STATUS.md) | Not started | Proposed starting design and public inputs listed; the question that defines the project is still open |
 
 ## Suggested restart order
 
@@ -64,6 +68,7 @@ This is a suggestion from the ranking and the dependencies between projects, not
 4. **Sample table:** 08. Many population projects need its clone-free sample pool. Start with metadata and small panels before the largest downloads.
 5. **Needs the sample table:** 09 (quick), then 17, 15, 16 and 13.
 6. **Large or high risk:** 10 (calibrate first), 19 then 11, 12, 20, 21 (inventory first), and 22 (demoted).
+7. **Method-level lines (added 2026-11-21).** 23 then 24 (public records first). 25 can be drafted in parallel from published sources. 26 needs its defining question fixed first.
 
 ## Working rules
 
@@ -96,7 +101,12 @@ This is a suggestion from the ranking and the dependencies between projects, not
 - Which of the families LOX, MLO, PPO and CBF belong in project 07.
 - Sources for mutation rate, generation time and the OMArk lineage data.
 - Whether public reads exist for the chromosome 2 LOH idea (project 13).
+- Whether DS11 reads can be exported from NGDC by hand (projects 08, 10, 23, 24).
+- The question that defines project 26, and whether project 25 stays a methods survey beside project 14 and the vitis-te catalogue.
+- Whether PN_T2T is the public coordinate system for projects 23 and 24 [to confirm].
 
 Every [to confirm] item is also listed in the STATUS.md of its project.
 
 A checked list of public download links is in [data/DOWNLOADS.md](data/DOWNLOADS.md).
+
+Status addendum, 2026-11-21 (UTC+8): projects 23 to 26 were added at method level. Defaults for open items are in [docs/DEFAULTS.md](docs/DEFAULTS.md). The four method lines are described in [docs/METHOD_LINES.md](docs/METHOD_LINES.md). Sources checked for the projects whose STATUS pages only point to the README are listed in [docs/SOURCES_CHECKED_20261121.md](docs/SOURCES_CHECKED_20261121.md). Where this addendum and an older sentence above disagree (for example the number of projects), this addendum is newer.

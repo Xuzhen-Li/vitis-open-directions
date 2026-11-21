@@ -48,3 +48,9 @@ No analysis has been run for this project. One related earlier idea exists: a po
 - Cite only DOIs and URLs you opened yourself. Mark anything else [to confirm].
 - Never overwrite outputs: one new run folder per run, ending in .DONE or .FAILED ([docs/HPC_JOBS.md](../../docs/HPC_JOBS.md)).
 - Do not commit private data, sample details, results, host names or local paths.
+
+## Update 2026-11-21 (UTC+8)
+
+Added as appended lines; the text above is unchanged.
+
+- The DS02 row in Public inputs abbreviates the accession list. Use the exact list in [data/DOWNLOADS.md](../../data/DOWNLOADS.md) and do not expand it as a range; PRJNA1130635 was not found there.

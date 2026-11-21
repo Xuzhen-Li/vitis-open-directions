@@ -53,6 +53,10 @@
 | 20 | [古葡萄种子：图参照比对与低覆盖填补](projects/20-ancient-seeds-on-graph/) | 中 | 1 | 新 |
 | 21 | [公开 GWAS 荟萃、跨祖先基因组预测与 SV 标记](projects/21-gwas-meta-and-cross-ancestry-prediction/) | 中 | 3 | 新 |
 | 22 | [性别决定区的群体层面演化（降级）](projects/22-sex-region-population-level/) | 中 | 1 | 新 |
+| 23 | [公开葡萄记录上的亲子与亲缘关系质控](projects/23-family-parentage/STATUS.md) | [待确认] | [待确认] | 续做 |
+| 24 | [葡萄的系谱与连锁不平衡重组图谱](projects/24-recombination-maps/STATUS.md) | [待确认] | [待确认] | 续做 |
+| 25 | [转座子注释方法、文库整理与自动化](projects/25-te-annotation-methods/STATUS.md) | [待确认] | [待确认] | 续做 |
+| 26 | [葡萄线粒体基因组、核内线粒体插入与异质](projects/26-mitochondrial-genomes/STATUS.md) | [待确认] | [待确认] | 新 |
 
 ## 范围
 
@@ -65,3 +69,5 @@
 文字和表格：[CC BY 4.0](LICENSE)。数据集按各数据模块写明的许可使用。
 
 **第一次来？** 各项目现状、建议的重启顺序和工作规则见 [START_HERE.zh.md](START_HERE.zh.md)。[English](START_HERE.md)
+
+状态补记，2026-11-21（UTC+8）：新增项目 23 至 26（只写到方法层面），已列入上表。它们涉及亲子检验、重组图谱、TE 注释方法和线粒体基因组，即上面范围一节说的在别处处理的内容；见 [docs/METHOD_LINES.md](docs/METHOD_LINES.md)（英文）。待定事项的默认选项见 [docs/DEFAULTS.md](docs/DEFAULTS.md)（英文）。各项目现状见 [START_HERE.zh.md](START_HERE.zh.md)，截至 2026-11-21。排序页的分数没有变，也没有给项目 23 至 26 打分。

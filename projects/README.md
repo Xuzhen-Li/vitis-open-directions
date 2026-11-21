@@ -26,3 +26,7 @@ One folder per project, ranked by public-data feasibility, novelty and effort (s
 | 20 | [Archaeological grape seeds: graph mapping and low-coverage imputation](20-ancient-seeds-on-graph/) | Medium | 1 | new |
 | 21 | [Meta-analysis of public GWAS, cross-ancestry genomic prediction and SV markers](21-gwas-meta-and-cross-ancestry-prediction/) | Medium | 3 | new |
 | 22 | [Population-level evolution of the sex-determining region (demoted)](22-sex-region-population-level/) | Medium | 1 | new |
+| 23 | [Family parentage and relationship QC on public grape records](23-family-parentage/STATUS.md) | [to confirm] | [to confirm] | continued |
+| 24 | [Pedigree and linkage-disequilibrium recombination maps in grape](24-recombination-maps/STATUS.md) | [to confirm] | [to confirm] | continued |
+| 25 | [Transposable-element annotation methods, library curation and automation](25-te-annotation-methods/STATUS.md) | [to confirm] | [to confirm] | continued |
+| 26 | [Grapevine mitochondrial genomes, nuclear mitochondrial insertions and heteroplasmy](26-mitochondrial-genomes/STATUS.md) | [to confirm] | [to confirm] | new |

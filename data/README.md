@@ -26,6 +26,7 @@ Each public dataset is prepared once here and reused by the projects.
 | [DS20](DS20-small-rna-public/) | Public grape small-RNA data | 22 |
 | [DS21](DS21-other-crop-population-genomes/) | Population genomes of other domesticated plants (comparison set) | 12 |
 | [DS22](DS22-phenotypes-and-gwas-summaries/) | Public grape phenotypes, GWAS summary statistics and variant call sets | 21 |
+| [DS23](DS23-hemizygous-multiomics-vitis/) | Long-read and multi-omic Vitis study (hemizygous genes), PRJNA1178252 | 16, 17, 18, 19 |
 
 Snapshot of all Vitaceae assemblies in NCBI: [`assemblies_vitaceae_ncbi_20261114.tsv`](assemblies_vitaceae_ncbi_20261114.tsv).
 

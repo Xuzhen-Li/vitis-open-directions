@@ -66,3 +66,12 @@ An earlier line preregistered a spanning-read test for one large inversion on ch
 - Cite only DOIs and URLs you opened yourself. Mark anything else [to confirm].
 - Never overwrite outputs: one new run folder per run, ending in .DONE or .FAILED ([docs/HPC_JOBS.md](../../docs/HPC_JOBS.md)).
 - Do not commit private data, sample details, results, host names or local paths.
+
+## Update 2026-11-21 (UTC+8)
+
+Added as appended lines; the text above is unchanged.
+
+- The DS02 row in Public inputs abbreviates the accession list. Use the exact list in [data/DOWNLOADS.md](../../data/DOWNLOADS.md) and do not expand it as a range; PRJNA1130635 was not found there.
+- Study PRJNA1178252 (which includes SRR31308326) now has its own module, [DS23](../../data/DS23-hemizygous-multiomics-vitis/). It was used here before but was not in the Public inputs table above.
+- Run details from ENA on 2026-11-21: SRR31308326 is PacBio RS II subreads (library strategy WGS, Vitis vinifera); SRR29686478 is PromethION (library strategy OTHER, Vitis vinifera) in study PRJNA1048106. The Open items line describes both runs as ONT; for SRR31308326 that does not match ENA. Whether the BioSample of each run matches the reference is still not checked [to confirm].
+- Suggested refinement of the spanning-read test, not yet adopted [to confirm]: require each spanning read to cover unique sequence outside both breakpoint repeats, and judge the call from the strand and order of the primary and supplementary alignments of the same read on the two sides of the breakpoint. Reason: when the repeats that mediate an inversion are near or longer than the read length, a single whole-genome alignment can split or down-weight such reads. How often this happens in the Vitis data has not been tested.

@@ -68,3 +68,11 @@ A full design was written and tools were being installed on a compute site. No m
 - Cite only DOIs and URLs you opened yourself. Mark anything else [to confirm].
 - Never overwrite outputs: one new run folder per run, ending in .DONE or .FAILED ([docs/HPC_JOBS.md](../../docs/HPC_JOBS.md)).
 - Do not commit private data, sample details, results, host names or local paths.
+
+## Update 2026-11-21 (UTC+8)
+
+Added as appended lines; the text above is unchanged.
+
+- The DS02 row in Public inputs abbreviates the accession list. Use the exact list in [data/DOWNLOADS.md](../../data/DOWNLOADS.md) and do not expand it as a range; PRJNA1130635 was not found there.
+- OMArk lineage data: a source is recorded in data/DOWNLOADS.md (Zenodo record 10.5281/zenodo.20814376, files Viridiplantae.h5 and LUCA.h5). The default is in [docs/DEFAULTS.md](../../docs/DEFAULTS.md). This replaces the open item that says the source was unknown, except for which file OMArk expects for grape [to confirm].
+- Projects 05 and 06 form one paper with two sections. Run one assembly de-duplication and one pairwise distance matrix, and write two tables from it: pairs of different individuals (for this project) and same-genotype technical-replicate pairs (for project 06). The thresholds in the two pages differ (here: coverage at least 0.95 and divergence at most 0.1 per kb to call two assemblies the same; in project 06: divergence below 1 per kb for a technical-replicate pair). Fix both in one preregistration [to confirm that one script can serve both].
