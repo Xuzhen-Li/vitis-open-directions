@@ -70,3 +70,9 @@ Added as appended lines; the text above is unchanged.
 - The DS02 row in Public inputs abbreviates the accession list. Use the exact list in [data/DOWNLOADS.md](../../data/DOWNLOADS.md) and do not expand it as a range; PRJNA1130635 was not found there.
 - Study PRJNA1178252 (which includes SRR31308326) now has its own module, [DS23](../../data/DS23-hemizygous-multiomics-vitis/). It was used here before but was not in the Public inputs table above.
 - Suggested refinement of the validation step, not yet adopted [to confirm]: centromere arrays are tandem repeats, so a MAPQ cutoff of 30 may discard many reads that map to several array copies. Consider a main analysis that keeps one placement per read and measures enrichment against input, with MAPQ 30 kept as a separate layer for uniquely placed positions. The size of the loss has not been tested.
+
+## Note, 2026-11-21 (UTC+8): place in the six-dimension map
+
+Dimension 2 (genome structure and organelles). Proposed on 2026-11-21: keep. Runs in parallel with projects 01 and 02 once it is no longer paused. This is a proposal, not a decision: the score in RANKING.md is unchanged and the folder stays as it is. The full direction map is in [examples/vitis/README.md](../../README.md).
+
+ITS on this page means interstitial telomeric repeats, not the transcribed spacers ITS1 and ITS2 of the rDNA unit.

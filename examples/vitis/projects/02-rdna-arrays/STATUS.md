@@ -74,3 +74,9 @@ An earlier line listed metadata for a very large set of near-complete angiosperm
 Added as appended lines; the text above is unchanged.
 
 - The DS02 row in Public inputs abbreviates the accession list. Use the exact list in [data/DOWNLOADS.md](../../data/DOWNLOADS.md) and do not expand it as a range; PRJNA1130635 was not found there.
+
+## Note, 2026-11-21 (UTC+8): place in the six-dimension map
+
+Dimension 2 (genome structure and organelles). Proposed on 2026-11-21: keep. Optional merge with project 01 into one repeat-array paper (A2 in INDEX.md) [to confirm]. This is a proposal, not a decision: the score in RANKING.md is unchanged and the folder stays as it is. The full direction map is in [examples/vitis/README.md](../../README.md).
+
+If the transcribed spacers of the rDNA unit (ITS1, ITS2) are discussed here, name them as ITS1 and ITS2: ITS in projects 01 and 18 means interstitial telomeric repeats.

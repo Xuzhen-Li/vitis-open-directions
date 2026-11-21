@@ -110,3 +110,14 @@ Every [to confirm] item is also listed in the STATUS.md of its project.
 A checked list of public download links is in [examples/vitis/data/DOWNLOADS.md](examples/vitis/data/DOWNLOADS.md).
 
 Status addendum, 2026-11-21 (UTC+8): projects 23 to 26 were added at method level. Defaults for open items are in [examples/vitis/DEFAULTS.md](examples/vitis/DEFAULTS.md). The four method lines are described in [examples/vitis/METHOD_LINES.md](examples/vitis/METHOD_LINES.md). Sources checked for the projects whose STATUS pages only point to the README are listed in [examples/vitis/SOURCES_CHECKED_20261121.md](examples/vitis/SOURCES_CHECKED_20261121.md). Where this addendum and an older sentence above disagree (for example the number of projects), this addendum is newer.
+
+## Layout and reading order from 2026-11-21
+
+On 2026-11-21 the grapevine material moved into [examples/vitis/](examples/vitis/), the general templates into [templates/](templates/), and a method that works for any species was added in [framework/](framework/). Links on this page were updated. Plain-text paths such as `projects/NN-.../README.md` now mean `examples/vitis/projects/NN-.../README.md`. In the Layout table above, the row for `examples/vitis/` stands for the former `docs/` folder: the ranking, index and not-kept list are in `examples/vitis/`, and the preregistration, job and evidence log templates are in `templates/`.
+
+After [README.md](README.md) and this page, take one of two branches:
+
+- **A. Another species.** Read [framework/GAP_FRAMEWORK.md](framework/GAP_FRAMEWORK.md) and [framework/EVALUATION_RUBRIC.md](framework/EVALUATION_RUBRIC.md), then follow [framework/SPECIES_TRANSFER_GUIDE.md](framework/SPECIES_TRANSFER_GUIDE.md) with the templates in [templates/](templates/). Without internet access, mark every untested accession and DOI [to confirm] and write out the queries to be run on a login node, as the guide describes.
+- **B. A grapevine project.** Follow How to start on a grapevine project in [examples/vitis/README.md](examples/vitis/README.md). Projects 23 to 26 have no README and no scores: read [examples/vitis/METHOD_LINES.md](examples/vitis/METHOD_LINES.md) and the STATUS page of the project.
+
+[examples/vitis/EARLIER_LINES.md](examples/vitis/EARLIER_LINES.md) is mainly useful for tracing where a project came from. The map that places projects 01 to 26 in the six dimensions, with suggested merges and downgrades marked [to confirm], is in [examples/vitis/README.md](examples/vitis/README.md).

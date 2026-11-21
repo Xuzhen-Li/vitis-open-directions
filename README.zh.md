@@ -1,5 +1,21 @@
 # vitis-open-directions
 
+**vitis-open-directions** 是一套可迁移至任意单物种的研究缺口探索框架，用于仅基于公开数据系统性地发现、检验和排序深度研究方向，并以葡萄（*Vitis*）作为端到端的完整范例。
+
+本仓库不是一份静态的选题清单，而是围绕六个维度（数据与资源、基因组结构与细胞器、多尺度变异与可移动元件、群体演化/驯化与繁殖系统、表达/调控与表观遗传、表型/功能与跨物种比较）建立的缺口审计工作流。在启动任何分析之前，每个候选方向都必须经过四道核查：基于已打开 DOI 的文献真实性检验、通过数据库 API 核实的公开数据可用性检查、预注册的假设与对照标准，以及明确的止损规则。葡萄范例（`examples/vitis/`）将该流程完整落地于公开基因组组装、图泛基因组、重测序群体、转录组与古 DNA 数据，为每个保留方向配套了已核查的登录号、可复用分析模块，以及核查后未收入方向的排除依据。
+
+## 东西在哪（2026-11-21 起的目录结构）
+
+| 路径 | 内容 | 原路径 |
+|---|---|---|
+| [framework/](framework/) | 六维方法（[GAP_FRAMEWORK.zh.md](framework/GAP_FRAMEWORK.zh.md)）、打分细则（[EVALUATION_RUBRIC.zh.md](framework/EVALUATION_RUBRIC.zh.md)）和迁移到其他物种的步骤（[SPECIES_TRANSFER_GUIDE.zh.md](framework/SPECIES_TRANSFER_GUIDE.zh.md)），中英文各一份 | 新增 |
+| [templates/](templates/) | 空白模板：预注册、证据日志、数据准备、集群作业、缺口审计、物种数据盘点表 | `docs/`（前四个） |
+| [examples/vitis/](examples/vitis/) | 葡萄范例：数据集、分析步骤、26 个项目、索引、排序、默认值、未收入清单和核查，以及项目到六个维度的映射；从 [examples/vitis/README.zh.md](examples/vitis/README.zh.md) 开始 | `data/`、`analyses/`、`projects/`、`docs/`、`CHECK.md` |
+
+旧页面正文里的纯文本路径（例如 `docs/RANKING.md`、`data/DOWNLOADS.md`）指原来的目录结构：`data/`、`analyses/`、`projects/` 现在在 `examples/vitis/` 下；`CHECK.md` 和 `docs/` 里的葡萄页面在 `examples/vitis/`；`docs/PREREGISTRATION.md`、`docs/EVIDENCE_LOG_TEMPLATE.md`、`docs/DATA_PREP.md`、`docs/HPC_JOBS.md` 在 `templates/`。链接都已更新。
+
+## 葡萄范例
+
 只用公开数据就能做的葡萄（*Vitis*）基因组学研究方向。每个方向都写成从下载数据到计划图表的可执行方案。[English](README.md)
 
 这个仓库是三个目录仓库的分析导航页：目录仓库列工具和方法，这里写用哪些公开数据、跑哪些步骤、每个项目回答什么问题。工具的介绍在目录仓库里，这里只放链接。

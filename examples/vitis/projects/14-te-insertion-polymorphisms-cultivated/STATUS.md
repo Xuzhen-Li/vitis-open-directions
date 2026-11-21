@@ -80,3 +80,7 @@ Added as appended lines; the text above is unchanged.
 - The DS02 row in Public inputs abbreviates the accession list. Use the exact list in [data/DOWNLOADS.md](../../data/DOWNLOADS.md) and do not expand it as a range; PRJNA1130635 was not found there.
 - Split with the vitis-te catalogue: by default this project builds its own insertion library from public assemblies and does not wait for a file from vitis-te, because the catalogue has no standalone TE library FASTA at the recorded commit (data/DOWNLOADS.md). The methods survey of TE annotation is [project 25](../25-te-annotation-methods/STATUS.md). The default is in [docs/DEFAULTS.md](../../DEFAULTS.md); merging the two projects is still the maintainer decision [to confirm].
 - LTR age: state the unit of r. If r is per site per year, T = d / 2r is already in years and no generation time is needed. A generation time is needed only if r is per site per generation. For a perennial that is often propagated by cuttings, generation time needs its own definition. Prefer a published per-year rate range [to confirm the source].
+
+## Note, 2026-11-21 (UTC+8): place in the six-dimension map
+
+Dimension 3 (variation and mobile elements). Proposed on 2026-11-21: keep. Split from project 25: project 14 is the analysis and builds its own insertion library; project 25 is the methods survey. This is a proposal, not a decision: the score in RANKING.md is unchanged and the folder stays as it is. The full direction map is in [examples/vitis/README.md](../../README.md).

@@ -52,3 +52,7 @@ No analysis has been run and there is no earlier line behind this project. The p
 Added as appended lines; the text above is unchanged.
 
 - Sources read: the DOIs in the project README were each opened as a Crossref record on 2026-11-21; the list is in [docs/SOURCES_CHECKED_20261121.md](../../SOURCES_CHECKED_20261121.md). The Sources read section above is unchanged.
+
+## Note, 2026-11-21 (UTC+8): place in the six-dimension map
+
+Dimension 6 (phenotype, function and cross-species comparison). Proposed on 2026-11-21: keep. This is a proposal, not a decision: the score in RANKING.md is unchanged and the folder stays as it is. The full direction map is in [examples/vitis/README.md](../../README.md).

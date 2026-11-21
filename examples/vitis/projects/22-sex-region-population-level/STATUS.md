@@ -50,3 +50,7 @@ No analysis has been run. The project is demoted in the ranking: the cross-genus
 Added as appended lines; the text above is unchanged.
 
 - Sources read: the DOIs in the project README were each opened as a Crossref record on 2026-11-21; the list is in [docs/SOURCES_CHECKED_20261121.md](../../SOURCES_CHECKED_20261121.md). The Sources read section above is unchanged.
+
+## Note, 2026-11-21 (UTC+8): place in the six-dimension map
+
+Dimension 4 (population, domestication and reproductive system). Proposed on 2026-11-21: downgraded, as already recorded in RANKING.md, unless enough wild sex records are found. This is a proposal, not a decision: the score in RANKING.md is unchanged and the folder stays as it is. The full direction map is in [examples/vitis/README.md](../../README.md).

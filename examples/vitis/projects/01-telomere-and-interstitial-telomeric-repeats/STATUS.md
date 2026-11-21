@@ -80,3 +80,9 @@ Added as appended lines; the text above is unchanged.
 
 - The DS02 row in Public inputs abbreviates the accession list. Use the exact list in [data/DOWNLOADS.md](../../data/DOWNLOADS.md) and do not expand it as a range; PRJNA1130635 was not found there.
 - The positive-strand lean of the degraded layer is not explained in the records. Until a cause is found, scan both strands separately and report them separately. A strand preference in the earlier scan script is one possible cause; it was not shown [to confirm].
+
+## Note, 2026-11-21 (UTC+8): place in the six-dimension map
+
+Dimension 2 (genome structure and organelles). Proposed on 2026-11-21: keep. Optional merge with project 02 into one repeat-array paper (A2 in INDEX.md) [to confirm]. This is a proposal, not a decision: the score in RANKING.md is unchanged and the folder stays as it is. The full direction map is in [examples/vitis/README.md](../../README.md).
+
+ITS on this page means interstitial telomeric repeats, not the transcribed spacers ITS1 and ITS2 of the rDNA unit.

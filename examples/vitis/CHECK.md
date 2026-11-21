@@ -216,3 +216,11 @@ NGDC accessions (PRJCA*, CRA*) are rendered by JavaScript and were not read [待
 
 - This draft (v0.3.2) was generated from the v0.3.1 sources with the third-round review changes applied, in a new folder; no earlier file was changed. All checks of v0.3.1 were rerun, including the ranking check of all four ordering rules.
 
+
+## 10. Note added on 2026-11-21 (UTC+8)
+
+- This report was generated on 2026-11-14 for draft v0.3.2. At that time the repository had 81 Markdown files, 22 scored projects, data modules DS01 to DS22 and 103 DOIs. The report does not cover projects 23 to 26, data module DS23, or the roughly 150 distinct DOI strings present on 2026-11-21. A count of DOI strings only shows that a string is present, not that the DOI resolves.
+- On 2026-11-21 this file moved from the top of the repository to `examples/vitis/CHECK.md`, together with `data/`, `analyses/`, `projects/` and the grapevine pages of `docs/`; four general templates moved to `templates/`. Paths and counts in sections 1 to 9 refer to the earlier layout.
+- After the move, every relative link in every Markdown file of the repository was resolved against the files in the repository: 1,929 relative links in 127 Markdown files, 0 broken. Anchors after # were not checked.
+- A full rerun of sections 1 to 8 on the new layout, covering projects 01 to 26, DS01 to DS23 and all DOIs, is [to confirm].
+- ITS in these pages means interstitial telomeric repeats, not the transcribed spacers ITS1 and ITS2 of the rDNA unit.

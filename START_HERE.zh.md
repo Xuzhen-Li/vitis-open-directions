@@ -110,3 +110,14 @@
 已核对的公开下载链接清单见 [examples/vitis/data/DOWNLOADS.md](examples/vitis/data/DOWNLOADS.md)。
 
 状态补记，2026-11-21（UTC+8）：新增项目 23 至 26，只写到方法层面。待定事项的默认选项见 [examples/vitis/DEFAULTS.md](examples/vitis/DEFAULTS.md)（英文）。四条方法线见 [examples/vitis/METHOD_LINES.md](examples/vitis/METHOD_LINES.md)（英文）。STATUS 页只指向 README 的那些项目，其核对过的来源见 [examples/vitis/SOURCES_CHECKED_20261121.md](examples/vitis/SOURCES_CHECKED_20261121.md)。本补记与上文旧句子不一致处（例如项目数量），以本补记为准。
+
+## 2026-11-21 起的目录结构和阅读顺序
+
+2026-11-21 起，葡萄内容移到 [examples/vitis/](examples/vitis/)，通用模板移到 [templates/](templates/)，并在 [framework/](framework/) 新增了适用于任何物种的方法。本页链接已更新。纯文本路径如 `projects/NN-.../README.md` 现在指 `examples/vitis/projects/NN-.../README.md`。上面目录结构表里 `examples/vitis/` 那一行对应原来的 `docs/` 文件夹：排序、索引和未收入清单在 `examples/vitis/`，预注册、作业和证据日志模板在 `templates/`。
+
+读完 [README.zh.md](README.zh.md) 和本页之后，按任务分两条路：
+
+- **A. 换一个物种。** 读 [framework/GAP_FRAMEWORK.zh.md](framework/GAP_FRAMEWORK.zh.md) 和 [framework/EVALUATION_RUBRIC.zh.md](framework/EVALUATION_RUBRIC.zh.md)，再按 [framework/SPECIES_TRANSFER_GUIDE.zh.md](framework/SPECIES_TRANSFER_GUIDE.zh.md) 使用 [templates/](templates/) 里的模板。没有外网时，所有没有实测的登录号和 DOI 标 [待确认]，并按指南写出可在登录节点运行的查询命令。
+- **B. 做一个葡萄项目。** 按 [examples/vitis/README.zh.md](examples/vitis/README.zh.md) 里「怎样开始一个葡萄项目」的步骤走。项目 23 到 26 没有 README，也没有分数：读 [examples/vitis/METHOD_LINES.md](examples/vitis/METHOD_LINES.md) 和该项目的 STATUS。
+
+[examples/vitis/EARLIER_LINES.md](examples/vitis/EARLIER_LINES.md) 主要用于追溯项目来历。把项目 01 到 26 放进六个维度的映射表（建议的合并和降级标 [待确认]）在 [examples/vitis/README.zh.md](examples/vitis/README.zh.md)。

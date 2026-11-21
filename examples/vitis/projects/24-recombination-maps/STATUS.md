@@ -80,3 +80,7 @@ All entries below were opened as Crossref records on 2026-11-21 (abstract level;
 - Cite only DOIs and URLs you opened yourself. Mark anything else [to confirm].
 - Never overwrite outputs: one new run folder per run, ending in .DONE or .FAILED ([docs/HPC_JOBS.md](../../../../templates/HPC_JOBS.md)).
 - Do not commit private data, sample details, results, host names or local paths.
+
+## Note, 2026-11-21 (UTC+8): place in the six-dimension map
+
+Dimension 4 (population, domestication and reproductive system). Proposed on 2026-11-21: method line linked to projects 23 and 10. LD-based and pedigree recombination rates are kept apart. This project has a STATUS page only, with no README and no F/N/E score; whether to add them is [to confirm]. Read it together with [METHOD_LINES.md](../../METHOD_LINES.md). This is a proposal, not a decision: nothing in RANKING.md changes and the folder stays as it is. The full direction map is in [examples/vitis/README.md](../../README.md).

@@ -72,3 +72,7 @@ Added as appended lines; the text above is unchanged.
 
 - The DS02 row in Public inputs abbreviates the accession list. Use the exact list in [data/DOWNLOADS.md](../../data/DOWNLOADS.md) and do not expand it as a range; PRJNA1130635 was not found there.
 - Projects 05 and 06 form one paper with two sections. The first step here (counting technical-replicate pairs) should come from the same de-duplication and distance matrix as project 05; see the note at the end of [project 05](../05-gene-pav-across-pangenomes/STATUS.md).
+
+## Note, 2026-11-21 (UTC+8): place in the six-dimension map
+
+Dimension 2 (genome structure and organelles). Proposed on 2026-11-21: keep. Suggested merge with project 05 into one paper in two parts, sharing de-duplication and the distance matrix [to confirm]. This is a proposal, not a decision: the score in RANKING.md is unchanged and the folder stays as it is. The full direction map is in [examples/vitis/README.md](../../README.md).

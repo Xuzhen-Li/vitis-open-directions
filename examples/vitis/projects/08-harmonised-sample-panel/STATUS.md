@@ -79,3 +79,7 @@ Added as appended lines; the text above is unchanged.
 - The DS02 row in Public inputs abbreviates the accession list. Use the exact list in [data/DOWNLOADS.md](../../data/DOWNLOADS.md) and do not expand it as a range; PRJNA1130635 was not found there.
 - DS11 reads cannot be listed without an NGDC login (see data/DOWNLOADS.md; on 2026-11-21 the directory https://download.cncb.ac.cn/gsa/CRA006917/ returned HTTP 404). Run the first pass on DS10, DS12 and the DS02 resequencing panel, and treat DS11 as an extension queue that is added when a run list for PRJCA009314 has been exported by hand.
 - Projects 23 and 24 use the clone-collapsed sample table from this project; see [project 23](../23-family-parentage/STATUS.md).
+
+## Note, 2026-11-21 (UTC+8): place in the six-dimension map
+
+Dimension 1 (data and resources). Proposed on 2026-11-21: keep, as the base for every population project. Linked with project 23, which uses the same de-duplicated sample pool and SNP set. This is a proposal, not a decision: the score in RANKING.md is unchanged and the folder stays as it is. The full direction map is in [examples/vitis/README.md](../../README.md).

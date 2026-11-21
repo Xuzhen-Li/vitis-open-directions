@@ -75,3 +75,7 @@ Added as appended lines; the text above is unchanged.
 - Study PRJNA1178252 (which includes SRR31308326) now has its own module, [DS23](../../data/DS23-hemizygous-multiomics-vitis/). It was used here before but was not in the Public inputs table above.
 - Run details from ENA on 2026-11-21: SRR31308326 is PacBio RS II subreads (library strategy WGS, Vitis vinifera); SRR29686478 is PromethION (library strategy OTHER, Vitis vinifera) in study PRJNA1048106. The Open items line describes both runs as ONT; for SRR31308326 that does not match ENA. Whether the BioSample of each run matches the reference is still not checked [to confirm].
 - Suggested refinement of the spanning-read test, not yet adopted [to confirm]: require each spanning read to cover unique sequence outside both breakpoint repeats, and judge the call from the strand and order of the primary and supplementary alignments of the same read on the two sides of the breakpoint. Reason: when the repeats that mediate an inversion are near or longer than the read length, a single whole-genome alignment can split or down-weight such reads. How often this happens in the Vitis data has not been tested.
+
+## Note, 2026-11-21 (UTC+8): place in the six-dimension map
+
+Dimension 3 (variation and mobile elements). Proposed on 2026-11-21: keep. This is a proposal, not a decision: the score in RANKING.md is unchanged and the folder stays as it is. The full direction map is in [examples/vitis/README.md](../../README.md).

@@ -76,3 +76,7 @@ Added as appended lines; the text above is unchanged.
 - The DS02 row in Public inputs abbreviates the accession list. Use the exact list in [data/DOWNLOADS.md](../../data/DOWNLOADS.md) and do not expand it as a range; PRJNA1130635 was not found there.
 - OMArk lineage data: a source is recorded in data/DOWNLOADS.md (Zenodo record 10.5281/zenodo.20814376, files Viridiplantae.h5 and LUCA.h5). The default is in [docs/DEFAULTS.md](../../DEFAULTS.md). This replaces the open item that says the source was unknown, except for which file OMArk expects for grape [to confirm].
 - Projects 05 and 06 form one paper with two sections. Run one assembly de-duplication and one pairwise distance matrix, and write two tables from it: pairs of different individuals (for this project) and same-genotype technical-replicate pairs (for project 06). The thresholds in the two pages differ (here: coverage at least 0.95 and divergence at most 0.1 per kb to call two assemblies the same; in project 06: divergence below 1 per kb for a technical-replicate pair). Fix both in one preregistration [to confirm that one script can serve both].
+
+## Note, 2026-11-21 (UTC+8): place in the six-dimension map
+
+Dimension 2 (genome structure and organelles). Proposed on 2026-11-21: keep. Suggested merge with project 06 into one paper in two parts, sharing de-duplication and the distance matrix [to confirm]. This is a proposal, not a decision: the score in RANKING.md is unchanged and the folder stays as it is. The full direction map is in [examples/vitis/README.md](../../README.md).

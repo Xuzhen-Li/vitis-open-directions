@@ -54,3 +54,7 @@ Added as appended lines; the text above is unchanged.
 
 - The DS02 row in Public inputs abbreviates the accession list. Use the exact list in [data/DOWNLOADS.md](../../data/DOWNLOADS.md) and do not expand it as a range; PRJNA1130635 was not found there.
 - Sources read: the DOIs in the project README were each opened as a Crossref record on 2026-11-21; the list is in [docs/SOURCES_CHECKED_20261121.md](../../SOURCES_CHECKED_20261121.md). The Sources read section above is unchanged.
+
+## Note, 2026-11-21 (UTC+8): place in the six-dimension map
+
+Dimension 6 (phenotype, function and cross-species comparison). Proposed on 2026-11-21: proposed to move out of the main line and become a teaching and test example for graph genotyping (AM07) [to confirm]. Until the maintainer decides, it stays a Quick project. This is a proposal, not a decision: the score in RANKING.md is unchanged and the folder stays as it is. The full direction map is in [examples/vitis/README.md](../../README.md).

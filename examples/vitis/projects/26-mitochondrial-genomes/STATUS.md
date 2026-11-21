@@ -79,3 +79,7 @@ Whether each of these deposits holds reads that cover the mitochondrial genome i
 - Cite only DOIs and URLs you opened yourself. Mark anything else [to confirm].
 - Never overwrite outputs: one new run folder per run, ending in .DONE or .FAILED ([docs/HPC_JOBS.md](../../../../templates/HPC_JOBS.md)).
 - Do not commit private data, sample details, results, host names or local paths.
+
+## Note, 2026-11-21 (UTC+8): place in the six-dimension map
+
+Dimension 2 (genome structure and organelles). Proposed on 2026-11-21: downgraded until its core question is fixed [to confirm]. This project has a STATUS page only, with no README and no F/N/E score; whether to add them is [to confirm]. Read it together with [METHOD_LINES.md](../../METHOD_LINES.md). This is a proposal, not a decision: nothing in RANKING.md changes and the folder stays as it is. The full direction map is in [examples/vitis/README.md](../../README.md).

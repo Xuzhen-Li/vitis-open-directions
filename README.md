@@ -1,5 +1,21 @@
 # vitis-open-directions
 
+**vitis-open-directions** is a transferable framework for systematically finding, verifying, and prioritizing open research gaps in a single species using public data only—with grapevine (*Vitis*) as a complete worked example.
+
+Instead of presenting a static wish list of ideas, this repository defines a six-dimension audit workflow (data and resources; genome structure and organelles; variation and mobile elements; population, domestication and reproductive systems; expression, regulation and epigenetics; phenotype, function and cross-species comparison). For each candidate gap, it enforces four checks before any analysis begins: literature verification against opened DOIs, public-data availability via archive APIs, preregistered hypotheses and controls, and explicit stop rules. The grapevine example (`examples/vitis/`) applies this workflow end-to-end across public assemblies, pangenome graphs, resequencing panels, RNA-seq, and ancient DNA, pairing every kept direction with verified accessions, reusable analysis modules, and a record of directions checked and left out.
+
+## Where things are (layout of 2026-11-21)
+
+| Path | What it holds | Earlier path |
+|---|---|---|
+| [framework/](framework/) | The six-dimension method ([GAP_FRAMEWORK.md](framework/GAP_FRAMEWORK.md)), scoring rules ([EVALUATION_RUBRIC.md](framework/EVALUATION_RUBRIC.md)) and steps for another species ([SPECIES_TRANSFER_GUIDE.md](framework/SPECIES_TRANSFER_GUIDE.md)), in English and Chinese | new |
+| [templates/](templates/) | Blank templates: preregistration, evidence log, data preparation, cluster jobs, gap audit, species intake checklist | `docs/` (the first four) |
+| [examples/vitis/](examples/vitis/) | The grapevine example: datasets, analysis steps, 26 projects, index, ranking, defaults, not-kept list and checks, with a map of the projects onto the six dimensions; start with [examples/vitis/README.md](examples/vitis/README.md) | `data/`, `analyses/`, `projects/`, `docs/`, `CHECK.md` |
+
+Plain-text paths in older pages (for example `docs/RANKING.md` or `data/DOWNLOADS.md`) refer to the earlier layout: `data/`, `analyses/` and `projects/` are now under `examples/vitis/`; `CHECK.md` and the grapevine pages of `docs/` are in `examples/vitis/`; `docs/PREREGISTRATION.md`, `docs/EVIDENCE_LOG_TEMPLATE.md`, `docs/DATA_PREP.md` and `docs/HPC_JOBS.md` are in `templates/`. All links were updated.
+
+## The grapevine example
+
 Research directions in grapevine (*Vitis*) genomics that can be done with public data only, each written as a runnable plan from download to planned figures. [中文](README.zh.md)
 
 This repository is the analysis guide for three catalogue repositories. The catalogues list tools and methods; this repository says which public data to use, which steps to run, and what question each project answers. Tools are described in the catalogues and only linked from here.
