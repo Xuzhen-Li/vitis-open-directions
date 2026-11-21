@@ -20,3 +20,5 @@ Several projects here continue earlier attempts that ran with other data or tool
 | Population recombination maps and pedigree-based recombination | not in this repository | Handled elsewhere; see [NOT_KEPT](NOT_KEPT.md) |
 
 Data downloaded by earlier attempts are not part of this repository and may not exist anywhere you can reach. Download again from the public archives, with a manifest and checksums (AM01).
+
+As of 2026-11-21, method-level pages exist for four lines that the rows above describe as handled elsewhere or leave out: [project 23](../projects/23-family-parentage/STATUS.md) (parentage checks) and [project 24](../projects/24-recombination-maps/STATUS.md) (pedigree and LD-based recombination maps), [project 25](../projects/25-te-annotation-methods/STATUS.md) (TE annotation methods; distinct from project 14), and [project 26](../projects/26-mitochondrial-genomes/STATUS.md) (mitochondrial genomes, not started). The table row on population recombination maps and pedigree-based recombination is older than these pages and is left unchanged. See [METHOD_LINES.md](METHOD_LINES.md).

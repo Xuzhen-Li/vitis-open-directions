@@ -99,3 +99,15 @@ The check date for every row is 2026-11-20 (UTC+8).
 - Recherche Data Gouv / Dataverse: `https://entrepot.recherche.data.gouv.fr/api/access/datafile/<numeric_id>`.
 - GEO series: the accession page plus the BioProject listed above; ENA also serves the same runs when a BioProject or SRP is known.
 - NGDC GSA run data for CRA006917 and CRA006898 could not be listed from the public FTP index on this date. Start from the PRJCA BioProject page. The VS-1 assembly is on the GWH Plants FTP path above and does not depend on the GSA run listing.
+
+## Update 2026-11-21 (UTC+8)
+
+Added as appended lines; the text above is unchanged. No large files were downloaded.
+
+- DS11 reads. On 2026-11-21 the directory https://download.cncb.ac.cn/gsa/CRA006917/ returned HTTP 404 (the earlier check above recorded an SSL reset or HTTP 500). The GSA page for CRA006917 returned HTTP 200 with a 1,014-byte body, which is the access-check page, not a file list. The BioProject page https://ngdc.cncb.ac.cn/bioproject/browse/PRJCA009314 returned HTTP 200. Still no run-level URL. Route for projects 08, 10, 23 and 24: run the first pass without DS11 (DS10, DS12, DS02 resequencing panel) and add DS11 after a run list is exported by hand; see [docs/DEFAULTS.md](../docs/DEFAULTS.md).
+- DS02 accession lists. Several project pages and the DS02 module abbreviate the accessions as first and last values. Use the exact list in the first DS02 row of the table above (18 BioProjects, not a continuous range). PRJNA1130635 was not found.
+- Study PRJNA1178252 (the row under Items used by projects but not given their own data-module row) now has the module [DS23](DS23-hemizygous-multiomics-vitis/). ENA, 2026-11-21: 16 runs, 172.9 GB of FASTQ in total; SRR31308326 is PacBio RS II subreads (WGS, Vitis vinifera).
+- SRR29686478 (study PRJNA1048106): PromethION, library strategy OTHER, Vitis vinifera, read from the ENA filereport on 2026-11-21.
+- OMArk lineage files. Zenodo API file list of record 10.5281/zenodo.20814376 on 2026-11-21: Viridiplantae.h5 (1,544,112,383 bytes), LUCA.h5 (9,918,199,250 bytes), Metazoa.h5, Primates.h5, Homininae.h5 and saccharomyceta.h5. Only the file list was read in this check.
+- Grape mitochondrial reference for [project 26](../projects/26-mitochondrial-genomes/STATUS.md): NCBI RefSeq NC_012119.1, Vitis vinifera mitochondrion, complete genome, 773,279 bp (NCBI esummary, 2026-11-21).
+- Florendovirus seed set for project 03: the Geering 2014 supplementary table is a summary of genome organisation and has no sequence file in this check; a default that uses the coordinates in Bertsch et al. 2009 is in [docs/DEFAULTS.md](../docs/DEFAULTS.md).

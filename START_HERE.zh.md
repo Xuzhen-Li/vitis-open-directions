@@ -53,6 +53,10 @@
 | 20 | [古代种子上图](projects/20-ancient-seeds-on-graph/STATUS.md) | 未开始 | 先逐个登录号确认有没有原始读段 |
 | 21 | [GWAS 元分析](projects/21-gwas-meta-and-cross-ancestry-prediction/STATUS.md) | 未开始 | 只做清点；数据不公开就停 |
 | 22 | [性别决定区](projects/22-sex-region-population-level/STATUS.md) | 未开始 | 已降级；先查性别记录 |
+| 23 | [亲子与亲缘关系质控（公开记录）](projects/23-family-parentage/STATUS.md) | 方案已定 | 设计已写、未运行；只用公开记录，私有家系不进本仓库；阳性对照是 DS18 的三联体 |
+| 24 | [系谱与连锁不平衡重组图谱](projects/24-recombination-maps/STATUS.md) | 方案已定 | 设计已写、未运行；系谱量和 LD 量分开；公开路线用已发表图谱和公开面板 |
+| 25 | [TE 注释方法、整理与自动化](projects/25-te-annotation-methods/STATUS.md) | 方案已定 | 方法调查提纲已写；本仓库尚无文稿；与项目 14、vitis-te 的分工在 docs/DEFAULTS.md 有默认 |
+| 26 | [线粒体基因组、核内线粒体插入与异质](projects/26-mitochondrial-genomes/STATUS.md) | 未开始 | 已列出拟定的起步设计和公开输入；决定项目走向的问题还没定 |
 
 ## 建议的重启顺序
 
@@ -64,6 +68,7 @@
 4. **样本表**：08。很多群体项目要用它去掉克隆后的样本池。先做元数据和小面板，最大的下载放后面。
 5. **要用样本表的项目**：09（快），然后 17、15、16、13。
 6. **大项目或高风险**：10（先校准）、19 然后 11、12、20、21（先清点）、22（已降级）。
+7. **方法线（2026-11-21 补入）。** 先做 23，再做 24（先用公开记录）。25 可按已发表文献并行起草。26 要先定下决定项目走向的问题。
 
 ## 工作规则
 
@@ -96,7 +101,12 @@
 - LOX、MLO、PPO、CBF 哪些放进项目 07。
 - 突变率、世代时间和 OMArk 谱系数据的来源。
 - 项目 13 里 2 号染色体 LOH 的想法，公开读段是否存在。
+- DS11 的读段能否从 NGDC 手动导出（项目 08、10、23、24）。
+- 决定项目 26 走向的问题是什么，以及项目 25 是否保持为方法调查、与项目 14 和 vitis-te 目录并行。
+- 项目 23 和 24 的公开坐标系统是否用 PN_T2T [待确认]。
 
 所有 [待确认] 项也列在各项目自己的 STATUS.md 里。
 
 已核对的公开下载链接清单见 [data/DOWNLOADS.md](data/DOWNLOADS.md)。
+
+状态补记，2026-11-21（UTC+8）：新增项目 23 至 26，只写到方法层面。待定事项的默认选项见 [docs/DEFAULTS.md](docs/DEFAULTS.md)（英文）。四条方法线见 [docs/METHOD_LINES.md](docs/METHOD_LINES.md)（英文）。STATUS 页只指向 README 的那些项目，其核对过的来源见 [docs/SOURCES_CHECKED_20261121.md](docs/SOURCES_CHECKED_20261121.md)。本补记与上文旧句子不一致处（例如项目数量），以本补记为准。

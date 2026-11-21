@@ -19,3 +19,5 @@ These were checked and left out, either because published work already covers th
 | Multi-genotype single-cell eQTL and scATAC | needs new data | [Conference abstract, Open GPB 2024](https://doi.org/10.58233/ie2yrba8) | Only a conference abstract on single-cell regulation was found. |
 | Functional validation of *Muscadinia* sex-region candidate genes | needs experiments | [Massonnet et al. 2025](https://doi.org/10.1038/s41467-025-61387-9) | The population part is project 22. |
 | Self-incompatibility | not a question in grape [待确认] | – | Female-flowered cultivars need pollinisers; this is a remnant of dioecy, not self-incompatibility. No direct reference stating that grape lacks a self-incompatibility system was found [待确认]. |
+
+As of 2026-11-21, the organelle row and the LD-based recombination row above have method-level pages: [project 26](../projects/26-mitochondrial-genomes/STATUS.md) and [project 24](../projects/24-recombination-maps/STATUS.md). The two rows still say these directions are not covered in this repository; they are older than the pages and are left unchanged. See [METHOD_LINES.md](METHOD_LINES.md).

@@ -71,3 +71,11 @@ For resequencing panels follow the project README (AM03 shared site set, AM04 wi
 - Cite only DOIs and URLs you opened yourself. Mark anything else [to confirm].
 - Never overwrite outputs: one new run folder per run, ending in .DONE or .FAILED ([docs/HPC_JOBS.md](../../docs/HPC_JOBS.md)).
 - Do not commit private data, sample details, results, host names or local paths.
+
+## Update 2026-11-21 (UTC+8)
+
+Added as appended lines; the text above is unchanged.
+
+- The DS02 row in Public inputs abbreviates the accession list. Use the exact list in [data/DOWNLOADS.md](../../data/DOWNLOADS.md) and do not expand it as a range; PRJNA1130635 was not found there.
+- DS11 reads cannot be listed without an NGDC login (see data/DOWNLOADS.md; on 2026-11-21 the directory https://download.cncb.ac.cn/gsa/CRA006917/ returned HTTP 404). Run the first pass on DS10, DS12 and the DS02 resequencing panel, and treat DS11 as an extension queue that is added when a run list for PRJCA009314 has been exported by hand.
+- Projects 23 and 24 use the clone-collapsed sample table from this project; see [project 23](../23-family-parentage/STATUS.md).

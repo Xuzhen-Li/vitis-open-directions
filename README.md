@@ -53,6 +53,10 @@ Ranked by the sum of public-data feasibility, novelty, and effort scores (see do
 | 20 | [Archaeological grape seeds: graph mapping and low-coverage imputation](projects/20-ancient-seeds-on-graph/) | Medium | 1 | new |
 | 21 | [Meta-analysis of public GWAS, cross-ancestry genomic prediction and SV markers](projects/21-gwas-meta-and-cross-ancestry-prediction/) | Medium | 3 | new |
 | 22 | [Population-level evolution of the sex-determining region (demoted)](projects/22-sex-region-population-level/) | Medium | 1 | new |
+| 23 | [Family parentage and relationship QC on public grape records](projects/23-family-parentage/STATUS.md) | [to confirm] | [to confirm] | continued |
+| 24 | [Pedigree and linkage-disequilibrium recombination maps in grape](projects/24-recombination-maps/STATUS.md) | [to confirm] | [to confirm] | continued |
+| 25 | [Transposable-element annotation methods, library curation and automation](projects/25-te-annotation-methods/STATUS.md) | [to confirm] | [to confirm] | continued |
+| 26 | [Grapevine mitochondrial genomes, nuclear mitochondrial insertions and heteroplasmy](projects/26-mitochondrial-genomes/STATUS.md) | [to confirm] | [to confirm] | new |
 
 ## Scope
 
@@ -65,3 +69,5 @@ Items marked [待确认] have not been verified yet.
 Text and tables: [CC BY 4.0](LICENSE). Datasets keep the licences stated in each data module.
 
 **New here?** See [START_HERE.md](START_HERE.md) for the status of every project, a suggested restart order and the working rules. [中文](START_HERE.zh.md)
+
+Status addendum, 2026-11-21 (UTC+8): projects 23 to 26 were added at method level and are listed in the table above. They cover parentage checks, recombination maps, TE annotation methods and mitochondrial genomes, which the Scope section above describes as handled elsewhere; see [docs/METHOD_LINES.md](docs/METHOD_LINES.md). Defaults for open items: [docs/DEFAULTS.md](docs/DEFAULTS.md). Current status of every project: [START_HERE.md](START_HERE.md), as of 2026-11-21. Scores in the ranking page are unchanged and were not set for projects 23 to 26.
