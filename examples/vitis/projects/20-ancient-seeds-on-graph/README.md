@@ -19,6 +19,14 @@ Archaeological grape seeds were analysed on linear references. Graph-based mappi
 
 Tests reference bias and imputation accuracy on downsampled modern data before applying them to seeds.
 
+**Background survey (literature read for this plan)**
+
+Archaeological grape seeds preserve DNA, but at low and variable endogenous content ([Wales et al. 2016](https://doi.org/10.1016/j.jas.2016.05.014)). Palaeogenomes from French sites linked ancient seeds to modern cultivars and showed long clonal histories ([Ramos-Madrigal et al. 2019](https://doi.org/10.1038/s41477-019-0437-5)); a Negev Highlands seed revealed a Late Antiquity wine lineage ([Cohen et al. 2023](https://doi.org/10.1073/pnas.2213563120)); 49 pips spanning about 4,000 years in France showed local wild grapes in the Bronze Age, early domesticated grapes by about 625-500 BCE and vegetative propagation ([Noraz et al. 2026](https://doi.org/10.1038/s41467-026-70166-z)); multiproxy evidence including seeds documented centuries of cultivation at Cetamura del Chianti ([Inanli et al. 2026](https://doi.org/10.1016/j.jas.2026.106605)).
+
+Ancient reads are short and damaged, which increases reference bias; mapping to a variation graph reduced this bias and improved indel calls in human ancient DNA ([Martiniano et al. 2020](https://doi.org/10.1186/s13059-020-02160-7)). GLIMPSE2 imputes low-coverage genomes from large reference panels ([Rubinacci et al. 2023](https://doi.org/10.1038/s41588-023-01438-3)), and nf-core/eager standardises ancient-genome processing ([Fellows Yates et al. 2021](https://doi.org/10.7717/peerj.10947)). A grape graph and large modern panels now exist ([Liu et al. 2024](https://doi.org/10.1038/s41588-024-01967-5)).
+
+**Specific gap.** Grape seed genomes were analysed on linear references; graph mapping and imputation from a modern panel have not been tested for grape, so it is unknown how much reference bias and missing data affect seed-to-cultivar matches [待确认].
+
 ## Question
 
 Does graph mapping reduce reference bias for ancient grape seeds, and how accurate is imputation at their depths?
@@ -33,6 +41,12 @@ No results are given here. Each row says what would count as support; the exact 
 | Fig 2. Imputation accuracy on downsampled modern samples | Accuracy is acceptable above a depth threshold. | r² by allele-frequency bin; threshold fixed in advance. |
 | Fig 3. Matches of seeds to modern cultivars | Some assignments change after graph mapping and imputation. | Changes reported with their support. |
 
+**Expected results and how they will be read**
+
+- Fig 1: lower allele-balance bias on the graph, measured on simulated damage and on real seeds, would justify graph mapping for grape ancient DNA.
+- Fig 2 gives the depth above which imputation reaches the preregistered accuracy; seeds below it are analysed without imputation.
+- Fig 3: changed assignments after graph mapping and imputation are listed; stable assignments strengthen the published conclusions; neither outcome is read as a new historical claim without support from the source papers.
+
 ## Preregistration
 
 Before any data are analysed, fill in [`docs/PREREGISTRATION.md`](../../../../templates/PREREGISTRATION.md) for this project: hypotheses, primary outcome, sample inclusion rules, thresholds, stop rules and what will be reported if a hypothesis fails. Commit it with a date. Criteria from any earlier attempt are reference only and are not carried over.
@@ -45,6 +59,16 @@ Before any data are analysed, fill in [`docs/PREREGISTRATION.md`](../../../../te
 | [DS02](../../data/DS02-grapepan-v1/) | Grapepan v1.0: T2T haplotypes, graphs and a 466-accession resequencing panel |
 | [DS10](../../data/DS10-reseq-472-vitis/) | Resequencing of 472 Vitis accessions (and the 2017 domestication panel) |
 | [DS12](../../data/DS12-reseq-204-magris2021/) | Resequencing of 204 V. vinifera accessions (Magris et al. 2021) |
+
+**How each dataset is used**
+
+| Module | Role in this project |
+|---|---|
+| DS14 | Archaeological seed reads |
+| DS02 | Graph reference and haplotypes |
+| DS10, DS12 | Modern panels: imputation reference and downsampling test samples |
+
+New public data: none needed. Which recent seed studies have released reads is listed in DS14 [待确认 for 2026 studies].
 
 ## Analysis steps
 
@@ -60,6 +84,16 @@ Project-specific steps:
 - Process seeds with nf-core/eager (AM17).
 - Map to linear and graph references; measure bias.
 - Downsample modern samples; test GLIMPSE2; then impute seeds.
+
+**Stepwise work plan with tools**
+
+| Step | Work | Tools (paper) | Output |
+|---|---|---|---|
+| 1 | Process seed reads: adapter removal, merging, damage profiles | nf-core/eager (AM17) | Clean BAMs |
+| 2 | Map to PN_T2T and to the graph | bwa aln, vg giraffe or vg map (AM07) | Linear and graph BAMs |
+| 3 | Reference bias on simulated damaged reads and real seeds | custom, gargammel-type simulation | Fig 1 |
+| 4 | Downsample modern samples to seed depths; impute | GLIMPSE2 | Fig 2 |
+| 5 | Impute seeds above the depth threshold; match to modern cultivars | GLIMPSE2, KING, AM13 | Fig 3 |
 
 ## Paper design and split
 
@@ -82,6 +116,10 @@ Each paper: introduction from the gap above; one results section per figure; met
 - Effort: 2–3 months for one person [draft]
 - Target: archaeogenomics journal [draft]
 
+## Suggested journal level (suggestion only)
+
+**Specialty journal (archaeogenomics or archaeological science); mid-field if assignments change.** Grape seed papers read here appeared in *Nature Plants*, *PNAS*, *Nature Communications* and *Journal of Archaeological Science*; the method papers in *Genome Biology*, *Nature Genetics* and *PeerJ*. A methods test on existing seeds fits a specialty venue. This is a suggestion, not a decision; impact factors are not used.
+
 ## Continue on HPC
 
 Run each step as its own job, in this order. Every job writes `.DONE` or `.FAILED` and a log; the next step starts only after `.DONE`. Template and rules: [`docs/HPC_JOBS.md`](../../../../templates/HPC_JOBS.md).
@@ -101,3 +139,8 @@ Public inputs: [DS14](../../data/DS14-ancient-grape-seeds/), [DS02](../../data/D
 - Cohen et al. 2023. Ancient DNA from a lost Negev Highlands desert grape reveals a Late Antiquity wine lineage. *Proceedings of the National Academy of Sciences*. [doi:10.1073/pnas.2213563120](https://doi.org/10.1073/pnas.2213563120)
 - Noraz et al. 2026. Ancient DNA reveals 4000 years of grapevine diversity, viticulture and clonal propagation in France. *Nature Communications*. [doi:10.1038/s41467-026-70166-z](https://doi.org/10.1038/s41467-026-70166-z)
 - Inanli et al. 2026. Grapevine cultivation at Cetamura del Chianti: multiproxy evidence for centuries of continuity from the Etruscans to the Romans. *Journal of Archaeological Science*. [doi:10.1016/j.jas.2026.106605](https://doi.org/10.1016/j.jas.2026.106605)
+- Fellows Yates et al. 2021. Reproducible, portable, and efficient ancient genome reconstruction with nf-core/eager. *PeerJ*. [doi:10.7717/peerj.10947](https://doi.org/10.7717/peerj.10947)
+- Liu et al. 2024. Grapevine pangenome facilitates trait genetics and genomic breeding. *Nature Genetics*. [doi:10.1038/s41588-024-01967-5](https://doi.org/10.1038/s41588-024-01967-5)
+- Martiniano et al. 2020. Removing reference bias and improving indel calling in ancient DNA data analysis by mapping to a sequence variation graph. *Genome Biology*. [doi:10.1186/s13059-020-02160-7](https://doi.org/10.1186/s13059-020-02160-7)
+- Rubinacci et al. 2023. Imputation of low-coverage sequencing data from 150,119 UK Biobank genomes. *Nature Genetics*. [doi:10.1038/s41588-023-01438-3](https://doi.org/10.1038/s41588-023-01438-3)
+- Wales et al. 2016. The limits and potential of paleogenomic techniques for reconstructing grapevine domestication. *Journal of Archaeological Science*. [doi:10.1016/j.jas.2016.05.014](https://doi.org/10.1016/j.jas.2016.05.014)

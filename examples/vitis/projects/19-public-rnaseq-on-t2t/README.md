@@ -21,6 +21,14 @@ Grape expression atlases were built on older references, and eQTL studies are sm
 
 Uniform re-quantification on PN_T2T with one fixed annotation, sQTL within single-study, single-tissue subsets, and ASE on WASP-filtered alignments with DNA-phased heterozygous sites, using genotype × tissue as the unit.
 
+**Background survey (literature read for this plan)**
+
+The grape expression atlas (microarray) showed a deep transcriptome shift during maturation across organs ([Fasoli et al. 2012](https://doi.org/10.1105/tpc.112.100230)). VitExpress is an open transcriptomic platform built on haplotype-resolved Chasselas and Ugni Blanc assemblies ([Djari et al. 2024](https://doi.org/10.1073/pnas.2403750121)). Grape eQTL studies are small: eQTL in a mapping population revisited berry colour ([Huang et al. 2013](https://doi.org/10.1016/j.plantsci.2013.02.011)); 2,170 cis-eQTL were found in 10 genotypes at two stages around ripening onset ([Martínez-García et al. 2022](https://doi.org/10.1038/s41598-022-11689-5)); SV-eQTL were mapped in 113 accessions under downy mildew infection ([Guo et al. 2025](https://doi.org/10.1038/s41588-025-02111-7)). A phased Cabernet Sauvignon trio links haplotypes and methylation inheritance ([Cochetel et al. 2025](https://doi.org/10.1186/s13059-025-03858-2)).
+
+Methods from human genetics set the standard: the GTEx atlas mapped eQTL and sQTL across tissues ([GTEx Consortium 2020](https://doi.org/10.1126/science.aaz1776)); LeafCutter quantifies splicing without annotation ([Li et al. 2018](https://doi.org/10.1038/s41588-017-0004-9)); WASP removes mapping bias for allele-specific analyses ([van de Geijn et al. 2015](https://doi.org/10.1038/nmeth.3582)); salmon quantifies transcripts with bias correction ([Patro et al. 2017](https://doi.org/10.1038/nmeth.4197)); tensorQTL scales QTL mapping on GPUs ([Taylor-Weiner et al. 2019](https://doi.org/10.1186/s13059-019-1836-7)).
+
+**Specific gap.** Grape atlases use older references and annotations; no sQTL study was found for grape; and no study measured allele-specific expression across public cultivars on WASP-filtered alignments with DNA-phased sites on PN_T2T [待确认].
+
 ## Question
 
 What does a uniform T2T expression atlas show, are sQTL detectable in grape, and how common is allele-specific expression in heterozygous cultivars?
@@ -35,6 +43,12 @@ No results are given here. Each row says what would count as support; the exact 
 | Fig 2. cis-eQTL and sQTL | sQTL are detectable at a preregistered FDR. | Unit: genotype × tissue; primary eQTL and sQTL analyses use only samples with DNA genotypes, while RNA-seq genotypes enter a sensitivity run only; clones merged using AM04 thresholds; mapping performed only within one study and one tissue, combined across studies by meta-analysis; genetic PCs plus a kinship-aware deduplicated sensitivity run; number of hidden factors set by a sample-size rule in advance; gene-level permutation (beta approximation) followed by Storey q-values, with sQTL at the intron-cluster level; minimum genotypes per tissue fixed in advance, below which the tissue is descriptive only. |
 | Fig 3. ASE across cultivars | ASE genes overlap known SVs more than expected. | ASE computed only from WASP-filtered STAR alignments to PN_T2T with heterozygous sites called and phased from DNA of the same genotype; residual reference bias estimated on the trio; beta-binomial test with overdispersion and gene-level BH; genes matched by expression, number of heterozygous sites, gene length, and mappability. |
 
+**Expected results and how they will be read**
+
+- Fig 1 is a resource; it is judged by mapping rates, sample identity checks and agreement with the published atlas for shared tissues.
+- Fig 2: sQTL at the preregistered FDR in single-study, single-tissue subsets would show that public grape data support splicing genetics; none detected is reported with the power at the available sample sizes.
+- Fig 3: ASE genes overlapping known SVs more than matched genes would point to SVs as a cause of allelic imbalance; residual bias is measured on the trio before this is read.
+
 ## Preregistration
 
 Before any data are analysed, fill in [`docs/PREREGISTRATION.md`](../../../../templates/PREREGISTRATION.md) for this project: hypotheses, primary outcome, sample inclusion rules, thresholds, stop rules and what will be reported if a hypothesis fails. Commit it with a date. Criteria from any earlier attempt are reference only and are not carried over.
@@ -48,6 +62,17 @@ Before any data are analysed, fill in [`docs/PREREGISTRATION.md`](../../../../te
 | [DS02](../../data/DS02-grapepan-v1/) | Grapepan v1.0: T2T haplotypes, graphs and a 466-accession resequencing panel |
 | [DS10](../../data/DS10-reseq-472-vitis/) | Resequencing of 472 Vitis accessions (and the 2017 domestication panel) |
 | [DS18](../../data/DS18-methylome-and-trio/) | Public grape methylomes and a phased Cabernet Sauvignon trio |
+
+**How each dataset is used**
+
+| Module | Role in this project |
+|---|---|
+| DS15 | Public RNA-seq runs and atlas metadata |
+| DS01 | PN_T2T and the fixed RefSeq annotation |
+| DS02, DS10 | DNA genotypes for samples present in panels |
+| DS18 | Phased trio to estimate residual ASE bias |
+
+New public data: none needed.
 
 ## Analysis steps
 
@@ -68,6 +93,17 @@ Project-specific steps:
 - Atlas: salmon + tximport (AM15). Splicing and ASE: STAR with WASP and XS tags (AM15).
 - Genotypes from DNA; RNA-seq genotypes used only for samples without DNA, checked for concordance and included only in the sensitivity run; map eQTL and sQTL within study × tissue subsets (AM21).
 - Count allele-specific reads on WASP-passed reads at DNA-phased sites (the phasing part of AM26 only; per-sample heterozygous VCFs extracted for WASP); use the trio (DS18) to estimate residual bias.
+
+**Stepwise work plan with tools**
+
+| Step | Work | Tools (paper) | Output |
+|---|---|---|---|
+| 1 | Curate run metadata; assign each run to a genotype | AM04 | Run table |
+| 2 | Fix the annotation and build transcript and ID maps | DS01 | Annotation set |
+| 3 | Atlas quantification | salmon, tximport (AM15) | Expression matrix |
+| 4 | Spliced alignment with WASP; splicing clusters | STAR, LeafCutter | Splicing table |
+| 5 | cis-eQTL and sQTL within study by tissue subsets | tensorQTL (AM21) | Fig 2 |
+| 6 | ASE at DNA-phased heterozygous sites; residual bias from the trio | WASP, phASER-type counting (AM15, AM26) | Fig 3 |
 
 ## Paper design and split
 
@@ -93,6 +129,10 @@ Each paper: introduction from the gap above; one results section per figure; met
 - Effort: 2–4 months for one person [draft]
 - Target: plant genomics journal [draft]
 
+## Suggested journal level (suggestion only)
+
+**Specialty to mid-field journal (plant genomics).** Grape atlas and eQTL papers read here appeared in *The Plant Cell*, *PNAS*, *Plant Science*, *Scientific Reports* and *Genome Biology*. A re-quantified atlas with first grape sQTL fits a specialty or mid-field venue depending on how many sQTL are found. This is a suggestion, not a decision; impact factors are not used.
+
 ## Continue on HPC
 
 Run each step as its own job, in this order. Every job writes `.DONE` or `.FAILED` and a log; the next step starts only after `.DONE`. Template and rules: [`docs/HPC_JOBS.md`](../../../../templates/HPC_JOBS.md).
@@ -117,3 +157,8 @@ Public inputs: [DS15](../../data/DS15-rnaseq-public-vitis/), [DS01](../../data/D
 - Martínez-García et al. 2022. Bioinformatic approach for the discovery of cis-eQTL signals during fruit ripening of a woody species as grape (Vitis vinifera L.). *Scientific Reports*. [doi:10.1038/s41598-022-11689-5](https://doi.org/10.1038/s41598-022-11689-5)
 - Huang et al. 2013. Expression QTL mapping in grapevine—Revisiting the genetic determinism of grape skin colour. *Plant Science*. [doi:10.1016/j.plantsci.2013.02.011](https://doi.org/10.1016/j.plantsci.2013.02.011)
 - Cochetel et al. 2025. Phased epigenomics and methylation inheritance in a historical Vitis vinifera hybrid. *Genome Biology*. [doi:10.1186/s13059-025-03858-2](https://doi.org/10.1186/s13059-025-03858-2)
+- GTEx Consortium 2020. The GTEx Consortium atlas of genetic regulatory effects across human tissues. *Science*. [doi:10.1126/science.aaz1776](https://doi.org/10.1126/science.aaz1776)
+- Li et al. 2018. Annotation-free quantification of RNA splicing using LeafCutter. *Nature Genetics*. [doi:10.1038/s41588-017-0004-9](https://doi.org/10.1038/s41588-017-0004-9)
+- Patro et al. 2017. Salmon provides fast and bias-aware quantification of transcript expression. *Nature Methods*. [doi:10.1038/nmeth.4197](https://doi.org/10.1038/nmeth.4197)
+- Taylor-Weiner et al. 2019. Scaling computational genomics to millions of individuals with GPUs. *Genome Biology*. [doi:10.1186/s13059-019-1836-7](https://doi.org/10.1186/s13059-019-1836-7)
+- van de Geijn et al. 2015. WASP: allele-specific software for robust molecular quantitative trait locus discovery. *Nature Methods*. [doi:10.1038/nmeth.3582](https://doi.org/10.1038/nmeth.3582)

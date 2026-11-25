@@ -1,0 +1,127 @@
+# 23. Family parentage and relationship QC on public grape records
+
+中文：公开葡萄记录的亲本关系与亲缘质控
+
+Not scored (see docs/RANKING.md; projects 23 to 26 were added after the ranking) · Tier: Medium [draft] · Origin: continued: design written earlier, restarted here from public data under a new preregistration · Status: draft, 2026-11-25 · Progress: [STATUS.md](STATUS.md)
+
+## Gap
+
+Grape parentage has been inferred from SSR and SNP-array panels, and published lists name many parent-offspring links. A check of those reported links against whole-genome public resequencing, with clones, aliases and sports collapsed first and with meiosis counts kept separate from edge counts, was not found [待确认: repeat the search before writing].
+
+**Existing work and background survey**
+
+Microsatellites first showed that Cabernet Sauvignon is a cross of Cabernet franc and Sauvignon blanc ([Bowers and Meredith 1997](https://doi.org/10.1038/ng0597-84)) and that Chardonnay, Gamay and other wine grapes descend from Pinot and Gouais blanc ([Bowers et al. 1999](https://doi.org/10.1126/science.285.5433.1562)). Large SSR profiles followed: 1,005 accessions ([Cipriani et al. 2010](https://doi.org/10.1007/s00122-010-1411-9)) and a large-scale parentage analysis in an extended set of cultivars ([Lacombe et al. 2013](https://doi.org/10.1007/s00122-012-1988-2)). SNP arrays then gave a 10K-SNP diversity analysis of 783 cultivars with parentage links ([Laucou et al. 2018](https://doi.org/10.1371/journal.pone.0192540)) and a parentage atlas of Italian varieties ([D’Onofrio et al. 2021](https://doi.org/10.3389/fpls.2020.605934)). Whole-genome panels of 204 accessions now exist ([Magris et al. 2021](https://doi.org/10.1038/s41467-021-27487-y)), and a phased Cabernet Sauvignon trio is public ([Cochetel et al. 2025](https://doi.org/10.1186/s13059-025-03858-2)).
+
+Methods: KING estimates kinship robustly in structured samples ([Manichaikul et al. 2010](https://doi.org/10.1093/bioinformatics/btq559)); sequoia assigns parents, clusters half-siblings and assigns grandparents from SNP data ([Huisman 2017](https://doi.org/10.1111/1755-0998.12665)); pedigree-aware phasing uses family structure to improve haplotypes ([O'Connell et al. 2014](https://doi.org/10.1371/journal.pgen.1004234)).
+
+**How this project differs**
+
+Reported links are treated as claims to test, not as facts. The output is one validated pedigree table with the evidence for each edge, and separate counts of edges, offspring, candidate meioses, distinguishable gamete transmissions and informative meioses. Only public records and public genotypes are used.
+
+## Question
+
+Which reported grape parent-offspring links are supported, contradicted or untestable with public whole-genome genotypes, and how many independent meioses do the supported links give?
+
+## Hypotheses, planned figures and criteria
+
+No results are given here. Each row says what would count as support; the exact thresholds go into the preregistration.
+
+| Figure or table | Hypothesis or purpose | Criterion |
+|---|---|---|
+| Table 1. Identity and pedigree inventory | Not a hypothesis. | Stable IDs, aliases, clone and duplicate flags, source of each reported link, missing parents and possible selfing; a catalogue of sources only. |
+| Fig 1. Threshold calibration | IBS0 and Mendelian error separate true trios from unrelated triples. | Positive control: the DS18 trio and literature trios [待确认: which trios]; negative control: random unrelated triples; depth and genotype-quality filters fixed before any result is seen. |
+| Fig 2. Support for reported links | Most reported links are supported. | Each link labelled supported, contradicted or untestable with the preregistered thresholds; conflicting labels flagged, not overwritten. |
+| Table 2. Meiosis counts | Not a hypothesis. | Five counting layers reported separately; clones, aliases and sports add no meioses. |
+
+## Preregistration
+
+Before any data are analysed, fill in [`docs/PREREGISTRATION.md`](../../../../templates/PREREGISTRATION.md) for this project: hypotheses, primary outcome, sample inclusion rules, thresholds, stop rules and what will be reported if a hypothesis fails. Commit it with a date. Criteria from any earlier attempt are reference only and are not carried over.
+
+## Data
+
+| Module | Dataset |
+|---|---|
+| [DS10](../../data/DS10-reseq-472-vitis/) | Resequencing of 472 Vitis accessions (and the 2017 domestication panel) |
+| [DS12](../../data/DS12-reseq-204-magris2021/) | Resequencing of 204 V. vinifera accessions (Magris et al. 2021) |
+| [DS02](../../data/DS02-grapepan-v1/) | Grapepan v1.0: T2T haplotypes, graphs and a 466-accession resequencing panel |
+| [DS11](../../data/DS11-reseq-3525-dong2023/) | Resequencing of 3,525 grapevine accessions (Dong et al. 2023) |
+| [DS18](../../data/DS18-methylome-and-trio/) | Public grape methylomes and a phased Cabernet Sauvignon trio |
+| [DS01](../../data/DS01-pn40024-references/) | PN40024 references: PN_T2T (v5), PN40024.v4 and 12X |
+
+DS11 is used only after its run list can be exported [待确认]. Public records: published parentage lists (Laucou et al. 2018 and the papers above) and VIVC entries, recorded with the date opened. New public data: none needed.
+
+## Analysis steps
+
+Shared modules, in order:
+
+1. [AM04 · Sample identity, clones and relatedness](../../analyses/AM04-sample-identity/)
+2. [AM03 · Short-read mapping and small-variant calling](../../analyses/AM03-short-read-variants/)
+3. [AM26 · Phasing, ancestral states and recombination rates](../../analyses/AM26-phasing-polarisation-recombination/)
+
+**Stepwise work plan with tools**
+
+| Step | Work | Tools (paper) | Output |
+|---|---|---|---|
+| 1 | Take the clone-collapsed sample table and biallelic SNP set from project 08 | AM04 | Sample and SNP set |
+| 2 | Compile reported links from published lists and VIVC; link names to runs | custom | Table 1 |
+| 3 | Fix depth and genotype-quality filters; compute IBS0, KING kinship and Mendelian error | PLINK 2, KING | Pair and trio statistics |
+| 4 | Calibrate thresholds on the DS18 trio and literature trios | custom | Fig 1 |
+| 5 | Test each reported link; run sequoia for unreported candidate parents as a separate, labelled analysis | sequoia | Fig 2 |
+| 6 | Count edges, offspring and meioses in five layers; export the pedigree table for projects 10, 15, 16, 21 and 24 | custom | Table 2 |
+
+## Expected results and how they will be read
+
+- Fig 1 sets the thresholds; if the positive control fails at the available depth, the project reports only the inventory.
+- Fig 2: a high share of supported links confirms that published lists can be reused; contradicted links are listed with evidence and sent back to the source as open questions, not corrected here.
+- Table 2 is the input for project 24; a small number of informative meioses would close the pedigree route there.
+
+## Paper design and split
+
+| Paper | Working title | Type | Figures |
+|---|---|---|---|
+| P1 | Testing reported grape pedigrees with public whole-genome data | data note or short paper | Table 1, Fig 1–2, Table 2 |
+
+Each paper: introduction from the gap above; one results section per figure; methods with tool versions from the modules; data availability listing every accession used and the derived tables.
+
+## Risks and novelty check
+
+- Risk: Low depth can drop one heterozygous allele and mimic a Mendelian error; filters must be fixed first.
+- Risk: Name matching between records and runs may fail for many cultivars [待确认: share linkable].
+- Risk: An edge count is not a meiosis count; mixing them would inflate later recombination work.
+- Novelty: checked against the existing work above (Crossref-verified DOIs). Repeat the search before writing; anything marked [待确认] is not yet verified.
+
+## Rough estimates
+
+- Compute: small to medium [draft]
+- Effort: 4–8 weeks for one person [draft]
+- Target: plant genetics or germplasm journal [draft]
+
+## Suggested journal level (suggestion only)
+
+**Specialty journal (plant genetics, germplasm or horticulture).** Comparable grape parentage papers read here appeared in *Theoretical and Applied Genetics*, *PLOS ONE* and *Frontiers in Plant Science*; the early landmark cases appeared in *Nature Genetics* and *Science* because they named the parents of famous cultivars, which this project does not aim to do. This is a suggestion, not a decision; impact factors are not used.
+
+## Continue on HPC
+
+Run each step as its own job, in this order. Every job writes `.DONE` or `.FAILED` and a log; the next step starts only after `.DONE`. Template and rules: [`docs/HPC_JOBS.md`](../../../../templates/HPC_JOBS.md).
+
+| Order | Step | Main tools | Resources (rough) |
+|---|---|---|---|
+| 1 | [AM04](../../analyses/AM04-sample-identity/) Sample identity, clones and relatedness | PLINK 2, KING | 8 CPU, 32 GB |
+| 2 | [AM03](../../analyses/AM03-short-read-variants/) Short-read variants (only for runs missing from project 08) | bwa-mem2, GATK or DeepVariant | 16 CPU, 64 GB per sample; array |
+| 3 | Trio statistics and sequoia | PLINK 2, R sequoia | 4 CPU, 16 GB |
+
+Public inputs: [DS10](../../data/DS10-reseq-472-vitis/), [DS12](../../data/DS12-reseq-204-magris2021/), [DS02](../../data/DS02-grapepan-v1/), [DS18](../../data/DS18-methylome-and-trio/), [DS01](../../data/DS01-pn40024-references/).
+
+## References
+
+- Bowers et al. 1997. The parentage of a classic wine grape, Cabernet Sauvignon. *Nature Genetics*. [doi:10.1038/ng0597-84](https://doi.org/10.1038/ng0597-84)
+- Bowers et al. 1999. Historical Genetics: The Parentage of Chardonnay, Gamay, and Other Wine Grapes of Northeastern France. *Science*. [doi:10.1126/science.285.5433.1562](https://doi.org/10.1126/science.285.5433.1562)
+- Cipriani et al. 2010. The SSR-based molecular profile of 1005 grapevine (Vitis vinifera L.) accessions uncovers new synonymy and parentages, and reveals a large admixture amongst varieties of different geographic origin. *Theoretical and Applied Genetics*. [doi:10.1007/s00122-010-1411-9](https://doi.org/10.1007/s00122-010-1411-9)
+- Cochetel et al. 2025. Phased epigenomics and methylation inheritance in a historical Vitis vinifera hybrid. *Genome Biology*. [doi:10.1186/s13059-025-03858-2](https://doi.org/10.1186/s13059-025-03858-2)
+- D’Onofrio et al. 2021. Parentage Atlas of Italian Grapevine Varieties as Inferred From SNP Genotyping. *Frontiers in Plant Science*. [doi:10.3389/fpls.2020.605934](https://doi.org/10.3389/fpls.2020.605934)
+- Huisman 2017. Pedigree reconstruction from SNP data: parentage assignment, sibship clustering and beyond. *Molecular Ecology Resources*. [doi:10.1111/1755-0998.12665](https://doi.org/10.1111/1755-0998.12665)
+- Lacombe et al. 2013. Large-scale parentage analysis in an extended set of grapevine cultivars (Vitis vinifera L.). *Theoretical and Applied Genetics*. [doi:10.1007/s00122-012-1988-2](https://doi.org/10.1007/s00122-012-1988-2)
+- Laucou et al. 2018. Extended diversity analysis of cultivated grapevine Vitis vinifera with 10K genome-wide SNPs. *PLOS ONE*. [doi:10.1371/journal.pone.0192540](https://doi.org/10.1371/journal.pone.0192540)
+- Magris et al. 2021. The genomes of 204 Vitis vinifera accessions reveal the origin of European wine grapes. *Nature Communications*. [doi:10.1038/s41467-021-27487-y](https://doi.org/10.1038/s41467-021-27487-y)
+- Manichaikul et al. 2010. Robust relationship inference in genome-wide association studies. *Bioinformatics*. [doi:10.1093/bioinformatics/btq559](https://doi.org/10.1093/bioinformatics/btq559)
+- O'Connell et al. 2014. A General Approach for Haplotype Phasing across the Full Spectrum of Relatedness. *PLoS Genetics*. [doi:10.1371/journal.pgen.1004234](https://doi.org/10.1371/journal.pgen.1004234)

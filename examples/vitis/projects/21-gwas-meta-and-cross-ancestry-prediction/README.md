@@ -17,6 +17,14 @@ No meta-analysis of grape GWAS summary statistics was found, genomic prediction 
 
 Starts with an inventory of what is public; the meta-analysis and prediction run only if the inventory passes.
 
+**Background survey (literature read for this plan)**
+
+Grape GWAS panels are moderate in size. A 279-cultivar diversity panel phenotyped for 127 traits and genotyped for 63k SNPs mapped yield, acidity, aroma-precursor and polyphenol traits and tested genomic prediction ([Flutre et al. 2022](https://doi.org/10.1093/g3journal/jkac103)); the design and LD of that panel were described earlier ([Nicolas et al. 2016](https://doi.org/10.1186/s12870-016-0754-z)). Across-population prediction from a diversity panel to ten connected bi-parental crosses gave useful accuracy for cross means ([Brault et al. 2022](https://doi.org/10.1093/hr/uhac041)). Grapepan added SV-based GWAS on graph genotypes ([Liu et al. 2024](https://doi.org/10.1038/s41588-024-01967-5)).
+
+The methods are standard in human genetics. METAL combines GWAS summary statistics ([Willer et al. 2010](https://doi.org/10.1093/bioinformatics/btq340)); LD score regression separates confounding from polygenicity but needs a matched LD reference and large samples ([Bulik-Sullivan et al. 2015](https://doi.org/10.1038/ng.3211)); BGLR fits Bayesian whole-genome regressions for prediction ([Pérez and de los Campos 2014](https://doi.org/10.1534/genetics.114.164442)). Polygenic scores lose accuracy across ancestry groups, which is the human precedent for the cross-ancestry test planned here ([Martin et al. 2019](https://doi.org/10.1038/s41588-019-0379-x)).
+
+**Specific gap.** No grape GWAS meta-analysis was found, and prediction from wild *Vitis* groups to *V. vinifera* was not tested; whether enough public summary statistics exist is itself unknown [待确认].
+
 ## Question
 
 Is there enough public phenotype and summary-statistic data for a grape GWAS meta-analysis and for cross-ancestry prediction?
@@ -32,6 +40,13 @@ No results are given here. Each row says what would count as support; the exact 
 | Fig 2. Prediction across ancestry groups | Accuracy drops when training and test groups differ. | Deduplicate with AM04 (one sample per genotype); clones and relatives kept in the same fold; marker QC and selection performed inside training folds only; largest training–test kinship reported; compared with within-group cross-validation at matched sample size. |
 | Table 2. SV marker panel | Resource. | Graph-genotyped SVs with r² above a preregistered threshold to reported loci, using an LD panel of the same ancestry as the original GWAS and re-estimated in the target group; flanking sequence provided for assay design. |
 
+**Expected results and how they will be read**
+
+- Table 1 decides the project: if the stop rule triggers, the output is a published inventory and a data note, which is still useful.
+- Fig 1: replicated loci across independent studies would be the first grape meta-analysis result; no replication is reported with the power of the replication set.
+- Fig 2: an accuracy drop between ancestry groups at matched sample size, beyond within-group variation, would show that the human pattern applies to grape panels.
+- Table 2 is a resource for marker design, with r² values in the target group.
+
 ## Preregistration
 
 Before any data are analysed, fill in [`docs/PREREGISTRATION.md`](../../../../templates/PREREGISTRATION.md) for this project: hypotheses, primary outcome, sample inclusion rules, thresholds, stop rules and what will be reported if a hypothesis fails. Commit it with a date. Criteria from any earlier attempt are reference only and are not carried over.
@@ -45,6 +60,16 @@ Before any data are analysed, fill in [`docs/PREREGISTRATION.md`](../../../../te
 | [DS10](../../data/DS10-reseq-472-vitis/) | Resequencing of 472 Vitis accessions (and the 2017 domestication panel) |
 | [DS12](../../data/DS12-reseq-204-magris2021/) | Resequencing of 204 V. vinifera accessions (Magris et al. 2021) |
 | [DS01](../../data/DS01-pn40024-references/) | PN40024 references: PN_T2T (v5), PN40024.v4 and 12X |
+
+**How each dataset is used**
+
+| Module | Role in this project |
+|---|---|
+| DS22 | Public phenotypes and summary statistics; the inventory starts here |
+| DS02, DS10, DS12 | Genotypes for LD panels, graph SVs and prediction |
+| DS01 | PN_T2T coordinates; liftover of older summary statistics |
+
+New public data: none planned. Phenotypes and summary statistics from the 279-cultivar panel are listed in DS22 only if their public release is confirmed [待确认].
 
 ## Analysis steps
 
@@ -62,6 +87,17 @@ Project-specific steps:
 - Harmonise to PN_T2T; meta-analyse with METAL and metafor (AM24).
 - Run prediction across groups with BGLR or rrBLUP under the deduplication and fold rules.
 - List SV markers from graph genotypes (AM07).
+
+**Stepwise work plan with tools**
+
+| Step | Work | Tools (paper) | Output |
+|---|---|---|---|
+| 1 | Inventory phenotypes and summary statistics; apply the stop rule | DS22 | Table 1 |
+| 2 | Identity and overlap of samples across studies | AM04 | Overlap table |
+| 3 | Lift over to PN_T2T; harmonise alleles | AM24 | Harmonised statistics |
+| 4 | Meta-analysis in discovery and replication sets | METAL; LDSC only under the preregistered limits (AM24) | Fig 1 |
+| 5 | Prediction within and across ancestry groups | BGLR or rrBLUP (AM24) | Fig 2 |
+| 6 | Graph-genotyped SVs in LD with reported loci | AM07, PLINK 2 | Table 2 |
 
 ## Paper design and split
 
@@ -85,6 +121,10 @@ Each paper: introduction from the gap above; one results section per figure; met
 - Effort: 1–3 months for one person [draft]
 - Target: breeding or genetics journal [draft]
 
+## Suggested journal level (suggestion only)
+
+**Specialty journal (plant breeding or horticulture); a data note if the stop rule triggers.** Grape GWAS and prediction papers read here appeared in *G3*, *BMC Plant Biology* and *Horticulture Research*; the human method papers in *Bioinformatics*, *Genetics* and *Nature Genetics*. This is a suggestion, not a decision; impact factors are not used.
+
 ## Continue on HPC
 
 Run each step as its own job, in this order. Every job writes `.DONE` or `.FAILED` and a log; the next step starts only after `.DONE`. Template and rules: [`docs/HPC_JOBS.md`](../../../../templates/HPC_JOBS.md).
@@ -102,3 +142,9 @@ Public inputs: [DS22](../../data/DS22-phenotypes-and-gwas-summaries/), [DS02](..
 
 - Liu et al. 2024. Grapevine pangenome facilitates trait genetics and genomic breeding. *Nature Genetics*. [doi:10.1038/s41588-024-01967-5](https://doi.org/10.1038/s41588-024-01967-5)
 - Brault et al. 2022. Across-population genomic prediction in grapevine opens up promising prospects for breeding. *Horticulture Research*. [doi:10.1093/hr/uhac041](https://doi.org/10.1093/hr/uhac041)
+- Bulik-Sullivan et al. 2015. LD Score regression distinguishes confounding from polygenicity in genome-wide association studies. *Nature Genetics*. [doi:10.1038/ng.3211](https://doi.org/10.1038/ng.3211)
+- Flutre et al. 2022. A genome-wide association and prediction study in grapevine deciphers the genetic architecture of multiple traits and identifies genes under many new QTLs. *G3 Genes|Genomes|Genetics*. [doi:10.1093/g3journal/jkac103](https://doi.org/10.1093/g3journal/jkac103)
+- Martin et al. 2019. Clinical use of current polygenic risk scores may exacerbate health disparities. *Nature Genetics*. [doi:10.1038/s41588-019-0379-x](https://doi.org/10.1038/s41588-019-0379-x)
+- Nicolas et al. 2016. Genetic diversity, linkage disequilibrium and power of a large grapevine (Vitis vinifera L) diversity panel newly designed for association studies. *BMC Plant Biology*. [doi:10.1186/s12870-016-0754-z](https://doi.org/10.1186/s12870-016-0754-z)
+- Pérez et al. 2014. Genome-Wide Regression and Prediction with the BGLR Statistical Package. *Genetics*. [doi:10.1534/genetics.114.164442](https://doi.org/10.1534/genetics.114.164442)
+- Willer et al. 2010. METAL: fast and efficient meta-analysis of genomewide association scans. *Bioinformatics*. [doi:10.1093/bioinformatics/btq340](https://doi.org/10.1093/bioinformatics/btq340)
