@@ -21,6 +21,14 @@ Introgression into cultivated grape was mapped with SNPs on linear references. I
 
 Uses graph genotypes so introgressed SVs are seen, and paints hybrid genomes with several donor species.
 
+**Background survey (literature read for this plan)**
+
+Introgression into cultivated grape is well documented with SNPs on linear references. Over 1,000 USDA samples showed a Near East origin and introgression from wild grapes into cultivars ([Myles et al. 2011](https://doi.org/10.1073/pnas.1009363108)); Western European varieties show pervasive hybridisation with local wild relatives, strongest in a subset of Iberian varieties ([Freitas et al. 2021](https://doi.org/10.1126/sciadv.abi8584)); 345 samples supported a single domestication followed by continuous gene flow from European wild grapes, with adaptive and maladaptive introgression ([Xiao et al. 2023](https://doi.org/10.1073/pnas.2222041120)). Commercial hybrids and rootstocks carry ancestry from several species: ancestry deconvolution was shown with GBS ([Sawler et al. 2013](https://doi.org/10.1371/journal.pone.0080791)), and 64 hybrid cultivars were assigned ancestry from 7 wild *Vitis* and 7 *V. vinifera* references ([Migicovsky et al. 2016](https://doi.org/10.1186/s12864-016-2834-8)). Introgression also reshapes recombination in interspecific hybrids ([Delame et al. 2019](https://doi.org/10.1007/s00122-018-3260-x)).
+
+Among wild North American grapes, introgression fuels biotic and abiotic adaptation ([Morales-Cruz et al. 2021](https://doi.org/10.1186/s13059-021-02467-z)) and shows parallel adaptation across species ([Wang et al. 2026](https://doi.org/10.1073/pnas.2607754123)). Methods are standard: ABBA-BABA statistics and f_dM for windows ([Martin et al. 2015](https://doi.org/10.1093/molbev/msu269)), Dsuite for many trios from VCF ([Malinsky et al. 2021](https://doi.org/10.1111/1755-0998.13265)), and RFMix for local ancestry ([Maples et al. 2013](https://doi.org/10.1016/j.ajhg.2013.06.020)). Graph genotyping makes SVs visible in short-read panels ([Sirén et al. 2021](https://doi.org/10.1126/science.abg8871); [Ebler et al. 2022](https://doi.org/10.1038/s41588-022-01043-w)).
+
+**Specific gap.** No grape study was found that maps introgressed SVs from graph genotypes, compares SV and SNP introgression tracts, and paints hybrid cultivars and rootstocks with several donor species on a T2T or graph reference [待确认].
+
 ## Question
 
 Which introgressed segments carry SVs that SNP-based maps miss, and how are donor species arranged along the genomes of hybrid cultivars and rootstocks?
@@ -34,6 +42,12 @@ No results are given here. Each row says what would count as support; the exact 
 | Fig 1. SV vs SNP introgression tracts | Most SV tracts fall inside SNP tracts; some SV-only tracts exist. | Null by circular shifts of tracts within chromosomes, restricted to callable and genotypable regions while preserving tract lengths; coalescent simulations with incomplete lineage sorting and no introgression give the null for tract length and SV overlap; genome-wide D and f4 with block-jackknife Z, using blocks of a size fixed in advance and larger than the LD-decay distance (default 5 Mb [待确认: check against LD decay]); the callable and genotypable mask version is fixed before the run; windowed f_dM for local signals. SV-only tracts are reported only when confirmed in a long-read or assembly validation subset, stratified by genotyping accuracy. |
 | Fig 2. Introgressed SVs near genes | Introgressed SVs are enriched near genes of adaptive traits. | Matched SVs by length, type, frequency, distance to gene, recombination rate, and mappability; adaptive-trait gene sets fixed in advance from named sources; BH FDR within the family of gene sets. |
 | Fig 3. Painting of hybrid cultivars | Donor ancestry blocks match recorded pedigrees. | Agreement = difference between inferred donor proportions and pedigree expectations, with interval coverage; discordant cultivars counted; sensitivity to pedigree errors; minimum donor-panel size fixed in advance and segments without an adequate donor labelled unassigned. |
+
+**Expected results and how they will be read**
+
+- Fig 1: SV-only tracts (not seen with SNPs) are the new contribution; if there are none, SNP maps are shown to be sufficient for introgression in grape.
+- Fig 2: enrichment of introgressed SVs near adaptive-trait genes is tested against matched windows; a positive result is a list of candidates, not proof of adaptation.
+- Fig 3: donor blocks that match recorded pedigrees validate the painting; mismatches are flagged as pedigree or label questions for project 23.
 
 ## Preregistration
 
@@ -51,6 +65,17 @@ Before any data are analysed, fill in [`docs/PREREGISTRATION.md`](../../../../te
 | [DS12](../../data/DS12-reseq-204-magris2021/) | Resequencing of 204 V. vinifera accessions (Magris et al. 2021) |
 | [DS01](../../data/DS01-pn40024-references/) | PN40024 references: PN_T2T (v5), PN40024.v4 and 12X |
 
+**How each dataset is used**
+
+| Module | Role in this project |
+|---|---|
+| DS02, DS03 | Graph and haplotypes; donors from wild *V. vinifera* and other species |
+| DS04, DS19 | North American and extra wild *Vitis* panels as donor references |
+| DS10, DS12 | Cultivated and wild *V. vinifera* panels; hybrid cultivars and rootstocks where present |
+| DS01 | PN_T2T coordinates |
+
+New public data: none needed. Which hybrid cultivars and rootstocks are in public panels is [待确认].
+
 ## Analysis steps
 
 Shared modules, in order:
@@ -66,6 +91,17 @@ Project-specific steps:
 - Genotype SVs in panels through the graph (AM07); validate a subset with long reads or assemblies (AM18).
 - Infer introgression with D/f4, f_dM, and local ancestry (AM13); simulate the ILS-only null.
 - Paint hybrid cultivars with donor panels chosen in advance.
+
+**Stepwise work plan with tools**
+
+| Step | Work | Tools (paper) | Output |
+|---|---|---|---|
+| 1 | Sample sets: recipients, donors, outgroup; one per identity group (project 08) | AM04 | Sample table |
+| 2 | SNP calls and graph SV genotypes | AM03, PanGenie or vg (AM07) | SNP and SV VCFs |
+| 3 | Validate a subset of SVs with long reads or assemblies | AM18 | Validation table |
+| 4 | D, f4 and f_dM in windows; ILS-only null by simulation | Dsuite, msprime (AM13) | Tract calls |
+| 5 | Local ancestry painting of hybrids with preregistered donor panels | RFMix | Painted genomes |
+| 6 | Compare SV and SNP tracts; enrichment near trait genes | bedtools, R | Fig 1 to Fig 3 |
 
 ## Paper design and split
 
@@ -87,6 +123,10 @@ Each paper: introduction from the gap above; one results section per figure; met
 - Compute: medium to large [draft]
 - Effort: 3–4 months for one person [draft]
 - Target: genetics journal [draft]
+
+## Suggested journal level (suggestion only)
+
+**Mid-field journal (genetics or molecular ecology).** Grape introgression papers read here appeared in *PNAS*, *Science Advances*, *Genome Biology*, *BMC Genomics*, *PLOS ONE* and *Theoretical and Applied Genetics*. An SV-level re-analysis with hybrid painting fits a mid-field venue; broad interest would need SV-only adaptive tracts with strong support. This is a suggestion, not a decision; impact factors are not used.
 
 ## Continue on HPC
 
@@ -110,3 +150,10 @@ Public inputs: [DS02](../../data/DS02-grapepan-v1/), [DS03](../../data/DS03-viti
 - Delame et al. 2018. Introgression reshapes recombination distribution in grapevine interspecific hybrids. *Theoretical and Applied Genetics*. [doi:10.1007/s00122-018-3260-x](https://doi.org/10.1007/s00122-018-3260-x)
 - Morales-Cruz et al. 2021. Introgression among North American wild grapes (Vitis) fuels biotic and abiotic adaptation. *Genome Biology*. [doi:10.1186/s13059-021-02467-z](https://doi.org/10.1186/s13059-021-02467-z)
 - Wang et al. 2026. The dynamics of introgression and parallel adaptation across North American Vitis species. *Proceedings of the National Academy of Sciences*. [doi:10.1073/pnas.2607754123](https://doi.org/10.1073/pnas.2607754123)
+- Ebler et al. 2022. Pangenome-based genome inference allows efficient and accurate genotyping across a wide spectrum of variant classes. *Nature Genetics*. [doi:10.1038/s41588-022-01043-w](https://doi.org/10.1038/s41588-022-01043-w)
+- Malinsky et al. 2021. Dsuite ‐ Fast D ‐statistics and related admixture evidence from VCF files. *Molecular Ecology Resources*. [doi:10.1111/1755-0998.13265](https://doi.org/10.1111/1755-0998.13265)
+- Maples et al. 2013. RFMix: A Discriminative Modeling Approach for Rapid and Robust Local-Ancestry Inference. *The American Journal of Human Genetics*. [doi:10.1016/j.ajhg.2013.06.020](https://doi.org/10.1016/j.ajhg.2013.06.020)
+- Martin et al. 2015. Evaluating the Use of ABBA–BABA Statistics to Locate Introgressed Loci. *Molecular Biology and Evolution*. [doi:10.1093/molbev/msu269](https://doi.org/10.1093/molbev/msu269)
+- Migicovsky et al. 2016. Genomic ancestry estimation quantifies use of wild species in grape breeding. *BMC Genomics*. [doi:10.1186/s12864-016-2834-8](https://doi.org/10.1186/s12864-016-2834-8)
+- Myles et al. 2011. Genetic structure and domestication history of the grape. *Proceedings of the National Academy of Sciences*. [doi:10.1073/pnas.1009363108](https://doi.org/10.1073/pnas.1009363108)
+- Sirén et al. 2021. Pangenomics enables genotyping of known structural variants in 5202 diverse genomes. *Science*. [doi:10.1126/science.abg8871](https://doi.org/10.1126/science.abg8871)

@@ -18,6 +18,14 @@ Large inversions were reported in single assemblies or within SV catalogues. A p
 
 Discovers inversions across all near-complete haplotypes, validates breakpoints, and genotypes them in short-read panels.
 
+**Background survey (literature read for this plan)**
+
+Chromosomal inversions suppress recombination in heterozygotes and can keep adaptive allele combinations together ([Kirkpatrick 2010](https://doi.org/10.1371/journal.pbio.1000501); [Wellenreuther and Bernatchez 2018](https://doi.org/10.1016/j.tree.2018.04.002)). Genomic methods show that inversions are common across plants ([Huang and Rieseberg 2020](https://doi.org/10.3389/fpls.2020.00296)). Resequencing of 1,506 wild sunflowers found 37 large non-recombining haplotype blocks (1 to 100 Mbp) tied to ecological traits ([Todesco et al. 2020](https://doi.org/10.1038/s41586-020-2467-6)), and long-read human work showed recurrent inversion polymorphisms linked to genomic instability ([Porubsky et al. 2022](https://doi.org/10.1016/j.cell.2022.04.017)). SyRI finds inversions and other rearrangements from whole-genome alignments ([Goel et al. 2019](https://doi.org/10.1186/s13059-019-1911-0)).
+
+In grape, SV population genetics found purifying selection on inversions and large inversions at the sex and colour loci ([Zhou et al. 2019](https://doi.org/10.1038/s41477-019-0507-8)). Grapepan reported SVs among T2T haplotypes ([Liu et al. 2024](https://doi.org/10.1038/s41588-024-01967-5)), the *Vitis* super-pangenome extended this to wild species ([Guo et al. 2025](https://doi.org/10.1038/s41588-025-02111-7)), and T2T Cabernet Sauvignon haplotypes annotated a heterozygous inversion ([Khan et al. 2026](https://doi.org/10.1038/s41597-026-06910-3)). PN_T2T gives gap-free coordinates for breakpoints ([Shi et al. 2023](https://doi.org/10.1093/hr/uhad061)).
+
+**Specific gap.** No population-scale inversion atlas for grape was found with breakpoint validation, short-read genotyping and a test of suppressed recombination between arrangements [待确认].
+
 ## Question
 
 How many large inversions segregate in grape, and do they show the haplotype structure expected from suppressed recombination?
@@ -32,6 +40,13 @@ No results are given here. Each row says what would count as support; the exact 
 | Fig 2. Graph genotypes vs assembly genotypes | Graph genotyping recovers assembly genotypes. | Concordance on samples with both. |
 | Fig 3. Differentiation between arrangements | Inversions suppress recombination in heterozygotes, so the two arrangements differ most near the breakpoints and the inversion genotype is in LD with SNPs inside. | After keeping one sample per clone group (project 08): F_ST between arrangements along the inversion and LD between inversion genotype and SNPs; permutation by within-chromosome window blocks. |
 
+**Expected results and how they will be read**
+
+- Fig 1 is the validated catalogue; inversions without long-read support at both breakpoints are listed separately as candidates.
+- Fig 2: high concordance between graph and assembly genotypes allows population frequencies; low concordance limits the study to assemblies.
+- Fig 3: differentiation peaking at breakpoints and LD between inversion genotype and inner SNPs would confirm suppressed recombination; absence of the pattern suggests gene flux or recent origin.
+- Any link to traits is left to a separate preregistered test.
+
 ## Preregistration
 
 Before any data are analysed, fill in [`docs/PREREGISTRATION.md`](../../../../templates/PREREGISTRATION.md) for this project: hypotheses, primary outcome, sample inclusion rules, thresholds, stop rules and what will be reported if a hypothesis fails. Commit it with a date. Criteria from any earlier attempt are reference only and are not carried over.
@@ -45,6 +60,16 @@ Before any data are analysed, fill in [`docs/PREREGISTRATION.md`](../../../../te
 | [DS07](../../data/DS07-cultivated-16-pangenome/) | Cultivated grapevine pangenome (16 cultivars, Plastivigne) |
 | [DS10](../../data/DS10-reseq-472-vitis/) | Resequencing of 472 Vitis accessions (and the 2017 domestication panel) |
 | [DS01](../../data/DS01-pn40024-references/) | PN40024 references: PN_T2T (v5), PN40024.v4 and 12X |
+
+**How each dataset is used**
+
+| Module | Role in this project |
+|---|---|
+| DS02, DS03, DS07 | Haplotypes for discovery and long reads for breakpoint checks |
+| DS10 | Short-read panel for genotyping |
+| DS01 | PN_T2T coordinates |
+
+New public data: none needed. The T2T Cabernet Sauvignon haplotypes (Khan et al. 2026) can be added to DS02/DS03 lists only after their accession is confirmed in a data module [待确认].
 
 ## Analysis steps
 
@@ -61,6 +86,17 @@ Project-specific steps:
 - Call inversions with SyRI on haplotype alignments (AM06).
 - Validate breakpoints with long reads (AM18).
 - Genotype through the graph (AM07); compute differentiation between arrangements and inversion–SNP LD.
+
+**Stepwise work plan with tools**
+
+| Step | Work | Tools (paper) | Output |
+|---|---|---|---|
+| 1 | Assembly QC; pairwise alignment of haplotypes to PN_T2T | AM05, minimap2 | Alignments |
+| 2 | Call inversions and merge across haplotypes | SyRI (AM06) | Inversion catalogue |
+| 3 | Validate both breakpoints with long reads | AM18 | Validated set |
+| 4 | Add to the graph; genotype the short-read panel | PanGenie or vg (AM07) | Genotypes |
+| 5 | Concordance with assembly genotypes | custom | Fig 2 |
+| 6 | FST and dXY between arrangements along the inversion; LD with inner SNPs | PLINK 2, pixy | Fig 3 |
 
 ## Paper design and split
 
@@ -82,6 +118,10 @@ Each paper: introduction from the gap above; one results section per figure; met
 - Effort: 2–4 months for one person [draft]
 - Target: genome journal [draft]
 
+## Suggested journal level (suggestion only)
+
+**Mid-field journal (genome biology or evolution).** Inversion studies read here appeared in *Nature* and *Cell* when they linked inversions to ecotypes or disease, and in *Trends in Ecology & Evolution*, *PLoS Biology* and *Frontiers in Plant Science* for syntheses; grape SV resources in *Nature Plants*, *Nature Genetics* and *Scientific Data*. A grape atlas with recombination tests fits a mid-field venue. This is a suggestion, not a decision; impact factors are not used.
+
 ## Continue on HPC
 
 Run each step as its own job, in this order. Every job writes `.DONE` or `.FAILED` and a log; the next step starts only after `.DONE`. Template and rules: [`docs/HPC_JOBS.md`](../../../../templates/HPC_JOBS.md).
@@ -101,3 +141,11 @@ Public inputs: [DS02](../../data/DS02-grapepan-v1/), [DS03](../../data/DS03-viti
 - Zhou et al. 2019. The population genetics of structural variants in grapevine domestication. *Nature Plants*. [doi:10.1038/s41477-019-0507-8](https://doi.org/10.1038/s41477-019-0507-8)
 - Khan et al. 2026. Haplotype-resolved T2T gap-free genomes of the winegrape cultivar Cabernet Sauvignon. *Scientific Data*. [doi:10.1038/s41597-026-06910-3](https://doi.org/10.1038/s41597-026-06910-3)
 - Liu et al. 2024. Grapevine pangenome facilitates trait genetics and genomic breeding. *Nature Genetics*. [doi:10.1038/s41588-024-01967-5](https://doi.org/10.1038/s41588-024-01967-5)
+- Goel et al. 2019. SyRI: finding genomic rearrangements and local sequence differences from whole-genome assemblies. *Genome Biology*. [doi:10.1186/s13059-019-1911-0](https://doi.org/10.1186/s13059-019-1911-0)
+- Guo et al. 2025. Super pangenome of Vitis empowers identification of downy mildew resistance genes for grapevine improvement. *Nature Genetics*. [doi:10.1038/s41588-025-02111-7](https://doi.org/10.1038/s41588-025-02111-7)
+- Huang et al. 2020. Frequency, Origins, and Evolutionary Role of Chromosomal Inversions in Plants. *Frontiers in Plant Science*. [doi:10.3389/fpls.2020.00296](https://doi.org/10.3389/fpls.2020.00296)
+- Kirkpatrick 2010. How and Why Chromosome Inversions Evolve. *PLoS Biology*. [doi:10.1371/journal.pbio.1000501](https://doi.org/10.1371/journal.pbio.1000501)
+- Porubsky et al. 2022. Recurrent inversion polymorphisms in humans associate with genetic instability and genomic disorders. *Cell*. [doi:10.1016/j.cell.2022.04.017](https://doi.org/10.1016/j.cell.2022.04.017)
+- Shi et al. 2023. The complete reference genome for grapevine (Vitis vinifera L.) genetics and breeding. *Horticulture Research*. [doi:10.1093/hr/uhad061](https://doi.org/10.1093/hr/uhad061)
+- Todesco et al. 2020. Massive haplotypes underlie ecotypic differentiation in sunflowers. *Nature*. [doi:10.1038/s41586-020-2467-6](https://doi.org/10.1038/s41586-020-2467-6)
+- Wellenreuther et al. 2018. Eco-Evolutionary Genomics of Chromosomal Inversions. *Trends in Ecology & Evolution*. [doi:10.1016/j.tree.2018.04.002](https://doi.org/10.1016/j.tree.2018.04.002)

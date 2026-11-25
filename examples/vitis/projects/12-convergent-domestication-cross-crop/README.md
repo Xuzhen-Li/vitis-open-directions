@@ -19,6 +19,14 @@ Domestication scans exist for many crops, but grape has not been compared with o
 
 Same scan for every crop, orthology that handles one-to-many cases, and a null built from matched gene bins.
 
+**Background survey (literature read for this plan)**
+
+Crop domestication has been described as repeated evolution under similar human selection ([Meyer and Purugganan 2013](https://doi.org/10.1038/nrg3605); [Purugganan 2019](https://doi.org/10.1016/j.cub.2019.05.053)), and convergent phenotypes have known molecular causes in several crops ([Lenser and Theißen 2013](https://doi.org/10.1016/j.tplants.2013.08.007)). Genome-wide convergence has been tested directly: maize KRN2 and its rice orthologue experienced convergent selection, and scans identified 490 pairs of orthologous genes under convergent selection in the two cereals ([Chen et al. 2022](https://doi.org/10.1126/science.abg7985)); in two distantly related conifers, 47 genes showed convergent local adaptation to climate ([Yeaman et al. 2016](https://doi.org/10.1126/science.aaf7812)). Demography (bottlenecks, gene flow) shapes crop genomes and can mimic or hide selection signals, so scans must be compared under a matched null ([Gaut et al. 2018](https://doi.org/10.1038/s41477-018-0210-1)).
+
+Perennial fruit crops are domesticated differently from annuals: long generation times, clonal propagation and frequent gene flow with wild relatives ([Miller and Gross 2011](https://doi.org/10.3732/ajb.1000522); [McKey et al. 2010](https://doi.org/10.1111/j.1469-8137.2010.03210.x)). Resequencing histories exist for apple, which supports a two-stage model of fruit enlargement ([Duan et al. 2017](https://doi.org/10.1038/s41467-017-00336-7)), peach ([Yu et al. 2018](https://doi.org/10.1038/s41467-018-07744-3)) and citrus ([Wu et al. 2018](https://doi.org/10.1038/nature25447)). For grape, domestication scans come from the 2017 and 2019 panels and the 3,525-accession study ([Zhou et al. 2017](https://doi.org/10.1073/pnas.1709257114); [Liang et al. 2019](https://doi.org/10.1038/s41467-019-09135-8); [Dong et al. 2023](https://doi.org/10.1126/science.add8655)). The grape genome also anchors the ancestral eudicot triplication, which helps orthology across eudicot crops ([Jaillon et al. 2007](https://doi.org/10.1038/nature06148)). OrthoFinder gives phylogenetic orthology with one-to-many relations ([Emms and Kelly 2019](https://doi.org/10.1186/s13059-019-1832-y)).
+
+**Specific gap.** No study was found that runs one scan pipeline on grape and on other fruit and field crops and tests gene and pathway overlap against a null matched for gene length, diversity and orthology class [待确认].
+
 ## Question
 
 Do grape and other crops share selected genes or pathways more often than expected under a matched null?
@@ -33,6 +41,13 @@ No results are given here. Each row says what would count as support; the exact 
 | Fig 2. Pathway-level overlap | Overlap is stronger at pathway than at gene level. | Same null at pathway level. |
 | Fig 3. Sensitivity to orthology | Results hold across orthology definitions. | Repeat with two orthology definitions. |
 
+**Expected results and how they will be read**
+
+- Fig 1: overlap above the matched null supports shared targets; overlap at the null level means that published lists of shared genes reflect gene features, not convergence.
+- Fig 2: a stronger pathway than gene signal would fit selection on the same functions through different genes.
+- Fig 3: results that change with the orthology definition are reported as not robust.
+- Perennial-versus-annual contrasts are described, not tested, unless at least three crops per group pass QC.
+
 ## Preregistration
 
 Before any data are analysed, fill in [`docs/PREREGISTRATION.md`](../../../../templates/PREREGISTRATION.md) for this project: hypotheses, primary outcome, sample inclusion rules, thresholds, stop rules and what will be reported if a hypothesis fails. Commit it with a date. Criteria from any earlier attempt are reference only and are not carried over.
@@ -45,6 +60,16 @@ Before any data are analysed, fill in [`docs/PREREGISTRATION.md`](../../../../te
 | [DS12](../../data/DS12-reseq-204-magris2021/) | Resequencing of 204 V. vinifera accessions (Magris et al. 2021) |
 | [DS21](../../data/DS21-other-crop-population-genomes/) | Population genomes of other domesticated plants (comparison set) |
 | [DS01](../../data/DS01-pn40024-references/) | PN40024 references: PN_T2T (v5), PN40024.v4 and 12X |
+
+**How each dataset is used**
+
+| Module | Role in this project |
+|---|---|
+| DS10, DS12 | Grape wild and cultivated panels (one sample per identity group) |
+| DS21 | Population genomes of the comparison crops |
+| DS01 | PN_T2T gene models for orthology |
+
+New public data: none added here; each comparison crop must be confirmed in DS21 with accession and wild/cultivated labels before use [待确认].
 
 ## Analysis steps
 
@@ -60,6 +85,17 @@ Project-specific steps:
 - Confirm accessions for each comparison crop (DS21).
 - Run AM03 and AM11 the same way for each crop.
 - Map to orthogroups (AM23); build the null; test overlap.
+
+**Stepwise work plan with tools**
+
+| Step | Work | Tools (paper) | Output |
+|---|---|---|---|
+| 1 | Confirm crops, panels, references and labels | DS21 | Crop table |
+| 2 | Call variants the same way for each crop | AM03 | VCFs |
+| 3 | Same scans for each crop (diversity ratio, FST, XP-CLR or equivalent) with fixed windows | AM11 | Gene-level scores |
+| 4 | Orthogroups across crops; one-to-many handled explicitly | OrthoFinder (AM23) | Orthology table |
+| 5 | Null from matched gene bins (length, diversity, orthology class) | R | Null distributions |
+| 6 | Gene and pathway overlap tests; sensitivity to orthology choice | R | Fig 1 to Fig 3 |
 
 ## Paper design and split
 
@@ -82,6 +118,10 @@ Each paper: introduction from the gap above; one results section per figure; met
 - Effort: 4–6 months for one person [draft]
 - Target: evolution journal [draft]
 
+## Suggested journal level (suggestion only)
+
+**Mid-field journal (evolutionary biology or plant genomics); broad only with a strong positive result.** Single-crop domestication histories read here appeared in *Nature Communications*, *Nature* and *PNAS*; the cross-crop convergence studies in *Science*; syntheses in *Nat Rev Genet*, *Current Biology* and *Trends in Plant Science*. A re-analysis across public panels with a matched null fits a mid-field venue. This is a suggestion, not a decision; impact factors are not used.
+
 ## Continue on HPC
 
 Run each step as its own job, in this order. Every job writes `.DONE` or `.FAILED` and a log; the next step starts only after `.DONE`. Template and rules: [`docs/HPC_JOBS.md`](../../../../templates/HPC_JOBS.md).
@@ -101,3 +141,15 @@ Public inputs: [DS10](../../data/DS10-reseq-472-vitis/), [DS12](../../data/DS12-
 - Yu et al. 2018. Genome re-sequencing reveals the evolutionary history of peach fruit edibility. *Nature Communications*. [doi:10.1038/s41467-018-07744-3](https://doi.org/10.1038/s41467-018-07744-3)
 - Duan et al. 2017. Genome re-sequencing reveals the history of apple and supports a two-stage model for fruit enlargement. *Nature Communications*. [doi:10.1038/s41467-017-00336-7](https://doi.org/10.1038/s41467-017-00336-7)
 - The French–Italian Public Consortium for Grapevine Genome Characterization 2007. The grapevine genome sequence suggests ancestral hexaploidization in major angiosperm phyla. *Nature*. [doi:10.1038/nature06148](https://doi.org/10.1038/nature06148)
+- Dong et al. 2023. Dual domestications and origin of traits in grapevine evolution. *Science*. [doi:10.1126/science.add8655](https://doi.org/10.1126/science.add8655)
+- Emms et al. 2019. OrthoFinder: phylogenetic orthology inference for comparative genomics. *Genome Biology*. [doi:10.1186/s13059-019-1832-y](https://doi.org/10.1186/s13059-019-1832-y)
+- Gaut et al. 2018. Demography and its effects on genomic variation in crop domestication. *Nature Plants*. [doi:10.1038/s41477-018-0210-1](https://doi.org/10.1038/s41477-018-0210-1)
+- Lenser et al. 2013. Molecular mechanisms involved in convergent crop domestication. *Trends in Plant Science*. [doi:10.1016/j.tplants.2013.08.007](https://doi.org/10.1016/j.tplants.2013.08.007)
+- Liang et al. 2019. Whole-genome resequencing of 472 Vitis accessions for grapevine diversity and demographic history analyses. *Nature Communications*. [doi:10.1038/s41467-019-09135-8](https://doi.org/10.1038/s41467-019-09135-8)
+- McKey et al. 2010. The evolutionary ecology of clonally propagated domesticated plants. *New Phytologist*. [doi:10.1111/j.1469-8137.2010.03210.x](https://doi.org/10.1111/j.1469-8137.2010.03210.x)
+- Meyer et al. 2013. Evolution of crop species: genetics of domestication and diversification. *Nat Rev Genet*. [doi:10.1038/nrg3605](https://doi.org/10.1038/nrg3605)
+- Miller et al. 2011. From forest to field: Perennial fruit crop domestication. *American Journal of Botany*. [doi:10.3732/ajb.1000522](https://doi.org/10.3732/ajb.1000522)
+- Purugganan 2019. Evolutionary Insights into the Nature of Plant Domestication. *Current Biology*. [doi:10.1016/j.cub.2019.05.053](https://doi.org/10.1016/j.cub.2019.05.053)
+- Wu et al. 2018. Genomics of the origin and evolution of Citrus. *Nature*. [doi:10.1038/nature25447](https://doi.org/10.1038/nature25447)
+- Yeaman et al. 2016. Convergent local adaptation to climate in distantly related conifers. *Science*. [doi:10.1126/science.aaf7812](https://doi.org/10.1126/science.aaf7812)
+- Zhou et al. 2017. Evolutionary genomics of grape (Vitis vinifera ssp. vinifera) domestication. *Proceedings of the National Academy of Sciences*. [doi:10.1073/pnas.1709257114](https://doi.org/10.1073/pnas.1709257114)

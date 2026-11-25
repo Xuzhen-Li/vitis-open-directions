@@ -19,6 +19,14 @@ ARG methods (Relate, tsinfer with tsdate, SINGER) have been applied to four grap
 
 Uses hundreds of samples, simulation-based calibration that includes clonal propagation, polarisation with two or more outgroups, and time conversion that propagates uncertainty in the mutation rate and generation time.
 
+**Background survey (literature read for this plan)**
+
+Ancestral recombination graphs (ARGs) describe the local genealogies along the genome and give coalescence times and allele ages directly ([Nielsen et al. 2025](https://doi.org/10.1038/s41576-024-00772-4)). Scalable methods now exist: Relate estimates genome-wide genealogies for thousands of samples ([Speidel et al. 2019](https://doi.org/10.1038/s41588-019-0484-x)); tsinfer infers tree sequences for large datasets ([Kelleher et al. 2019](https://doi.org/10.1038/s41588-019-0483-y)) and, with tsdate, gave a unified genealogy of modern and ancient human genomes ([Wohns et al. 2022](https://doi.org/10.1126/science.abi8264)); SINGER samples ARGs from the posterior for hundreds of genomes ([Deng et al. 2025](https://doi.org/10.1038/s41588-025-02317-9)). Simulation benchmarks showed that coalescence-time accuracy differs between methods and must be checked for the setting at hand ([Brandt et al. 2022](https://doi.org/10.1093/genetics/iyac044)). msprime 1.0 ([Baumdicker et al. 2022](https://doi.org/10.1093/genetics/iyab229)) and SLiM 4 ([Haller and Messer 2023](https://doi.org/10.1086/723601)) can simulate the needed scenarios, including non-standard life histories.
+
+Grape domestication history has been studied mostly with SFS and SMC methods. Resequencing inferred a protracted 22,000-year population decline before domestication and more deleterious heterozygous mutations in cultivars, partly due to clonal propagation ([Zhou et al. 2017](https://doi.org/10.1073/pnas.1709257114)), demographic history from 472 *Vitis* accessions ([Liang et al. 2019](https://doi.org/10.1038/s41467-019-09135-8)), and dual domestication from 3,525 accessions ([Dong et al. 2023](https://doi.org/10.1126/science.add8655)). Genealogies have been inferred for three Greek cultivars and one wild vine only ([Srivastava et al. 2023](https://doi.org/10.1093/gbe/evad226)). Introgression among North American *Vitis* was studied with coalescent composite likelihood, not an ARG ([Wang et al. 2026](https://doi.org/10.1073/pnas.2607754123)). Clonal propagation is a key feature of grape and of other clonal crops, and it changes the relation between years and sexual generations ([McKey et al. 2010](https://doi.org/10.1111/j.1469-8137.2010.03210.x)).
+
+**Specific gap.** No ARG for hundreds of grape genomes was found, and no grape ARG study calibrated the methods by simulation that includes clonal propagation or propagated uncertainty in mutation rate and generation time into dates [待确认].
+
 ## Question
 
 With calibration that accounts for clonal propagation, what do ARGs say about the timing of grape domestication and the ages of selected alleles?
@@ -33,6 +41,13 @@ No results are given here. Each row says what would count as support; the exact 
 | Fig 2. Coalescence times between wild and cultivated groups | Single and multiple domestication scenarios make different predictions, written down before the run. | Simulation-based test: each scenario is simulated (SLiM + msprime) and run through the same pipeline (phasing, polarisation, inference); statistic = preregistered quantiles of the wild–cultivated cross-coalescence time distribution and the KS distance to each scenario; null distributions obtained from the simulations; observed uncertainty estimated by chromosome-block bootstrap; α and Holm correction across scenarios fixed in advance. Tests use μ-scaled times, so μ uncertainty does not enter the rejection decision; μ and g are applied only to convert results to years, with their uncertainty propagated via Monte Carlo. Reading table fixed in advance: both scenarios rejected = neither fits and no timing claim is made; neither rejected = the data cannot separate them; one rejected = the other is reported as consistent with the data, not as proven. |
 | Fig 3. Ages of alleles at selected loci | Two expectations stated in advance: under a hard sweep from a new mutation, selected alleles are younger than matched neutral alleles; under selection on standing variation, they can be as old or older. | Selected loci fixed in advance from independent published scans, not from scans of these data; matched by frequency, recombination rate, callable fraction, and local tree count; two-sided test, with the pattern reported per locus. |
 | Fig S1. Sensitivity | Conclusions hold across μ, g, sampling-time, somatic-filter, recombination-map, and outgroup choices. | Re-run with each alternative fixed in advance: μ and g at the ends of their intervals, earlier origin dates for documented old cultivars, a stricter somatic filter, a constant recombination rate, and *Muscadinia*-only polarisation. |
+
+**Expected results and how they will be read**
+
+- Fig 1 decides which ARG method is used: only a method that recovers simulated split times under clonal propagation within the preregistered error enters Fig 2 and Fig 3. If none passes, the paper becomes a methods report on why grape ARG dates are not yet reliable.
+- Fig 2: cross-coalescence profiles between wild and cultivated groups are compared with the predictions written down for single and dual domestication; an outcome that fits neither is reported as such.
+- Fig 3: allele ages at published selected loci are read against the two preregistered expectations (new mutation versus standing variation); all dates carry Monte Carlo intervals for μ and g.
+- Fig S1 shows which conclusions depend on μ, g, sampling, somatic filter, recombination map and outgroup choice.
 
 ## Preregistration
 
@@ -49,6 +64,16 @@ Before any data are analysed, fill in [`docs/PREREGISTRATION.md`](../../../../te
 | [DS04](../../data/DS04-na-vitis-super-pangenome/) | North American Vitis super-pangenome and wild resequencing |
 | [DS06](../../data/DS06-vitis-amurensis-pangenome/) | Vitis amurensis haplotype assemblies and 330-sample resequencing |
 | [DS01](../../data/DS01-pn40024-references/) | PN40024 references: PN_T2T (v5), PN40024.v4 and 12X |
+
+**How each dataset is used**
+
+| Module | Role in this project |
+|---|---|
+| DS10, DS11, DS12 | Wild and cultivated *V. vinifera* panels; one sample per clone group from project 08 |
+| DS04, DS06, DS08 | Outgroups for polarisation (North American and East Asian *Vitis*, *Muscadinia*) |
+| DS01 | PN_T2T coordinates and masks |
+
+New public data: none needed. Published linkage maps for recombination are listed in AM26 and project 24 [待确认: which map is interpolated].
 
 ## Analysis steps
 
@@ -70,6 +95,18 @@ Project-specific steps:
 - Infer ARGs using the method chosen in Fig 1 and date alleles.
 - Fix μ and g before the run: set μ as an interval spanning the per-generation rates used in published grape demographic studies (Zhou et al. 2017; Liang et al. 2019) [待确认: values and their primary sources]; set g as an interval of years per generation from the same literature [待确认]. Propagate both uncertainties by Monte Carlo into every time estimate.
 - Run the sensitivity set (Fig S1).
+
+**Stepwise work plan with tools**
+
+| Step | Work | Tools (paper) | Output |
+|---|---|---|---|
+| 1 | Preregistered sample selection from public genotypes; one sample per clone group | KING, PLINK 2 (AM04) | Sample list |
+| 2 | Call variants on PN_T2T; re-check identity; filter likely somatic calls | DeepVariant or GATK (AM03) | Filtered VCF |
+| 3 | Phase; polarise with two or more outgroups | SHAPEIT5 ([Hofmeister et al. 2023](https://doi.org/10.1038/s41588-023-01415-w)), est-sfs (AM26) | Phased, polarised VCF |
+| 4 | Recombination map from published linkage maps interpolated to PN_T2T | AM26 | Map file |
+| 5 | Simulate grape-like histories with clonal generations; benchmark Relate, tsinfer+tsdate and SINGER | SLiM 4, msprime (AM14) | Fig 1 |
+| 6 | Infer ARGs with the chosen method; cross-coalescence and allele ages | chosen ARG tool (AM14) | Fig 2, Fig 3 |
+| 7 | Monte Carlo over μ and g; sensitivity set | R or Python | Fig S1 |
 
 ## Paper design and split
 
@@ -96,6 +133,10 @@ Each paper: introduction from the gap above; one results section per figure; met
 - Effort: 4–6 months for one person [draft]
 - Target: genetics or evolution journal [draft]
 
+## Suggested journal level (suggestion only)
+
+**Mid-field journal (genetics or molecular evolution); broad-interest only if the result changes the domestication picture.** Grape domestication papers read here appeared in *PNAS*, *Nature Communications* and *Science*, and the only grape genealogy study in *Genome Biology and Evolution*; ARG method papers appeared in *Nature Genetics*, *Genetics* and *Science*. A calibrated grape ARG with sensitivity analysis fits a mid-field venue; a broad one needs a clear new answer on timing. This is a suggestion, not a decision; impact factors are not used.
+
 ## Continue on HPC
 
 Run each step as its own job, in this order. Every job writes `.DONE` or `.FAILED` and a log; the next step starts only after `.DONE`. Template and rules: [`docs/HPC_JOBS.md`](../../../../templates/HPC_JOBS.md).
@@ -119,3 +160,14 @@ Public inputs: [DS10](../../data/DS10-reseq-472-vitis/), [DS11](../../data/DS11-
 - Wang et al. 2026. The dynamics of introgression and parallel adaptation across North American Vitis species. *Proceedings of the National Academy of Sciences*. [doi:10.1073/pnas.2607754123](https://doi.org/10.1073/pnas.2607754123)
 - Dong et al. 2023. Dual domestications and origin of traits in grapevine evolution. *Science*. [doi:10.1126/science.add8655](https://doi.org/10.1126/science.add8655)
 - Zhou et al. 2017. Evolutionary genomics of grape ( Vitis vinifera ssp. vinifera ) domestication. *Proceedings of the National Academy of Sciences*. [doi:10.1073/pnas.1709257114](https://doi.org/10.1073/pnas.1709257114)
+- Baumdicker et al. 2022. Efficient ancestry and mutation simulation with msprime 1.0. *Genetics*. [doi:10.1093/genetics/iyab229](https://doi.org/10.1093/genetics/iyab229)
+- Brandt et al. 2022. Evaluation of methods for estimating coalescence times using ancestral recombination graphs. *Genetics*. [doi:10.1093/genetics/iyac044](https://doi.org/10.1093/genetics/iyac044)
+- Deng et al. 2025. Robust and accurate Bayesian inference of genome-wide genealogies for hundreds of genomes. *Nature Genetics*. [doi:10.1038/s41588-025-02317-9](https://doi.org/10.1038/s41588-025-02317-9)
+- Haller et al. 2023. SLiM 4: Multispecies Eco-Evolutionary Modeling. *The American Naturalist*. [doi:10.1086/723601](https://doi.org/10.1086/723601)
+- Hofmeister et al. 2023. Accurate rare variant phasing of whole-genome and whole-exome sequencing data in the UK Biobank. *Nature Genetics*. [doi:10.1038/s41588-023-01415-w](https://doi.org/10.1038/s41588-023-01415-w)
+- Kelleher et al. 2019. Inferring whole-genome histories in large population datasets. *Nature Genetics*. [doi:10.1038/s41588-019-0483-y](https://doi.org/10.1038/s41588-019-0483-y)
+- Liang et al. 2019. Whole-genome resequencing of 472 Vitis accessions for grapevine diversity and demographic history analyses. *Nature Communications*. [doi:10.1038/s41467-019-09135-8](https://doi.org/10.1038/s41467-019-09135-8)
+- McKey et al. 2010. The evolutionary ecology of clonally propagated domesticated plants. *New Phytologist*. [doi:10.1111/j.1469-8137.2010.03210.x](https://doi.org/10.1111/j.1469-8137.2010.03210.x)
+- Nielsen et al. 2025. Inference and applications of ancestral recombination graphs. *Nat Rev Genet*. [doi:10.1038/s41576-024-00772-4](https://doi.org/10.1038/s41576-024-00772-4)
+- Speidel et al. 2019. A method for genome-wide genealogy estimation for thousands of samples. *Nature Genetics*. [doi:10.1038/s41588-019-0484-x](https://doi.org/10.1038/s41588-019-0484-x)
+- Wohns et al. 2022. A unified genealogy of modern and ancient genomes. *Science*. [doi:10.1126/science.abi8264](https://doi.org/10.1126/science.abi8264)
