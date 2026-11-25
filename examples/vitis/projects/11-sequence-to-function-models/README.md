@@ -19,6 +19,16 @@ Sequence-to-expression models and plant foundation models have not been evaluate
 
 A transfer evaluation with chromosome and gene-family hold-outs, a k-mer baseline, and checks against grape expression data.
 
+**Background survey (literature read for this plan)**
+
+Deep learning can predict expression from sequence. Across seven model organisms, models trained on more than 20,000 mRNA datasets explained up to 82% of transcript-level variation from the gene regulatory structure ([Zrimec et al. 2020](https://doi.org/10.1038/s41467-020-19921-4)); Enformer improved expression prediction by using long-range interactions in human and mouse ([Avsec et al. 2021](https://doi.org/10.1038/s41592-021-01252-x)). In plants, evolutionarily informed models predicted relative transcript abundance in grasses ([Washburn et al. 2019](https://doi.org/10.1073/pnas.1814551116)), and cis-regulatory models were trained for selected model plants ([Peleke et al. 2024](https://doi.org/10.1038/s41467-024-47744-0)).
+
+DNA language models are trained without labels and used zero-shot or fine-tuned. GPN showed that such models predict genome-wide variant effects in *Arabidopsis* ([Benegas et al. 2023](https://doi.org/10.1073/pnas.2311219120)); AgroNT is a foundation model for edible plant genomes ([Mendoza-Revilla et al. 2024](https://doi.org/10.1038/s42003-024-06465-2)); PlantCaduceus models plant genomes at single-nucleotide resolution across species ([Zhai et al. 2025](https://doi.org/10.1073/pnas.2421738122)). Whether grape was part of the training corpora decides whether a grape test is transfer or within-genus [待确认 per model].
+
+For grape, an expression atlas exists ([Fasoli et al. 2012](https://doi.org/10.1105/tpc.112.100230)) and a transcriptomic platform on a haplotype-resolved genome ([Djari et al. 2024](https://doi.org/10.1073/pnas.2403750121)).
+
+**Specific gap.** No journal paper was found that tests sequence-to-expression models or plant DNA language models on grape with chromosome and gene-family hold-outs and a simple baseline [待确认: only a conference abstract found].
+
 ## Question
 
 Do models trained on other plants predict grape expression from sequence better than a grape-only model and a simple baseline?
@@ -33,6 +43,12 @@ No results are given here. Each row says what would count as support; the exact 
 | Fig 2. Fine-tuned vs zero-shot, and against a model trained on other plants | Fine-tuning on grape improves over zero-shot use; a sequence-to-expression model trained on other plants serves as the comparison. | Zero-shot means frozen embeddings with a linear probe trained on grape targets; fine-tuning protocol fixed in advance; paired bootstrap on the same test genes with effect sizes. If the pre-training corpus includes *Vitis* [待确认], the result is reported as within-genus rather than transfer. |
 | Fig 3. Variant effects | Predicted effects agree in sign with allele-specific expression from project 19. | Sign agreement tested against 50% with one ASE site per gene as the unit; performed only if project 19 yields ASE sites. |
 
+**Expected results and how they will be read**
+
+- Fig 1: if pre-trained models beat the k-mer baseline on held-out chromosomes (paired bootstrap), they carry useful information for grape; if not, the paper reports that current plant models do not transfer to grape expression.
+- Fig 2: the gain from fine-tuning over a frozen probe is the practical result for users; it is reported with effect sizes, not only p-values.
+- Fig 3 is run only if project 19 yields ASE sites; sign agreement above 50% would support variant-level use, near 50% would not.
+
 ## Preregistration
 
 Before any data are analysed, fill in [`docs/PREREGISTRATION.md`](../../../../templates/PREREGISTRATION.md) for this project: hypotheses, primary outcome, sample inclusion rules, thresholds, stop rules and what will be reported if a hypothesis fails. Commit it with a date. Criteria from any earlier attempt are reference only and are not carried over.
@@ -44,6 +60,16 @@ Before any data are analysed, fill in [`docs/PREREGISTRATION.md`](../../../../te
 | [DS01](../../data/DS01-pn40024-references/) | PN40024 references: PN_T2T (v5), PN40024.v4 and 12X |
 | [DS15](../../data/DS15-rnaseq-public-vitis/) | Public Vitis RNA-seq and the expression atlas |
 | [DS02](../../data/DS02-grapepan-v1/) | Grapepan v1.0: T2T haplotypes, graphs and a 466-accession resequencing panel |
+
+**How each dataset is used**
+
+| Module | Role in this project |
+|---|---|
+| DS01 | PN_T2T sequence and RefSeq gene models (input windows, splits by chromosome) |
+| DS15 | Public RNA-seq for expression targets (through project 19 tables) |
+| DS02 | Haplotypes for allele-level tests with project 19 |
+
+New public data: none needed. Model weights come from the published model releases [待确认: licences].
 
 ## Analysis steps
 
@@ -60,6 +86,18 @@ Project-specific steps:
 - Fix splits by chromosome and gene family.
 - Train the k-mer baseline, a grape-only model, and an expression model trained on other plants; evaluate the language models both zero-shot (frozen embeddings + linear probe) and fine-tuned.
 - Fig 3 depends on project 19's ASE output.
+
+**Stepwise work plan with tools**
+
+| Step | Work | Tools (paper) | Output |
+|---|---|---|---|
+| 1 | Take gene-level expression from project 19 (or rebuild with AM15) | salmon, tximport | Target table |
+| 2 | Fix splits by chromosome and gene family; paralogues in the same split | OrthoFinder families | Split file |
+| 3 | Baselines: k-mer ridge regression and a grape-only CNN | scikit-learn, PyTorch | Baseline scores |
+| 4 | Zero-shot embeddings with a linear probe | AgroNT, PlantCaduceus, GPN (AM22) | Probe scores |
+| 5 | Fine-tuning with a fixed protocol | same models | Fine-tuned scores |
+| 6 | Paired bootstrap on test genes; Spearman and AUC | R or Python | Fig 1, Fig 2 |
+| 7 | Variant-effect sign test against ASE sites | project 19 output | Fig 3 |
 
 ## Paper design and split
 
@@ -82,6 +120,10 @@ Each paper: introduction from the gap above; one results section per figure; met
 - Effort: 3–5 months for one person [draft]
 - Target: computational biology journal [draft]
 
+## Suggested journal level (suggestion only)
+
+**Mid-field journal (computational biology or plant genomics).** The plant model papers read here appeared in *PNAS*, *Nature Communications* and *Communications Biology*; the general models in *Nature Methods*. A transfer benchmark on one crop is a mid-field contribution; a positive variant-level result would strengthen it. This is a suggestion, not a decision; impact factors are not used.
+
 ## Continue on HPC
 
 Run each step as its own job, in this order. Every job writes `.DONE` or `.FAILED` and a log; the next step starts only after `.DONE`. Template and rules: [`docs/HPC_JOBS.md`](../../../../templates/HPC_JOBS.md).
@@ -101,3 +143,8 @@ Public inputs: [DS01](../../data/DS01-pn40024-references/), [DS15](../../data/DS
 - Peleke et al. 2024. Deep learning the cis-regulatory code for gene expression in selected model plants. *Nature Communications*. [doi:10.1038/s41467-024-47744-0](https://doi.org/10.1038/s41467-024-47744-0)
 - Mendoza-Revilla et al. 2024. A foundational large language model for edible plant genomes. *Communications Biology*. [doi:10.1038/s42003-024-06465-2](https://doi.org/10.1038/s42003-024-06465-2)
 - Zhai et al. 2025. Cross-species modeling of plant genomes at single-nucleotide resolution using a pretrained DNA language model. *Proceedings of the National Academy of Sciences*. [doi:10.1073/pnas.2421738122](https://doi.org/10.1073/pnas.2421738122)
+- Avsec et al. 2021. Effective gene expression prediction from sequence by integrating long-range interactions. *Nature Methods*. [doi:10.1038/s41592-021-01252-x](https://doi.org/10.1038/s41592-021-01252-x)
+- Benegas et al. 2023. DNA language models are powerful predictors of genome-wide variant effects. *Proceedings of the National Academy of Sciences*. [doi:10.1073/pnas.2311219120](https://doi.org/10.1073/pnas.2311219120)
+- Djari et al. 2024. Haplotype-resolved genome assembly and implementation of VitExpress, an open interactive transcriptomic platform for grapevine. *Proceedings of the National Academy of Sciences*. [doi:10.1073/pnas.2403750121](https://doi.org/10.1073/pnas.2403750121)
+- Fasoli et al. 2012. The Grapevine Expression Atlas Reveals a Deep Transcriptome Shift Driving the Entire Plant into a Maturation Program. *The Plant Cell*. [doi:10.1105/tpc.112.100230](https://doi.org/10.1105/tpc.112.100230)
+- Zrimec et al. 2020. Deep learning suggests that gene expression is encoded in all parts of a co-evolving interacting gene regulatory structure. *Nature Communications*. [doi:10.1038/s41467-020-19921-4](https://doi.org/10.1038/s41467-020-19921-4)

@@ -22,6 +22,14 @@ SV load in grape has been estimated on linear references, and hemizygosity has b
 
 Graph genotyping reduces reference bias and places all panels on one pipeline. Inherited SVs are separated from clone-specific SVs using cultivars with known parents (for example Cabernet Sauvignon, from Cabernet franc × Sauvignon blanc [待确认: VIVC record]) and clone panels. Differences between cultivated and wild grapes are not attributed to clonal propagation alone, because domestication bottlenecks and hybrid origin are confounded with it.
 
+**Background survey (literature read for this plan)**
+
+The cost-of-domestication hypothesis predicts more deleterious variants in domesticated species, through bottlenecks, linked selection and, in clonal crops, sheltering of recessive variants ([Moyers et al. 2018](https://doi.org/10.1093/jhered/esx069)); genomic load estimates and their limits have been set out for non-model species ([Bertorelle et al. 2022](https://doi.org/10.1038/s41576-022-00448-x)). In grape, cultivars carry more deleterious mutations in heterozygous state than wild ancestors, partly because of clonal propagation ([Zhou et al. 2017](https://doi.org/10.1073/pnas.1709257114)); SV population genetics showed purifying selection on SVs and many hemizygous genes in Chardonnay ([Zhou et al. 2019](https://doi.org/10.1038/s41477-019-0507-8)); introgression carried both adaptive and maladaptive variants into cultivars ([Xiao et al. 2023](https://doi.org/10.1073/pnas.2222041120)); and reproductive systems shape the grape genome and breeding ([Xiao et al. 2025](https://doi.org/10.1038/s41467-025-56817-7)). In wild *V. arizonica*, load was shaped by climate and range dynamics ([Fiscus et al. 2025](https://doi.org/10.1111/nph.70238)).
+
+Hemizygous genes on autosomes were compared across 22 genomes with clonal, outcrossed and inbred histories, with more hemizygous genes in clonal lineages ([Peng et al. 2025](https://doi.org/10.1073/pnas.2422487122)). Somatic SVs between clones are documented, including catastrophic rearrangements ([Carbonell-Bejerano et al. 2017](https://doi.org/10.1104/pp.17.00715)) and clone SVs that sit mostly in repeat and centromere regions ([Callipo et al. 2026](https://doi.org/10.1186/s13059-026-04184-x)). A phased Cabernet Sauvignon trio separates inherited from new variants ([Cochetel et al. 2025](https://doi.org/10.1186/s13059-025-03858-2)). Graph genotyping with PanGenie or vg reduces reference bias for SVs ([Ebler et al. 2022](https://doi.org/10.1038/s41588-022-01043-w); [Sirén et al. 2021](https://doi.org/10.1126/science.abg8871)).
+
+**Specific gap.** No grape study was found that separates hemizygous SVs inherited at a cultivar's sexual origin from SVs that arose during clonal propagation with one graph-based pipeline, and relates each class to recombination and repeat density [待确认].
+
 ## Question
 
 Do hemizygous SVs that arose between clones sit in different genomic contexts from hemizygous SVs inherited at the cultivar's sexual origin, and how do inherited hemizygous SVs relate to recombination and repeat density in cultivated versus wild grapes?
@@ -36,6 +44,13 @@ No results are given here. Each row says what would count as support; the exact 
 | Fig 2. Inherited vs clone-specific hemizygous SVs | Inherited hemizygous SVs reflect the sexual history (more in low-recombination regions); clone-specific SVs follow mutational input (repeat and TE density) rather than recombination. | Clone-specific SVs come from long-read or assembly comparisons of clones, because graph genotyping misses new SVs. In the trio, the parents are clones too: an SV present in the offspring and absent from both sampled parent plants is labelled as lost later in a parent's clonal lineage, new in the germline at the cross, or new during the offspring's clonal phase (only when it is present in some but not all offspring clones); where the data cannot tell these apart, it is labelled origin unresolved and kept out of the clone-specific class. Mixed logistic model with sample as a random effect and recombination rate, repeat and TE density, and centromere distance as covariates; supported if the preregistered coefficients' intervals exclude zero. |
 | Fig 3. Inherited hemizygous SVs, cultivated vs wild | Cultivated and wild grapes differ in where inherited hemizygous SVs sit. | Group × region model with repeat and TE density covariates and a sample random effect; framed as cultivated vs wild, not as an effect of clonal propagation. |
 | Fig 4. Load split by zygosity | Expectations stated separately: hemizygous deleterious variants are expressed in any diploid carrier, whereas heterozygous recessive ones are masked; what is specific to clones is that, without segregation and recombination, neither kind can be purged through sexual generations. | Load counted on derived alleles (AM26), split into hemizygous and heterozygous; reported with and without ROH as a covariate, because ROH and group are correlated. |
+
+**Expected results and how they will be read**
+
+- Fig 1: lower allele-balance bias with graph genotypes justifies the graph route; if bias is similar, linear calls are kept and the graph is reported as optional.
+- Fig 2: inherited hemizygous SVs concentrated in low-recombination regions and clone-specific SVs following repeat and TE density would show two different origins; similar distributions would argue against a separate clonal process for SVs.
+- Fig 3 compares cultivated and wild grapes descriptively; differences are not attributed to clonal propagation alone, because bottleneck and hybrid origin are confounded with it.
+- Fig 4 splits load by zygosity with the expectations written down before the run.
 
 ## Preregistration
 
@@ -52,6 +67,18 @@ Before any data are analysed, fill in [`docs/PREREGISTRATION.md`](../../../../te
 | [DS13](../../data/DS13-clone-somatic-variation/) | Clone resequencing across cultivars (Zinfandel, Chardonnay, Pinot noir, Malbec, Merlot and others) |
 | [DS18](../../data/DS18-methylome-and-trio/) | Public grape methylomes and a phased Cabernet Sauvignon trio |
 | [DS01](../../data/DS01-pn40024-references/) | PN40024 references: PN_T2T (v5), PN40024.v4 and 12X |
+
+**How each dataset is used**
+
+| Module | Role in this project |
+|---|---|
+| DS02, DS03 | Graph, haplotypes and long-read samples for SV truth |
+| DS10, DS12 | Cultivated and wild short-read panels for graph genotyping |
+| DS13 | Clone panels for clone-specific SVs |
+| DS18 | Phased Cabernet Sauvignon trio for inherited versus new SVs |
+| DS01 | PN_T2T coordinates and masks |
+
+New public data: none needed. The source of the recombination map is open in AM26 [待确认].
 
 ## Analysis steps
 
@@ -71,6 +98,17 @@ Project-specific steps:
 - Call clone-specific SVs from long reads or assemblies of clones (DS13, AM18); use the trio (DS18) to distinguish inherited from new SVs, using the origin labels of Fig 2.
 - Take recombination rates from published linkage maps (AM26) [待确认: map source]; compute repeat and TE density per window.
 - Polarise and score variants (AM26, AM12); split by zygosity; fit the models.
+
+**Stepwise work plan with tools**
+
+| Step | Work | Tools (paper) | Output |
+|---|---|---|---|
+| 1 | Identity groups and clone groups (project 08) | AM04 | Sample table |
+| 2 | SV genotyping in short-read panels through the graph; compare with linear calls | PanGenie or vg (AM07), AM03 | SV VCFs, Fig 1 |
+| 3 | Long-read validation subset | AM18 | Validation table |
+| 4 | Clone-specific SVs from clone long reads or assemblies; origin labels from the trio | AM18, DS18 | Inherited/clonal labels |
+| 5 | Window covariates: recombination (published maps), repeats, TE density, centromere distance | AM26, AM10 | Covariate table |
+| 6 | Polarise; score deleterious effects; split by zygosity; fit models | est-sfs, SIFT-type scores (AM12, AM26) | Fig 2 to Fig 4 |
 
 ## Paper design and split
 
@@ -93,6 +131,10 @@ Each paper: introduction from the gap above; one results section per figure; met
 - Compute: medium [draft]
 - Effort: 2–4 months for one person [draft]
 - Target: genetics or evolution journal [draft]
+
+## Suggested journal level (suggestion only)
+
+**Mid-field journal (genetics or evolution); broad-interest if the inherited versus clonal contrast is clear.** Grape load and SV papers read here appeared in *PNAS*, *Nature Plants*, *Nature Communications* and *New Phytologist*; general load syntheses in *Journal of Heredity* and *Nat Rev Genet*. This is a suggestion, not a decision; impact factors are not used.
 
 ## Continue on HPC
 
@@ -119,3 +161,10 @@ Public inputs: [DS02](../../data/DS02-grapepan-v1/), [DS03](../../data/DS03-viti
 - Xiao et al. 2025. Impacts of reproductive systems on grapevine genome and breeding. *Nature Communications*. [doi:10.1038/s41467-025-56817-7](https://doi.org/10.1038/s41467-025-56817-7)
 - Fiscus et al. 2025. Mutational load and adaptive variation are shaped by climate and species range dynamics in Vitis arizonica. *New Phytologist*. [doi:10.1111/nph.70238](https://doi.org/10.1111/nph.70238)
 - Peng et al. 2025. The genomic and epigenomic landscapes of hemizygous genes across crops with contrasting reproductive systems. *Proceedings of the National Academy of Sciences*. [doi:10.1073/pnas.2422487122](https://doi.org/10.1073/pnas.2422487122)
+- Bertorelle et al. 2022. Genetic load: genomic estimates and applications in non-model animals. *Nat Rev Genet*. [doi:10.1038/s41576-022-00448-x](https://doi.org/10.1038/s41576-022-00448-x)
+- Callipo et al. 2026. A dual genome-methylome map of clonal evolution in grapevine. *Genome Biology*. [doi:10.1186/s13059-026-04184-x](https://doi.org/10.1186/s13059-026-04184-x)
+- Carbonell-Bejerano et al. 2017. Catastrophic Unbalanced Genome Rearrangements Cause Somatic Loss of Berry Color in Grapevine. *Plant Physiology*. [doi:10.1104/pp.17.00715](https://doi.org/10.1104/pp.17.00715)
+- Cochetel et al. 2025. Phased epigenomics and methylation inheritance in a historical Vitis vinifera hybrid. *Genome Biology*. [doi:10.1186/s13059-025-03858-2](https://doi.org/10.1186/s13059-025-03858-2)
+- Ebler et al. 2022. Pangenome-based genome inference allows efficient and accurate genotyping across a wide spectrum of variant classes. *Nature Genetics*. [doi:10.1038/s41588-022-01043-w](https://doi.org/10.1038/s41588-022-01043-w)
+- Moyers et al. 2018. Genetic Costs of Domestication and Improvement. *Journal of Heredity*. [doi:10.1093/jhered/esx069](https://doi.org/10.1093/jhered/esx069)
+- Sirén et al. 2021. Pangenomics enables genotyping of known structural variants in 5202 diverse genomes. *Science*. [doi:10.1126/science.abg8871](https://doi.org/10.1126/science.abg8871)

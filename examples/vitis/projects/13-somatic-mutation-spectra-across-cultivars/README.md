@@ -22,6 +22,14 @@ Multi-clone somatic variation has been studied within single cultivars, most ext
 
 Re-calls all public clone panels with one pipeline, one reference, and the same masks; counts only new alleles, reports loss of heterozygosity separately, uses the clone as the unit of analysis, and gives a rate only as an upper bound where clone dates are documented.
 
+**Background survey (literature read for this plan)**
+
+Somatic mutation in long-lived plants is the raw material of clonal sports. Few fixed somatic mutations were found in a long-lived oak ([Schmid-Siegert et al. 2017](https://doi.org/10.1038/s41477-017-0066-9)); a phylogenomic method found a low somatic rate in a large *Eucalyptus melliodora* tree ([Orr et al. 2020](https://doi.org/10.1098/rspb.2019.2364)); and genetic and epigenetic somatic rates were estimated in a wild *Populus trichocarpa* ([Hofmeister et al. 2020](https://doi.org/10.1186/s13059-020-02162-5)). In apricot, more than 90% of somatic mutations were specific to one meristem layer ([Goel et al. 2024](https://doi.org/10.1186/s13059-024-03337-0)), so tissue choice decides what is seen. Mutational signatures, as developed in cancer genomics, give a framework for comparing spectra ([Alexandrov et al. 2013](https://doi.org/10.1038/nature12477)).
+
+Grape clones have been studied within cultivars: 15 Zinfandel clones ([Vondras et al. 2019](https://doi.org/10.1186/s12864-019-6211-2)), a Chardonnay clone population that also showed ancestral inbreeding ([Roach et al. 2018](https://doi.org/10.1371/journal.pgen.1007807)), an L1/L2 chimera in Merlot ([Sichel et al. 2023](https://doi.org/10.1186/s12864-023-09453-8)), Tempranillo Tinto clones traced by somatic variants ([Tello et al. 2025](https://doi.org/10.1093/hr/uhaf237)), eight Tribidrag clones ([Zdunić et al. 2026](https://doi.org/10.1186/s12870-026-10110-x)) and 23 Pinot noir clones on a phased reference ([Callipo et al. 2026](https://doi.org/10.1186/s13059-026-04184-x)). Structural sports such as colour loss come from large rearrangements ([Carbonell-Bejerano et al. 2017](https://doi.org/10.1104/pp.17.00715)), and transposable elements are a major cause of somatic polymorphism in Pinot ([Carrier et al. 2012](https://doi.org/10.1371/journal.pone.0032973)).
+
+**Specific gap.** Each grape study used its own pipeline, reference and filters. No comparison of somatic spectra across cultivars with one pipeline, one reference and the same masks was found, and no per-year upper bound on the grape somatic rate from documented clone dates [待确认].
+
 ## Question
 
 Once artefact-prone regions are masked and loss of heterozygosity is separated, do somatic mutation spectra differ between grape cultivars, and what upper bound do documented clone dates place on the somatic mutation rate?
@@ -38,6 +46,13 @@ No results are given here. Each row says what would count as support; the exact 
 | Fig 4. Upper bound on the somatic rate | Somatic mutations accumulate with time since clones diverged. | Branch lengths of the clone tree (new alleles only, with LOH events excluded, per callable bp, corrected for sensitivity from in-silico spike-ins, with an intercept for false positives) regressed on time; clone-level block bootstrap; date uncertainty handled by interval sampling. Documented selection or registration dates are a lower bound on divergence time, so the rate is an upper bound unless the source gives the propagation lineage. Per-year or per-generation units fixed in advance [待确认]. Minimum number of independent branches (not clone pairs) fixed in advance; below it, counts only. |
 | Table 1. Per-clone call sets | Resource table. | Calls, LOH table, masks, callable bp, and depth thresholds released. |
 
+**Expected results and how they will be read**
+
+- Fig 1: the share of raw clone-specific calls in low-mappability, repeat or centromere regions shows how much published counts depend on masking.
+- Fig 3: if cultivars share one spectrum (null not rejected), grape somatic mutation is described by one process; if spectra differ, cultivar or tissue effects are tested next, with layer effects kept in mind.
+- Fig 4 gives an upper bound only; it is not a rate estimate, because clone dates are approximate and callable fractions differ.
+- Table 1 releases per-clone call sets with callable bp and sensitivity.
+
 ## Preregistration
 
 Before any data are analysed, fill in [`docs/PREREGISTRATION.md`](../../../../templates/PREREGISTRATION.md) for this project: hypotheses, primary outcome, sample inclusion rules, thresholds, stop rules and what will be reported if a hypothesis fails. Commit it with a date. Criteria from any earlier attempt are reference only and are not carried over.
@@ -49,6 +64,16 @@ Before any data are analysed, fill in [`docs/PREREGISTRATION.md`](../../../../te
 | [DS13](../../data/DS13-clone-somatic-variation/) | Clone resequencing across cultivars (Zinfandel, Chardonnay, Pinot noir, Malbec, Merlot and others) |
 | [DS01](../../data/DS01-pn40024-references/) | PN40024 references: PN_T2T (v5), PN40024.v4 and 12X |
 | [DS02](../../data/DS02-grapepan-v1/) | Grapepan v1.0: T2T haplotypes, graphs and a 466-accession resequencing panel |
+
+**How each dataset is used**
+
+| Module | Role in this project |
+|---|---|
+| DS13 | Clone resequencing across cultivars (Zinfandel, Chardonnay, Pinot noir, Merlot and others) |
+| DS01 | PN_T2T as the single reference and source of masks |
+| DS02 | Pangenome haplotypes for phased checks where a cultivar is assembled |
+
+New public data: none needed. The Tribidrag and Tempranillo clone runs must be checked for public accessions before inclusion [待确认].
 
 ## Analysis steps
 
@@ -68,6 +93,18 @@ Project-specific steps:
 - Call somatic variants among clones (AM20); root the clone tree with public parental genotypes where available; separate new alleles, LOH (called by segment), and unpolarised assembly-only states; re-genotype across clones; estimate callable bp and sensitivity.
 - Build normalised spectra; fit the clone-level model; run the within-study test on PRJNA847341.
 - Collect documented clone dates from the source papers [待确认]; estimate the rate only as an upper bound.
+
+**Stepwise work plan with tools**
+
+| Step | Work | Tools (paper) | Output |
+|---|---|---|---|
+| 1 | Clone list from DS13; identity check | AM01, AM04 | Clone table |
+| 2 | Masks: mappability, repeats, centromeres | GenMap, RepeatMasker, AM10 | Mask BED |
+| 3 | Map all clones to PN_T2T; trim and QC | bwa-mem2 (AM02, AM03) | BAMs |
+| 4 | Call somatic variants among clones; separate new alleles from LOH | AM20 tools | Call sets |
+| 5 | Callable bp and sensitivity by spike-in or downsampling | custom | Callable table |
+| 6 | Normalised spectra; clone-level model; signature extraction | SigProfiler-type NMF, R | Fig 3 |
+| 7 | Upper bound from documented clone dates | R | Fig 4 |
 
 ## Paper design and split
 
@@ -92,6 +129,10 @@ Each paper: introduction from the gap above; one results section per figure; met
 - Effort: 2–3 months for one person [draft]
 - Target: genome or evolution journal [draft]
 
+## Suggested journal level (suggestion only)
+
+**Mid-field journal (genome biology or evolution).** Grape clone studies read here appeared in *BMC Genomics*, *PLOS Genetics*, *BMC Plant Biology*, *Horticulture Research* and *Genome Biology*; plant somatic-rate studies in *Nature Plants*, *Genome Biology* and *Proc R Soc B*. A cross-cultivar spectrum comparison with an artefact audit fits a mid-field venue. This is a suggestion, not a decision; impact factors are not used.
+
 ## Continue on HPC
 
 Run each step as its own job, in this order. Every job writes `.DONE` or `.FAILED` and a log; the next step starts only after `.DONE`. Template and rules: [`docs/HPC_JOBS.md`](../../../../templates/HPC_JOBS.md).
@@ -115,3 +156,11 @@ Public inputs: [DS13](../../data/DS13-clone-somatic-variation/), [DS01](../../da
 - Sichel et al. 2023. Chimeras in Merlot grapevine revealed by phased assembly. *BMC Genomics*. [doi:10.1186/s12864-023-09453-8](https://doi.org/10.1186/s12864-023-09453-8)
 - Xiao et al. 2025. Impacts of reproductive systems on grapevine genome and breeding. *Nature Communications*. [doi:10.1038/s41467-025-56817-7](https://doi.org/10.1038/s41467-025-56817-7)
 - Liang et al. 2019. Whole-genome resequencing of 472 Vitis accessions for grapevine diversity and demographic history analyses. *Nature Communications*. [doi:10.1038/s41467-019-09135-8](https://doi.org/10.1038/s41467-019-09135-8)
+- Alexandrov et al. 2013. Signatures of mutational processes in human cancer. *Nature*. [doi:10.1038/nature12477](https://doi.org/10.1038/nature12477)
+- Carbonell-Bejerano et al. 2017. Catastrophic Unbalanced Genome Rearrangements Cause Somatic Loss of Berry Color in Grapevine. *Plant Physiology*. [doi:10.1104/pp.17.00715](https://doi.org/10.1104/pp.17.00715)
+- Carrier et al. 2012. Transposable Elements Are a Major Cause of Somatic Polymorphism in Vitis vinifera L. *PLoS ONE*. [doi:10.1371/journal.pone.0032973](https://doi.org/10.1371/journal.pone.0032973)
+- Goel et al. 2024. The vast majority of somatic mutations in plants are layer-specific. *Genome Biology*. [doi:10.1186/s13059-024-03337-0](https://doi.org/10.1186/s13059-024-03337-0)
+- Hofmeister et al. 2020. A genome assembly and the somatic genetic and epigenetic mutation rate in a wild long-lived perennial Populus trichocarpa. *Genome Biology*. [doi:10.1186/s13059-020-02162-5](https://doi.org/10.1186/s13059-020-02162-5)
+- Orr et al. 2020. A phylogenomic approach reveals a low somatic mutation rate in a long-lived plant. *Proceedings of the Royal Society B: Biological Sciences*. [doi:10.1098/rspb.2019.2364](https://doi.org/10.1098/rspb.2019.2364)
+- Schmid-Siegert et al. 2017. Low number of fixed somatic mutations in a long-lived oak tree. *Nature Plants*. [doi:10.1038/s41477-017-0066-9](https://doi.org/10.1038/s41477-017-0066-9)
+- Tello et al. 2025. Genome resequencing and custom genotyping elucidates the origin and dissemination history of an emblematic grapevine cultivar, ‘Tempranillo Tinto’. *Horticulture Research*. [doi:10.1093/hr/uhaf237](https://doi.org/10.1093/hr/uhaf237)
