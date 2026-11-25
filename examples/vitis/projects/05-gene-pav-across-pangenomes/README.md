@@ -20,6 +20,14 @@ Each grape pangenome reports gene PAV with its own annotation pipeline. Cultivat
 
 Re-annotates all haplotypes with one projection pipeline, checks absences by sequence and by read depth, and reports which PAV calls survive.
 
+**Background survey (literature read for this plan)**
+
+Pangenomes moved crop genomics from one reference to many ([Bayer et al. 2020](https://doi.org/10.1038/s41477-020-0733-0)). Early crop pangenomes reported large dispensable gene sets, for example in *Brassica oleracea* ([Golicz et al. 2016](https://doi.org/10.1038/ncomms13390)), tomato, where a pan-genome found new genes and a rare flavour allele ([Gao et al. 2019](https://doi.org/10.1038/s41588-019-0410-2)), and 33 rice accessions ([Qin et al. 2021](https://doi.org/10.1016/j.cell.2021.04.046)). Each study used its own annotation pipeline, so gene absence can be an annotation artefact rather than missing sequence; projection tools such as Liftoff ([Shumate and Salzberg 2021](https://doi.org/10.1093/bioinformatics/btaa1016)) and protein-to-genome alignment with miniprot ([Li 2023](https://doi.org/10.1093/bioinformatics/btad014)) allow every haplotype to be checked against the same gene set.
+
+Grape now has several pangenomes. Hemizygous genes were first shown at scale in Chardonnay within a study of structural variants ([Zhou et al. 2019](https://doi.org/10.1038/s41477-019-0507-8)). Grapepan reported gene presence/absence among T2T haplotypes ([Liu et al. 2024](https://doi.org/10.1038/s41588-024-01967-5)); the *Vitis* super-pangenome covered wild species ([Guo et al. 2025](https://doi.org/10.1038/s41588-025-02111-7)); a North American super-pangenome covered wild species of that continent ([Cochetel et al. 2023](https://doi.org/10.1186/s13059-023-03133-2)); population comparative genomics described gene gain and loss during domestication ([Long et al. 2024](https://doi.org/10.1093/plphys/kiae039)); and a cultivated pangenome of 15 varieties (nine newly assembled) confirmed high collinearity and a large dispensable share ([Pierre et al. 2026](https://doi.org/10.1093/g3journal/jkag168)) [待确认: 15 in the abstract, 16 in DS07].
+
+**Specific gap.** These resources were annotated separately. No study was found that projects one gene set onto all public grape haplotypes, confirms each absence by sequence search and by read depth, and reports how much published presence/absence survives [待确认].
+
 ## Question
 
 How much reported gene PAV in grape is reproduced when all haplotypes are processed the same way, and which gene classes are truly variable?
@@ -33,6 +41,12 @@ No results are given here. Each row says what would count as support; the exact 
 | Fig 1. Concordance of PAV calls between original and uniform annotation | A measurable share of reported absences are annotation artefacts. | Each absence re-tested by sequence search and read depth; categories fixed in advance. |
 | Fig 2. Confirmed absences by gene class | Confirmed absences are enriched in NLR, TPS and other clustered families. | Enrichment against length- and GC-matched background; BH FDR applied within the family of gene classes fixed in advance. |
 | Fig 3. Pangenome growth curves before and after correction | Corrected curves saturate earlier. | Curves with bootstrap intervals; the resampling unit is the accession (both haplotypes of an accession together). |
+
+**Expected results and how they will be read**
+
+- Fig 1: the share of published absences not confirmed under the uniform pipeline is the main number; a high share means that pangenome gene counts should not be compared across studies, a low share means published sets are usable as they are.
+- Fig 2: enrichment of confirmed absences in NLR, TPS and other clustered families would agree with tandem families being the main source of real presence/absence; no enrichment is reported as such.
+- Fig 3: corrected growth curves are reported with the fitted saturation parameter and its interval; no claim of a closed pangenome is made from curves alone.
 
 ## Preregistration
 
@@ -49,6 +63,18 @@ Before any data are analysed, fill in [`docs/PREREGISTRATION.md`](../../../../te
 | [DS06](../../data/DS06-vitis-amurensis-pangenome/) | Vitis amurensis haplotype assemblies and 330-sample resequencing |
 | [DS07](../../data/DS07-cultivated-16-pangenome/) | Cultivated grapevine pangenome (16 cultivars, Plastivigne) |
 
+**How each dataset is used**
+
+| Module | Role in this project |
+|---|---|
+| DS01 | PN_T2T gene set (RefSeq annotation) projected onto every haplotype |
+| DS02 | Grapepan T2T haplotypes and their published presence/absence |
+| DS03 | Super-pangenome haplotypes of cultivated and wild *Vitis* |
+| DS04, DS06 | North American species and *V. amurensis* haplotypes |
+| DS07 | Cultivated pangenome and its published dispensable set |
+
+New public data: none needed. Short reads for depth checks exist only for some haplotypes [待确认 per accession].
+
 ## Analysis steps
 
 Shared modules, in order:
@@ -64,6 +90,18 @@ Project-specific steps:
 - Run AM05 QC.
 - Project PN_T2T genes with Liftoff and miniprot (AM09); call PAV.
 - Check each absence by sequence search and by short-read depth where reads exist.
+
+**Stepwise work plan with tools**
+
+| Step | Work | Tools (paper) | Output |
+|---|---|---|---|
+| 1 | Collect haplotypes, published annotations and published presence/absence tables | AM01 | Manifest |
+| 2 | Assembly QC; drop haplotypes below the completeness cut-off | compleasm or BUSCO (AM05) | Pass list |
+| 3 | Project PN_T2T genes with Liftoff; align proteins with miniprot | Liftoff, miniprot (AM09) | Uniform gene models per haplotype |
+| 4 | Call presence, absence, partial and copy number per gene | AM09 rules | Presence/absence matrix |
+| 5 | Confirm absences by sequence search in the whole haplotype and by short-read depth | BLASTN, mosdepth | Confirmed matrix |
+| 6 | Compare with each published table; classify disagreements | R | Fig 1 |
+| 7 | Enrichment by gene family and growth curves before and after correction | InterProScan, R | Fig 2, Fig 3 |
 
 ## Paper design and split
 
@@ -86,6 +124,10 @@ Each paper: introduction from the gap above; one results section per figure; met
 - Effort: 2–3 months for one person [draft]
 - Target: genome journal [draft]
 
+## Suggested journal level (suggestion only)
+
+**Mid-field journal (genome biology or plant genomics).** The grape pangenome resources read here appeared in broad or high-level venues (*Nature Genetics*, *Nature Plants*), and follow-up comparative studies in *Plant Physiology*, *Genome Biology* and *G3*. A re-analysis that quantifies annotation artefacts across resources is a methods-and-resource contribution at the mid-field level. This is a suggestion, not a decision; impact factors are not used.
+
 ## Continue on HPC
 
 Run each step as its own job, in this order. Every job writes `.DONE` or `.FAILED` and a log; the next step starts only after `.DONE`. Template and rules: [`docs/HPC_JOBS.md`](../../../../templates/HPC_JOBS.md).
@@ -106,3 +148,10 @@ Public inputs: [DS01](../../data/DS01-pn40024-references/), [DS02](../../data/DS
 - Pierre et al. 2026. Pangenomic analyses in the cultivated grapevine confirm high genomic collinearity and extensive dispensable gene content likely involved in adaptation. *G3: Genes, Genomes, Genetics*. [doi:10.1093/g3journal/jkag168](https://doi.org/10.1093/g3journal/jkag168)
 - Long et al. 2024. Population comparative genomics discovers gene gain and loss during grapevine domestication. *Plant Physiology*. [doi:10.1093/plphys/kiae039](https://doi.org/10.1093/plphys/kiae039)
 - Zhou et al. 2019. The population genetics of structural variants in grapevine domestication. *Nature Plants*. [doi:10.1038/s41477-019-0507-8](https://doi.org/10.1038/s41477-019-0507-8)
+- Bayer et al. 2020. Plant pan-genomes are the new reference. *Nature Plants*. [doi:10.1038/s41477-020-0733-0](https://doi.org/10.1038/s41477-020-0733-0)
+- Cochetel et al. 2023. A super-pangenome of the North American wild grape species. *Genome Biology*. [doi:10.1186/s13059-023-03133-2](https://doi.org/10.1186/s13059-023-03133-2)
+- Gao et al. 2019. The tomato pan-genome uncovers new genes and a rare allele regulating fruit flavor. *Nature Genetics*. [doi:10.1038/s41588-019-0410-2](https://doi.org/10.1038/s41588-019-0410-2)
+- Golicz et al. 2016. The pangenome of an agronomically important crop plant Brassica oleracea. *Nature Communications*. [doi:10.1038/ncomms13390](https://doi.org/10.1038/ncomms13390)
+- Li 2023. Protein-to-genome alignment with miniprot. *Bioinformatics*. [doi:10.1093/bioinformatics/btad014](https://doi.org/10.1093/bioinformatics/btad014)
+- Qin et al. 2021. Pan-genome analysis of 33 genetically diverse rice accessions reveals hidden genomic variations. *Cell*. [doi:10.1016/j.cell.2021.04.046](https://doi.org/10.1016/j.cell.2021.04.046)
+- Shumate et al. 2021. Liftoff: accurate mapping of gene annotations. *Bioinformatics*. [doi:10.1093/bioinformatics/btaa1016](https://doi.org/10.1093/bioinformatics/btaa1016)
