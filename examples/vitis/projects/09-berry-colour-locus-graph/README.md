@@ -19,6 +19,14 @@ The colour locus and its somatic sports are well described. Genotyping its struc
 
 Builds a locus graph from all near-complete haplotypes and genotypes structural haplotypes in public panels.
 
+**Background survey (literature read for this plan)**
+
+Berry skin colour in grape is controlled mainly by one locus on chromosome 2 with tandem MYB regulators. A retrotransposon (Gret1) inserted in the VvMybA1 promoter silences it in white cultivars ([Kobayashi et al. 2004](https://doi.org/10.1126/science.1095011)), and white grapes needed mutations in both of two adjacent genes, VvMYBA1 and VvMYBA2 ([Walker et al. 2007](https://doi.org/10.1111/j.1365-313X.2006.02997.x)). Allelic variation at VvmybA1 is associated with colour in wine cultivars ([This et al. 2007](https://doi.org/10.1007/s00122-006-0472-2)); genomic and genetic analysis of the Myb genes refined the haplotypes ([Azuma et al. 2008](https://doi.org/10.1007/s00122-008-0840-1)); and QTL plus association mapping explained part of quantitative anthocyanin variation ([Fournier-Level et al. 2009](https://doi.org/10.1534/genetics.109.103929)). A recent study showed that the VvMybA1_SUB allele lies on an ancient divergent haplotype with functional and non-functional subhaplotypes, one with a large deletion causing white skin ([Reynard et al. 2025](https://doi.org/10.1093/hr/uhaf069)).
+
+Colour sports arise by somatic structural change: 33 Pinot clones showed chromosome replacement and deletion in the L2 layer ([Pelsy et al. 2015](https://doi.org/10.1371/journal.pgen.1005081)), and Tempranillo Blanco carries a catastrophic unbalanced rearrangement with a hemizygous deletion ([Carbonell-Bejerano et al. 2017](https://doi.org/10.1104/pp.17.00715)). Graph genomes now allow known structural variants to be genotyped from short reads: vg Giraffe genotyped known SVs in 5,202 human genomes ([Sirén et al. 2021](https://doi.org/10.1126/science.abg8871)), and PGGB builds unbiased pangenome graphs from assemblies ([Garrison et al. 2024](https://doi.org/10.1038/s41592-024-02430-3)). The colour locus is resolved in near-complete haplotypes ([Liu et al. 2024](https://doi.org/10.1038/s41588-024-01967-5)).
+
+**Specific gap.** The colour haplotypes were defined with markers, PCR and single assemblies. No study was found that builds a graph of the locus from all near-complete haplotypes and genotypes the structural haplotypes from short reads across public panels with a check against recorded colour [待确认].
+
 ## Question
 
 Can graph genotyping recover colour-locus haplotypes from short reads well enough to predict berry colour?
@@ -32,6 +40,12 @@ No results are given here. Each row says what would count as support; the exact 
 | Fig 1. Locus graph | Not a hypothesis: graph of all haplotypes. | Built from near-complete haplotypes only. |
 | Fig 2. Genotype vs recorded berry colour | Graph genotypes at VvMybA1 and VvMybA2 together predict recorded berry colour. | Accuracy per colour class with Wilson 95% intervals (classes are unbalanced); colour sports are listed separately and excluded from accuracy calculations. |
 | Fig 3. Haplotype frequencies by group | Descriptive. | Counts by panel and group. |
+
+**Expected results and how they will be read**
+
+- Fig 1 shows every structural haplotype of the locus (Gret1 insertion, deletions, divergent haplotype F) as graph paths.
+- Fig 2: if graph genotypes at VvMybA1 and VvMybA2 predict recorded colour with high accuracy (preregistered threshold), the graph is a usable genotyping tool for public data; misclassified samples are listed and checked for label error (project 08) or somatic sports before any biological reading.
+- Fig 3 gives haplotype frequencies by wild, table and wine groups; it is descriptive.
 
 ## Preregistration
 
@@ -47,6 +61,15 @@ Before any data are analysed, fill in [`docs/PREREGISTRATION.md`](../../../../te
 | [DS12](../../data/DS12-reseq-204-magris2021/) | Resequencing of 204 V. vinifera accessions (Magris et al. 2021) |
 | [DS01](../../data/DS01-pn40024-references/) | PN40024 references: PN_T2T (v5), PN40024.v4 and 12X |
 
+**How each dataset is used**
+
+| Module | Role in this project |
+|---|---|
+| DS01, DS02, DS03 | Near-complete haplotypes from which the locus graph is built |
+| DS10, DS12 | Short-read panels to genotype |
+
+New public data: none needed. Berry colour records come from VIVC and the panel papers [待确认: coverage per panel].
+
 ## Analysis steps
 
 Shared modules, in order:
@@ -60,6 +83,17 @@ Project-specific steps:
 - Extract the locus from each haplotype; build a PGGB graph (AM07).
 - Genotype panel samples with vg giraffe and vg call.
 - Compare with VIVC colour records.
+
+**Stepwise work plan with tools**
+
+| Step | Work | Tools (paper) | Output |
+|---|---|---|---|
+| 1 | Extract the colour locus (with flanks) from every near-complete haplotype | minimap2, samtools | Locus FASTA set |
+| 2 | Annotate VvMybA1, VvMybA2, Gret1 and known deletions on each haplotype | miniprot, BLASTN | Haplotype labels |
+| 3 | Build the locus graph | PGGB (AM07) | Locus graph |
+| 4 | Test genotyping on samples with assemblies by downsampling their reads | vg giraffe, vg call | Accuracy table |
+| 5 | Genotype the public panels (one sample per identity group from project 08) | vg giraffe, vg call (AM07) | Panel genotypes |
+| 6 | Compare with VIVC colour; logistic model of colour on the two genes | R | Fig 2 |
 
 ## Paper design and split
 
@@ -81,6 +115,10 @@ Each paper: introduction from the gap above; one results section per figure; met
 - Effort: 3–6 weeks for one person [draft]
 - Target: plant genetics journal [draft]
 
+## Suggested journal level (suggestion only)
+
+**Specialty journal (plant genetics or horticulture).** Colour-locus papers read here span *Science* (the first molecular cause), *The Plant Journal*, *Theoretical and Applied Genetics*, *Genetics*, *PLOS Genetics*, *Plant Physiology* and *Horticulture Research*. A graph genotyping study of an already explained locus fits a specialty venue such as the last group. This is a suggestion, not a decision; impact factors are not used.
+
 ## Continue on HPC
 
 Run each step as its own job, in this order. Every job writes `.DONE` or `.FAILED` and a log; the next step starts only after `.DONE`. Template and rules: [`docs/HPC_JOBS.md`](../../../../templates/HPC_JOBS.md).
@@ -99,3 +137,10 @@ Public inputs: [DS02](../../data/DS02-grapepan-v1/), [DS03](../../data/DS03-viti
 - Pelsy et al. 2015. Chromosome Replacement and Deletion Lead to Clonal Polymorphism of Berry Color in Grapevine. *PLOS Genetics*. [doi:10.1371/journal.pgen.1005081](https://doi.org/10.1371/journal.pgen.1005081)
 - Carbonell-Bejerano et al. 2017. Catastrophic Unbalanced Genome Rearrangements Cause Somatic Loss of Berry Color in Grapevine. *Plant Physiology*. [doi:10.1104/pp.17.00715](https://doi.org/10.1104/pp.17.00715)
 - Reynard et al. 2025. A divergent haplotype with a large deletion at the berry color locus causes a white-skinned phenotype in grapevine. *Horticulture Research*. [doi:10.1093/hr/uhaf069](https://doi.org/10.1093/hr/uhaf069)
+- Azuma et al. 2008. Genomic and genetic analysis of Myb-related genes that regulate anthocyanin biosynthesis in grape berry skin. *Theoretical and Applied Genetics*. [doi:10.1007/s00122-008-0840-1](https://doi.org/10.1007/s00122-008-0840-1)
+- Fournier-Level et al. 2009. Quantitative Genetic Bases of Anthocyanin Variation in Grape (Vitis vinifera L. ssp. sativa) Berry: A Quantitative Trait Locus to Quantitative Trait Nucleotide Integrated Study. *Genetics*. [doi:10.1534/genetics.109.103929](https://doi.org/10.1534/genetics.109.103929)
+- Garrison et al. 2024. Building pangenome graphs. *Nature Methods*. [doi:10.1038/s41592-024-02430-3](https://doi.org/10.1038/s41592-024-02430-3)
+- Liu et al. 2024. Grapevine pangenome facilitates trait genetics and genomic breeding. *Nature Genetics*. [doi:10.1038/s41588-024-01967-5](https://doi.org/10.1038/s41588-024-01967-5)
+- Sirén et al. 2021. Pangenomics enables genotyping of known structural variants in 5202 diverse genomes. *Science*. [doi:10.1126/science.abg8871](https://doi.org/10.1126/science.abg8871)
+- This et al. 2007. Wine grape (Vitis vinifera L.) color associates with allelic variation in the domestication gene VvmybA1. *Theoretical and Applied Genetics*. [doi:10.1007/s00122-006-0472-2](https://doi.org/10.1007/s00122-006-0472-2)
+- Walker et al. 2007. White grapes arose through the mutation of two similar and adjacent regulatory genes. *The Plant Journal*. [doi:10.1111/j.1365-313x.2006.02997.x](https://doi.org/10.1111/j.1365-313x.2006.02997.x)

@@ -17,6 +17,16 @@ The number, position and assembled length of 45S and 5S rDNA arrays across near-
 
 Catalogues every public near-complete haplotype, flags arrays that are closed or truncated, and compares positions across the family.
 
+**Background survey (literature read for this plan)**
+
+Plant 45S (18S-5.8S-26S) and 5S rDNA are tandem arrays whose number and chromosomal position have mostly been recorded by cytogenetics. The Plant rDNA database collects locus number, position and unit arrangement across land plants and relates them to chromosome number, genome size and ploidy ([Garcia et al. 2017](https://doi.org/10.1111/tpj.13442)). In *Arabidopsis thaliana* the two nucleolus organizer regions (NORs) were mapped to the tips of chromosomes 2 and 4 ([Copenhaver and Pikaard 1996](https://doi.org/10.1046/j.1365-313X.1996.09020259.x)), and copy-number variation in 45S rRNA genes explains much of the genome-size variation among accessions but is inherited unstably ([Rabanal et al. 2017](https://doi.org/10.1534/g3.117.040204)). Telomeres and rDNA arrays share chromatin features and often sit next to each other ([Dvořáčková et al. 2015](https://doi.org/10.1111/tpj.12822)).
+
+Long reads have recently made full NOR sequences possible. NOR2 of *Arabidopsis* was sequenced with long and short reads ([Sims et al. 2021](https://doi.org/10.1038/s41467-020-20728-6)), and ultralong reads gave about 5.5 and 3.9 Mbp sequences for NOR2 and NOR4 with active and silent regions mapped ([Fultz et al. 2023](https://doi.org/10.1126/sciadv.adj4509)). The maize Mo17 T2T assembly traversed every chromosome in one contig, including its repetitive regions ([Chen et al. 2023](https://doi.org/10.1038/s41588-023-01419-6)). Ribotin assembles and phases full-length rDNA units (morphs) from accurate long reads, because standard assemblers still collapse most arrays ([Rautiainen 2024](https://doi.org/10.1093/bioinformatics/btae124)).
+
+For grape, PN_T2T is gap-free ([Shi et al. 2023](https://doi.org/10.1093/hr/uhad061)) and Grapepan added T2T haplotypes of nine grapes ([Liu et al. 2024](https://doi.org/10.1038/s41588-024-01967-5)); chromosome-level genomes now cover other Vitaceae genera ([Wang et al. 2026](https://doi.org/10.1038/s41477-026-02442-1)). How completely the rDNA arrays were assembled in these haplotypes was not reported as a comparison.
+
+**Specific gap.** No public table was found that gives, for every near-complete Vitaceae haplotype, the position of each 45S and 5S array, whether it is closed by unique flanks, and its assembled length, nor one that compares assembled arrays with read-based copy number [待确认].
+
 ## Question
 
 Where are the 45S and 5S rDNA arrays in grape haplotypes, how often are they fully assembled, and are their positions conserved across Vitaceae?
@@ -30,6 +40,13 @@ No results are given here. Each row says what would count as support; the exact 
 | Fig 1. Array positions across haplotypes | Array positions are conserved within *Vitis*. | Positions compared after mapping to PN_T2T; conservation is called when a locus is present in all complete haplotypes of a species; the number of complete haplotypes (denominator) is reported per species. |
 | Fig 2. Assembled array length vs assembly technology | Array length is limited by assembly technology. | Assembled length is a lower bound, so length is modelled with censored regression (Tobit) on technology and read length; arrays closed by unique flanks on both sides are reported separately. |
 | Fig 3. Family-wide comparison | Positions differ between *Vitis* and other Vitaceae genera. | Descriptive; positions placed on the ancestral karyotype of the Vitaceae study. |
+
+**Expected results and how they will be read**
+
+- Fig 1: if the same array positions are found in all complete haplotypes of a species, positions are reported as conserved; a locus missing from some haplotypes is reported as a candidate presence/absence polymorphism only when both flanks are assembled.
+- Fig 2: a positive technology effect on assembled length (censored model) would show that assembled length is a lower bound and that copy number must come from reads; a null effect allows cautious use of assembled lengths.
+- Fig 3: if *Vitis* and other Vitaceae genera differ in array number or position on the ancestral karyotype, the difference is described, not dated.
+- A read-depth copy-number table (Step 6) is a secondary output and is reported with its error from technical replicates.
 
 ## Preregistration
 
@@ -47,6 +64,18 @@ Before any data are analysed, fill in [`docs/PREREGISTRATION.md`](../../../../te
 | [DS16](../../data/DS16-vitaceae-assembly-index/) | Index of all Vitaceae assemblies in NCBI |
 | [DS17](../../data/DS17-angiosperm-near-complete-assemblies/) | Near-complete angiosperm assemblies (comparison set) |
 
+**How each dataset is used**
+
+| Module | Role in this project |
+|---|---|
+| DS01 | PN_T2T coordinates; seed sequences for the 45S and 5S units |
+| DS02, DS03 | Near-complete *Vitis* haplotypes; long reads, where public, for read-based copy number |
+| DS05, DS08 | Other Vitaceae genera and *Muscadinia* for the family comparison |
+| DS16 | Assembly list and assembly technology |
+| DS17 | Angiosperm T2T comparison set with published NOR descriptions |
+
+New public data: none needed. Which assemblies have matching public long reads is [待确认] per accession.
+
 ## Analysis steps
 
 Shared modules, in order:
@@ -61,6 +90,18 @@ Project-specific steps:
 - Search 45S and 5S seeds with BLASTN or nhmmer (AM10).
 - Classify each array as closed (unique flank on both sides) or open.
 - Map positions to PN_T2T and to the ancestral karyotype.
+
+**Stepwise work plan with tools**
+
+| Step | Work | Tools (paper) | Output |
+|---|---|---|---|
+| 1 | Reuse the assembly manifest and QC pass list of project 01 | AM01, AM05 | Shared manifest |
+| 2 | Build 45S and 5S seed units from PN_T2T and check them against public rRNA models | BLASTN, nhmmer, barrnap | Seed set |
+| 3 | Find arrays; record start, end, unit count and orientation | BLASTN or nhmmer (AM10), TRF ([Benson 1999](https://doi.org/10.1093/nar/27.2.573)) | Array table |
+| 4 | Classify each array as closed (unique flank on both sides) or open; check flanks with Merqury k-mers | Merqury ([Rhie et al. 2020](https://doi.org/10.1186/s13059-020-02134-9)) | Closed/open flag |
+| 5 | Map array positions to PN_T2T and to the Vitaceae ancestral karyotype | minimap2, SyRI (AM06) | Position matrix |
+| 6 | Read-based copy number from long or short reads relative to single-copy genes; unit variants (morphs) where HiFi reads exist | mosdepth, ribotin | Copy-number table |
+| 7 | Censored (Tobit) model of assembled length on technology and read length | R survival or censReg | Fig 2 statistics |
 
 ## Paper design and split
 
@@ -83,6 +124,10 @@ Each paper: introduction from the gap above; one results section per figure; met
 - Effort: 3–6 weeks for one person [draft]
 - Target: cytogenetics or genome journal [draft]
 
+## Suggested journal level (suggestion only)
+
+**Specialty journal (plant cytogenetics or plant genomics).** The rDNA database and inheritance papers read here appeared in *The Plant Journal* and *G3*, and NOR assembly papers in *Nature Communications* and *Science Advances*. Those broader papers assembled NORs for the first time in a model species; a grape catalogue of assembled arrays is a descriptive extension and fits a specialty venue, or a joint repeat-array paper with project 01 (A2). This is a suggestion, not a decision; impact factors are not used.
+
 ## Continue on HPC
 
 Run each step as its own job, in this order. Every job writes `.DONE` or `.FAILED` and a log; the next step starts only after `.DONE`. Template and rules: [`docs/HPC_JOBS.md`](../../../../templates/HPC_JOBS.md).
@@ -99,3 +144,14 @@ Public inputs: [DS01](../../data/DS01-pn40024-references/), [DS02](../../data/DS
 
 - Shi et al. 2023. The complete reference genome for grapevine ( Vitis vinifera L.) genetics and breeding. *Horticulture Research*. [doi:10.1093/hr/uhad061](https://doi.org/10.1093/hr/uhad061)
 - Liu et al. 2024. Grapevine pangenome facilitates trait genetics and genomic breeding. *Nature Genetics*. [doi:10.1038/s41588-024-01967-5](https://doi.org/10.1038/s41588-024-01967-5)
+- Benson 1999. Tandem repeats finder: a program to analyze DNA sequences. *Nucleic Acids Research*. [doi:10.1093/nar/27.2.573](https://doi.org/10.1093/nar/27.2.573)
+- Chen et al. 2023. A complete telomere-to-telomere assembly of the maize genome. *Nature Genetics*. [doi:10.1038/s41588-023-01419-6](https://doi.org/10.1038/s41588-023-01419-6)
+- Copenhaver et al. 1996. RFLP and physical mapping with an rDNA‐specific endonuclease reveals that nucleolus organizer regions of Arabidopsis thaliana adjoin the telomeres on chromosomes 2 and 4. *The Plant Journal*. [doi:10.1046/j.1365-313x.1996.09020259.x](https://doi.org/10.1046/j.1365-313x.1996.09020259.x)
+- Dvořáčková et al. 2015. Chromatin dynamics of plant telomeres and ribosomal genes. *The Plant Journal*. [doi:10.1111/tpj.12822](https://doi.org/10.1111/tpj.12822)
+- Fultz et al. 2023. Sequence and epigenetic landscapes of active and silent nucleolus organizer regions in Arabidopsis. *Science Advances*. [doi:10.1126/sciadv.adj4509](https://doi.org/10.1126/sciadv.adj4509)
+- Garcia et al. 2017. Cytogenetic features of rRNA genes across land plants: analysis of the Plant rDNA database. *The Plant Journal*. [doi:10.1111/tpj.13442](https://doi.org/10.1111/tpj.13442)
+- Rabanal et al. 2017. Unstable Inheritance of 45S rRNA Genes in Arabidopsis thaliana. *G3 Genes|Genomes|Genetics*. [doi:10.1534/g3.117.040204](https://doi.org/10.1534/g3.117.040204)
+- Rautiainen 2024. Ribotin: automated assembly and phasing of rDNA morphs. *Bioinformatics*. [doi:10.1093/bioinformatics/btae124](https://doi.org/10.1093/bioinformatics/btae124)
+- Rhie et al. 2020. Merqury: reference-free quality, completeness, and phasing assessment for genome assemblies. *Genome Biology*. [doi:10.1186/s13059-020-02134-9](https://doi.org/10.1186/s13059-020-02134-9)
+- Sims et al. 2021. Sequencing of the Arabidopsis NOR2 reveals its distinct organization and tissue-specific rRNA ribosomal variants. *Nature Communications*. [doi:10.1038/s41467-020-20728-6](https://doi.org/10.1038/s41467-020-20728-6)
+- Wang et al. 2026. Chromosome-level phylogenomics and genome evolution of the grape family. *Nature Plants*. [doi:10.1038/s41477-026-02442-1](https://doi.org/10.1038/s41477-026-02442-1)

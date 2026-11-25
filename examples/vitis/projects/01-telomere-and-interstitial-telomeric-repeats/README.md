@@ -18,6 +18,16 @@ Telomere arrays are reported one assembly at a time. A comparison of telomere ar
 
 Uses every public near-complete haplotype with one scan and one QC rule, separates biology from assembly technology, and places ITS relative to known karyotype changes.
 
+**Background survey (literature read for this plan)**
+
+Most land plants carry the Arabidopsis-type telomere repeat TTTAGGG, but the motif has changed several times during plant evolution, so the motif must be checked for each lineage before scanning ([Peška et al. 2020](https://doi.org/10.3389/fpls.2020.00117)). The community database TeloBase collects confirmed telomere motifs across the tree of life ([Lyčka et al. 2024](https://doi.org/10.1093/nar/gkad672)), and T2T-Hub gathers telomere-to-telomere plant and animal genomes ([Chao et al. 2026](https://doi.org/10.1093/nar/gkag423)). Telomere length varies among natural accessions: 229 *Arabidopsis thaliana* accessions showed accession-specific lengths, and loci for the variation were mapped ([Fulcher et al. 2015](https://doi.org/10.1534/genetics.114.172163)); resequencing and restriction-fragment assays found intraspecific variation in *A. thaliana*, rice and maize, with an association signal at the telomerase (TERT) region and a link to flowering time ([Choi et al. 2021](https://doi.org/10.1093/plcell/koab022)). These studies estimated length from reads or by molecular assays, not from many near-complete haplotypes of one genus.
+
+Interstitial telomeric repeats (ITS) are short telomere-like arrays away from chromosome ends. In the *Arabidopsis* genome eight ITS of 300 to 1200 bp were identified and grouped by how degenerate their repeats are ([Uchida et al. 2002](https://doi.org/10.1266/ggs.77.63)); in vertebrates they are traced to chromosome fusions, repair of double-strand breaks and repeat expansion, and some are unstable ([Bolzán 2017](https://doi.org/10.1016/j.mrrev.2017.04.002)). Fusion-derived karyotype change has been reconstructed across Brassicaceae with chromosome-level genomes ([Jiang et al. 2025](https://doi.org/10.1038/s41467-025-59640-2)). Scanning tools now exist for assemblies and reads: tidk finds telomere repeats in genomic data ([Brown et al. 2025](https://doi.org/10.1093/bioinformatics/btaf049)), quarTeT reports telomeres and centromeric repeats in T2T workflows ([Lin et al. 2023](https://doi.org/10.1093/hr/uhad127)), and Tandem Repeats Finder remains the general tandem-repeat detector ([Benson 1999](https://doi.org/10.1093/nar/27.2.573)).
+
+In grape, PN_T2T reports telomeres at chromosome ends ([Shi et al. 2023](https://doi.org/10.1093/hr/uhad061)), the Grapepan study released T2T haplotypes of nine grapes ([Liu et al. 2024](https://doi.org/10.1038/s41588-024-01967-5)), the *Vitis* super-pangenome released 72 haplotype-resolved accessions ([Guo et al. 2025](https://doi.org/10.1038/s41588-025-02111-7)), and chromosome-level genomes now span Vitaceae ([Wang et al. 2026](https://doi.org/10.1038/s41477-026-02442-1)). The *Muscadinia* assembly supports a chromosome fusion that formed *Vitis* chr7 ([Cochetel et al. 2021](https://doi.org/10.1093/g3journal/jkab033)), which gives a known breakpoint to test ITS against.
+
+**Specific gap.** Each grape assembly reports its own telomeres. No study was found that scans all public near-complete Vitaceae haplotypes with one rule, separates assembly technology from biology, and tests whether ITS sit at known karyotype breakpoints such as the chr7 fusion point [待确认: repeat the search before writing].
+
 ## Question
 
 How much do telomere array lengths and ITS positions vary among grape haplotypes, and are ITS clusters found where karyotype changes are known?
@@ -32,6 +42,13 @@ No results are given here. Each row says what would count as support; the exact 
 | Fig 2. Telomere array length within accession (haplotype 1 vs 2) and between accessions | Between-accession variance exceeds within-accession variance after adjusting for technology. | Mixed model with technology as a fixed effect and haplotype nested in accession; variance components estimated by REML and tested by likelihood ratio or parametric bootstrap; supported if the 95% interval for the between-accession component excludes zero. |
 | Fig 3. ITS positions on chromosomes | ITS loci are enriched near known rearrangement breakpoints, including the fusion point on *Vitis* chr7, where the segments homologous to *Muscadinia* chr7 and chr20 meet (located on Cabernet Sauvignon and PN40024 chr7 by Cochetel et al. 2021). | Within-chromosome permutation against positions matched for GC content, repeat class, and chromosome position; one-sided test fixed in advance. |
 | Table 1. Per-haplotype telomere and ITS catalogue | Resource table. | Every row traceable to an accession and a tool version. |
+
+**Expected results and how they will be read**
+
+- Fig 1 gives the share of chromosome ends with a telomere array per assembly; it decides which assemblies enter Fig 2. If most ends lack arrays in an older assembly, that assembly is used only for ITS positions.
+- Fig 2: if the between-accession variance component excludes zero after technology is modelled, telomere length is treated as an accession trait worth a follow-up with read-level lengths; if not, the paper reports that assembled length mainly reflects technology.
+- Fig 3: enrichment at breakpoints would support fusion-derived ITS; no enrichment would point to other origins (repeat expansion or repair) and is reported as a negative result.
+- Table 1 is released whatever the test outcomes are.
 
 ## Preregistration
 
@@ -50,6 +67,18 @@ Before any data are analysed, fill in [`docs/PREREGISTRATION.md`](../../../../te
 | [DS16](../../data/DS16-vitaceae-assembly-index/) | Index of all Vitaceae assemblies in NCBI |
 | [DS17](../../data/DS17-angiosperm-near-complete-assemblies/) | Near-complete angiosperm assemblies (comparison set) |
 
+**How each dataset is used**
+
+| Module | Role in this project |
+|---|---|
+| DS01 | PN_T2T as the coordinate system and first positive control for telomere calls |
+| DS02, DS03, DS07 | Near-complete *V. vinifera* and wild *Vitis* haplotypes; same-accession haplotype pairs give the within-accession variance |
+| DS05, DS08 | Other Vitaceae genera and *Muscadinia*; needed for the chr7 fusion test |
+| DS16 | Assembly list and assembly technology for every Vitaceae entry |
+| DS17 | Comparison set of near-complete angiosperm assemblies with confirmed motifs |
+
+New public data: none needed. Read-level telomere length needs raw long reads; which of the assemblies above have public reads is [待确认] per accession in the module pages.
+
 ## Analysis steps
 
 Shared modules, in order:
@@ -64,6 +93,19 @@ Project-specific steps:
 - Run AM05 QC; drop assemblies that fail the preregistered completeness cut-off.
 - Run tidk and TRF (AM10) on every haplotype; record array start, end and length.
 - Map ITS positions to PN_T2T through whole-genome alignment and test enrichment at breakpoints, including the *Vitis* chr7 fusion point (shared with the centromere project).
+
+**Stepwise work plan with tools**
+
+| Step | Work | Tools (paper) | Output |
+|---|---|---|---|
+| 1 | List near-complete assemblies with technology, contig N50 and gap count | ncbi-datasets-cli, DS16 table | Assembly manifest with sha256 |
+| 2 | Assembly QC and completeness cut-off fixed in the preregistration | compleasm or BUSCO, Merqury ([Rhie et al. 2020](https://doi.org/10.1186/s13059-020-02134-9)) | Pass/fail list |
+| 3 | Confirm the motif per lineage from TeloBase before scanning | TeloBase | Motif table |
+| 4 | Scan ends and interior on both strands; record array start, end, length and purity | tidk, quarTeT, TRF | Per-haplotype array table |
+| 5 | Decoy-motif and shuffled-sequence controls; Arabidopsis T2T positive control | custom scan with fixed decoys | Control report (gate) |
+| 6 | Map ITS to PN_T2T by whole-genome alignment and place them on the Vitaceae karyotype | minimap2, SyRI (AM06) | ITS coordinates on PN_T2T |
+| 7 | Mixed model for length (technology fixed, accession and haplotype random); permutation test for ITS at breakpoints | R lme4, bootstrap | Fig 2, Fig 3 statistics |
+| 8 | Release Table 1 and all scan outputs | Zenodo deposit | Resource table |
 
 ## Paper design and split
 
@@ -87,6 +129,10 @@ Each paper: introduction from the gap above; one results section per figure; met
 - Effort: 3–6 weeks for one person [draft]
 - Target: genome or plant genetics journal [draft]
 
+## Suggested journal level (suggestion only)
+
+**Specialty journal (plant genomics or chromosome biology).** Telomere-motif and telomere-length surveys read for this plan appeared in specialty or field journals (*Frontiers in Plant Science*, *Genetics*, *The Plant Cell*), and the tool and database papers in *Bioinformatics*, *Horticulture Research* and *Nucleic Acids Research*. A descriptive cross-haplotype catalogue fits a specialty venue; a mid-field venue becomes realistic only if Fig 2 or Fig 3 gives a clear positive result. This is a suggestion, not a decision; impact factors are not used.
+
 ## Continue on HPC
 
 Run each step as its own job, in this order. Every job writes `.DONE` or `.FAILED` and a log; the next step starts only after `.DONE`. Template and rules: [`docs/HPC_JOBS.md`](../../../../templates/HPC_JOBS.md).
@@ -104,3 +150,17 @@ Public inputs: [DS01](../../data/DS01-pn40024-references/), [DS02](../../data/DS
 - Shi et al. 2023. The complete reference genome for grapevine ( Vitis vinifera L.) genetics and breeding. *Horticulture Research*. [doi:10.1093/hr/uhad061](https://doi.org/10.1093/hr/uhad061)
 - Liu et al. 2024. Grapevine pangenome facilitates trait genetics and genomic breeding. *Nature Genetics*. [doi:10.1038/s41588-024-01967-5](https://doi.org/10.1038/s41588-024-01967-5)
 - Wang et al. 2026. Chromosome-level phylogenomics and genome evolution of the grape family. *Nature Plants*. [doi:10.1038/s41477-026-02442-1](https://doi.org/10.1038/s41477-026-02442-1)
+- Benson 1999. Tandem repeats finder: a program to analyze DNA sequences. *Nucleic Acids Research*. [doi:10.1093/nar/27.2.573](https://doi.org/10.1093/nar/27.2.573)
+- Bolzán 2017. Interstitial telomeric sequences in vertebrate chromosomes: Origin, function, instability and evolution. *Mutat Res Rev Mutat Res*. [doi:10.1016/j.mrrev.2017.04.002](https://doi.org/10.1016/j.mrrev.2017.04.002)
+- Brown et al. 2025. tidk: a toolkit to rapidly identify telomeric repeats from genomic datasets. *Bioinformatics*. [doi:10.1093/bioinformatics/btaf049](https://doi.org/10.1093/bioinformatics/btaf049)
+- Chao et al. 2026. T2T-Hub: a central platform for analyzing plant and animal telomere-to-telomere genomes. *Nucleic Acids Research*. [doi:10.1093/nar/gkag423](https://doi.org/10.1093/nar/gkag423)
+- Choi et al. 2021. Natural variation in plant telomere length is associated with flowering time. *The Plant Cell*. [doi:10.1093/plcell/koab022](https://doi.org/10.1093/plcell/koab022)
+- Cochetel et al. 2021. Diploid chromosome-scale assembly of the Muscadinia rotundifolia genome supports chromosome fusion and disease resistance gene expansion during Vitis and Muscadinia divergence. *G3 Genes|Genomes|Genetics*. [doi:10.1093/g3journal/jkab033](https://doi.org/10.1093/g3journal/jkab033)
+- Fulcher et al. 2015. Genetic Architecture of Natural Variation of Telomere Length in Arabidopsis thaliana. *Genetics*. [doi:10.1534/genetics.114.172163](https://doi.org/10.1534/genetics.114.172163)
+- Guo et al. 2025. Super pangenome of Vitis empowers identification of downy mildew resistance genes for grapevine improvement. *Nature Genetics*. [doi:10.1038/s41588-025-02111-7](https://doi.org/10.1038/s41588-025-02111-7)
+- Jiang et al. 2025. Chromosome fusions shaped karyotype evolution and evolutionary relationships in the model family Brassicaceae. *Nature Communications*. [doi:10.1038/s41467-025-59640-2](https://doi.org/10.1038/s41467-025-59640-2)
+- Lin et al. 2023. quarTeT: a telomere-to-telomere toolkit for gap-free genome assembly and centromeric repeat identification. *Horticulture Research*. [doi:10.1093/hr/uhad127](https://doi.org/10.1093/hr/uhad127)
+- Lyčka et al. 2024. TeloBase: a community-curated database of telomere sequences across the tree of life. *Nucleic Acids Research*. [doi:10.1093/nar/gkad672](https://doi.org/10.1093/nar/gkad672)
+- Peska et al. 2020. Origin, Diversity, and Evolution of Telomere Sequences in Plants. *Frontiers in Plant Science*. [doi:10.3389/fpls.2020.00117](https://doi.org/10.3389/fpls.2020.00117)
+- Rhie et al. 2020. Merqury: reference-free quality, completeness, and phasing assessment for genome assemblies. *Genome Biology*. [doi:10.1186/s13059-020-02134-9](https://doi.org/10.1186/s13059-020-02134-9)
+- Uchida et al. 2002. Interstitial telomere-like repeats in the Arabidopsis thaliana genome. *Genes & Genetic Systems*. [doi:10.1266/ggs.77.63](https://doi.org/10.1266/ggs.77.63)
