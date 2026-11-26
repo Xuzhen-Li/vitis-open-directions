@@ -26,6 +26,21 @@ This is a methods survey article, not an analysis. It does not produce a new TE 
 
 How have TE detection, curation and automation methods developed, what evidence is used to judge whether an annotation is good, and what do published grape annotations show about current practice?
 
+## Scope update (2026-11-26)
+
+Added 2026-11-26. This section narrows or reframes the plan above; where the two differ, this section applies. Earlier text is kept unchanged.
+
+**New scope: a grape case study with TE_Bench only.** The broad methods survey is dropped because general surveys and benchmarks exist ([Kania et al. 2026](https://doi.org/10.1186/s13100-026-00405-z); [Ou et al. 2019](https://doi.org/10.1186/s13059-019-1905-y)). The project now benchmarks current TE annotation pipelines on PN_T2T and one wild haplotype, and measures how the choice of pipeline changes downstream grape results.
+
+Target: a first-quartile (Q1) journal in plant science, genetics or evolution. Quartile lists change each year, so the journal is chosen from the current list at submission [to confirm]. The points below are what the paper needs to compete at that level.
+
+- Recall and precision per TE class from TE_Bench simulations, plus a curated grape family set as a partial standard.
+- At least one downstream test: how TE insertion polymorphism calls (project 14) and gene PAV (project 05) change with the pipeline.
+- A recommended grape TE library released with versioned files.
+- A short comparison with the rice benchmark in the reference study below.
+
+**Fallback.** If downstream calls do not change with the pipeline, report that robustness as the main result.
+
 ## Planned figures and tables
 
 No results are given here. A survey article has no hypotheses in the test sense; each row says what the item must contain and how it is checked.
@@ -105,6 +120,24 @@ Added 2026-11-26. Each row names a risk, the evidence behind it, and a concrete 
 **What would end the idea, and the fallback.** If a comprehensive plant TE annotation survey appears before writing, the general part is redundant. The fallback is a grape case study benchmarking pipelines on PN_T2T with TE_Bench.
 
 **Journal-level realism.** Specialty mobile DNA or plant genome journal.
+
+## Reference study in another species
+
+Added 2026-11-26. Published studies that already did this kind of work in another species, to plan the grape version against. Every DOI was checked on Crossref. Figures are described, not copied; a figure redrawn for a grape paper would be marked "Redrawn after" its source. The last bullet for each study lists what a grape results section would need; it is a planning suggestion, not a finding of that study.
+
+### Ou et al. 2019
+
+- **Paper:** [Ou et al. 2019](https://doi.org/10.1186/s13059-019-1905-y), *Genome Biology* (PMC6913007). Licence CC BY 4.0: figures may be reused with credit; none are copied here.
+- **Species:** rice (curated library as the standard), with maize and *Drosophila* to test the resulting pipeline.
+- **What was done:** TE annotation programs were scored against a curated rice library for LTR retrotransposons, TIR elements, MITEs and Helitrons with sensitivity, specificity, accuracy, precision, FDR and F1; the best programs were combined into EDTA, which was then shown to be robust in maize and *Drosophila*.
+- **Figures:** Fig. 1 the scoring metrics; Fig. 2 general repeat annotators against the curated annotation; Fig. 3 LTR programs; Fig. 4 DNA transposon programs; Fig. 5 the EDTA workflow; Fig. 6 misclassification rates with curated rice and maize libraries.
+- **What its results section needed:** a curated standard, per-class metrics for every program, and a test in species not used for tuning.
+- **Grape version:** Fig. 1 to 4 equivalents for current pipelines on PN_T2T, with TE_Bench simulations as the standard and curated grape families as a partial one; the added result is how much annotation choice changes downstream calls in projects 05 and 14 (see Scope update above).
+- **Further results a grape version would need:** a curated reference annotation; a tool benchmark; a pipeline; quality checks of the library.
+
+### Q1-level bar
+
+Target: a first-quartile (Q1) journal in plant science, genetics or evolution. Quartile lists change each year, so the journal is chosen from the current list at submission [to confirm]. To compete at that level, the grape paper needs the points listed in the Scope update section above, which applies to this project.
 
 ## Rough estimates
 

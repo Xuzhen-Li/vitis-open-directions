@@ -24,6 +24,20 @@ Assembly graphs and alternative configurations are kept, not only one circle. Th
 
 Candidate questions, one to be fixed in the preregistration [待确认]: (a) a catalogue of complete mitochondrial assembly graphs across *Vitis* and *Muscadinia* from public long reads; (b) NUMT and NUPT masks on PN_T2T; (c) a maternal phylogeny from organelle sequences; (d) heteroplasmy, only after (a) and (b).
 
+## Scope update (2026-11-26)
+
+Added 2026-11-26. This section narrows or reframes the plan above; where the two differ, this section applies. Earlier text is kept unchanged.
+
+**Option (c) is dropped.** A maternal phylogeny from organelle sequences is largely covered by the chloroplast study of 409 cultivars ([Rudolf Pilih et al. 2026](https://doi.org/10.3390/ijms27031583)) and the published pan-mitogenome. The project keeps (a) a catalogue of complete mitochondrial assembly graphs across *Vitis* and *Muscadinia*, (b) NUMT and NUPT masks on PN_T2T, and (d) heteroplasmy only after (a) and (b).
+
+Target: a first-quartile (Q1) journal in plant science, genetics or evolution. Quartile lists change each year, so the journal is chosen from the current list at submission [to confirm]. The points below are what the paper needs to compete at that level.
+
+- Validated graphs and conformation groups linked to repeats, as in the reference study below.
+- Masks tested by showing how many apparent mitochondrial variants they remove in public data.
+- Heteroplasmy calls only where long reads separate nuclear copies.
+
+**Fallback.** If (d) fails the NUMT check, the paper is (a) plus (b) as a resource.
+
 ## Hypotheses, planned figures and criteria
 
 No results are given here. Each row says what would count as support; the exact thresholds go into the preregistration.
@@ -117,6 +131,43 @@ Added 2026-11-26. Each row names a risk, the evidence behind it, and a concrete 
 
 **Journal-level realism.** Specialty plant genomics or organelle journal.
 
+## Reference study in another species
+
+Added 2026-11-26. Published studies that already did this kind of work in another species, to plan the grape version against. Every DOI was checked on Crossref. Figures are described, not copied; a figure redrawn for a grape paper would be marked "Redrawn after" its source. The last bullet for each study lists what a grape results section would need; it is a planning suggestion, not a finding of that study.
+
+### Wei et al. 2022
+
+- **Paper:** [Wei et al. 2022](https://doi.org/10.1038/s41586-022-05288-7), *Nature*.
+- **Species:** Human, whole genomes of 66,083 people (53,574 in a rare disease project and 12,509 with cancer).
+- **What was done:** NUMTs absent from the reference were detected from short reads and checked with long reads; their frequencies, de novo rates, breakpoint features, methylation and selection were described. The paper notes that NUMTs can create artefacts resembling heteroplasmy and shows that concatenated NUMTs raise the chance of detecting mixed alleles that resemble heteroplasmy.
+- **Figures:** Fig. 1 NUMT detection pipeline and the NUMTs found; Fig. 2 NUMTs by population; Fig. 3 NUMT characteristics, including methylation from long reads; Fig. 4 NUMTs in cancers; Fig. 5 mechanism of NUMT formation at breakpoints; Fig. 6 molecular evolution of NUMT sequences; Extended Data Fig. 1 to 9 (cohort, populations, concatenated NUMTs and long-read validation, alignment examples, breakpoint frequencies, the cancer cohort, PRDM9 binding and NUMT age). Licence CC BY 4.0 (PMC9630118).
+- **What a grape results section would need:** a NUMT catalogue per haplotype including insertions absent from the reference; population frequencies from public resequencing; long-read validation; breakpoint features; a test of how much apparent heteroplasmy is explained by NUMT reads.
+
+### Fields et al. 2022
+
+- **Paper:** [Fields et al. 2022](https://doi.org/10.1093/gbe/evac059), *Genome Biology and Evolution*.
+- **Species:** *Arabidopsis thaliana*.
+- **What was done:** A 641 kb insertion of mitochondrial DNA (NUMT) on chromosome 2 was assembled completely, and its structure, origin and methylation were analysed.
+- **Figures:** Fig. 1 structure of the NUMT; Fig. 2 a hypothesis for its origin and evolution; Fig. 3 methylation of chromosome 2 from Nanopore reads.
+- **What a grape results section would need:** NUMT detection and boundaries; structure and origin; methylation.
+
+### Zou et al. 2025
+
+- **Paper:** [Zou et al. 2025](https://doi.org/10.1186/s13059-025-03717-0), *Genome Biology* (PMC12337487). Licence CC BY-NC-ND 4.0: figures are not copied here; any redraw is marked "Redrawn after Zou et al. 2025".
+- **Species:** *Arabidopsis thaliana*, long-read organellar assemblies from 149 samples.
+- **What was done:** dominant conformations and heteroplasmic variants of mitochondrial and plastid genomes were analysed; both share types of structural and small-scale variants, but repeat-mediated mitochondrial rearrangements evolve so fast that they are often decoupled from other variants; disrupting and rescuing organellar DNA maintenance could drive rapid change of the dominant mitochondrial conformation.
+- **Figures:** Fig. 1 the HiFi-based assembly and validation pipeline; Fig. 2 variants supporting assembly accuracy; Fig. 3 repeats as drivers of structural variation, with a network of mitochondrial conformation groups; Fig. 4 structural and small variants across 140 accessions; Fig. 5 and 6 conformations and variants in mutant rescue lines.
+- **What its results section needed:** validated assemblies, conformation groups linked to repeats, and variant classes across accessions.
+- **Grape version:** Fig. 1 to 4 equivalents for the graph catalogue (option a) and the masks (option b); Fig. 5 and 6 have no grape counterpart in public data and are not planned.
+
+### Coverage note
+
+Fields et al. 2022 covers one nuclear insertion of mitochondrial DNA (NUMT), not heteroplasmy. Wei et al. 2022 is human, not plant, but shows how NUMTs mimic heteroplasmy; the *Arabidopsis* organelle study listed here covers heteroplasmic variants in plants.
+
+### Q1-level bar
+
+Target: a first-quartile (Q1) journal in plant science, genetics or evolution. Quartile lists change each year, so the journal is chosen from the current list at submission [to confirm]. To compete at that level, the grape paper needs the points listed in the Scope update section above, which applies to this project.
+
 ## Rough estimates
 
 - Compute: small to medium [draft]
@@ -159,3 +210,6 @@ Public inputs: [DS01](../../data/DS01-pn40024-references/), [DS02](../../data/DS
 - Su et al. 2026. Himito: a graph-based toolkit for mitochondrial genome analysis using long reads. *Nature Communications*. [doi:10.1038/s41467-026-77418-y](https://doi.org/10.1038/s41467-026-77418-y)
 - Štorchová et al. 2024. Methods for assembling complex mitochondrial genomes in land plants. *Journal of Experimental Botany*. [doi:10.1093/jxb/erae034](https://doi.org/10.1093/jxb/erae034)
 - Rudolf Pilih et al. 2026. High-Resolution Chloroplast SNV Profiling of 409 Grapevine (Vitis vinifera L.) Cultivars Using Whole-Genome Shotgun Sequencing. *International Journal of Molecular Sciences*. [doi:10.3390/ijms27031583](https://doi.org/10.3390/ijms27031583)
+- Wei et al. 2022. Nuclear-embedded mitochondrial DNA sequences in 66,083 human genomes. *Nature*. [doi:10.1038/s41586-022-05288-7](https://doi.org/10.1038/s41586-022-05288-7)
+- Fields et al. 2022. Complete Sequence of a 641-kb Insertion of Mitochondrial DNA in the Arabidopsis thaliana Nuclear Genome. *Genome Biology and Evolution*. [doi:10.1093/gbe/evac059](https://doi.org/10.1093/gbe/evac059)
+- Zou et al. 2025. The evolutionary dynamics of organellar pan-genomes in Arabidopsis thaliana. *Genome Biology*. [doi:10.1186/s13059-025-03717-0](https://doi.org/10.1186/s13059-025-03717-0)

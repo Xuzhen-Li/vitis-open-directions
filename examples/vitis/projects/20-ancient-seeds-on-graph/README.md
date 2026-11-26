@@ -133,6 +133,31 @@ Added 2026-11-26. Each row names a risk, the evidence behind it, and a concrete 
 
 **Journal-level realism.** Specialty archaeogenomics or archaeological science journal.
 
+## Reference study in another species
+
+Added 2026-11-26. Published studies that already did this kind of work in another species, to plan the grape version against. Every DOI was checked on Crossref. Figures are described, not copied; a figure redrawn for a grape paper would be marked "Redrawn after" its source. The last bullet for each study lists what a grape results section would need; it is a planning suggestion, not a finding of that study.
+
+### Martiniano et al. 2020
+
+- **Paper:** [Martiniano et al. 2020](https://doi.org/10.1186/s13059-020-02160-7), *Genome Biology*.
+- **Species:** Human (ancient DNA).
+- **What was done:** Ancient DNA reads were mapped to a 1000 Genomes variation graph with vg and compared with linear mapping for reference bias and indel calling.
+- **Figures:** Fig. 1 a sequence tube map of linear and graph mapping; Fig. 2 vg compared with bwa on simulated ancient DNA; Fig. 3 downsampling of high-coverage ancient samples; Fig. 4 indel calling.
+- **What a grape results section would need:** reference bias measured by simulation; graph mapping of real samples; downsampling; population genetic analysis.
+
+### Kistler et al. 2020
+
+- **Paper:** [Kistler et al. 2020](https://doi.org/10.1073/pnas.2015560117), *PNAS* (PMC7777085). Licence CC BY-NC-ND 4.0: figures are not copied here; any redraw is marked "Redrawn after Kistler et al. 2020".
+- **Species:** maize, archaeological cobs from El Gigante rock shelter (Honduras) compared with modern and other ancient maize.
+- **What was done:** genome-wide data from archaeological maize suggested that improved South American varieties were reintroduced to Central America.
+- **Figures:** Fig. 1 the cobs and a map; Fig. 2 genetic affinities (outgroup f3 statistics) and domestication status; Fig. 3 an admixture graph and genome size features.
+- **What its results section needed:** affinity statistics that work at low coverage, a domestication status read from known loci, and an admixture graph with a reported fit.
+- **Grape version:** the same three figures for ancient grape seeds, with graph alignment as the added step; affinity statistics are compared between linear and graph alignment to show whether reference bias changes the result (risk above).
+
+### Q1-level bar
+
+Target: a first-quartile (Q1) journal in plant science, genetics or evolution. Quartile lists change each year, so the journal is chosen from the current list at submission [to confirm]. To compete at that level, the grape paper needs: graph versus linear mapping on real ancient grape samples with downsampling and simulated reference bias, and a historical conclusion that is either confirmed or changed by the better mapping, as in the human ancient DNA study.
+
 ## Rough estimates
 
 - Compute: small to medium [draft]
@@ -171,3 +196,4 @@ Public inputs: [DS14](../../data/DS14-ancient-grape-seeds/), [DS02](../../data/D
 - Günther et al. 2019. The presence and impact of reference bias on population genomic studies of prehistoric human populations. *PLOS Genetics*. [doi:10.1371/journal.pgen.1008302](https://doi.org/10.1371/journal.pgen.1008302)
 - Garrido Marques et al. 2024. Assessing the impact of post-mortem damage and contamination on imputation performance in ancient DNA. *Scientific Reports*. [doi:10.1038/s41598-024-56584-3](https://doi.org/10.1038/s41598-024-56584-3)
 - Erven et al. 2024. A High-Coverage Mesolithic Aurochs Genome and Effective Leveraging of Ancient Cattle Genomes Using Whole Genome Imputation. *Molecular Biology and Evolution*. [doi:10.1093/molbev/msae076](https://doi.org/10.1093/molbev/msae076)
+- Kistler et al. 2020. Archaeological Central American maize genomes suggest ancient gene flow from South America. *Proceedings of the National Academy of Sciences*. [doi:10.1073/pnas.2015560117](https://doi.org/10.1073/pnas.2015560117)

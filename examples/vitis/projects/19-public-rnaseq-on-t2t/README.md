@@ -33,6 +33,21 @@ Methods from human genetics set the standard: the GTEx atlas mapped eQTL and sQT
 
 What does a uniform T2T expression atlas show, are sQTL detectable in grape, and how common is allele-specific expression in heterozygous cultivars?
 
+## Scope update (2026-11-26)
+
+Added 2026-11-26. This section narrows or reframes the plan above; where the two differ, this section applies. Earlier text is kept unchanged.
+
+**What grape adds beyond existing work.** A drought atlas already re-analysed public datasets on the T2T assembly ([Vidal Valenzuela et al. 2025](https://doi.org/10.1101/2025.03.31.646369), preprint). This project adds what an atlas does not give: haplotype-aware allele-specific expression in heterozygous cultivars and the first sQTL in grape, both on PN_T2T, across all conditions rather than drought alone.
+
+Target: a first-quartile (Q1) journal in plant science, genetics or evolution. Quartile lists change each year, so the journal is chosen from the current list at submission [to confirm]. The points below are what the paper needs to compete at that level.
+
+- The atlas is a supporting resource; the main results are allele-specific expression and sQTL.
+- Mapping-bias control for allele-specific expression (both haplotypes as references, or WASP-type filtering).
+- Replication of sQTL across independent studies, with rootstock and site as covariates where recorded.
+- Released re-quantified tables with sample metadata.
+
+**Fallback.** If too few genotyped samples support sQTL, the paper reports allele-specific expression with the atlas.
+
 ## Hypotheses, planned figures and criteria
 
 No results are given here. Each row says what would count as support; the exact thresholds go into the preregistration.
@@ -146,6 +161,32 @@ Added 2026-11-26. Each row names a risk, the evidence behind it, and a concrete 
 
 **Journal-level realism.** Specialty plant genomics; mid-field only with a solid sQTL set.
 
+## Reference study in another species
+
+Added 2026-11-26. Published studies that already did this kind of work in another species, to plan the grape version against. Every DOI was checked on Crossref. Figures are described, not copied; a figure redrawn for a grape paper would be marked "Redrawn after" its source. The last bullet for each study lists what a grape results section would need; it is a planning suggestion, not a finding of that study.
+
+### Noble et al. 2020
+
+- **Paper:** [Noble et al. 2020](https://doi.org/10.3389/fpls.2020.00590), *Frontiers in Plant Science*.
+- **Note:** Method reference only: the journal is not first-quartile.
+- **Species:** *Populus deltoides*, 268 individuals.
+- **What was done:** Alternative splicing events and new isoforms were identified in 268 genotyped individuals; heritability was estimated, and isoform eQTL and splicing QTL were mapped.
+- **Figures:** Fig. 1 abundance of splicing event types; Fig. 2 heritability of isoform expression; Fig. 3 presence and absence of isoforms in the population; Fig. 4 frequency and heritability of the main isoform; Fig. 5 heritability of isoforms with and without an isoform eQTL; Fig. 6 Venn diagram of SNPs shared by cis and trans isoform eQTL and splicing QTL.
+- **What a grape results section would need:** splicing events and new isoforms; heritability; isoform eQTL and splicing QTL (cis and trans); effects on protein domains and miRNA sites.
+
+### Yumiya et al. 2025
+
+- **Paper:** [Yumiya et al. 2025](https://doi.org/10.3390/life15071088), *Life* (PMC12300767). Licence CC BY 4.0: figures may be reused with credit; none are copied here.
+- **Species:** rice, tomato and soybean, each with wild relatives.
+- **What was done:** a meta-analysis of public expression data compared domesticated species with presumed ancestors (21 pairs for rice, 36 for tomato, 56 for soybean); genes for osmotic, drought and wound stress tolerance were up in wild relatives.
+- **Figures:** Fig. 1 collection and manual curation of public data; Fig. 2 samples and tissues per crop; Fig. 3 to 5 enrichment and per-gene scores per crop; Fig. 6 overlap of top genes across crops.
+- **What its results section needed:** a documented curation workflow, sample and tissue counts, a per-gene score that pairs samples within studies, and an overlap test across groups.
+- **Grape version and what grape adds:** Fig. 1 and 2 equivalents for all public grape RNA-seq, re-quantified on PN_T2T; grape adds haplotype-aware allele-specific expression and sQTL, which expression meta-analyses and the drought atlas do not give (see Scope update above).
+
+### Q1-level bar
+
+Target: a first-quartile (Q1) journal in plant science, genetics or evolution. Quartile lists change each year, so the journal is chosen from the current list at submission [to confirm]. To compete at that level, the grape paper needs the points listed in the Scope update section above, which applies to this project.
+
 ## Rough estimates
 
 - Compute: medium to large [draft]
@@ -191,3 +232,5 @@ Public inputs: [DS15](../../data/DS15-rnaseq-public-vitis/), [DS01](../../data/D
 - Zhang et al. 2026. Phased T2T genome of a tetraploid grapevine reveals segmental allopolyploid origin and allele-specific alternative splicing during fruit development. *Plant Physiology*. [doi:10.1093/plphys/kiag330](https://doi.org/10.1093/plphys/kiag330)
 - Harris et al. 2023. Grapevine scion gene expression is driven by rootstock and environment interaction. *BMC Plant Biology*. [doi:10.1186/s12870-023-04223-w](https://doi.org/10.1186/s12870-023-04223-w)
 - Vidal Valenzuela et al. 2025. Developing the Grapevine Hydric Stress Atlas: A Meta-Analysis Resource for Exploring transcriptome Responses to Drought. *bioRxiv* (preprint). [doi:10.1101/2025.03.31.646369](https://doi.org/10.1101/2025.03.31.646369)
+- Noble et al. 2020. The Genetic Regulation of Alternative Splicing in Populus deltoides. *Frontiers in Plant Science*. [doi:10.3389/fpls.2020.00590](https://doi.org/10.3389/fpls.2020.00590)
+- Yumiya et al. 2025. Meta-Analysis of Wild Relatives and Domesticated Species of Rice, Tomato, and Soybean Using Publicly Available Transcriptome Data. *Life*. [doi:10.3390/life15071088](https://doi.org/10.3390/life15071088)
