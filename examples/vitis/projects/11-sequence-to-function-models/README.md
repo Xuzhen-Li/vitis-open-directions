@@ -114,6 +114,29 @@ Each paper: introduction from the gap above; one results section per figure; met
 - Risk: Tissue mixing in public RNA-seq adds noise.
 - Novelty: checked against the existing work above (Crossref-verified DOIs). Repeat the search before writing; anything marked [待确认] is not yet verified.
 
+## Risks and how to handle them
+
+Added 2026-11-26. Each row names a risk, the evidence behind it, and a concrete check or fallback. Sources cited here were read for this section and their DOIs were checked on Crossref; preprints are marked.
+
+| Area | Risk | Check or mitigation |
+|---|---|---|
+| Data access and licence | The broad RNA-seq set (DS15) is an open query ([data/DOWNLOADS.md](../../data/DOWNLOADS.md)). A grape expression platform exists (VitExpress, [Djari et al. 2024](https://doi.org/10.1073/pnas.2403750121)), but its bulk-download terms were not checked. | Build labels from INSDC runs; use platform data only after its terms are confirmed. |
+| Homology leakage | Performance on test sequences rises with their similarity to training sequences, so homology between splits inflates scores ([Rafi et al. 2025](https://doi.org/10.1101/2025.01.22.634321), preprint). | Split train and test by gene family across all species; report scores by similarity bins. |
+| Pretraining leakage | Plant DNA language models are pretrained on many angiosperm genomes (16 for PlantCaduceus, [Zhai et al. 2025](https://doi.org/10.1073/pnas.2421738122); 65 for PlantCAD2, [Zhai et al. 2026](https://doi.org/10.1016/j.xgen.2026.101329)). If grape is among them, grape tests are not out-of-species. | Check each model training list for *Vitis* before testing; report grape results separately for models that saw grape. |
+| Allelic variation | A model built on PlantCaduceus embeddings predicted between-gene differences well but showed a persistent gap for allelic variation ([Vahedi Torghabeh et al. 2026](https://doi.org/10.64898/2026.02.27.708524), preprint). | Keep variant-level claims to a separate test on allele-specific expression from project 19; do not extend gene-level accuracy to alleles. |
+| Pooling across studies | Tissue and study effects in public RNA-seq add label noise (see above). | Fit labels within tissue; compare a model trained on one tissue with one trained on pooled data. |
+| Sample size and power | Each gene gives one label per tissue, but genes in one family are not independent; the effective sample is closer to the number of gene families. | Report confidence intervals by bootstrapping families. |
+| Computing cost | PlantCAD2 has 676 million parameters ([Zhai et al. 2026](https://doi.org/10.1016/j.xgen.2026.101329)); full fine-tuning needs GPUs. | Use parameter-efficient fine-tuning, as PlantCAD2 did, or frozen embeddings with a small head. |
+| Alternative methods and sensitivity | Deep models may not beat simple features. | Always report a baseline on k-mer and UTR-length features. |
+
+**Recent and competing work (search of 2024 to 2026 literature on 2026-11-26)**
+
+- Cross-species expression prediction is now well covered: models for four plants with strong cross-species performance ([Peleke et al. 2024](https://doi.org/10.1038/s41467-024-47744-0)), PlantCAD2 with cross-species expression tasks ([Zhai et al. 2026](https://doi.org/10.1016/j.xgen.2026.101329)), and a 17-species model tested on unseen gene families ([Vahedi Torghabeh et al. 2026](https://doi.org/10.64898/2026.02.27.708524), preprint). A grape transfer test is a case study, not a new method.
+
+**What would end the idea, and the fallback.** If no model beats the simple baseline on held-out grape families, the transfer question has a negative answer. That is still publishable as a benchmark note with the leakage controls above.
+
+**Journal-level realism.** Given how much is now published, a grape benchmark fits a specialty computational or plant genomics journal; mid-field needs a positive allele-level result.
+
 ## Rough estimates
 
 - Compute: large (GPU) [draft]
@@ -148,3 +171,6 @@ Public inputs: [DS01](../../data/DS01-pn40024-references/), [DS15](../../data/DS
 - Djari et al. 2024. Haplotype-resolved genome assembly and implementation of VitExpress, an open interactive transcriptomic platform for grapevine. *Proceedings of the National Academy of Sciences*. [doi:10.1073/pnas.2403750121](https://doi.org/10.1073/pnas.2403750121)
 - Fasoli et al. 2012. The Grapevine Expression Atlas Reveals a Deep Transcriptome Shift Driving the Entire Plant into a Maturation Program. *The Plant Cell*. [doi:10.1105/tpc.112.100230](https://doi.org/10.1105/tpc.112.100230)
 - Zrimec et al. 2020. Deep learning suggests that gene expression is encoded in all parts of a co-evolving interacting gene regulatory structure. *Nature Communications*. [doi:10.1038/s41467-020-19921-4](https://doi.org/10.1038/s41467-020-19921-4)
+- Rafi et al. 2025. Characterizing homology-induced data leakage and memorization in genome-trained sequence models. *bioRxiv* (preprint). [doi:10.1101/2025.01.22.634321](https://doi.org/10.1101/2025.01.22.634321)
+- Zhai et al. 2026. PlantCAD2: A DNA foundation model for interpreting genomes across flowering plants. *Cell Genomics*. [doi:10.1016/j.xgen.2026.101329](https://doi.org/10.1016/j.xgen.2026.101329)
+- Vahedi Torghabeh et al. 2026. Genomic language models improve cross-species gene expression prediction and accurately capture regulatory variant effects in Brachypodium mutant lines. *bioRxiv* (preprint). [doi:10.64898/2026.02.27.708524](https://doi.org/10.64898/2026.02.27.708524)

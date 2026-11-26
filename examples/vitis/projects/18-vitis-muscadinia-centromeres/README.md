@@ -118,6 +118,29 @@ Each paper: introduction from the gap above; one results section per figure; met
 - Risk: TRASH may not install; quarTeT is the fallback.
 - Novelty: checked against the existing work above (Crossref-verified DOIs). Repeat the search before writing; anything marked [待确认] is not yet verified.
 
+## Risks and how to handle them
+
+Added 2026-11-26. Each row names a risk, the evidence behind it, and a concrete check or fallback. Sources cited here were read for this section and their DOIs were checked on Crossref; preprints are marked.
+
+| Area | Risk | Check or mitigation |
+|---|---|---|
+| Data access and licence | Several further *Muscadinia* assemblies are listed in DS08 beyond Trayshed and Carlos ([data/DOWNLOADS.md](../../data/DOWNLOADS.md)). | Rank all *Muscadinia* assemblies by centromere completeness before choosing; prefer gap-free chromosomes. |
+| Satellite is not centromere | Centromere identity is set epigenetically by CENH3, and long-read assemblies have prompted a reassessment of how stable centromere function is ([Naish 2024](https://doi.org/10.1111/nph.20149)). | Call centromeres from CENH3 data where they exist; elsewhere label positions as satellite arrays, not centromeres. |
+| Satellite-free centromeres | In *Nicotiana benthamiana*, 11 of 19 centromeres had megabase satellite arrays and the rest were satellite-free and invaded by Gypsy elements ([Chen et al. 2024](https://doi.org/10.1038/s41477-024-01849-y)). | Search for centromere candidates with TE and CENH3 signals as well as satellites, so satellite-free centromeres are not missed. |
+| Completeness | Recent T2T grape assemblies predict all centromeres, for example Thompson Seedless ([Wang et al. 2024](https://doi.org/10.1093/hr/uhad260)). Gapped *Muscadinia* assemblies may not. | Report the fusion-point test only for assemblies that are gap-free across chr7 and its *Muscadinia* homologues. |
+| Karyotype reference | Ancestral Vitaceae karyotypes have been reconstructed from 29 assemblies, with conserved karyotypes in *Vitis* ([Wang et al. 2026](https://doi.org/10.64898/2026.04.20.719760), preprint). | Use this reconstruction to choose which ancestral chromosomes fused; check its full text for any centromere analysis at the fusion point before writing. |
+| Clones, synonyms and pedigree | Repeated assemblies of one genotype are not independent evidence. | Count one assembly per genotype for within-*Vitis* variation. |
+| Computing cost | Small to moderate (satellite discovery and alignment of arrays). | None beyond timing one genome. |
+| Alternative methods and sensitivity | TRASH may not install (see above). | quarTeT as fallback; compare both on PN_T2T. |
+
+**Recent and competing work (search of 2024 to 2026 literature on 2026-11-26)**
+
+- The Vitaceae karyotype study above is the closest new work. No study of *Muscadinia* centromere satellites or of the chr7 fusion point was found.
+
+**What would end the idea, and the fallback.** If no *Muscadinia* assembly is gap-free across the relevant centromeres, the two-genus comparison is not possible. The fallback is a within-*Vitis* centromere satellite survey with the fusion test on *Vitis* only.
+
+**Journal-level realism.** Mid-field chromosome biology or plant genomics if the fusion test works; specialty otherwise.
+
 ## Rough estimates
 
 - Compute: small to medium [draft]
@@ -157,3 +180,7 @@ Public inputs: [DS01](../../data/DS01-pn40024-references/), [DS02](../../data/DS
 - Wlodzimierz et al. 2023. TRASH: Tandem Repeat Annotation and Structural Hierarchy. *Bioinformatics*. [doi:10.1093/bioinformatics/btad308](https://doi.org/10.1093/bioinformatics/btad308)
 - Xin et al. 2022. A genome for Cissus illustrates features underlying its evolutionary success in dry savannas. *Horticulture Research*. [doi:10.1093/hr/uhac208](https://doi.org/10.1093/hr/uhac208)
 - Zhang et al. 2023. De novo reconstruction of satellite repeat units from sequence data. *Genome Research*. [doi:10.1101/gr.278005.123](https://doi.org/10.1101/gr.278005.123)
+- Naish 2024. Bridging the gap: unravelling plant centromeres in the telomere‐to‐telomere era. *New Phytologist*. [doi:10.1111/nph.20149](https://doi.org/10.1111/nph.20149)
+- Chen et al. 2024. The complete genome assembly of Nicotiana benthamiana reveals the genetic and epigenetic landscape of centromeres. *Nature Plants*. [doi:10.1038/s41477-024-01849-y](https://doi.org/10.1038/s41477-024-01849-y)
+- Wang et al. 2024. Telomere-to-telomere and gap-free genome assembly of a susceptible grapevine species (Thompson Seedless) to facilitate grape functional genomics. *Horticulture Research*. [doi:10.1093/hr/uhad260](https://doi.org/10.1093/hr/uhad260)
+- Wang et al. 2026. Origin and evolution of grapevine genomes. *bioRxiv* (preprint). [doi:10.64898/2026.04.20.719760](https://doi.org/10.64898/2026.04.20.719760)

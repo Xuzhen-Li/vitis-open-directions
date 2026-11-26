@@ -127,6 +127,30 @@ Each paper: introduction from the gap above; one results section per figure; met
 - Risk: Novelty is judged within grape; whether ARG-based domestication dating with hundreds of samples exists in other crops has not been checked [待确认].
 - Novelty: checked against the existing work above (Crossref-verified DOIs). Repeat the search before writing; anything marked [待确认] is not yet verified.
 
+## Risks and how to handle them
+
+Added 2026-11-26. Each row names a risk, the evidence behind it, and a concrete check or fallback. Sources cited here were read for this section and their DOIs were checked on Crossref; preprints are marked.
+
+| Area | Risk | Check or mitigation |
+|---|---|---|
+| Data access and licence | Runs of the 3,525-accession panel (DS11) were blocked on the public listing check ([data/DOWNLOADS.md](../../data/DOWNLOADS.md)); INSDC panels (DS10, DS12) are open ([INSDC 2024](https://doi.org/10.1093/nar/gkae1058)). | Plan sample sizes on INSDC panels only; add DS11 only if access is obtained. |
+| Clonal propagation and generation time | Vegetative propagation was in use by the mid-Iron Age, and one medieval pip was identical to modern Pinot noir, about 600 years of clonal continuity ([Noraz et al. 2026](https://doi.org/10.1038/s41467-026-70166-z)). Cloning raises heterozygosity and gives a double U-shaped site frequency spectrum ([Xiao et al. 2025](https://doi.org/10.1038/s41467-025-56817-7)). Calendar years then map poorly onto sexual generations. | Date wild lineages separately; treat each cultivar as sampled at its sexual origin; report dates across a range of generation times rather than one value. |
+| Tree shape | ARG methods (SINGER, Relate, tsinfer) lose accuracy as genealogies become imbalanced, as under positive selection or skewed reproductive success ([Pouyet et al. 2026](https://doi.org/10.1093/gbe/evag215)); widespread use of a few elite parents may produce such imbalance. | Simulate data with imbalanced genealogies matched to grape and measure date bias before reading real dates. |
+| Phasing errors | Four ARG methods degraded only slightly with computational phasing under the demographies tested ([Wang et al. 2025](https://doi.org/10.1101/2025.11.24.690249), preprint). | Still test on T2T haplotypes as phase truth: compare dates from true phase and from statistical phase. |
+| Reference bias and genome choice | The choice of reference changes outlier windows even when genome-wide summaries agree ([Thorburn et al. 2023](https://doi.org/10.1111/1755-0998.13838)). | Repeat selected-allele ages on a second reference (PN40024.v4 or a wild haplotype). |
+| Pooling across studies | Panels differ in depth and calling. | Joint calling from raw reads; exclude sites with panel-specific missingness. |
+| Clones, synonyms and pedigree | Duplicate genotypes act as identical haplotypes and distort ARG branch lengths. | Use one sample per genotype (project 08). |
+| Computing cost | SINGER samples genealogies by Bayesian inference for hundreds of genomes ([Deng et al. 2025](https://doi.org/10.1038/s41588-025-02317-9)); its run time on grape data is unknown. | Run Relate or tsinfer on all chromosomes first; run SINGER on two chromosomes for comparison. |
+
+**Recent and competing work (search of 2024 to 2026 literature on 2026-11-26)**
+
+- ARG inference has been used in maize and teosinte to build recombination maps and to show a 12% genome-wide rise in recombination during domestication ([Epstein et al. 2026](https://doi.org/10.1073/pnas.2534336123)). ARGs in crop domestication are therefore not new; a grape ARG with clonal calibration is.
+- Ancient DNA now gives direct dates for domesticated grapes in France by about 625 to 500 BCE ([Noraz et al. 2026](https://doi.org/10.1038/s41467-026-70166-z)). These dates are an external check on any ARG-based timing.
+
+**What would end the idea, and the fallback.** If dates under plausible mutation rates and generation times span most of the Holocene, the timing question has no answer. The fallback is the methods-only paper on calibration under clonal propagation (see above).
+
+**Journal-level realism.** Mid-field genetics or molecular evolution. Ancient DNA results already constrain timing, so a broad venue would need ARG dates that add something the archaeological record cannot.
+
 ## Rough estimates
 
 - Compute: large [draft]
@@ -171,3 +195,10 @@ Public inputs: [DS10](../../data/DS10-reseq-472-vitis/), [DS11](../../data/DS11-
 - Nielsen et al. 2025. Inference and applications of ancestral recombination graphs. *Nat Rev Genet*. [doi:10.1038/s41576-024-00772-4](https://doi.org/10.1038/s41576-024-00772-4)
 - Speidel et al. 2019. A method for genome-wide genealogy estimation for thousands of samples. *Nature Genetics*. [doi:10.1038/s41588-019-0484-x](https://doi.org/10.1038/s41588-019-0484-x)
 - Wohns et al. 2022. A unified genealogy of modern and ancient genomes. *Science*. [doi:10.1126/science.abi8264](https://doi.org/10.1126/science.abi8264)
+- INSDC 2024. The international nucleotide sequence database collaboration (INSDC): enhancing global participation. *Nucleic Acids Research*. [doi:10.1093/nar/gkae1058](https://doi.org/10.1093/nar/gkae1058)
+- Noraz et al. 2026. Ancient DNA reveals 4000 years of grapevine diversity, viticulture and clonal propagation in France. *Nature Communications*. [doi:10.1038/s41467-026-70166-z](https://doi.org/10.1038/s41467-026-70166-z)
+- Xiao et al. 2025. Impacts of reproductive systems on grapevine genome and breeding. *Nature Communications*. [doi:10.1038/s41467-025-56817-7](https://doi.org/10.1038/s41467-025-56817-7)
+- Pouyet et al. 2026. Comparing ARG Inference Methods Under Transmission of Reproductive Success: Tree Imbalance Matters. *Genome Biology and Evolution*. [doi:10.1093/gbe/evag215](https://doi.org/10.1093/gbe/evag215)
+- Wang et al. 2025. Robustness of Ancestral Recombination Graph Inference Tools to Phasing Errors. *bioRxiv* (preprint). [doi:10.1101/2025.11.24.690249](https://doi.org/10.1101/2025.11.24.690249)
+- Thorburn et al. 2023. Origin matters: Using a local reference genome improves measures in population genomics. *Molecular Ecology Resources*. [doi:10.1111/1755-0998.13838](https://doi.org/10.1111/1755-0998.13838)
+- Epstein et al. 2026. Evolution of maize recombination landscape during domestication. *Proceedings of the National Academy of Sciences*. [doi:10.1073/pnas.2534336123](https://doi.org/10.1073/pnas.2534336123)

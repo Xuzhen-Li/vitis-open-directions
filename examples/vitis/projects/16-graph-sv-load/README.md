@@ -126,6 +126,28 @@ Each paper: introduction from the gap above; one results section per figure; met
 - Risk: Whether public long-read data from clones are sufficient for the clone-specific class is not yet verified [待确认].
 - Novelty: checked against the existing work above (Crossref-verified DOIs). Repeat the search before writing; anything marked [待确认] is not yet verified.
 
+## Risks and how to handle them
+
+Added 2026-11-26. Each row names a risk, the evidence behind it, and a concrete check or fallback. Sources cited here were read for this section and their DOIs were checked on Crossref; preprints are marked.
+
+| Area | Risk | Check or mitigation |
+|---|---|---|
+| Data access and licence | The trio reads and assemblies of DS18 are available, but parts of one phased epigenomics study were blocked on the check, and one clone study is still to be confirmed ([data/DOWNLOADS.md](../../data/DOWNLOADS.md)). | Plan the clonal class on confirmed long-read clone data only. |
+| SV calling variability | SV detection varies with caller, reference, alignment strategy and coverage ([Nardone et al. 2025](https://doi.org/10.3390/biomedicines13081949)). | Require two callers to agree, validate a random sample on long reads, and report the false discovery estimate. |
+| Clonal SVs need long reads | Long reads found eleven large somatic SVs in one Tempranillo clone ([Alañón-Sánchez et al. 2026](https://doi.org/10.1186/s12870-026-08212-7)); SVs among Pinot noir clones lie mostly in repeats and centromeric repeats ([Callipo et al. 2026](https://doi.org/10.1186/s13059-026-04184-x)). | Build the clone-specific class from long-read data only; compare its genomic context with inherited SVs inside the same repeat classes. |
+| Reference bias and genome choice | Graph genotyping favours old shared SVs (see above). | Report the graph-based and assembly-based classes separately. |
+| Clones, synonyms and pedigree | Duplicate genotypes and relatives inflate SV frequencies. | One sample per genotype (project 08). |
+| Sample size and power | Few cultivars have both long-read clone data and a trio. | State the number of cultivars in each class before testing; descriptive below the minimum. |
+| Computing cost | Long-read SV calling is moderate; graph genotyping of panels is larger. | Run the long-read part first; it decides whether the panel part is needed. |
+
+**Recent and competing work (search of 2024 to 2026 literature on 2026-11-26)**
+
+- Across 22 genomes of several crops, hemizygous genes averaged 8.7% in outcrossed and 13.8% in clonal samples, sat more often in centromeric regions, showed weaker purifying selection and lower expression ([Peng et al. 2025](https://doi.org/10.1073/pnas.2422487122)). The clonal-versus-sexual contrast and the genomic context of hemizygous genes are therefore partly answered. What remains is the split, within grape, between hemizygous SVs inherited at the sexual origin and those that arose between clones.
+
+**What would end the idea, and the fallback.** If the inherited and clonal classes cannot be separated with the available trios and clone long reads, the main contrast cannot be tested. The fallback is a grape extension of the cross-crop hemizygosity result with the recombination analysis.
+
+**Journal-level realism.** The cross-crop result appeared in *PNAS*; a grape-specific follow-up fits mid-field unless the inherited versus clonal contrast is clear and new.
+
 ## Rough estimates
 
 - Compute: medium [draft]
@@ -168,3 +190,5 @@ Public inputs: [DS02](../../data/DS02-grapepan-v1/), [DS03](../../data/DS03-viti
 - Ebler et al. 2022. Pangenome-based genome inference allows efficient and accurate genotyping across a wide spectrum of variant classes. *Nature Genetics*. [doi:10.1038/s41588-022-01043-w](https://doi.org/10.1038/s41588-022-01043-w)
 - Moyers et al. 2018. Genetic Costs of Domestication and Improvement. *Journal of Heredity*. [doi:10.1093/jhered/esx069](https://doi.org/10.1093/jhered/esx069)
 - Sirén et al. 2021. Pangenomics enables genotyping of known structural variants in 5202 diverse genomes. *Science*. [doi:10.1126/science.abg8871](https://doi.org/10.1126/science.abg8871)
+- Nardone et al. 2025. A Hitchhiker Guide to Structural Variant Calling: A Comprehensive Benchmark Through Different Sequencing Technologies. *Biomedicines*. [doi:10.3390/biomedicines13081949](https://doi.org/10.3390/biomedicines13081949)
+- Alañón-Sánchez et al. 2026. A complex reciprocal translocation is linked to reduced gamete viability in a loose-bunch grapevine somatic variant. *BMC Plant Biology*. [doi:10.1186/s12870-026-08212-7](https://doi.org/10.1186/s12870-026-08212-7)

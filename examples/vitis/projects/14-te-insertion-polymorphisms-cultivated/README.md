@@ -116,6 +116,29 @@ Each paper: introduction from the gap above; one results section per figure; met
 - Risk: Graph genotyping of insertions inside repeats is less accurate.
 - Novelty: checked against the existing work above (Crossref-verified DOIs). Repeat the search before writing; anything marked [待确认] is not yet verified.
 
+## Risks and how to handle them
+
+Added 2026-11-26. Each row names a risk, the evidence behind it, and a concrete check or fallback. Sources cited here were read for this section and their DOIs were checked on Crossref; preprints are marked.
+
+| Area | Risk | Check or mitigation |
+|---|---|---|
+| Data access and licence | Graphs, assemblies and INSDC resequencing panels are listed as available ([data/DOWNLOADS.md](../../data/DOWNLOADS.md)); INSDC data are free and open ([INSDC 2024](https://doi.org/10.1093/nar/gkae1058)). | Freeze the run list. |
+| Method failure | Graph-based TIP pipelines report high precision and recall on simulated and real data ([Groza et al. 2024](https://doi.org/10.1038/s41467-024-53294-2)), but performance inside repeats is lower (see above), and short-read tools differ ([Chu et al. 2021](https://doi.org/10.1038/s41467-021-24041-8)). | Use GraffiTE for graph genotyping and one read-based caller (xTea) as a cross-check; measure concordance against assemblies of the same accessions. |
+| Graph construction | Graph builders differ in completeness and SV fidelity ([Kopalli et al. 2025](https://doi.org/10.1093/gigascience/giaf121)). | Report which builder produced the graph and repeat key counts on a second graph. |
+| Library dependence | Family calls depend on the TE library (see above). | Fix the library version (project 25 output or a published library) and report counts by library. |
+| Clones, synonyms and pedigree | SVs among Pinot noir clones lie mostly in repetitive DNA ([Callipo et al. 2026](https://doi.org/10.1186/s13059-026-04184-x)); some TIPs may be clonal rather than inherited. | Collapse clones to one genotype for population frequencies; analyse clone-specific TIPs separately. |
+| Reference bias and genome choice | Insertions absent from the graph cannot be genotyped from short reads. | Report how many TIPs are discoverable only from assemblies. |
+| Sample size and power | Age and frequency of young families need many carriers. | Fix a minimum allele count for family-level statistics. |
+| Computing cost | Graph genotyping of hundreds of samples is the main cost. | Time ten samples first. |
+
+**Recent and competing work (search of 2024 to 2026 literature on 2026-11-26)**
+
+- In rice, a pangenome graph and 165 resequenced accessions gave 30,316 TIP sites and TIP-GWAS hits for cold tolerance ([Qian et al. 2025](https://doi.org/10.1038/s41467-025-62887-4)). Graph TIP studies in crops are established; for cultivated grape no such study was found.
+
+**What would end the idea, and the fallback.** If concordance in repeats is too low, short-read TIPs are not reliable. The fallback is a TIP catalogue from assemblies only, with frequencies from the assembled haplotypes.
+
+**Journal-level realism.** Mid-field genome biology; the rice study shows that a broad venue expects a trait link, which this plan does not promise.
+
 ## Rough estimates
 
 - Compute: medium [draft]
@@ -158,3 +181,9 @@ Public inputs: [DS02](../../data/DS02-grapepan-v1/), [DS03](../../data/DS03-viti
 - Sierra et al. 2024. Identification of transposable element families from pangenome polymorphisms. *Mobile DNA*. [doi:10.1186/s13100-024-00323-y](https://doi.org/10.1186/s13100-024-00323-y)
 - Vendrell-Mir et al. 2019. A benchmark of transposon insertion detection tools using real data. *Mobile DNA*. [doi:10.1186/s13100-019-0197-9](https://doi.org/10.1186/s13100-019-0197-9)
 - Vitte et al. 2003. Formation of Solo-LTRs Through Unequal Homologous Recombination Counterbalances Amplifications of LTR Retrotransposons in Rice Oryza sativa L. *Molecular Biology and Evolution*. [doi:10.1093/molbev/msg055](https://doi.org/10.1093/molbev/msg055)
+- INSDC 2024. The international nucleotide sequence database collaboration (INSDC): enhancing global participation. *Nucleic Acids Research*. [doi:10.1093/nar/gkae1058](https://doi.org/10.1093/nar/gkae1058)
+- Groza et al. 2024. A unified framework to analyze transposable element insertion polymorphisms using graph genomes. *Nature Communications*. [doi:10.1038/s41467-024-53294-2](https://doi.org/10.1038/s41467-024-53294-2)
+- Chu et al. 2021. Comprehensive identification of transposable element insertions using multiple sequencing technologies. *Nature Communications*. [doi:10.1038/s41467-021-24041-8](https://doi.org/10.1038/s41467-021-24041-8)
+- Kopalli et al. 2025. Toward a standardized framework for pangenome graph evaluation: assessing crop plant pangenome variation graph construction from multiple assemblies. *GigaScience*. [doi:10.1093/gigascience/giaf121](https://doi.org/10.1093/gigascience/giaf121)
+- Callipo et al. 2026. A dual genome-methylome map of clonal evolution in grapevine. *Genome Biology*. [doi:10.1186/s13059-026-04184-x](https://doi.org/10.1186/s13059-026-04184-x)
+- Qian et al. 2025. Pangenome analysis of transposable element insertion polymorphisms reveals features underlying cold tolerance in rice. *Nature Communications*. [doi:10.1038/s41467-025-62887-4](https://doi.org/10.1038/s41467-025-62887-4)

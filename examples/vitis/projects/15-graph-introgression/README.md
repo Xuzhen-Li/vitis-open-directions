@@ -118,6 +118,29 @@ Each paper: introduction from the gap above; one results section per figure; met
 - Risk: Graph SV genotypes in diverged haplotypes are less accurate.
 - Novelty: checked against the existing work above (Crossref-verified DOIs). Repeat the search before writing; anything marked [待确认] is not yet verified.
 
+## Risks and how to handle them
+
+Added 2026-11-26. Each row names a risk, the evidence behind it, and a concrete check or fallback. Sources cited here were read for this section and their DOIs were checked on Crossref; preprints are marked.
+
+| Area | Risk | Check or mitigation |
+|---|---|---|
+| Data access and licence | Wild panels in DS19 are partly an open query ([data/DOWNLOADS.md](../../data/DOWNLOADS.md)). | Freeze the donor panel and list missing species before analysis. |
+| Similar donor species | Local ancestry inference is hard when reference populations are similar, numerous, or admixed long ago ([Wei et al. 2025](https://doi.org/10.1093/bioinformatics/btaf227)); North American *Vitis* donors are close relatives. | Simulate hybrids from the donor panel and measure per-species accuracy; merge donors that cannot be told apart into one class. |
+| Reference bias and genome choice | For *V. rotundifolia* introgression, reads were aligned to PN40024.v4 and to two *rotundifolia* assemblies, and the introgressed region showed poor recombination ([Shi et al. 2024](https://doi.org/10.3390/plants13152095)). A single *vinifera* reference may under-represent donor segments. | Map to the graph and to one donor assembly per main donor; compare segment calls. |
+| Graph construction | Graph builders differ in completeness and SV fidelity ([Kopalli et al. 2025](https://doi.org/10.1093/gigascience/giaf121)). | Repeat SV-in-segment counts on a second graph. |
+| Clones, synonyms and pedigree | Hybrid cultivars and rootstocks share parents, so their segments are not independent. | Use known pedigrees (project 23) to group relatives; count shared segments once per family. |
+| Sample size and power | Few samples per hybrid family limit tract-length statistics. | Report tract statistics only for families above a fixed size. |
+| Computing cost | Graph mapping of all hybrids and donors is the main cost. | Time ten samples first. |
+| Alternative methods and sensitivity | SNP-based and graph-based painting can disagree. | Run both and report disagreement by chromosome. |
+
+**Recent and competing work (search of 2024 to 2026 literature on 2026-11-26)**
+
+- In silico chromosome painting by species of origin has been applied to a complex interspecific hybrid population, with low linkage drag around resistance genes from the primary gene pool ([Chedid et al. 2025](https://doi.org/10.1101/2025.03.31.646340), preprint). SNP-based painting of hybrids is therefore done; the SV view is what remains.
+
+**What would end the idea, and the fallback.** If graph SV genotypes in donor segments are too inaccurate, SV-level claims fail. The fallback is SNP-based painting across many hybrids and rootstocks with SV checks on assembled hybrids only.
+
+**Journal-level realism.** Mid-field genetics or molecular ecology; with SNP painting already shown, a broad venue would need adaptive SV-only tracts.
+
 ## Rough estimates
 
 - Compute: medium to large [draft]
@@ -157,3 +180,7 @@ Public inputs: [DS02](../../data/DS02-grapepan-v1/), [DS03](../../data/DS03-viti
 - Migicovsky et al. 2016. Genomic ancestry estimation quantifies use of wild species in grape breeding. *BMC Genomics*. [doi:10.1186/s12864-016-2834-8](https://doi.org/10.1186/s12864-016-2834-8)
 - Myles et al. 2011. Genetic structure and domestication history of the grape. *Proceedings of the National Academy of Sciences*. [doi:10.1073/pnas.1009363108](https://doi.org/10.1073/pnas.1009363108)
 - Sirén et al. 2021. Pangenomics enables genotyping of known structural variants in 5202 diverse genomes. *Science*. [doi:10.1126/science.abg8871](https://doi.org/10.1126/science.abg8871)
+- Wei et al. 2025. Recomb-Mix: fast and accurate local ancestry inference. *Bioinformatics*. [doi:10.1093/bioinformatics/btaf227](https://doi.org/10.1093/bioinformatics/btaf227)
+- Shi et al. 2024. Vitis rotundifolia Genes Introgressed with RUN1 and RPV1: Poor Recombination and Impact on V. vinifera Berry Transcriptome. *Plants*. [doi:10.3390/plants13152095](https://doi.org/10.3390/plants13152095)
+- Kopalli et al. 2025. Toward a standardized framework for pangenome graph evaluation: assessing crop plant pangenome variation graph construction from multiple assemblies. *GigaScience*. [doi:10.1093/gigascience/giaf121](https://doi.org/10.1093/gigascience/giaf121)
+- Chedid et al. 2025. Impact of the introgression of resistance loci on agro-œnological traits in grapevine interspecific hybrids. *bioRxiv* (preprint). [doi:10.1101/2025.03.31.646340](https://doi.org/10.1101/2025.03.31.646340)
