@@ -139,6 +139,31 @@ Added 2026-11-26. Each row names a risk, the evidence behind it, and a concrete 
 
 **Journal-level realism.** Mid-field genome biology; the rice study shows that a broad venue expects a trait link, which this plan does not promise.
 
+## Reference study in another species
+
+Added 2026-11-26. Published studies that already did this kind of work in another species, to plan the grape version against. Every DOI was checked on Crossref. Figures are described, not copied; a figure redrawn for a grape paper would be marked "Redrawn after" its source. The last bullet for each study lists what a grape results section would need; it is a planning suggestion, not a finding of that study.
+
+### Domínguez et al. 2020
+
+- **Paper:** [Domínguez et al. 2020](https://doi.org/10.1038/s41467-020-17874-2), *Nature Communications*.
+- **Species:** Tomato, 602 accessions.
+- **What was done:** Transposon insertion polymorphisms (TIPs) were detected in 602 accessions; their distribution and effect on transcription were analysed, and a TIP-based GWAS found key insertions that affect flavour.
+- **Figures:** Fig. 1 the tomato mobilome and phylogeny of the 602 accessions; Fig. 2 TIP landscape and transcriptional effects; Fig. 3 TIPs as a hidden source of phenotypic variation (linkage disequilibrium and GWAS); Fig. 4 TIPs and secondary metabolism; Fig. 5 a key TIP affecting flavour.
+- **What a grape results section would need:** TIP detection and validation; frequency and differentiation; TIPs in relation to expression; a TIP-based GWAS.
+
+### Qian et al. 2025
+
+- **Paper:** [Qian et al. 2025](https://doi.org/10.1038/s41467-025-62887-4), *Nature Communications* (PMC12357961). Licence CC BY 4.0: figures may be reused with credit; none are copied here.
+- **Species:** rice, 165 accessions on a pangenome graph.
+- **What was done:** 30,316 transposable element insertion polymorphism (TIP) sites were found; polymorphic TEs showed more H3K27me3; 26,914 TEs responded to cold in transcriptome data; a TIP-based GWAS found two cold-tolerance genes, confirmed with knockout and overexpression lines.
+- **Figures:** Fig. 1 genomic features and population structure; Fig. 2 the TIP pipeline and transcriptional and epigenetic features of polymorphic TEs; Fig. 3 cold-responsive TEs and genes; Fig. 4 GWAS on the TIP map; Fig. 5 functional tests of the two genes.
+- **What its results section needed:** a TIP map with a stated pipeline, features of polymorphic TEs, expression links, an association scan, and a functional test.
+- **Grape version:** Fig. 1 to 4 equivalents from public grape data; laboratory tests are outside this project, so Fig. 5 is replaced by expression association of TIPs near genes (project 19) and genotyping accuracy checked on long-read assemblies.
+
+### Q1-level bar
+
+Target: a first-quartile (Q1) journal in plant science, genetics or evolution. Quartile lists change each year, so the journal is chosen from the current list at submission [to confirm]. To compete at that level, the grape paper needs: a TIP map with measured genotyping accuracy, a link to expression, and at least one association with a trait, as in the tomato study.
+
 ## Rough estimates
 
 - Compute: medium [draft]

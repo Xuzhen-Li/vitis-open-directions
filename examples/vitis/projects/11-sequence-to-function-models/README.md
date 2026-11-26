@@ -33,6 +33,21 @@ For grape, an expression atlas exists ([Fasoli et al. 2012](https://doi.org/10.1
 
 Do models trained on other plants predict grape expression from sequence better than a grape-only model and a simple baseline?
 
+## Scope update (2026-11-26)
+
+Added 2026-11-26. This section narrows or reframes the plan above; where the two differ, this section applies. Earlier text is kept unchanged.
+
+**New scope: a methods benchmark only.** The project no longer aims to build a new grape model. It asks how well existing models ([Peleke et al. 2024](https://doi.org/10.1038/s41467-024-47744-0); [Mendoza-Revilla et al. 2024](https://doi.org/10.1038/s42003-024-06465-2); [Zhai et al. 2025](https://doi.org/10.1073/pnas.2421738122)) and a simple baseline predict grape expression and allelic differences, and how much leakage changes the answer.
+
+Target: a first-quartile (Q1) journal in plant science, genetics or evolution. Quartile lists change each year, so the journal is chosen from the current list at submission [to confirm]. The points below are what the paper needs to compete at that level.
+
+- Task sets released with fixed splits by chromosome and by gene family, with homology filtering between splits.
+- At least two task types: expression class per gene and tissue, and allele-specific expression differences from project 19.
+- Every model scored on the same splits, with and without leakage control, against a k-mer or promoter-feature baseline.
+- Code and data released so others can add models.
+
+**Fallback.** If no model beats the baseline after leakage control, that is the main result and is preregistered as publishable.
+
 ## Hypotheses, planned figures and criteria
 
 No results are given here. Each row says what would count as support; the exact thresholds go into the preregistration.
@@ -136,6 +151,33 @@ Added 2026-11-26. Each row names a risk, the evidence behind it, and a concrete 
 **What would end the idea, and the fallback.** If no model beats the simple baseline on held-out grape families, the transfer question has a negative answer. That is still publishable as a benchmark note with the leakage controls above.
 
 **Journal-level realism.** Given how much is now published, a grape benchmark fits a specialty computational or plant genomics journal; mid-field needs a positive allele-level result.
+
+## Reference study in another species
+
+Added 2026-11-26. Published studies that already did this kind of work in another species, to plan the grape version against. Every DOI was checked on Crossref. Figures are described, not copied; a figure redrawn for a grape paper would be marked "Redrawn after" its source. The last bullet for each study lists what a grape results section would need; it is a planning suggestion, not a finding of that study.
+
+### Washburn et al. 2019
+
+- **Paper:** [Washburn et al. 2019](https://doi.org/10.1073/pnas.1814551116), *PNAS*.
+- **Note:** Full text not read; figures not checked.
+- **Species:** Not checked: the full text was not read.
+- **What was done:** From the title: evolutionarily informed deep learning to predict relative transcript abundance from DNA sequence; details not checked.
+- **Figures:** Figures not checked.
+- **What a grape results section would need:** to confirm after reading the full text [to confirm].
+
+### Mendoza-Revilla et al. 2024
+
+- **Paper:** [Mendoza-Revilla et al. 2024](https://doi.org/10.1038/s42003-024-06465-2), *Communications Biology* (PMC11233511). Licence CC BY 4.0: figures may be reused with credit; none are copied here.
+- **Species:** genomes of 48 plant species for pretraining, with tasks in several crops; cassava for in-silico mutagenesis.
+- **What was done:** a DNA language model (AgroNT) was evaluated on regulatory annotation, promoter and terminator strength, tissue-specific expression and variant prioritisation; over 10 million cassava mutations were scored in silico; the task datasets were released as the Plants Genomic Benchmark.
+- **Figures:** Fig. 1 overview and pretraining genomes; Fig. 2 polyadenylation, splicing and long non-coding RNA tasks; Fig. 3 promoter and terminator strength from STARR-seq; Fig. 4 chromatin accessibility; Fig. 5 expression prediction across species; Fig. 6 promoter input choices in maize; Fig. 7 zero-shot variant effects; Fig. 8 in-silico mutagenesis in cassava.
+- **What its results section needed:** several task types with held-out data, comparison against other models, and a released benchmark.
+- **Grape version (benchmark only):** grape tasks built like the Plants Genomic Benchmark, with splits by chromosome and gene family, scored for several models and a simple baseline; the released task set is the main output (see Scope update above).
+- **Further results a grape version would need:** benchmark tasks on grape (expression prediction R squared, chromatin accessibility, variant effects); comparison with baseline models; performance split by tissue and gene class.
+
+### Q1-level bar
+
+Target: a first-quartile (Q1) journal in plant science, genetics or evolution. Quartile lists change each year, so the journal is chosen from the current list at submission [to confirm]. To compete at that level, the grape paper needs the points listed in the Scope update section above, which applies to this project.
 
 ## Rough estimates
 
