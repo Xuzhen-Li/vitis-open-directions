@@ -31,6 +31,21 @@ These grape analyses used one or two reference assemblies. Haplotype-resolved as
 
 Which florendovirus insertions are shared by all grapes and which are polymorphic, and does sharing follow the species tree?
 
+## Scope update (2026-11-26)
+
+Added 2026-11-26. This section narrows or reframes the plan above; where the two differ, this section applies. Earlier text is kept unchanged.
+
+**What grape adds beyond existing work.** The comparative *Prunus* study ([Vicient 2026](https://doi.org/10.3389/fpls.2026.1886618)) counts and classifies elements per genome across 15 species. Grape adds a locus-level view inside one genus: each insertion is genotyped as present or absent across cultivated and wild haplotypes and *Muscadinia*, so insertion age and sharing can be tested against the species tree and the domestication split.
+
+Target: a first-quartile (Q1) journal in plant science, genetics or evolution. Quartile lists change each year, so the journal is chosen from the current list at submission [to confirm]. The points below are what the paper needs to compete at that level.
+
+- A locus-by-haplotype presence and absence matrix with flanking-synteny evidence for every call.
+- A test of whether sharing follows the species tree, with discordant loci explained (incomplete lineage sorting, introgression or deletion).
+- Expression of insertions from public RNA-seq (project 19) as evidence of activity or silencing.
+- A direct comparison with the *Prunus* and angiosperm-wide results, stating which patterns are general and which are grape-specific.
+
+**Fallback.** If too few polymorphic insertions are found, report the catalogue and the tree test as a short resource paper and say so in the preregistration.
+
 ## Hypotheses, planned figures and criteria
 
 No results are given here. Each row says what would count as support; the exact thresholds go into the preregistration.
@@ -139,6 +154,36 @@ Added 2026-11-26. Each row names a risk, the evidence behind it, and a concrete 
 **What would end the idea, and the fallback.** If almost all insertions are shared by every *Vitis* haplotype, the polymorphism and species-tree questions have no signal. The fallback is an age and integration catalogue for grape set against the *Prunus* results.
 
 **Journal-level realism.** The *Prunus* study appeared in *Frontiers in Plant Science*; a grape counterpart fits the same specialty level unless it shows insertions with clear effects on nearby genes.
+
+## Reference study in another species
+
+Added 2026-11-26. Published studies that already did this kind of work in another species, to plan the grape version against. Every DOI was checked on Crossref. Figures are described, not copied; a figure redrawn for a grape paper would be marked "Redrawn after" its source. The last bullet for each study lists what a grape results section would need; it is a planning suggestion, not a finding of that study.
+
+### Geering et al. 2014
+
+- **Paper:** [Geering et al. 2014](https://doi.org/10.1038/ncomms6269), *Nature Communications*.
+- **Note:** This paper includes grape; only its dating of orthologous loci in *Oryza* is the cross-species part.
+- **Species:** Many angiosperms, including grape; orthologous loci in 12 *Oryza* species were used for dating.
+- **What was done:** Endogenous florendovirus elements were found and assembled in many plant genomes and classified by phylogeny; insertions were placed on orthologous loci across *Oryza* to date them; their relation to transposable elements, genes, (TA)n repeats and small RNA origin was analysed.
+- **Figures:** Fig. 1 genome organisation compared with other Caulimoviridae; Fig. 2 Caulimoviridae phylogeny; Fig. 3 bipartite florendovirus genomes, including grape, rice and sorghum examples; Fig. 4 54 rice florendovirus loci placed on the *Oryza* tree (insertion dating); Fig. 5 distance of elements to transposable elements and genes in Pinot Noir and rice; Fig. 6 co-location with (TA)n repeats.
+- **What a grape results section would need:** a presence and absence matrix of each insertion across haplotypes and wild species; insertion dating by placing orthologous loci on the tree (as in Fig. 4); distances to transposable elements, genes and repeats; small RNA origin where data exist.
+
+### Vicient 2026
+
+- **Paper:** [Vicient 2026](https://doi.org/10.3389/fpls.2026.1886618), *Frontiers in Plant Science* (PMC13658181). Licence CC BY 4.0: figures may be reused with credit; none are copied here.
+- **Species:** 30 chromosome-level assemblies of *Prunus* from 15 species, with almond for the detailed analysis.
+- **What was done:** reverse transcriptase (RT) sequences of endogenous caulimovirids were found and classified across the assemblies, Florendovirus-1 was the main lineage, a consensus genome was rebuilt, and complete and fragmentary elements were described in almond.
+- **Figures:** Fig. 1 maximum-likelihood tree of RT sequences from the 30 assemblies; Fig. 2 Florendovirus and Yendovirus RT density (copies per Mb) per assembly on the *Prunus* tree; Fig. 3 genome map of Florendovirus-1 in almond with ORFs and protein domains; Fig. 4 structure of complete and fragmentary elements and their integration breakpoints; Fig. 5 tree of Florendovirus-1 RT copies within almond.
+- **What its results section needed:** lineage classification, copy density per genome against the species tree, a reconstructed consensus genome, element structure and a within-genome tree.
+- **Grape version and what grape adds:** the same five panels for *Vitis* and *Muscadinia*, plus what the *Prunus* study did not do: each insertion is a locus genotyped as present or absent across haplotypes of one species and its wild relatives, so sharing can be tested against the species tree and the domestication split (see Scope update above).
+
+### Coverage note
+
+Geering et al. 2014 includes grape itself; only its dating of orthologous loci in *Oryza* is cross-species. The *Prunus* study is the closest template from another genus, but it does not genotype insertions as present or absent across a population.
+
+### Q1-level bar
+
+Target: a first-quartile (Q1) journal in plant science, genetics or evolution. Quartile lists change each year, so the journal is chosen from the current list at submission [to confirm]. To compete at that level, the grape paper needs the points listed in the Scope update section above, which applies to this project.
 
 ## Rough estimates
 

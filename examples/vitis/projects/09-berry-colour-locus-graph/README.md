@@ -132,6 +132,31 @@ Added 2026-11-26. Each row names a risk, the evidence behind it, and a concrete 
 
 **Journal-level realism.** Specialty plant genetics or horticulture journal, since the locus is already explained.
 
+## Reference study in another species
+
+Added 2026-11-26. Published studies that already did this kind of work in another species, to plan the grape version against. Every DOI was checked on Crossref. Figures are described, not copied; a figure redrawn for a grape paper would be marked "Redrawn after" its source. The last bullet for each study lists what a grape results section would need; it is a planning suggestion, not a finding of that study.
+
+### Zhou et al. 2022
+
+- **Paper:** [Zhou et al. 2022](https://doi.org/10.1038/s41586-022-04808-9), *Nature*.
+- **Species:** Tomato and close relatives.
+- **What was done:** A tomato graph pangenome was built; SVs were genotyped with short reads in 332 accessions; the contribution of SVs to heritability was estimated, and the graph was used for marker-assisted and genomic selection.
+- **Figures:** Fig. 1 tomato genomes and the graph pangenome; Fig. 2 contribution of variant types to heritability; Fig. 3 allelic and locus heterogeneity; Fig. 4 the graph in marker-assisted and genomic selection; Extended Data Fig. 1 to 8 (framework, assembly features, graph versus linear mapping, heritability estimates, a gene structure example, an annotation error example, GWAS heterogeneity, a co-expression network).
+- **What a grape results section would need:** structural haplotypes of the colour locus defined on the graph; graph versus linear mapping (as in Extended Data Fig. 3); haplotype frequencies in public panels; association with berry colour.
+
+### You et al. 2026
+
+- **Paper:** [You et al. 2026](https://doi.org/10.1038/s41467-026-69764-8), *Nature Communications* (PMC13039718). Licence CC BY 4.0: figures may be reused with credit; none are copied here.
+- **Species:** eggplant, 226 accessions and a pangenome of 17 assemblies (11 new, 6 published).
+- **What was done:** association scans on the pangenome found a 12.4 Mb inversion on chromosome 10, at 50.44% frequency, strongly associated with fruit colour, likely through hitchhiking with *SmMYB1*; variants linked to bacterial wilt resistance were also found.
+- **Figures:** Fig. 1 geography and diversity; Fig. 2 pangenome; Fig. 3 structural variants per assembly; Fig. 4 association of the inversion with fruit colour; Fig. 5 diversity reduction and extended haplotype across the inversion; Fig. 6 wilt-resistance loci.
+- **What its results section needed:** structural variants called from assemblies, an association between a structural haplotype and colour, and haplotype structure around the candidate MYB gene.
+- **Grape version:** Fig. 4 and 5 equivalents for the berry colour locus: graph genotypes of the colour haplotypes across accessions, their association with recorded berry colour, and haplotype structure around the MYB genes, with long-read checks where a haplotype is missing from the graph (risk above).
+
+### Q1-level bar
+
+Target: a first-quartile (Q1) journal in plant science, genetics or evolution. Quartile lists change each year, so the journal is chosen from the current list at submission [to confirm]. To compete at that level, the grape paper needs: graph versus linear genotyping of the colour locus, with structural haplotypes confirmed in long-read assemblies and an association with berry colour in public panels. One locus alone fits a specialty journal; several trait loci tested the same way make a methods case at Q1 level.
+
 ## Rough estimates
 
 - Compute: small [draft]
@@ -170,3 +195,5 @@ Public inputs: [DS02](../../data/DS02-grapepan-v1/), [DS03](../../data/DS03-viti
 - Sichel et al. 2023. Chimeras in Merlot grapevine revealed by phased assembly. *BMC Genomics*. [doi:10.1186/s12864-023-09453-8](https://doi.org/10.1186/s12864-023-09453-8)
 - Kopalli et al. 2025. Toward a standardized framework for pangenome graph evaluation: assessing crop plant pangenome variation graph construction from multiple assemblies. *GigaScience*. [doi:10.1093/gigascience/giaf121](https://doi.org/10.1093/gigascience/giaf121)
 - Rice et al. 2023. A pangenome graph reference of 30 chicken genomes allows genotyping of large and complex structural variants. *BMC Biology*. [doi:10.1186/s12915-023-01758-0](https://doi.org/10.1186/s12915-023-01758-0)
+- Zhou et al. 2022. Graph pangenome captures missing heritability and empowers tomato breeding. *Nature*. [doi:10.1038/s41586-022-04808-9](https://doi.org/10.1038/s41586-022-04808-9)
+- You et al. 2026. Sub-pangenome analysis reveals structural variants associated with fruit color and bacterial wilt resistance in eggplant. *Nature Communications*. [doi:10.1038/s41467-026-69764-8](https://doi.org/10.1038/s41467-026-69764-8)

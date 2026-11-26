@@ -30,6 +30,21 @@ In grape, NBS-LRR genes were catalogued in the reference and linked to powdery m
 
 How large is the grape NLR repertoire across lineages, which integrated domains occur, and does the repertoire saturate?
 
+## Scope update (2026-11-26)
+
+Added 2026-11-26. This section narrows or reframes the plan above; where the two differ, this section applies. Earlier text is kept unchanged.
+
+**What grape adds beyond existing work.** The *Arabidopsis* pan-NLRome ([Van de Weyer et al. 2019](https://doi.org/10.1016/j.cell.2019.07.038)) covers one species; the Vitaceae preprint ([Wang et al. 2026](https://doi.org/10.64898/2026.04.20.719760), preprint) studies NLR expansion across the family. Grape adds a genus-level saturation curve within *Vitis* and *Muscadinia*, with checks for collapsed clusters, and a test of whether resistant lineages differ in NLR architecture.
+
+Target: a first-quartile (Q1) journal in plant science, genetics or evolution. Quartile lists change each year, so the journal is chosen from the current list at submission [to confirm]. The points below are what the paper needs to compete at that level.
+
+- A saturation curve and core and accessory split across lineages, from assemblies with read-depth checks.
+- An integrated-domain catalogue with the new architectures confirmed by read support.
+- Selection statistics by NLR class, as in the reference study below.
+- A clear statement of what is not in the Vitaceae preprint, written after re-reading it at submission.
+
+**Fallback.** If the preprint is published with the same within-genus analyses, merge this project into project 05 as its second part.
+
 ## Hypotheses, planned figures and criteria
 
 No results are given here. Each row says what would count as support; the exact thresholds go into the preregistration.
@@ -138,6 +153,24 @@ Added 2026-11-26. Each row names a risk, the evidence behind it, and a concrete 
 **What would end the idea, and the fallback.** If the preprint above publishes a genus-wide catalogue with integrated domains, the catalogue itself is no longer new. The fallback is the collapse audit and the saturation analysis by lineage, framed as a quality layer over published catalogues.
 
 **Journal-level realism.** The *Arabidopsis* neighbourhood study used transcript evidence and appeared in *Cell Host & Microbe*. A grape catalogue without such evidence fits a specialty or mid-field plant journal.
+
+## Reference study in another species
+
+Added 2026-11-26. Published studies that already did this kind of work in another species, to plan the grape version against. Every DOI was checked on Crossref. Figures are described, not copied; a figure redrawn for a grape paper would be marked "Redrawn after" its source. The last bullet for each study lists what a grape results section would need; it is a planning suggestion, not a finding of that study.
+
+### Van de Weyer et al. 2019
+
+- **Paper:** [Van de Weyer et al. 2019](https://doi.org/10.1016/j.cell.2019.07.038), *Cell* (PMC6709784). Licence CC BY 4.0: figures may be reused with credit; none are copied here.
+- **Species:** *Arabidopsis thaliana*, 64 accessions.
+- **What was done:** NLR genes were captured by sequence enrichment and long-read sequencing to define a species-wide pan-NLRome; it largely saturated with about 40 well-chosen accessions, and half of it was present in most accessions; domain architectures, new integrated domains and selection on NLRs and NLR domains were charted.
+- **Figures:** Fig. 1 NLR complements of the 64 accessions; Fig. 2 integrated domains and architectures; Fig. 3 orthogroup sizes, saturation and core, shell and cloud NLRs; Fig. 4 positions in the reference genome; Fig. 5 diversity and selection; Fig. 6 positive selection by NLR class and group; Fig. 7 pathogen lifestyle and paired NLRs.
+- **What its results section needed:** a saturation curve, a core and accessory split, a domain-architecture catalogue, and selection statistics by NLR class.
+- **Grape version and what grape adds:** the same panels across cultivated and wild *Vitis* and *Muscadinia* from assemblies rather than enrichment, with read-depth checks for collapsed clusters; grape adds a genus-level saturation curve and a test of whether resistance-rich lineages differ in architecture (see Scope update above).
+- **Further results a grape version would need:** NLR count and subclass per haplotype; a catalogue of integrated domains; orthogroup saturation curves with core, shell and cloud classes; checks for collapsed arrays; diversity and selection.
+
+### Q1-level bar
+
+Target: a first-quartile (Q1) journal in plant science, genetics or evolution. Quartile lists change each year, so the journal is chosen from the current list at submission [to confirm]. To compete at that level, the grape paper needs the points listed in the Scope update section above, which applies to this project.
 
 ## Rough estimates
 

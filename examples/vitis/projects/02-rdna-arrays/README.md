@@ -143,6 +143,31 @@ Added 2026-11-26. Each row names a risk, the evidence behind it, and a concrete 
 
 **Journal-level realism.** A specialty plant cytogenetics or genomics journal. Broader venues published NOR assembly when it was a first for a model species, which this project is not.
 
+## Reference study in another species
+
+Added 2026-11-26. Published studies that already did this kind of work in another species, to plan the grape version against. Every DOI was checked on Crossref. Figures are described, not copied; a figure redrawn for a grape paper would be marked "Redrawn after" its source. The last bullet for each study lists what a grape results section would need; it is a planning suggestion, not a finding of that study.
+
+### Fultz et al. 2023
+
+- **Paper:** [Fultz et al. 2023](https://doi.org/10.1126/sciadv.adj4509), *Science Advances*.
+- **Species:** *Arabidopsis thaliana* (Col-0).
+- **What was done:** PacBio and ultra-long ONT reads defined rRNA gene subtypes by variable-length elements in the intergenic spacer; NOR2 and NOR4 were fully assembled; RNA-seq, nucleolus co-purification and methylation data separated active from silent rRNA genes.
+- **Figures:** Fig. 1 NOR organisation and rRNA gene structure; Fig. 2 NOR2 and NOR4 assembly (dot plots, assembly workflow, variable-length element markers in reads); Fig. 3 structural features (positions of gene subtypes, similarity matrix); Fig. 4 rRNA gene activity and nucleolus association along NOR2 and NOR4; Fig. 5 5mC methylation landscape.
+- **What a grape results section would need:** position, assembled length and closure of each 45S and 5S array per haplotype; unit subtype and spacer variant composition within arrays; adjacency of arrays to telomeres; array methylation where ONT data exist.
+
+### Rabanal et al. 2022
+
+- **Paper:** [Rabanal et al. 2022](https://doi.org/10.1093/nar/gkac1115), *Nucleic Acids Research* (PMC9757041). Licence CC BY 4.0: figures may be reused with credit; none are copied here.
+- **Species:** *Arabidopsis thaliana*, accession Eyach15-2 compared with the reference Col-0.
+- **What was done:** one sample was assembled from continuous long reads and from HiFi reads with five assemblers and subsampled coverage and read length; centromeres and rDNA clusters caused 71% of contig breaks in the continuous-long-read scaffolds; HiFi reconstructed gapless centromeres and 5S rDNA clusters, which were then compared between the two accessions.
+- **Figures:** Fig. 1 libraries and assemblers; Fig. 2 effect of coverage and read length on assembly metrics; Fig. 3 repeats in scaffolded and unscaffolded contigs; Fig. 4 hybrid assemblies and the sequence at remaining gaps; Fig. 5 centromere and 5S rDNA length per chromosome in the two accessions.
+- **What its results section needed:** evidence that each array is closed (read type, coverage, gap content) before any length comparison.
+- **Grape version:** start with a closure audit of every 45S and 5S array in each grape assembly (read type, gaps, read support across the array), the equivalent of Fig. 1 to 4; compare array length and unit variants only among closed arrays (Fig. 5 equivalent). This answers the "few closed arrays" risk above before any biological claim.
+
+### Q1-level bar
+
+Target: a first-quartile (Q1) journal in plant science, genetics or evolution. Quartile lists change each year, so the journal is chosen from the current list at submission [to confirm]. To compete at that level, the grape paper needs: closed or bounded rDNA arrays per haplotype plus evidence on activity (methylation from ONT reads or expression of unit subtypes), as in the *Arabidopsis* NOR study. Array lengths alone fit a specialty journal; joining with project 01 into one repeat-array paper strengthens the case.
+
 ## Rough estimates
 
 - Compute: small [draft]
@@ -186,3 +211,4 @@ Public inputs: [DS01](../../data/DS01-pn40024-references/), [DS02](../../data/DS
 - Noraz et al. 2026. Ancient DNA reveals 4000 years of grapevine diversity, viticulture and clonal propagation in France. *Nature Communications*. [doi:10.1038/s41467-026-70166-z](https://doi.org/10.1038/s41467-026-70166-z)
 - Garrido-Ramos et al. 2026. Detailed re-analysis of satellitome mapping facilitated by the telomere-to-telomere (T2T) assembly of bread wheat genome. *Plant Molecular Biology*. [doi:10.1007/s11103-026-01745-3](https://doi.org/10.1007/s11103-026-01745-3)
 - Wang et al. 2026. Origin and evolution of grapevine genomes. *bioRxiv* (preprint). [doi:10.64898/2026.04.20.719760](https://doi.org/10.64898/2026.04.20.719760)
+- Rabanal et al. 2022. Pushing the limits of HiFi assemblies reveals centromere diversity between two Arabidopsis thaliana genomes. *Nucleic Acids Research*. [doi:10.1093/nar/gkac1115](https://doi.org/10.1093/nar/gkac1115)

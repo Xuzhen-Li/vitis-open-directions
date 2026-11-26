@@ -32,6 +32,21 @@ Grape now has several pangenomes. Hemizygous genes were first shown at scale in 
 
 How much reported gene PAV in grape is reproduced when all haplotypes are processed the same way, and which gene classes are truly variable?
 
+## Scope update (2026-11-26)
+
+Added 2026-11-26. This section narrows or reframes the plan above; where the two differ, this section applies. Earlier text is kept unchanged.
+
+**What grape adds beyond existing work.** Annotation-driven inflation of gene PAV is already shown in general ([Brůna et al. 2026](https://doi.org/10.1093/nargab/lqag011)). Grape adds a measured split, in a heterozygous clonal crop, between gene PAV that holds at the sequence level and gene PAV that disappears when every haplotype is annotated the same way.
+
+Target: a first-quartile (Q1) journal in plant science, genetics or evolution. Quartile lists change each year, so the journal is chosen from the current list at submission [to confirm]. The points below are what the paper needs to compete at that level.
+
+- One annotation pipeline on all haplotypes, plus sequence-level confirmation of every absence on the graph (see the reference study below).
+- The fraction of published grape PAV that is reproduced, with the reasons for each class of loss.
+- Functional classes of true PAV, tested against a background matched for gene length and family size.
+- A released corrected PAV table, and joint publication with project 06 as two parts of one paper (already suggested in the direction map).
+
+**Fallback.** If most published PAV is reproduced, the paper reports that grape PAV is robust and gives the corrected table; this is preregistered as a valid outcome.
+
 ## Hypotheses, planned figures and criteria
 
 No results are given here. Each row says what would count as support; the exact thresholds go into the preregistration.
@@ -142,6 +157,39 @@ Added 2026-11-26. Each row names a risk, the evidence behind it, and a concrete 
 
 **Journal-level realism.** The cross-crop methods paper appeared in *NAR Genomics and Bioinformatics*. A grape re-analysis is now specialty to mid-field; mid-field needs a clear change in the number of truly variable genes.
 
+## Reference study in another species
+
+Added 2026-11-26. Published studies that already did this kind of work in another species, to plan the grape version against. Every DOI was checked on Crossref. Figures are described, not copied; a figure redrawn for a grape paper would be marked "Redrawn after" its source. The last bullet for each study lists what a grape results section would need; it is a planning suggestion, not a finding of that study.
+
+### Hufford et al. 2021
+
+- **Paper:** [Hufford et al. 2021](https://doi.org/10.1126/science.abg5289), *Science*.
+- **Species:** Maize, 26 founder lines of the nested association mapping population.
+- **What was done:** The 26 genomes were assembled and annotated with one pipeline; a pan-gene set was built, and fractionation, structural variants and variation in unmethylated regions were analysed.
+- **Figures:** Fig. 1 pan-genome of gene space, with pan-genes split by annotation method and by phylogenetic age; Fig. 2 tempo of fractionation; Fig. 3 structural variants among the founders; Fig. 4 variation in unmethylated regions (full text read from the author manuscript in PubMed Central).
+- **What a grape results section would need:** a PAV matrix after uniform annotation; PAV split by annotation evidence or method, to separate artefacts; core and dispensable curves; the relation of SVs to PAV.
+
+### Lian et al. 2024
+
+- **Paper:** [Lian et al. 2024](https://doi.org/10.1038/s41588-024-01715-9), *Nature Genetics*.
+- **Species:** *Arabidopsis thaliana*, 69 accessions.
+- **What was done:** Chromosome-level assemblies of 69 accessions showed a nearly fixed karyotype across the species range; a gene-level pan-genome, structural variants and population analyses followed.
+- **Figures:** Fig. 1 geography and population analysis of 72 accessions; Fig. 2 assembly and annotation evaluation; Fig. 3 whole-genome alignment of the 69 assemblies; Fig. 4 synteny landscape; Fig. 5 pan-genome (core, softcore, dispensable, private); Extended Data Fig. 1 to 6 (tree, assembled and estimated genome and centromere sizes, SV length and frequency, long-read check of an inversion breakpoint, variants along chromosomes, presence and absence of pan-gene families).
+- **What a grape results section would need:** core and dispensable composition under one pipeline; assembly completeness checks and filters; PAV in relation to SVs and population structure.
+
+### MacNish et al. 2025
+
+- **Paper:** [MacNish et al. 2025](https://doi.org/10.1002/tpg2.20535), *The Plant Genome* (PMC11730171). Licence CC BY-NC-ND 4.0: figures are not copied here; any redraw is marked "Redrawn after MacNish et al. 2025".
+- **Species:** *Brassica rapa*, *B. oleracea* and *B. napus* in one multi-species graph pangenome.
+- **What was done:** a graph pangenome was built and presence-absence variation (PAV) was read both as graph segments and as genes, with a browser (Panache) for exploration.
+- **Figures:** Fig. 1 size distribution of graph segments; Fig. 2 sequence of each assembly that aligns to the graph; Fig. 3 unique segments per assembly; Fig. 4 number of genes shared by a given number of individuals, per species and for all three; Fig. 5 and 6 segment and gene length shared among species; Fig. 7 and 8 browser views of species-specific segments.
+- **What its results section needed:** PAV at two levels (sequence segments and genes), per-assembly unique sequence, sharing curves, and a browsable resource.
+- **Grape version and what grape adds:** the same two-level view for all grape haplotypes, used as a test: a gene called absent from an annotation while its sequence is present in the graph is counted as an annotation artefact. That split, measured in a heterozygous clonal crop, is the result the general studies cited above do not give for grape.
+
+### Q1-level bar
+
+Target: a first-quartile (Q1) journal in plant science, genetics or evolution. Quartile lists change each year, so the journal is chosen from the current list at submission [to confirm]. To compete at that level, the grape paper needs the points listed in the Scope update section above, which applies to this project.
+
 ## Rough estimates
 
 - Compute: medium [draft]
@@ -182,3 +230,6 @@ Public inputs: [DS01](../../data/DS01-pn40024-references/), [DS02](../../data/DS
 - Brůna et al. 2026. Evolutionary and methodological considerations when interpreting gene presence–absence variation in pangenomes. *NAR Genomics and Bioinformatics*. [doi:10.1093/nargab/lqag011](https://doi.org/10.1093/nargab/lqag011)
 - Denton et al. 2014. Extensive Error in the Number of Genes Inferred from Draft Genome Assemblies. *PLoS Computational Biology*. [doi:10.1371/journal.pcbi.1003998](https://doi.org/10.1371/journal.pcbi.1003998)
 - Contreras-Moreira et al. 2023. GET_PANGENES: calling pangenes from plant genome alignments confirms presence-absence variation. *Genome Biology*. [doi:10.1186/s13059-023-03071-z](https://doi.org/10.1186/s13059-023-03071-z)
+- Hufford et al. 2021. De novo assembly, annotation, and comparative analysis of 26 diverse maize genomes. *Science*. [doi:10.1126/science.abg5289](https://doi.org/10.1126/science.abg5289)
+- Lian et al. 2024. A pan-genome of 69 Arabidopsis thaliana accessions reveals a conserved genome structure throughout the global species range. *Nature Genetics*. [doi:10.1038/s41588-024-01715-9](https://doi.org/10.1038/s41588-024-01715-9)
+- MacNish et al. 2025. Brassica Panache: A multi‐species graph pangenome representing presence absence variation across forty‐one Brassica genomes. *The Plant Genome*. [doi:10.1002/tpg2.20535](https://doi.org/10.1002/tpg2.20535)
