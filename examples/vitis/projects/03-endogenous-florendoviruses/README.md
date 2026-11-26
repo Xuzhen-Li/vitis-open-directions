@@ -115,6 +115,31 @@ Each paper: introduction from the gap above; one results section per figure; met
 - Risk: Novelty: no dedicated literature search on this topic has been done beyond the grape literature base yet [待确认: repeat the search before writing].
 - Novelty: checked against the existing work above (Crossref-verified DOIs). Repeat the search before writing; anything marked [待确认] is not yet verified.
 
+## Risks and how to handle them
+
+Added 2026-11-26. Each row names a risk, the evidence behind it, and a concrete check or fallback. Sources cited here were read for this section and their DOIs were checked on Crossref; preprints are marked.
+
+| Area | Risk | Check or mitigation |
+|---|---|---|
+| Data access and licence | All assembly modules used here are listed as available ([data/DOWNLOADS.md](../../data/DOWNLOADS.md)); INSDC data are free and open ([INSDC 2024](https://doi.org/10.1093/nar/gkae1058)). The florendovirus protein set is still open. | Fix the reference protein set and its source release in the preregistration. |
+| Sample size and power | The species-tree test needs enough species with near-complete assemblies; a handful of species gives little power to reject random sharing. | Count species and haplotypes per clade first; add the new Vitaceae assemblies ([Wang et al. 2026](https://doi.org/10.64898/2026.04.20.719760), preprint); if clades stay thin, report sharing descriptively. |
+| Detection method | Two detection methods in strawberry genomes (homology search and genome alignment) found different sets of endogenous pararetroviruses ([Wang et al. 2024](https://doi.org/10.3390/v16081306)). | Run two independent detections (RT-domain search and CAULIFINDER) and report the overlap; only loci found by both enter the main tests. |
+| Annotation failure | Standard repeat annotation programs are poor at finding and classifying caulimovirid elements ([Vassilieff et al. 2022](https://doi.org/10.1186/s13100-022-00288-w)), so TE masking before the search can hide them. | Search unmasked assemblies; record how many hits overlap TE annotations. |
+| Orthology in repeats | Flanks inside repeats make orthology uncertain (see above). | Require unique flanks on both sides for orthology; report other loci as unresolved rather than forcing a call. |
+| Reference bias and genome choice | Presence calls from short reads mapped to PN_T2T would miss insertions absent from that reference. | Call presence from assemblies only; use reads only to confirm assembled loci. |
+| Clones, synonyms and pedigree | Repeated assemblies of one genotype inflate sharing. | Collapse by genotype using the project 08 table. |
+| Computing cost | Small: protein searches and alignments on assemblies. | None needed beyond timing one genome. |
+| Alternative methods and sensitivity | Age estimates from copy divergence depend on an assumed rate. | Report relative ages (divergence between copies) and give dates only as ranges. |
+
+**Recent and competing work (search of 2024 to 2026 literature on 2026-11-26)**
+
+- A comparative study of 30 chromosome-level *Prunus* assemblies from 15 species found 781 caulimovirid RT sequences, with Florendovirus-1 the main lineage, and rebuilt a consensus from complete elements ([Vicient 2026](https://doi.org/10.3389/fpls.2026.1886618)). The design of this project now has a direct template in another genus; a grape study is a parallel case and should compare with it.
+- Endogenous caulimovirids have been surveyed broadly ([Vassilieff et al. 2023](https://doi.org/10.3390/biom13071069)); no grape-wide multi-haplotype study was found in this search.
+
+**What would end the idea, and the fallback.** If almost all insertions are shared by every *Vitis* haplotype, the polymorphism and species-tree questions have no signal. The fallback is an age and integration catalogue for grape set against the *Prunus* results.
+
+**Journal-level realism.** The *Prunus* study appeared in *Frontiers in Plant Science*; a grape counterpart fits the same specialty level unless it shows insertions with clear effects on nearby genes.
+
 ## Rough estimates
 
 - Compute: small [draft]
@@ -150,3 +175,9 @@ Public inputs: [DS01](../../data/DS01-pn40024-references/), [DS02](../../data/DS
 - Guo et al. 2025. Super pangenome of Vitis empowers identification of downy mildew resistance genes for grapevine improvement. *Nature Genetics*. [doi:10.1038/s41588-025-02111-7](https://doi.org/10.1038/s41588-025-02111-7)
 - Liu et al. 2024. Grapevine pangenome facilitates trait genetics and genomic breeding. *Nature Genetics*. [doi:10.1038/s41588-024-01967-5](https://doi.org/10.1038/s41588-024-01967-5)
 - Staginnus et al. 2006. Endogenous pararetroviruses: two-faced travelers in the plant genome. *Trends in Plant Science*. [doi:10.1016/j.tplants.2006.08.008](https://doi.org/10.1016/j.tplants.2006.08.008)
+- INSDC 2024. The international nucleotide sequence database collaboration (INSDC): enhancing global participation. *Nucleic Acids Research*. [doi:10.1093/nar/gkae1058](https://doi.org/10.1093/nar/gkae1058)
+- Wang et al. 2026. Origin and evolution of grapevine genomes. *bioRxiv* (preprint). [doi:10.64898/2026.04.20.719760](https://doi.org/10.64898/2026.04.20.719760)
+- Wang et al. 2024. Study of Endogenous Viruses in the Strawberry Plants. *Viruses*. [doi:10.3390/v16081306](https://doi.org/10.3390/v16081306)
+- Vassilieff et al. 2022. CAULIFINDER: a pipeline for the automated detection and annotation of caulimovirid endogenous viral elements in plant genomes. *Mobile DNA*. [doi:10.1186/s13100-022-00288-w](https://doi.org/10.1186/s13100-022-00288-w)
+- Vicient 2026. A comprehensive comparative genomic analysis of the endogenous Florendovirus-1 in Prunus. *Frontiers in Plant Science*. [doi:10.3389/fpls.2026.1886618](https://doi.org/10.3389/fpls.2026.1886618)
+- Vassilieff et al. 2023. Endogenous Caulimovirids: Fossils, Zombies, and Living in Plant Genomes. *Biomolecules*. [doi:10.3390/biom13071069](https://doi.org/10.3390/biom13071069)

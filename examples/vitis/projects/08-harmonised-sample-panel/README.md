@@ -116,6 +116,29 @@ Each paper: introduction from the gap above; one results section per figure; met
 - Risk: Name matching to VIVC is manual.
 - Novelty: checked against the existing work above (Crossref-verified DOIs). Repeat the search before writing; anything marked [待确认] is not yet verified.
 
+## Risks and how to handle them
+
+Added 2026-11-26. Each row names a risk, the evidence behind it, and a concrete check or fallback. Sources cited here were read for this section and their DOIs were checked on Crossref; preprints are marked.
+
+| Area | Risk | Check or mitigation |
+|---|---|---|
+| Data access and licence | Runs of the 3,525-accession panel (DS11, CRA006917 and CRA006898) were blocked on the public listing check: the browse page returned an access check and the runs were not in the FTP index ([data/DOWNLOADS.md](../../data/DOWNLOADS.md)). The GSA family separates open archives from controlled human data ([Chen et al. 2021](https://doi.org/10.1016/j.gpb.2021.08.001)); INSDC data are free and open ([INSDC 2024](https://doi.org/10.1093/nar/gkae1058)). | Start the NGDC access route first; if runs cannot be obtained, use any published genotype file for DS11 and mark the panel as partial. Never mirror data whose terms are unclear. |
+| How common mislabelling is | Across 8,851 ENCODE datasets an LD-based tool found mislabelled samples in about 1% ([Javed et al. 2020](https://doi.org/10.1038/s41467-020-17453-5)). The grape rate is unknown. | Use a relatedness method that works on sparse data; report the conflict rate with a confidence interval, not as a point. |
+| Clones and synonyms | Identical genotypes persist for centuries: a medieval sample matched modern Pinot noir ([Noraz et al. 2026](https://doi.org/10.1038/s41467-026-70166-z)). Clones also differ by somatic variants ([Tello et al. 2025](https://doi.org/10.1093/hr/uhaf237)). A genetic duplicate can therefore be a correct synonym, and two clones of one cultivar are not identical. | Define same-genotype by a threshold that allows somatic differences; resolve names through VIVC before calling any label conflict. |
+| Pooling across studies | Panels were called with different pipelines, depths and references. | Re-call a fixed set of high-confidence SNPs from raw reads on one reference; check concordance on samples shared between panels. |
+| Array data | Many collections are genotyped with arrays such as the Vitis22K array ([Costantini et al. 2026](https://doi.org/10.3389/fpls.2026.1771381)). | Keep a shared SNP subset so array and sequencing samples can be matched. |
+| Sample size and power | Not a test of effect size; precision depends on the number of overlapping samples. | Report how many samples overlap between each pair of panels. |
+| Computing cost | Full variant calling for thousands of samples is the largest cost. | Genotype only a fixed identity SNP set for matching; run full calling only if a later project needs it. |
+| Alternative methods and sensitivity | Identity calls depend on the SNP set and the threshold. | Repeat matching with a second SNP set and two thresholds. |
+
+**Recent and competing work (search of 2024 to 2026 literature on 2026-11-26)**
+
+- No cross-panel identity table for public grape sequencing was found. Within-cultivar clone studies ([Tello et al. 2025](https://doi.org/10.1093/hr/uhaf237); [Urra et al. 2023](https://doi.org/10.1093/g3journal/jkad145)) and new arrays ([Costantini et al. 2026](https://doi.org/10.3389/fpls.2026.1771381)) are the closest work.
+
+**What would end the idea, and the fallback.** If DS11 stays inaccessible and the remaining panels overlap little, the table is small. The fallback is a smaller table over INSDC panels only, released as a data resource for projects 10 to 24.
+
+**Journal-level realism.** A data or resource journal; this is infrastructure for the other projects rather than a stand-alone biology paper.
+
 ## Rough estimates
 
 - Compute: medium to large (downloads) [draft]
@@ -158,3 +181,8 @@ Public inputs: [DS10](../../data/DS10-reseq-472-vitis/), [DS11](../../data/DS11-
 - Maul et al. 2015. VitisInternational Variety Catalogue (VIVC): A cultivar database referenced by genetic profiles and morphology. *BIO Web of Conferences*. [doi:10.1051/bioconf/20150501009](https://doi.org/10.1051/bioconf/20150501009)
 - Myles et al. 2011. Genetic structure and domestication history of the grape. *Proceedings of the National Academy of Sciences*. [doi:10.1073/pnas.1009363108](https://doi.org/10.1073/pnas.1009363108)
 - Pedersen et al. 2020. Somalier: rapid relatedness estimation for cancer and germline studies using efficient genome sketches. *Genome Medicine*. [doi:10.1186/s13073-020-00761-2](https://doi.org/10.1186/s13073-020-00761-2)
+- Chen et al. 2021. The Genome Sequence Archive Family: Toward Explosive Data Growth and Diverse Data Types. *Genomics, Proteomics & Bioinformatics*. [doi:10.1016/j.gpb.2021.08.001](https://doi.org/10.1016/j.gpb.2021.08.001)
+- INSDC 2024. The international nucleotide sequence database collaboration (INSDC): enhancing global participation. *Nucleic Acids Research*. [doi:10.1093/nar/gkae1058](https://doi.org/10.1093/nar/gkae1058)
+- Javed et al. 2020. Detecting sample swaps in diverse NGS data types using linkage disequilibrium. *Nature Communications*. [doi:10.1038/s41467-020-17453-5](https://doi.org/10.1038/s41467-020-17453-5)
+- Noraz et al. 2026. Ancient DNA reveals 4000 years of grapevine diversity, viticulture and clonal propagation in France. *Nature Communications*. [doi:10.1038/s41467-026-70166-z](https://doi.org/10.1038/s41467-026-70166-z)
+- Costantini et al. 2026. An advanced genotyping tool to inspect grapevine variability: the Axiom®Vitis22K SNP array. *Frontiers in Plant Science*. [doi:10.3389/fpls.2026.1771381](https://doi.org/10.3389/fpls.2026.1771381)

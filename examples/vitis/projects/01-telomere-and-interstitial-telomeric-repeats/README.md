@@ -123,6 +123,31 @@ Each paper: introduction from the gap above; one results section per figure; met
 - Risk: Novelty: no dedicated literature search on this topic has been done beyond the grape literature base yet [待确认: repeat the search before writing].
 - Novelty: checked against the existing work above (Crossref-verified DOIs). Repeat the search before writing; anything marked [待确认] is not yet verified.
 
+## Risks and how to handle them
+
+Added 2026-11-26. Each row names a risk, the evidence behind it, and a concrete check or fallback. Sources cited here were read for this section and their DOIs were checked on Crossref; preprints are marked.
+
+| Area | Risk | Check or mitigation |
+|---|---|---|
+| Data access and licence | DS01 to DS08 and DS16 are listed as available, but DS17 is an open query rather than a closed accession list ([data/DOWNLOADS.md](../../data/DOWNLOADS.md)). INSDC records are free and open to reuse ([INSDC 2024](https://doi.org/10.1093/nar/gkae1058)). | Freeze the assembly list (accession and version) on the day of the scan and store it with the results; cite each assembly paper. |
+| Sample size and power | The within-accession variance needs both haplotypes of one accession; only haplotype-resolved sets give that. | Before any test, count accessions with two haplotypes that both reach a telomere at the same chromosome end; below the preregistered minimum, report lengths descriptively only. |
+| Technology and source differences | Telomere length read from an assembly depends on the reads: assemblies from Oxford Nanopore reads matched laboratory length estimates in *Arabidopsis* and rice ([Colt et al. 2024](https://doi.org/10.1101/2024.03.27.586973), preprint), while arrays that reads do not span are only lower bounds. | Model technology (HiFi, ONT, hybrid) as a covariate and compare accessions within one technology first. Where public long reads exist, estimate length from reads as well; allele-specific telomere lengths can be read from long reads ([Stephens et al. 2024](https://doi.org/10.1186/s12859-024-05807-5)). |
+| Biological noise | Grapevine telomere length changed within one season and differed between rainfed and irrigated field vines measured by qPCR ([Iannuzzi et al. 2026](https://doi.org/10.3390/plants15131988)). Public genomes come from different tissues, ages and growing conditions. | Treat differences between accessions as descriptive, not genetic, unless the two haplotypes of one accession agree with each other; do not interpret absolute lengths across studies. |
+| Reference bias and genome choice | Not a mapping problem here, but the motif is: plant telomere motifs changed several times ([Peška et al. 2020](https://doi.org/10.3389/fpls.2020.00117)). | Run a motif-discovery pass (tidk explore) on each genus before the fixed-motif scan. |
+| Clones, synonyms and pedigree | Several public assemblies can be the same genotype: a medieval pip was genetically identical to modern Pinot noir ([Noraz et al. 2026](https://doi.org/10.1038/s41467-026-70166-z)), so cultivar names do not guarantee independent samples. | Collapse assemblies of one genotype (identity table of project 08) before population statistics; keep repeated assemblies of one genotype as a technical replicate of length calls. |
+| Annotation and method failure | ITS calls depend on how degenerate a repeat may be; in wheat, re-mapping tandem repeats on a T2T assembly resolved several disagreements between genome and FISH maps ([Garrido-Ramos et al. 2026](https://doi.org/10.1007/s11103-026-01745-3)). | Fix the degeneracy threshold in the preregistration; report ITS counts at two thresholds; compare with published cytogenetic positions where they exist. |
+| Computing cost | Scans run on assemblies only. | Read-based length estimates are limited to accessions with public long reads; time one accession first and extrapolate before scheduling the rest. |
+| Alternative methods and sensitivity | One scanner can miss arrays split by assembly gaps. | Run tidk and quarTeT on every assembly and Tandem Repeats Finder on discordant ends; report agreement per end. |
+
+**Recent and competing work (search of 2024 to 2026 literature on 2026-11-26)**
+
+- Telomere length by chromosome has been estimated from long-read assemblies across many plant species ([Colt et al. 2024](https://doi.org/10.1101/2024.03.27.586973), preprint). The method itself is therefore not new; the contribution here must come from same-accession haplotype pairs within one genus and from the ITS test.
+- A family-wide phylogenomic study released 27 new Vitaceae assemblies and reconstructed the chromosome rearrangements of Vitaceae karyotype evolution ([Wang et al. 2026](https://doi.org/10.64898/2026.04.20.719760), preprint). Its assemblies should enter the scan, and its rearrangement map is the reference for placing ITS. Check its full text for any ITS analysis before writing.
+
+**What would end the idea, and the fallback.** If the two haplotypes of one accession differ as much as different accessions, or if length tracks sequencing technology only, telomere length is not a usable trait here. The fallback is a short technical note on telomere recovery in grape assemblies plus the ITS catalogue, or the joint repeat-array paper with project 02.
+
+**Journal-level realism.** With a cross-species long-read telomere survey already public as a preprint, a grape-only length table fits a specialty journal. Only a clear ITS signal at known fusion or rearrangement points would support a higher venue.
+
 ## Rough estimates
 
 - Compute: small [draft]
@@ -164,3 +189,10 @@ Public inputs: [DS01](../../data/DS01-pn40024-references/), [DS02](../../data/DS
 - Peska et al. 2020. Origin, Diversity, and Evolution of Telomere Sequences in Plants. *Frontiers in Plant Science*. [doi:10.3389/fpls.2020.00117](https://doi.org/10.3389/fpls.2020.00117)
 - Rhie et al. 2020. Merqury: reference-free quality, completeness, and phasing assessment for genome assemblies. *Genome Biology*. [doi:10.1186/s13059-020-02134-9](https://doi.org/10.1186/s13059-020-02134-9)
 - Uchida et al. 2002. Interstitial telomere-like repeats in the Arabidopsis thaliana genome. *Genes & Genetic Systems*. [doi:10.1266/ggs.77.63](https://doi.org/10.1266/ggs.77.63)
+- INSDC 2024. The international nucleotide sequence database collaboration (INSDC): enhancing global participation. *Nucleic Acids Research*. [doi:10.1093/nar/gkae1058](https://doi.org/10.1093/nar/gkae1058)
+- Colt et al. 2024. Telomere Length in Plants Estimated with Long Read Sequencing. *bioRxiv* (preprint). [doi:10.1101/2024.03.27.586973](https://doi.org/10.1101/2024.03.27.586973)
+- Stephens et al. 2024. Characterization of telomere variant repeats using long reads enables allele-specific telomere length estimation. *BMC Bioinformatics*. [doi:10.1186/s12859-024-05807-5](https://doi.org/10.1186/s12859-024-05807-5)
+- Iannuzzi et al. 2026. Association Between Contrasting Water Regimes and Telomere Length Variation in Field-Grown Grapevines: An Integrated Physiological, Metabolomic and Molecular Approach. *Plants*. [doi:10.3390/plants15131988](https://doi.org/10.3390/plants15131988)
+- Noraz et al. 2026. Ancient DNA reveals 4000 years of grapevine diversity, viticulture and clonal propagation in France. *Nature Communications*. [doi:10.1038/s41467-026-70166-z](https://doi.org/10.1038/s41467-026-70166-z)
+- Garrido-Ramos et al. 2026. Detailed re-analysis of satellitome mapping facilitated by the telomere-to-telomere (T2T) assembly of bread wheat genome. *Plant Molecular Biology*. [doi:10.1007/s11103-026-01745-3](https://doi.org/10.1007/s11103-026-01745-3)
+- Wang et al. 2026. Origin and evolution of grapevine genomes. *bioRxiv* (preprint). [doi:10.64898/2026.04.20.719760](https://doi.org/10.64898/2026.04.20.719760)
