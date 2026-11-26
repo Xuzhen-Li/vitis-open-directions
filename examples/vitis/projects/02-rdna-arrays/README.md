@@ -118,6 +118,31 @@ Each paper: introduction from the gap above; one results section per figure; met
 - Risk: Novelty: no dedicated literature search on this topic has been done beyond the grape literature base yet [待确认: repeat the search before writing].
 - Novelty: checked against the existing work above (Crossref-verified DOIs). Repeat the search before writing; anything marked [待确认] is not yet verified.
 
+## Risks and how to handle them
+
+Added 2026-11-26. Each row names a risk, the evidence behind it, and a concrete check or fallback. Sources cited here were read for this section and their DOIs were checked on Crossref; preprints are marked.
+
+| Area | Risk | Check or mitigation |
+|---|---|---|
+| Data access and licence | Assemblies are listed as available, but the angiosperm comparison set (DS17) is an open query and long reads exist only for some accessions ([data/DOWNLOADS.md](../../data/DOWNLOADS.md)). INSDC data are free and open ([INSDC 2024](https://doi.org/10.1093/nar/gkae1058)). | Freeze the assembly list with versions; list, per accession, whether raw long reads exist before promising read-based copy numbers. |
+| Sample size and power | Fully closed NORs may be found in only a few assemblies, so position conservation may rest on few points. | Report the number of closed, partly closed and absent arrays per chromosome before any comparison; if closed arrays are rare, treat positions as presence of a unit, not as array structure. |
+| Copy number versus activity | In Hominidae, rDNA copy number and activity form an individual fingerprint, and whole arrays can be silent and methylated ([Potapova et al. 2025](https://doi.org/10.1016/j.xgen.2025.101031)). | Do not infer how many copies are active from DNA copy numbers; if public methylation data exist for an accession (DS18), report them only as a note. |
+| rDNA outside NORs | In *Nicotiana benthamiana* rDNA was a major origin of centromeric satellites ([Chen et al. 2024](https://doi.org/10.1038/s41477-024-01849-y)), so rDNA-like hits can lie far from NORs. | Separate full 45S or 5S units from fragments; report fragments as their own class and cross-check them against the satellite calls of project 18. |
+| Technology and source differences | Assemblers and read types differ in how much of an array they keep. | Model technology as a covariate; compare read-depth copy numbers only between libraries of the same platform. |
+| Clones, synonyms and pedigree | Repeated assemblies of one genotype are not independent ([Noraz et al. 2026](https://doi.org/10.1038/s41467-026-70166-z) found clonal identity across centuries). | Collapse by genotype (project 08 table); use the repeats as a technical replicate of array recovery. |
+| Annotation and method failure | Cytogenetic and assembly maps of tandem repeats can disagree; a T2T re-mapping in wheat resolved several such cases ([Garrido-Ramos et al. 2026](https://doi.org/10.1007/s11103-026-01745-3)). | Compare assembled NOR positions with published FISH counts where they exist; a mismatch is reported, not silently resolved. |
+| Computing cost | Read-depth copy number needs alignment of raw reads, the costly step. | Use a k-mer or subsampled alignment for copy number and time one accession first. |
+| Alternative methods and sensitivity | Copy number from depth depends on the single-copy genes used for normalisation. | Repeat with two sets of single-copy genes and report the spread. |
+
+**Recent and competing work (search of 2024 to 2026 literature on 2026-11-26)**
+
+- The search returned no grape-specific rDNA array study for 2024 to 2026; this is not proof of absence. In other plants, T2T papers treat rDNA as a side result, for example as a source of centromeric satellites ([Chen et al. 2024](https://doi.org/10.1038/s41477-024-01849-y)), so a grape catalogue is a descriptive extension rather than a first.
+- New Vitaceae assemblies ([Wang et al. 2026](https://doi.org/10.64898/2026.04.20.719760), preprint) add genera for the family comparison.
+
+**What would end the idea, and the fallback.** If almost no assembly closes a NOR and long reads are missing for most, the array catalogue is not possible. The fallback is the joint repeat-array paper with project 01 that reports only presence and position of units.
+
+**Journal-level realism.** A specialty plant cytogenetics or genomics journal. Broader venues published NOR assembly when it was a first for a model species, which this project is not.
+
 ## Rough estimates
 
 - Compute: small [draft]
@@ -155,3 +180,9 @@ Public inputs: [DS01](../../data/DS01-pn40024-references/), [DS02](../../data/DS
 - Rhie et al. 2020. Merqury: reference-free quality, completeness, and phasing assessment for genome assemblies. *Genome Biology*. [doi:10.1186/s13059-020-02134-9](https://doi.org/10.1186/s13059-020-02134-9)
 - Sims et al. 2021. Sequencing of the Arabidopsis NOR2 reveals its distinct organization and tissue-specific rRNA ribosomal variants. *Nature Communications*. [doi:10.1038/s41467-020-20728-6](https://doi.org/10.1038/s41467-020-20728-6)
 - Wang et al. 2026. Chromosome-level phylogenomics and genome evolution of the grape family. *Nature Plants*. [doi:10.1038/s41477-026-02442-1](https://doi.org/10.1038/s41477-026-02442-1)
+- INSDC 2024. The international nucleotide sequence database collaboration (INSDC): enhancing global participation. *Nucleic Acids Research*. [doi:10.1093/nar/gkae1058](https://doi.org/10.1093/nar/gkae1058)
+- Potapova et al. 2025. Chromosome-specific epigenetic control and transmission of ribosomal DNA arrays in Hominidae genomes. *Cell Genomics*. [doi:10.1016/j.xgen.2025.101031](https://doi.org/10.1016/j.xgen.2025.101031)
+- Chen et al. 2024. The complete genome assembly of Nicotiana benthamiana reveals the genetic and epigenetic landscape of centromeres. *Nature Plants*. [doi:10.1038/s41477-024-01849-y](https://doi.org/10.1038/s41477-024-01849-y)
+- Noraz et al. 2026. Ancient DNA reveals 4000 years of grapevine diversity, viticulture and clonal propagation in France. *Nature Communications*. [doi:10.1038/s41467-026-70166-z](https://doi.org/10.1038/s41467-026-70166-z)
+- Garrido-Ramos et al. 2026. Detailed re-analysis of satellitome mapping facilitated by the telomere-to-telomere (T2T) assembly of bread wheat genome. *Plant Molecular Biology*. [doi:10.1007/s11103-026-01745-3](https://doi.org/10.1007/s11103-026-01745-3)
+- Wang et al. 2026. Origin and evolution of grapevine genomes. *bioRxiv* (preprint). [doi:10.64898/2026.04.20.719760](https://doi.org/10.64898/2026.04.20.719760)

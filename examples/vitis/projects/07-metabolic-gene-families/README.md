@@ -114,6 +114,30 @@ Each paper: introduction from the gap above; one results section per figure; met
 - Risk: Naming differs between studies; keep a mapping table.
 - Novelty: checked against the existing work above (Crossref-verified DOIs). Repeat the search before writing; anything marked [待确认] is not yet verified.
 
+## Risks and how to handle them
+
+Added 2026-11-26. Each row names a risk, the evidence behind it, and a concrete check or fallback. Sources cited here were read for this section and their DOIs were checked on Crossref; preprints are marked.
+
+| Area | Risk | Check or mitigation |
+|---|---|---|
+| Data access and licence | Assemblies and annotations used here are listed as available ([data/DOWNLOADS.md](../../data/DOWNLOADS.md)). | Freeze versions; record per haplotype whether long reads exist for collapse checks. |
+| Assembly collapse | Draft assemblies get gene numbers wrong in a large share of gene families, both adding and losing copies ([Denton et al. 2014](https://doi.org/10.1371/journal.pcbi.1003998)); tandem STS and TPS arrays are exposed to the same problem (see above). | Count copies only in arrays that pass a completeness check (no gap, even read depth); report other arrays as minimum counts. |
+| Annotation and naming | Gene models and names differ between studies (see above). | Count copies from protein-domain searches on the genome, not from each annotation, and keep a name-mapping table. |
+| Reference bias and genome choice | Copy numbers projected from PN_T2T miss copies absent from it. | Count from each assembly directly. |
+| Clones, synonyms and pedigree | Repeated genotypes and close relatives bias birth-death rates. | Collapse by genotype; fit rates on a tree that includes relatedness. |
+| Sample size and power | Rate comparisons between families need enough complete arrays. | Fix the minimum number of complete arrays per family; below it, report counts only. |
+| Computing cost | Small. | None beyond timing one haplotype. |
+| Alternative methods and sensitivity | Birth-death estimates depend on the tree and on the model. | Compare a count-based model with a gene-tree reconciliation on the same families. |
+
+**Recent and competing work (search of 2024 to 2026 literature on 2026-11-26)**
+
+- TPS copy number variation has already been linked to monoterpene QTL in a grapevine mapping population ([Bosman et al. 2023](https://doi.org/10.3389/fpls.2023.1112214)); a copy-number-trait link for TPS is therefore not new, while multi-haplotype turnover is.
+- A cluster of six UDP-glycosyltransferase genes was linked to stilbene glucoside (piceid) accumulation in wood ([Chepca et al. 2026](https://doi.org/10.64898/2026.10.24.761503), preprint). Stilbene modification genes are a natural extra family if the STS analysis works.
+
+**What would end the idea, and the fallback.** If most STS and TPS arrays fail the completeness check outside T2T haplotypes, multi-haplotype rates are not reliable. The fallback is an STS-only study on T2T haplotypes.
+
+**Journal-level realism.** Specialty plant biology or horticultural genomics journal, as for the grape gene-family papers read here.
+
 ## Rough estimates
 
 - Compute: medium [draft]
@@ -152,3 +176,6 @@ Public inputs: [DS01](../../data/DS01-pn40024-references/), [DS02](../../data/DS
 - Mendes et al. 2021. CAFE 5 models variation in evolutionary rates among gene families. *Bioinformatics*. [doi:10.1093/bioinformatics/btaa1022](https://doi.org/10.1093/bioinformatics/btaa1022)
 - Parage et al. 2012. Structural, Functional, and Evolutionary Analysis of the Unusually Large Stilbene Synthase Gene Family in Grapevine. *Plant Physiology*. [doi:10.1104/pp.112.202705](https://doi.org/10.1104/pp.112.202705)
 - Pilati et al. 2014. The onset of grapevine berry ripening is characterized by ROS accumulation and lipoxygenase-mediated membrane peroxidation in the skin. *BMC Plant Biology*. [doi:10.1186/1471-2229-14-87](https://doi.org/10.1186/1471-2229-14-87)
+- Denton et al. 2014. Extensive Error in the Number of Genes Inferred from Draft Genome Assemblies. *PLoS Computational Biology*. [doi:10.1371/journal.pcbi.1003998](https://doi.org/10.1371/journal.pcbi.1003998)
+- Bosman et al. 2023. Grapevine genome analysis demonstrates the role of gene copy number variation in the formation of monoterpenes. *Frontiers in Plant Science*. [doi:10.3389/fpls.2023.1112214](https://doi.org/10.3389/fpls.2023.1112214)
+- Chepca et al. 2026. Genetic analysis of grapevine wood composition identifies glycosyltransferases involved in the biosynthesis of stilbene glycosides. *bioRxiv* (preprint). [doi:10.64898/2026.10.24.761503](https://doi.org/10.64898/2026.10.24.761503)

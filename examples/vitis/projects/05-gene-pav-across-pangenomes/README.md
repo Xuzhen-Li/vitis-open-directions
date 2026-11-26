@@ -118,6 +118,30 @@ Each paper: introduction from the gap above; one results section per figure; met
 - Risk: Wild haplotypes are more diverged, so projection under-calls presence.
 - Novelty: checked against the existing work above (Crossref-verified DOIs). Repeat the search before writing; anything marked [待确认] is not yet verified.
 
+## Risks and how to handle them
+
+Added 2026-11-26. Each row names a risk, the evidence behind it, and a concrete check or fallback. Sources cited here were read for this section and their DOIs were checked on Crossref; preprints are marked.
+
+| Area | Risk | Check or mitigation |
+|---|---|---|
+| Data access and licence | Assemblies and annotations are listed as available; short reads for depth checks exist only for some haplotypes ([data/DOWNLOADS.md](../../data/DOWNLOADS.md)). | List per haplotype which evidence exists (assembly, annotation, short reads, RNA-seq) before choosing the PAV test set. |
+| Annotation source differences | In cotton and soybean, PAV computed from public annotations mostly reflected differences in annotation methods, not sequence; one shared pipeline removed most of this, but identical sequences still received different gene models ([Brůna et al. 2026](https://doi.org/10.1093/nargab/lqag011)). | Re-annotate every haplotype with one pipeline before any PAV call; report PAV from public annotations and from the shared pipeline side by side. |
+| Assembly errors | Comparing draft and finished assemblies, upwards of 40% of gene families had the wrong gene number in drafts, with both added and lost genes ([Denton et al. 2014](https://doi.org/10.1371/journal.pcbi.1003998)). | Mark collapsed and duplicated regions (read depth, k-mer QC) and exclude PAV calls inside them from the main estimate. |
+| Reference bias and genome choice | Projection from PN_T2T under-calls presence in diverged wild haplotypes (see above). | Confirm absence by whole-genome alignment; syntenic pangenes from genome alignments help confirm PAV ([Contreras-Moreira et al. 2023](https://doi.org/10.1186/s13059-023-03071-z)). |
+| Clones, synonyms and pedigree | Some cultivars are assembled more than once in different resources. | Use repeated assemblies of one genotype as a positive control: any PAV between them estimates pipeline noise. |
+| Sample size and power | Gene-class enrichment needs enough variable genes per class. | Fix classes and minimum counts in the preregistration; merge small classes. |
+| Computing cost | Re-annotating every haplotype with one pipeline is the largest cost. | Time two haplotypes first; use liftover plus gap-filling annotation if full re-annotation is too slow, and say so. |
+| Alternative methods and sensitivity | PAV depends on identity and coverage cut-offs. | Report PAV at two cut-offs and with and without the excluded regions. |
+
+**Recent and competing work (search of 2024 to 2026 literature on 2026-11-26)**
+
+- The general point, that PAV taken from public annotations is inflated by annotation methods, is now published for cotton and soybean ([Brůna et al. 2026](https://doi.org/10.1093/nargab/lqag011)). This supports the project but removes the general claim; the grape-specific size of the effect remains open.
+- A long-read study of 16 *Vitis* genomes reported only about 7% of gene families shared by all and about 8% specific to each accession ([Long et al. 2024](https://doi.org/10.1093/plphys/kiae039)); these numbers are the main target for re-testing under one pipeline.
+
+**What would end the idea, and the fallback.** If the shared pipeline reproduces the published PAV levels, the artefact hypothesis fails; that is still a validation result worth a short paper. If a shared pipeline cannot be run on wild haplotypes (no transcript evidence), fall back to liftover-based PAV with alignment confirmation.
+
+**Journal-level realism.** The cross-crop methods paper appeared in *NAR Genomics and Bioinformatics*. A grape re-analysis is now specialty to mid-field; mid-field needs a clear change in the number of truly variable genes.
+
 ## Rough estimates
 
 - Compute: medium [draft]
@@ -155,3 +179,6 @@ Public inputs: [DS01](../../data/DS01-pn40024-references/), [DS02](../../data/DS
 - Li 2023. Protein-to-genome alignment with miniprot. *Bioinformatics*. [doi:10.1093/bioinformatics/btad014](https://doi.org/10.1093/bioinformatics/btad014)
 - Qin et al. 2021. Pan-genome analysis of 33 genetically diverse rice accessions reveals hidden genomic variations. *Cell*. [doi:10.1016/j.cell.2021.04.046](https://doi.org/10.1016/j.cell.2021.04.046)
 - Shumate et al. 2021. Liftoff: accurate mapping of gene annotations. *Bioinformatics*. [doi:10.1093/bioinformatics/btaa1016](https://doi.org/10.1093/bioinformatics/btaa1016)
+- Brůna et al. 2026. Evolutionary and methodological considerations when interpreting gene presence–absence variation in pangenomes. *NAR Genomics and Bioinformatics*. [doi:10.1093/nargab/lqag011](https://doi.org/10.1093/nargab/lqag011)
+- Denton et al. 2014. Extensive Error in the Number of Genes Inferred from Draft Genome Assemblies. *PLoS Computational Biology*. [doi:10.1371/journal.pcbi.1003998](https://doi.org/10.1371/journal.pcbi.1003998)
+- Contreras-Moreira et al. 2023. GET_PANGENES: calling pangenes from plant genome alignments confirms presence-absence variation. *Genome Biology*. [doi:10.1186/s13059-023-03071-z](https://doi.org/10.1186/s13059-023-03071-z)

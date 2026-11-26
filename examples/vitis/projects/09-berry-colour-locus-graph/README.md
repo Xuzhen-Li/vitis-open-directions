@@ -109,6 +109,29 @@ Each paper: introduction from the gap above; one results section per figure; met
 - Risk: Colour sports are periclinal chimeras: a change in one cell layer appears in leaf DNA as a lower VAF rather than an absence; which layer determines berry colour is checked against the colour-sport literature [待确认].
 - Novelty: checked against the existing work above (Crossref-verified DOIs). Repeat the search before writing; anything marked [待确认] is not yet verified.
 
+## Risks and how to handle them
+
+Added 2026-11-26. Each row names a risk, the evidence behind it, and a concrete check or fallback. Sources cited here were read for this section and their DOIs were checked on Crossref; preprints are marked.
+
+| Area | Risk | Check or mitigation |
+|---|---|---|
+| Data access and licence | Graph, assemblies and resequencing panels are listed as available ([data/DOWNLOADS.md](../../data/DOWNLOADS.md)); colour records come from VIVC and papers. | Freeze the panel and the date of the colour record export. |
+| Haplotypes missing from the graph | The berry colour locus carries an ancient divergent haplotype F with two functional subhaplotypes and one with a large deletion that gives white skin ([Reynard et al. 2025](https://doi.org/10.1093/hr/uhaf069)). If no graph assembly carries a haplotype, short reads from it cannot be typed correctly. | List which assemblies carry each known haplotype before building; add an assembly carrying haplotype F or mark that class as untyped. |
+| Colour sports and chimeras | In a study of 33 Pinot clones, at least six L2-layer haplotypes accounted for colour loss, four of them from replacement of 31 kb to 4.4 Mb sections of the coloured haplotype ([Pelsy et al. 2015](https://doi.org/10.1371/journal.pgen.1005081)); roots come from L2 only, so comparing root and leaf DNA detects periclinal chimeras ([Sichel et al. 2023](https://doi.org/10.1186/s12864-023-09453-8)). | Exclude known colour sports from the prediction test, analyse them separately, and use root data where public. |
+| Graph construction | Graph builders differ in completeness and in how faithfully they keep SVs ([Kopalli et al. 2025](https://doi.org/10.1093/gigascience/giaf121)). | Build the locus graph with two pipelines and compare the paths of known haplotypes. |
+| Complex SV genotyping | Large complex SVs can be genotyped from a 30-genome graph in chicken ([Rice et al. 2023](https://doi.org/10.1186/s12915-023-01758-0)), but repeats at the locus may reduce accuracy in grape. | Measure concordance against assemblies of the same accessions (truth set) before predicting colour. |
+| Clones, synonyms and pedigree | Duplicate genotypes inflate prediction accuracy. | Collapse by genotype (project 08) and split train and test sets by genotype. |
+| Sample size and power | Few white accessions carry rare haplotypes. | Report accuracy per haplotype class with counts. |
+| Computing cost | Locus-only genotyping is small; whole-genome graph alignment is not. | Align only reads that map near the locus, after a check that this does not lose reads from divergent haplotypes. |
+
+**Recent and competing work (search of 2024 to 2026 literature on 2026-11-26)**
+
+- The most recent locus study already explains a white-skin case by a divergent haplotype ([Reynard et al. 2025](https://doi.org/10.1093/hr/uhaf069)). The remaining contribution is typing all known haplotypes from short reads at panel scale.
+
+**What would end the idea, and the fallback.** If graph genotypes at the locus agree poorly with assembly truth, prediction from short reads is not reliable. The fallback is k-mer typing of known haplotype markers, or a descriptive haplotype catalogue from assemblies only.
+
+**Journal-level realism.** Specialty plant genetics or horticulture journal, since the locus is already explained.
+
 ## Rough estimates
 
 - Compute: small [draft]
@@ -144,3 +167,6 @@ Public inputs: [DS02](../../data/DS02-grapepan-v1/), [DS03](../../data/DS03-viti
 - Sirén et al. 2021. Pangenomics enables genotyping of known structural variants in 5202 diverse genomes. *Science*. [doi:10.1126/science.abg8871](https://doi.org/10.1126/science.abg8871)
 - This et al. 2007. Wine grape (Vitis vinifera L.) color associates with allelic variation in the domestication gene VvmybA1. *Theoretical and Applied Genetics*. [doi:10.1007/s00122-006-0472-2](https://doi.org/10.1007/s00122-006-0472-2)
 - Walker et al. 2007. White grapes arose through the mutation of two similar and adjacent regulatory genes. *The Plant Journal*. [doi:10.1111/j.1365-313x.2006.02997.x](https://doi.org/10.1111/j.1365-313x.2006.02997.x)
+- Sichel et al. 2023. Chimeras in Merlot grapevine revealed by phased assembly. *BMC Genomics*. [doi:10.1186/s12864-023-09453-8](https://doi.org/10.1186/s12864-023-09453-8)
+- Kopalli et al. 2025. Toward a standardized framework for pangenome graph evaluation: assessing crop plant pangenome variation graph construction from multiple assemblies. *GigaScience*. [doi:10.1093/gigascience/giaf121](https://doi.org/10.1093/gigascience/giaf121)
+- Rice et al. 2023. A pangenome graph reference of 30 chicken genomes allows genotyping of large and complex structural variants. *BMC Biology*. [doi:10.1186/s12915-023-01758-0](https://doi.org/10.1186/s12915-023-01758-0)

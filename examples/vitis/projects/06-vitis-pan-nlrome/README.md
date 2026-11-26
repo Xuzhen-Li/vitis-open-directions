@@ -114,6 +114,31 @@ Each paper: introduction from the gap above; one results section per figure; met
 - Risk: Integrated-domain calls depend on domain database versions.
 - Novelty: checked against the existing work above (Crossref-verified DOIs). Repeat the search before writing; anything marked [待确认] is not yet verified.
 
+## Risks and how to handle them
+
+Added 2026-11-26. Each row names a risk, the evidence behind it, and a concrete check or fallback. Sources cited here were read for this section and their DOIs were checked on Crossref; preprints are marked.
+
+| Area | Risk | Check or mitigation |
+|---|---|---|
+| Data access and licence | Assemblies are listed as available; long reads and transcript data are public only for some accessions ([data/DOWNLOADS.md](../../data/DOWNLOADS.md)). | Record per accession whether long reads and full-length transcripts exist; this sets which clusters can be checked for collapse. |
+| Annotation failure | In *Arabidopsis*, a full NLR annotation needed genome-specific full-length transcripts, homology and TE information, and several metrics were needed to describe NLR diversity ([Teasdale et al. 2025](https://doi.org/10.1016/j.chom.2025.07.011)). Homology-only calls miss or split genes. | Use accessions with Iso-Seq annotation, such as Chasselas ([Djari et al. 2024](https://doi.org/10.1073/pnas.2403750121)), as a benchmark for NLR-Annotator calls; report sensitivity there before applying the pipeline elsewhere. |
+| Assembly collapse | The *Rpv3* locus arose by tandem segmental duplication and TE movement shaped its haplotypes ([Foria et al. 2020](https://doi.org/10.1111/tpj.14551)); such loci are prone to collapse. | Check read depth over every NLR cluster where long reads exist; flag clusters with depth above the haplotype mean. |
+| Domain database versions | Integrated-domain calls change with database release (see above). | Fix database versions; re-run on the newest release as a sensitivity check. |
+| Clones, synonyms and pedigree | Repeated genotypes inflate saturation curves. | Collapse by genotype before rarefaction. |
+| Sample size and power | Saturation curves depend on how evenly lineages are sampled. | Rarefy within lineages and report curves per lineage. |
+| Computing cost | Moderate: domain searches on all proteomes. | Time one haplotype first. |
+| Alternative methods and sensitivity | One NLR caller can miss truncated genes. | Compare two callers and report genes found by only one. |
+
+**Recent and competing work (search of 2024 to 2026 literature on 2026-11-26)**
+
+- A Vitaceae-wide study of 29 assemblies reported that Helitron transposons drive NLR expansion and expression regulation in *Vitis* and identified a downy mildew resistance NLR from a wild species ([Wang et al. 2026](https://doi.org/10.64898/2026.04.20.719760), preprint). This overlaps directly with the catalogue aim; read its methods and data before fixing this design.
+- A T2T Thompson Seedless assembly already includes an NLR analysis ([Wang et al. 2024](https://doi.org/10.1093/hr/uhad260)), and the *Vitis* super-pangenome is centred on downy mildew resistance genes (see Background).
+- In *Arabidopsis*, NLRs were organised into 121 pangenomic neighbourhoods ([Teasdale et al. 2025](https://doi.org/10.1016/j.chom.2025.07.011)). A grape catalogue now needs this neighbourhood view plus collapse checks to be new.
+
+**What would end the idea, and the fallback.** If the preprint above publishes a genus-wide catalogue with integrated domains, the catalogue itself is no longer new. The fallback is the collapse audit and the saturation analysis by lineage, framed as a quality layer over published catalogues.
+
+**Journal-level realism.** The *Arabidopsis* neighbourhood study used transcript evidence and appeared in *Cell Host & Microbe*. A grape catalogue without such evidence fits a specialty or mid-field plant journal.
+
 ## Rough estimates
 
 - Compute: medium [draft]
@@ -155,3 +180,8 @@ Public inputs: [DS01](../../data/DS01-pn40024-references/), [DS02](../../data/DS
 - Prigozhin et al. 2021. Analysis of intraspecies diversity reveals a subset of highly variable plant immune receptors and predicts their binding sites. *The Plant Cell*. [doi:10.1093/plcell/koab013](https://doi.org/10.1093/plcell/koab013)
 - Sarris et al. 2016. Comparative analysis of plant immune receptor architectures uncovers host proteins likely targeted by pathogens. *BMC Biology*. [doi:10.1186/s12915-016-0228-7](https://doi.org/10.1186/s12915-016-0228-7)
 - Steuernagel et al. 2020. The NLR-Annotator Tool Enables Annotation of the Intracellular Immune Receptor Repertoire. *Plant Physiology*. [doi:10.1104/pp.19.01273](https://doi.org/10.1104/pp.19.01273)
+- Teasdale et al. 2025. Pangenomic context reveals the extent of intraspecific plant NLR evolution. *Cell Host & Microbe*. [doi:10.1016/j.chom.2025.07.011](https://doi.org/10.1016/j.chom.2025.07.011)
+- Djari et al. 2024. Haplotype-resolved genome assembly and implementation of VitExpress, an open interactive transcriptomic platform for grapevine. *Proceedings of the National Academy of Sciences*. [doi:10.1073/pnas.2403750121](https://doi.org/10.1073/pnas.2403750121)
+- Foria et al. 2020. Gene duplication and transposition of mobile elements drive evolution of the Rpv3 resistance locus in grapevine. *The Plant Journal*. [doi:10.1111/tpj.14551](https://doi.org/10.1111/tpj.14551)
+- Wang et al. 2026. Origin and evolution of grapevine genomes. *bioRxiv* (preprint). [doi:10.64898/2026.04.20.719760](https://doi.org/10.64898/2026.04.20.719760)
+- Wang et al. 2024. Telomere-to-telomere and gap-free genome assembly of a susceptible grapevine species (Thompson Seedless) to facilitate grape functional genomics. *Horticulture Research*. [doi:10.1093/hr/uhad260](https://doi.org/10.1093/hr/uhad260)

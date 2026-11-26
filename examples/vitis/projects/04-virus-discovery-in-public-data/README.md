@@ -109,6 +109,30 @@ Each paper: introduction from the gap above; one results section per figure; met
 - Risk: Metadata are incomplete for many runs.
 - Novelty: checked against the existing work above (Crossref-verified DOIs). Repeat the search before writing; anything marked [待确认] is not yet verified.
 
+## Risks and how to handle them
+
+Added 2026-11-26. Each row names a risk, the evidence behind it, and a concrete check or fallback. Sources cited here were read for this section and their DOIs were checked on Crossref; preprints are marked.
+
+| Area | Risk | Check or mitigation |
+|---|---|---|
+| Data access and licence | The broad RNA-seq set (DS15) is an open ENA query, not a closed list ([data/DOWNLOADS.md](../../data/DOWNLOADS.md)). INSDC data are free and open ([INSDC 2024](https://doi.org/10.1093/nar/gkae1058)). | Freeze the run list with the query date; keep run, BioSample and study IDs with every detection. |
+| False positives | Contamination is a named hurdle for sequencing-based virus detection, shown in an interlaboratory validation that included grapevine ([Abrahamian et al. 2025](https://doi.org/10.1094/phytofr-03-25-0025-r)); guidelines ask for controls at each step ([Massart et al. 2022](https://doi.org/10.24072/pcjournal.181)). | Require a minimum read count and genome breadth; flag any virus seen at low counts in many libraries of one sequencing run (index hopping); use the sensitivity and specificity criteria measured for grapevine ([Stevens et al. 2024](https://doi.org/10.3390/v16121957)). |
+| Host attribution | Viruses in grape libraries need not infect grape: a re-analysis of metatranscriptomes from downy mildew leaf lesions completed genomes of splipalmiviruses, orfanplasmoviruses and new ambiviruses and found a viroid-like RNA, all reported as lesion-associated ([Daghino et al. 2026](https://doi.org/10.1016/j.virusres.2026.199780)). | Classify each hit by the known host range of its family; report non-plant families as associated, not as grape viruses. |
+| Library preparation | Detection depends on nucleic acid type and library strategy ([Kutnjak et al. 2021](https://doi.org/10.3390/microorganisms9040841)). | Code library type (poly-A, total RNA, small RNA, DNA) for every run; compare detection rates within the same tissue and study where possible. |
+| Sample size and power | Metadata are incomplete, so the library-type comparison may have few runs per class. | Fix a minimum number of runs per class before testing; otherwise report the comparison descriptively. |
+| Clones, synonyms and pedigree | The same vine or clone can appear in several studies, so infections are not independent observations. | Collapse runs by BioSample and genotype before prevalence estimates. |
+| Computing cost | Thousands of runs make download and host-read removal the main cost. | Stream runs, keep only unmapped reads, and time 50 runs first. |
+| Alternative methods and sensitivity | Read-mapping and assembly-based detection find different things. | Run both on a random subset and report agreement. |
+
+**Recent and competing work (search of 2024 to 2026 literature on 2026-11-26)**
+
+- Large re-analyses of public plant data are now common: 2,789 public orchid RNA-seq sets gave 163 viruses ([Pérez et al. 2026](https://doi.org/10.1128/jvi.00624-26)), and mining of plant SRA libraries found 22 putative new closterovirids, including ampeloviruses ([Sidharthan 2026](https://doi.org/10.1007/s00705-026-06537-0)). Some grape runs have likely been searched already for some families.
+- Before calling any virus new, compare it with the latest GenBank release and with the sequences from these papers.
+
+**What would end the idea, and the fallback.** If almost every confident hit is a known grape virus or a contaminant pattern, discovery adds little. The fallback is a data note that maps virus presence in public grape data, as a warning for people who reuse those data for expression studies.
+
+**Journal-level realism.** Archive-mining papers appear in *Journal of Virology*, *Archives of Virology* and *Viruses*. A grape-only screen fits that specialty level; mid-field only if several new viruses are confirmed with assembled genomes.
+
 ## Rough estimates
 
 - Compute: medium [draft]
@@ -143,3 +167,11 @@ Public inputs: [DS15](../../data/DS15-rnaseq-public-vitis/), [DS10](../../data/D
 - Mifsud et al. 2022. Transcriptome Mining Expands Knowledge of RNA Viruses across the Plant Kingdom. *Journal of Virology*. [doi:10.1128/jvi.00260-22](https://doi.org/10.1128/jvi.00260-22)
 - Nayfach et al. 2021. CheckV assesses the quality and completeness of metagenome-assembled viral genomes. *Nature Biotechnology*. [doi:10.1038/s41587-020-00774-7](https://doi.org/10.1038/s41587-020-00774-7)
 - Olendraite et al. 2023. Identification of RNA Virus–Derived RdRp Sequences in Publicly Available Transcriptomic Data Sets. *Molecular Biology and Evolution*. [doi:10.1093/molbev/msad060](https://doi.org/10.1093/molbev/msad060)
+- INSDC 2024. The international nucleotide sequence database collaboration (INSDC): enhancing global participation. *Nucleic Acids Research*. [doi:10.1093/nar/gkae1058](https://doi.org/10.1093/nar/gkae1058)
+- Abrahamian et al. 2025. Interlaboratory Validation of High-Throughput Sequencing for the Detection of Viruses and Viroids in Apple, Grapevine, and Stone Fruits. *PhytoFrontiers™*. [doi:10.1094/phytofr-03-25-0025-r](https://doi.org/10.1094/phytofr-03-25-0025-r)
+- Massart et al. 2022. Guidelines for the reliable use of high throughput sequencing technologies to detect plant pathogens and pests. *Peer Community Journal*. [doi:10.24072/pcjournal.181](https://doi.org/10.24072/pcjournal.181)
+- Stevens et al. 2024. High-Throughput Sequencing for the Detection of Viruses in Grapevine: Performance Analysis and Best Practices. *Viruses*. [doi:10.3390/v16121957](https://doi.org/10.3390/v16121957)
+- Daghino et al. 2026. Expanded virome analysis of metatranscriptomes from grapevine downy mildew lesions reveals novel viral segments, novel viruses and viroid-like RNAs. *Virus Research*. [doi:10.1016/j.virusres.2026.199780](https://doi.org/10.1016/j.virusres.2026.199780)
+- Kutnjak et al. 2021. A Primer on the Analysis of High-Throughput Sequencing Data for Detection of Plant Viruses. *Microorganisms*. [doi:10.3390/microorganisms9040841](https://doi.org/10.3390/microorganisms9040841)
+- Pérez et al. 2026. Expanding the Orchidaceae virome through analysis of public-domain sequencing data. *Journal of Virology*. [doi:10.1128/jvi.00624-26](https://doi.org/10.1128/jvi.00624-26)
+- Sidharthan 2026. Plant transcriptome data mining identified twenty-two putative novel taxa in the family Closteroviridae. *Archives of Virology*. [doi:10.1007/s00705-026-06537-0](https://doi.org/10.1007/s00705-026-06537-0)
