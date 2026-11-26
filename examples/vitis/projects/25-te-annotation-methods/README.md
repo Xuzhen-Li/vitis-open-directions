@@ -84,6 +84,28 @@ Each paper: introduction from the gap above; one section per method family; data
 - Risk: Several recent survey articles on TE annotation may exist [待确认].
 - Novelty: checked against the existing work above (Crossref-verified DOIs). Repeat the search before writing; anything marked [待确认] is not yet verified.
 
+## Risks and how to handle them
+
+Added 2026-11-26. Each row names a risk, the evidence behind it, and a concrete check or fallback. Sources cited here were read for this section and their DOIs were checked on Crossref; preprints are marked.
+
+| Area | Risk | Check or mitigation |
+|---|---|---|
+| Crowded topic | A survey of TE annotation software with best practices exists ([Loreto et al. 2023](https://doi.org/10.1590/1678-4685-gmb-2023-0138)), as does a benchmarking workflow for annotation pipelines ([Kania et al. 2026](https://doi.org/10.1186/s13100-026-00405-z)). | Narrow the scope to what grape annotations show about practice, and to evidence for judging annotation quality; cite the general surveys rather than repeating them. |
+| No ground truth | Gold-standard TE databases are incomplete even for well-studied species ([Hu et al. 2024](https://doi.org/10.1038/s41467-024-49912-8)), and automatic consensus sequences are often incomplete, so manual curation is still considered essential ([Peona et al. 2024](https://doi.org/10.1186/s13100-024-00319-8)). | Use simulated genomes from TE_Bench for recall and precision; use curated grape families only as a partial truth set. |
+| Classification granularity | Lineage-level LTR classification from protein domains (DANTE and DANTE_LTR) is finer than superfamily labels ([Novák et al. 2024](https://doi.org/10.1093/nargab/lqae113)). | Report results at superfamily and at lineage level; state which level each grape annotation used. |
+| Fast-moving field | New tools keep appearing (see above). | Fix a literature cut-off date and list later tools in an appendix without evaluating them. |
+| Data access and licence | Published grape TE annotations are part of assembly releases (DS01 and others, [data/DOWNLOADS.md](../../data/DOWNLOADS.md)). | Record the version of each annotation file used. |
+| Sample size, clones and pooling | This is a methods study, not a population sample, so these risks do not apply. | None. |
+| Computing cost | Running several pipelines on several grape genomes is the main cost. | Benchmark on one chromosome first. |
+
+**Recent and competing work (search of 2024 to 2026 literature on 2026-11-26)**
+
+- The general survey and benchmark space is occupied by the works above. A grape-specific comparison of published annotations was not found.
+
+**What would end the idea, and the fallback.** If a comprehensive plant TE annotation survey appears before writing, the general part is redundant. The fallback is a grape case study benchmarking pipelines on PN_T2T with TE_Bench.
+
+**Journal-level realism.** Specialty mobile DNA or plant genome journal.
+
 ## Rough estimates
 
 - Compute: none to small [draft]
@@ -119,3 +141,8 @@ Public inputs: [DS01](../../data/DS01-pn40024-references/), [DS02](../../data/DS
 - Storer et al. 2021. The Dfam community resource of transposable element families, sequence models, and genome annotations. *Mobile DNA*. [doi:10.1186/s13100-020-00230-y](https://doi.org/10.1186/s13100-020-00230-y)
 - Wicker et al. 2007. A unified classification system for eukaryotic transposable elements. *Nat Rev Genet*. [doi:10.1038/nrg2165](https://doi.org/10.1038/nrg2165)
 - Zhang et al. 2022. TEsorter: An accurate and fast method to classify LTR-retrotransposons in plant genomes. *Horticulture Research*. [doi:10.1093/hr/uhac017](https://doi.org/10.1093/hr/uhac017)
+- Loreto et al. 2023. The good, the bad and the ugly of transposable elements annotation tools. *Genetics and Molecular Biology*. [doi:10.1590/1678-4685-gmb-2023-0138](https://doi.org/10.1590/1678-4685-gmb-2023-0138)
+- Kania et al. 2026. TE_Bench: a foundational benchmarking workflow for transposable element annotation pipelines. *Mobile DNA*. [doi:10.1186/s13100-026-00405-z](https://doi.org/10.1186/s13100-026-00405-z)
+- Hu et al. 2024. HiTE: a fast and accurate dynamic boundary adjustment approach for full-length transposable element detection and annotation. *Nature Communications*. [doi:10.1038/s41467-024-49912-8](https://doi.org/10.1038/s41467-024-49912-8)
+- Peona et al. 2024. Teaching transposon classification as a means to crowd source the curation of repeat annotation – a tardigrade perspective. *Mobile DNA*. [doi:10.1186/s13100-024-00319-8](https://doi.org/10.1186/s13100-024-00319-8)
+- Novák et al. 2024. DANTE and DANTE_LTR: lineage-centric annotation pipelines for long terminal repeat retrotransposons in plant genomes. *NAR Genomics and Bioinformatics*. [doi:10.1093/nargab/lqae113](https://doi.org/10.1093/nargab/lqae113)

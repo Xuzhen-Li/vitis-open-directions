@@ -115,6 +115,28 @@ Each paper: introduction from the gap above; one results section per figure; met
 - Risk: Trait definitions differ between studies.
 - Novelty: checked against the existing work above (Crossref-verified DOIs). Repeat the search before writing; anything marked [待确认] is not yet verified.
 
+## Risks and how to handle them
+
+Added 2026-11-26. Each row names a risk, the evidence behind it, and a concrete check or fallback. Sources cited here were read for this section and their DOIs were checked on Crossref; preprints are marked.
+
+| Area | Risk | Check or mitigation |
+|---|---|---|
+| Data access and licence | Licence terms for DS22 are still open per source; the across-population prediction data and the Bordeaux call sets are available ([data/DOWNLOADS.md](../../data/DOWNLOADS.md)). | Record the licence of every phenotype and summary-statistic file before use; leave out any file without clear reuse terms. |
+| Platform and panel differences | Recent grape GWAS used different panels and platforms: 288 accessions on the Vitis18K array over 12 years ([de Oliveira et al. 2026](https://doi.org/10.1371/journal.pone.0343491)), 588 cultivars of a breeding programme over three seasons ([García-Abadillo et al. 2024](https://doi.org/10.1093/hr/uhad283)), and 231 resequenced accessions ([Gan et al. 2025](https://doi.org/10.1093/hr/uhaf128)). | Lift all markers to PN_T2T coordinates; meta-analyse at the locus level where marker sets do not overlap. |
+| Environment and season | QTL effects vary across environments; metaGE meta-analyses single-environment GWAS while allowing effects to differ ([De Walsche et al. 2025](https://doi.org/10.1371/journal.pgen.1011553)). | Use a random-effects or metaGE-type model and report heterogeneity per locus. |
+| Prediction across populations | From a diversity panel to ten crosses, predictive ability averaged 0.6 for cross means but 0.26 for individuals within crosses, and depended on genetic distance between parents ([Brault et al. 2022](https://doi.org/10.1093/hr/uhac041)). | Set expectations from these values; report accuracy against genetic distance between training and target groups. |
+| Clones, synonyms and pedigree | Breeding panels share parents and include clones. | Fit a kinship matrix; remove duplicate genotypes across studies (project 08). |
+| Sample size and power | Few studies share a trait with public summary statistics. | Keep the stop rule: if fewer studies than the preregistered minimum share a trait, publish the inventory as a data note. |
+| Computing cost | Small. | None. |
+
+**Recent and competing work (search of 2024 to 2026 literature on 2026-11-26)**
+
+- Genomic prediction in grape has been applied within breeding programmes ([Brault et al. 2024](https://doi.org/10.1093/g3journal/jkae038)) and with deep learning on phenotype images ([Gan et al. 2025](https://doi.org/10.1093/hr/uhaf128)). No grape GWAS meta-analysis across public studies was found.
+
+**What would end the idea, and the fallback.** If summary statistics are not public for enough studies, the meta-analysis cannot run. The fallback is the data inventory (see the stop rule above).
+
+**Journal-level realism.** Specialty plant breeding or horticulture journal; a data note if the stop rule triggers.
+
 ## Rough estimates
 
 - Compute: small to medium [draft]
@@ -148,3 +170,8 @@ Public inputs: [DS22](../../data/DS22-phenotypes-and-gwas-summaries/), [DS02](..
 - Nicolas et al. 2016. Genetic diversity, linkage disequilibrium and power of a large grapevine (Vitis vinifera L) diversity panel newly designed for association studies. *BMC Plant Biology*. [doi:10.1186/s12870-016-0754-z](https://doi.org/10.1186/s12870-016-0754-z)
 - Pérez et al. 2014. Genome-Wide Regression and Prediction with the BGLR Statistical Package. *Genetics*. [doi:10.1534/genetics.114.164442](https://doi.org/10.1534/genetics.114.164442)
 - Willer et al. 2010. METAL: fast and efficient meta-analysis of genomewide association scans. *Bioinformatics*. [doi:10.1093/bioinformatics/btq340](https://doi.org/10.1093/bioinformatics/btq340)
+- de Oliveira et al. 2026. Genome-wide association study in a diverse grapevine collection provides insights into the genetic basis of berry size and cluster architecture traits. *PLOS One*. [doi:10.1371/journal.pone.0343491](https://doi.org/10.1371/journal.pone.0343491)
+- García-Abadillo et al. 2024. Dissecting the complex genetic basis of pre- and post-harvest traits in Vitis vinifera L . using genome-wide association studies. *Horticulture Research*. [doi:10.1093/hr/uhad283](https://doi.org/10.1093/hr/uhad283)
+- Gan et al. 2025. Deep learning empowers genomic selection of pest-resistant grapevine. *Horticulture Research*. [doi:10.1093/hr/uhaf128](https://doi.org/10.1093/hr/uhaf128)
+- De Walsche et al. 2025. metaGE: Investigating genotype x environment interactions through GWAS meta-analysis. *PLOS Genetics*. [doi:10.1371/journal.pgen.1011553](https://doi.org/10.1371/journal.pgen.1011553)
+- Brault et al. 2024. Enhancing grapevine breeding efficiency through genomic prediction and selection index. *G3: Genes, Genomes, Genetics*. [doi:10.1093/g3journal/jkae038](https://doi.org/10.1093/g3journal/jkae038)

@@ -96,6 +96,27 @@ Each paper: introduction from the gap above; one results section per figure; met
 - Risk: Which assembly tools install on the compute site is open [待确认].
 - Novelty: checked against the existing work above (Crossref-verified DOIs). Repeat the search before writing; anything marked [待确认] is not yet verified.
 
+## Risks and how to handle them
+
+Added 2026-11-26. Each row names a risk, the evidence behind it, and a concrete check or fallback. Sources cited here were read for this section and their DOIs were checked on Crossref; preprints are marked.
+
+| Area | Risk | Check or mitigation |
+|---|---|---|
+| Data access and licence | Long reads exist only for some accessions; INSDC data are free and open ([INSDC 2024](https://doi.org/10.1093/nar/gkae1058)). | List accessions with public long reads before choosing option (a). |
+| NUMT confounding | Reads from mitochondrial variants can map preferentially to nuclear NUMTs, biasing heteroplasmy calls toward the reference allele ([Maude et al. 2019](https://doi.org/10.3389/fcell.2019.00201)). | Build the NUMT and NUPT mask (option b) first; use long reads to filter NUMT-derived reads, as Himito does ([Su et al. 2026](https://doi.org/10.1038/s41467-026-77418-y)). |
+| Assembly method | Hybrid assembly of short and long reads has been the most efficient route to reliable land-plant mitochondrial assemblies ([Štorchová et al. 2024](https://doi.org/10.1093/jxb/erae034)). | Use hybrid assembly where both read types exist; report the assembly graph, not only one linear path. |
+| Clones, synonyms and pedigree | Maternal lineages are shared by clones and by cultivars with a common mother. | Collapse by genotype; read maternal phylogeny with known pedigrees. |
+| Sample size and power | Heteroplasmy needs deep, clean data; few accessions may qualify. | Option (d) runs only above a preregistered number of qualifying accessions. |
+| Computing cost | Small per accession. | None. |
+
+**Recent and competing work (search of 2024 to 2026 literature on 2026-11-26)**
+
+- Chloroplast SNVs from shotgun data of 409 cultivars gave 102 haplotypes with clear geographic structure ([Rudolf Pilih et al. 2026](https://doi.org/10.3390/ijms27031583)). Together with the 33-accession pan-mitogenome (see above), option (c), a maternal phylogeny from organelle sequences, is largely covered; options (a) and (b) remain the most original.
+
+**What would end the idea, and the fallback.** If NUMT reads cannot be separated from true low-frequency variants, heteroplasmy (d) is dropped. The fallback is the graph catalogue (a) with the masks (b).
+
+**Journal-level realism.** Specialty plant genomics or organelle journal.
+
 ## Rough estimates
 
 - Compute: small to medium [draft]
@@ -133,3 +154,8 @@ Public inputs: [DS01](../../data/DS01-pn40024-references/), [DS02](../../data/DS
 - Michalovova et al. 2013. Analysis of plastid and mitochondrial DNA insertions in the nucleus (NUPTs and NUMTs) of six plant species: size, relative age and chromosomal localization. *Heredity*. [doi:10.1038/hdy.2013.51](https://doi.org/10.1038/hdy.2013.51)
 - Sloan et al. 2012. Rapid Evolution of Enormous, Multichromosomal Genomes in Flowering Plant Mitochondria with Exceptionally High Mutation Rates. *PLoS Biology*. [doi:10.1371/journal.pbio.1001241](https://doi.org/10.1371/journal.pbio.1001241)
 - Zhou et al. 2025. Oatk: a de novo assembly tool for complex plant organelle genomes. *Genome Biology*. [doi:10.1186/s13059-025-03676-6](https://doi.org/10.1186/s13059-025-03676-6)
+- INSDC 2024. The international nucleotide sequence database collaboration (INSDC): enhancing global participation. *Nucleic Acids Research*. [doi:10.1093/nar/gkae1058](https://doi.org/10.1093/nar/gkae1058)
+- Maude et al. 2019. NUMT Confounding Biases Mitochondrial Heteroplasmy Calls in Favor of the Reference Allele. *Frontiers in Cell and Developmental Biology*. [doi:10.3389/fcell.2019.00201](https://doi.org/10.3389/fcell.2019.00201)
+- Su et al. 2026. Himito: a graph-based toolkit for mitochondrial genome analysis using long reads. *Nature Communications*. [doi:10.1038/s41467-026-77418-y](https://doi.org/10.1038/s41467-026-77418-y)
+- Štorchová et al. 2024. Methods for assembling complex mitochondrial genomes in land plants. *Journal of Experimental Botany*. [doi:10.1093/jxb/erae034](https://doi.org/10.1093/jxb/erae034)
+- Rudolf Pilih et al. 2026. High-Resolution Chloroplast SNV Profiling of 409 Grapevine (Vitis vinifera L.) Cultivars Using Whole-Genome Shotgun Sequencing. *International Journal of Molecular Sciences*. [doi:10.3390/ijms27031583](https://doi.org/10.3390/ijms27031583)

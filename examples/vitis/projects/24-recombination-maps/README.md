@@ -92,6 +92,28 @@ Each paper: introduction from the gap above; one results section per figure; met
 - Risk: Do not present the result as the first such map; a limited search is not proof.
 - Novelty: checked against the existing work above (Crossref-verified DOIs). Repeat the search before writing; anything marked [待确认] is not yet verified.
 
+## Risks and how to handle them
+
+Added 2026-11-26. Each row names a risk, the evidence behind it, and a concrete check or fallback. Sources cited here were read for this section and their DOIs were checked on Crossref; preprints are marked.
+
+| Area | Risk | Check or mitigation |
+|---|---|---|
+| Data access and licence | DS11 runs were blocked on the public listing check; INSDC panels are available ([data/DOWNLOADS.md](../../data/DOWNLOADS.md)). | Plan group sizes on INSDC panels. |
+| Demography | Bottlenecks, hidden structure and population size changes can greatly reduce power and raise false positives of LD-based hotspot detection, and neither can be predicted without the demographic history ([Dapper et al. 2018](https://doi.org/10.1093/molbev/msx272)). | Simulate under each group demography and report hotspots only against a demography-matched null. |
+| Clonal propagation | Cloning raises heterozygosity and changes the site frequency spectrum ([Xiao et al. 2025](https://doi.org/10.1038/s41467-025-56817-7)); cultivated LD may reflect few meioses since the sexual origin of each cultivar. | Estimate cultivated maps on unique genotypes only and compare with pedigree-based crossovers (project 23). |
+| Small wild groups | Some wild groups have few samples; recombination maps can be inferred from a single pair of unphased genomes with iSMC ([Barroso et al. 2019](https://doi.org/10.1371/journal.pgen.1008449)). | Use iSMC-type estimates for small groups as a cross-check on LD-based maps. |
+| Inversions | Inversions reshaped the recombination landscape in a pineapple F1 population ([Fang et al. 2026](https://doi.org/10.1093/hr/uhag189)). | Mask inversions from project 17 or analyse them separately. |
+| Reference bias and genome choice | Maps on PN_T2T can miss recombination in regions absent from it (see above). | Report coverage of the map by region and repeat on a wild haplotype for one chromosome. |
+| Computing cost | Moderate (LD-based estimation per group and chromosome). | Time one chromosome. |
+
+**Recent and competing work (search of 2024 to 2026 literature on 2026-11-26)**
+
+- In maize, ARG-based maps and experimental populations showed a 12% genome-wide rise in recombination during domestication, with higher rates near centromeres on long arms ([Epstein et al. 2026](https://doi.org/10.1073/pnas.2534336123)). The wild-versus-domesticated comparison has a strong precedent; grape would add a perennial, clonally propagated case.
+
+**What would end the idea, and the fallback.** If simulations show that LD maps for cultivated groups cannot be separated from demographic artefacts, the wild-versus-cultivated contrast fails. The fallback is a wild-only LD map compared with published genetic maps.
+
+**Journal-level realism.** Mid-field genetics or evolution; the maize study in *PNAS* shows a higher venue is possible with a clear domestication contrast.
+
 ## Rough estimates
 
 - Compute: medium [draft]
@@ -131,3 +153,8 @@ Public inputs: [DS10](../../data/DS10-reseq-472-vitis/), [DS12](../../data/DS12-
 - Stapley et al. 2017. Variation in recombination frequency and distribution across eukaryotes: patterns and processes. *Philosophical Transactions of the Royal Society B: Biological Sciences*. [doi:10.1098/rstb.2016.0455](https://doi.org/10.1098/rstb.2016.0455)
 - Vervalle et al. 2022. A high-density integrated map for grapevine based on three mapping populations genotyped by the Vitis18K SNP chip. *Theoretical and Applied Genetics*. [doi:10.1007/s00122-022-04225-6](https://doi.org/10.1007/s00122-022-04225-6)
 - Zou et al. 2020. Haplotyping the Vitis collinear core genome with rhAmpSeq improves marker transferability in a diverse genus. *Nature Communications*. [doi:10.1038/s41467-019-14280-1](https://doi.org/10.1038/s41467-019-14280-1)
+- Dapper et al. 2018. Effects of Demographic History on the Detection of Recombination Hotspots from Linkage Disequilibrium. *Molecular Biology and Evolution*. [doi:10.1093/molbev/msx272](https://doi.org/10.1093/molbev/msx272)
+- Xiao et al. 2025. Impacts of reproductive systems on grapevine genome and breeding. *Nature Communications*. [doi:10.1038/s41467-025-56817-7](https://doi.org/10.1038/s41467-025-56817-7)
+- Barroso et al. 2019. Inference of recombination maps from a single pair of genomes and its application to ancient samples. *PLOS Genetics*. [doi:10.1371/journal.pgen.1008449](https://doi.org/10.1371/journal.pgen.1008449)
+- Fang et al. 2026. The heterozygous pineapple genome demonstrates the importance of haplotype-resolved plant genomes. *Horticulture Research*. [doi:10.1093/hr/uhag189](https://doi.org/10.1093/hr/uhag189)
+- Epstein et al. 2026. Evolution of maize recombination landscape during domestication. *Proceedings of the National Academy of Sciences*. [doi:10.1073/pnas.2534336123](https://doi.org/10.1073/pnas.2534336123)

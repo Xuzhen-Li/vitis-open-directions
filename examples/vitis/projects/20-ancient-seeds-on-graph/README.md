@@ -110,6 +110,29 @@ Each paper: introduction from the gap above; one results section per figure; met
 - Risk: Whether raw reads for each ancient-seed dataset are public must be confirmed accession by accession [待确认].
 - Novelty: checked against the existing work above (Crossref-verified DOIs). Repeat the search before writing; anything marked [待确认] is not yet verified.
 
+## Risks and how to handle them
+
+Added 2026-11-26. Each row names a risk, the evidence behind it, and a concrete check or fallback. Sources cited here were read for this section and their DOIs were checked on Crossref; preprints are marked.
+
+| Area | Risk | Check or mitigation |
+|---|---|---|
+| Data access and form | Graph alignment and masking removed reference bias in low-coverage ancient genomes, but only when starting from raw reads; the authors urge publication of FASTQ files ([Koptekin et al. 2025](https://doi.org/10.1186/s13059-024-03462-w)). If only filtered BAMs are public, reads already lost to linear mapping cannot be recovered. | Check accession by accession whether raw FASTQ is public (DS14); test the graph gain only on datasets with raw reads. |
+| New data | 49 pips from about 4,000 years in France now have genome-wide data ([Noraz et al. 2026](https://doi.org/10.1038/s41467-026-70166-z)). | Add these if raw reads are public; they also give independent samples for the test. |
+| Reference bias | Low coverage and short fragments can strengthen reference bias in ancient data ([Günther et al. 2019](https://doi.org/10.1371/journal.pgen.1008302)). | Measure bias as the reference-allele fraction at known heterozygous sites, by mapping method. |
+| Damage and contamination | Post-mortem damage and contamination from related DNA affect imputation; an ancient-DNA genotype caller (ATLAS) improved results on a heavily damaged genome ([Garrido Marques et al. 2024](https://doi.org/10.1038/s41598-024-56584-3)). | Trim or rescale damaged bases before imputation and compare with and without; estimate modern grape contamination where possible. |
+| Imputation accuracy | In cattle, imputation from a 171-genome modern panel reached above 99.1% accuracy at variant sites at 0.25x, but recovered only about 58% of sites ([Erven et al. 2024](https://doi.org/10.1093/molbev/msae076)). Grape panels and haplotype structure differ. | Downsample high-coverage modern and ancient grape genomes to the observed depths and measure accuracy and recovery for grape directly. |
+| Clones, synonyms and pedigree | Ancient pips can be clones of each other or of modern cultivars ([Noraz et al. 2026](https://doi.org/10.1038/s41467-026-70166-z)). | Run kinship and identity tests before treating pips as independent. |
+| Sample size and power | Few pips have usable coverage. | Report per-sample results; pool only for the bias measurement. |
+| Computing cost | Small for the pips; building the imputation panel is the larger step. | Reuse the project 08 panel. |
+
+**Recent and competing work (search of 2024 to 2026 literature on 2026-11-26)**
+
+- The French pip study is the main new dataset; methods for reducing reference bias in ancient genomes ([Koptekin et al. 2025](https://doi.org/10.1186/s13059-024-03462-w)) already show that graph alignment removes reference bias in low-coverage paleogenomes, so the grape test is an application.
+
+**What would end the idea, and the fallback.** If raw reads are not public for most pips, or graph gains are below the preregistered threshold, the methods claim fails. The fallback is a short note on imputation accuracy for grape pips at low depth.
+
+**Journal-level realism.** Specialty archaeogenomics or archaeological science journal.
+
 ## Rough estimates
 
 - Compute: small to medium [draft]
@@ -144,3 +167,7 @@ Public inputs: [DS14](../../data/DS14-ancient-grape-seeds/), [DS02](../../data/D
 - Martiniano et al. 2020. Removing reference bias and improving indel calling in ancient DNA data analysis by mapping to a sequence variation graph. *Genome Biology*. [doi:10.1186/s13059-020-02160-7](https://doi.org/10.1186/s13059-020-02160-7)
 - Rubinacci et al. 2023. Imputation of low-coverage sequencing data from 150,119 UK Biobank genomes. *Nature Genetics*. [doi:10.1038/s41588-023-01438-3](https://doi.org/10.1038/s41588-023-01438-3)
 - Wales et al. 2016. The limits and potential of paleogenomic techniques for reconstructing grapevine domestication. *Journal of Archaeological Science*. [doi:10.1016/j.jas.2016.05.014](https://doi.org/10.1016/j.jas.2016.05.014)
+- Koptekin et al. 2025. Pre-processing of paleogenomes: mitigating reference bias and postmortem damage in ancient genome data. *Genome Biology*. [doi:10.1186/s13059-024-03462-w](https://doi.org/10.1186/s13059-024-03462-w)
+- Günther et al. 2019. The presence and impact of reference bias on population genomic studies of prehistoric human populations. *PLOS Genetics*. [doi:10.1371/journal.pgen.1008302](https://doi.org/10.1371/journal.pgen.1008302)
+- Garrido Marques et al. 2024. Assessing the impact of post-mortem damage and contamination on imputation performance in ancient DNA. *Scientific Reports*. [doi:10.1038/s41598-024-56584-3](https://doi.org/10.1038/s41598-024-56584-3)
+- Erven et al. 2024. A High-Coverage Mesolithic Aurochs Genome and Effective Leveraging of Ancient Cattle Genomes Using Whole Genome Imputation. *Molecular Biology and Evolution*. [doi:10.1093/molbev/msae076](https://doi.org/10.1093/molbev/msae076)

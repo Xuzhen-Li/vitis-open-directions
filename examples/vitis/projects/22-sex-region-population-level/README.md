@@ -111,6 +111,27 @@ Each paper: introduction from the gap above; one results section per figure; met
 - Risk: Whether public wild samples with recorded sex and flower small-RNA libraries by sex type exist is not yet verified [待确认].
 - Novelty: checked against the existing work above (Crossref-verified DOIs). Repeat the search before writing; anything marked [待确认] is not yet verified.
 
+## Risks and how to handle them
+
+Added 2026-11-26. Each row names a risk, the evidence behind it, and a concrete check or fallback. Sources cited here were read for this section and their DOIs were checked on Crossref; preprints are marked.
+
+| Area | Risk | Check or mitigation |
+|---|---|---|
+| Data access and licence | Sex-locus haplotypes (DS09) and the small-RNA atlas (DS20) are available; other small-RNA libraries are an open query ([data/DOWNLOADS.md](../../data/DOWNLOADS.md)). | Freeze the run list; record flower sex source for every sample. |
+| Few sexed wild samples | Public resequencing of wild grapevine with recorded sex is sparse; one study compared a single male and a single female *sylvestris* ([Ramos et al. 2020](https://doi.org/10.1038/s41598-020-76012-6)). | Count wild samples with recorded sex before any analysis; below the preregistered minimum the project stays demoted. |
+| Circular sex calls | Validated KASP markers for male sterility (*VviINP1*) now exist across *Vitis*, *Muscadinia* and wide hybrids ([Vaughn et al. 2026](https://doi.org/10.21273/jashs05580-25)). Inferring sex from SDR genotypes and then studying the SDR would be circular. | Use recorded phenotypes for analysis; use marker-based sex only as a consistency check. |
+| Reference bias and genome choice | SDR haplotypes vary in size, largely through repetitive elements ([Massonnet et al. 2025](https://doi.org/10.1038/s41467-025-61387-9)); mapping to one haplotype may bias diversity. | Map to all phased SDR haplotypes (graph or multi-reference) and compare. |
+| Clones, synonyms and pedigree | Cultivated H haplotypes may trace to few origins and be shared by relatives. | Collapse by genotype and account for pedigree. |
+| Computing cost | Small (one region). | None. |
+
+**Recent and competing work (search of 2024 to 2026 literature on 2026-11-26)**
+
+- The SDR was traced to a locus conserved across angiosperms, with phased haplotypes from six Vitaceae species and suppressed recombination shared by *Vitis* and *Muscadinia* ([Massonnet et al. 2025](https://doi.org/10.1038/s41467-025-61387-9)). A synthesis covers candidate sex-determining genes now known in about a dozen flowering plants ([Marais et al. 2025](https://doi.org/10.1093/jxb/eraf224)). The cross-genus question is answered; only the population-level part remains.
+
+**What would end the idea, and the fallback.** If sexed wild samples stay below the minimum, the project remains demoted. The fallback is a short haplotype-diversity note on cultivated H haplotypes only.
+
+**Journal-level realism.** Specialty plant evolution journal; the cross-genus result already sits in *Nature Communications*.
+
 ## Rough estimates
 
 - Compute: small [draft]
@@ -145,3 +166,6 @@ Public inputs: [DS09](../../data/DS09-sex-locus-haplotypes/), [DS10](../../data/
 - Xia et al. 2019. 24-nt reproductive phasiRNAs are broadly present in angiosperms. *Nature Communications*. [doi:10.1038/s41467-019-08543-0](https://doi.org/10.1038/s41467-019-08543-0)
 - Zhai et al. 2015. Spatiotemporally dynamic, cell-type–dependent premeiotic and meiotic phasiRNAs in maize anthers. *Proceedings of the National Academy of Sciences*. [doi:10.1073/pnas.1418918112](https://doi.org/10.1073/pnas.1418918112)
 - Zou et al. 2021. Multiple independent recombinations led to hermaphroditism in grapevine. *Proceedings of the National Academy of Sciences*. [doi:10.1073/pnas.2023548118](https://doi.org/10.1073/pnas.2023548118)
+- Ramos et al. 2020. Portuguese wild grapevine genome re-sequencing (Vitis vinifera sylvestris). *Scientific Reports*. [doi:10.1038/s41598-020-76012-6](https://doi.org/10.1038/s41598-020-76012-6)
+- Vaughn et al. 2026. Diagnostic KASP Markers for Flower Sex and Stenospermocarpic Seedlessness in Diverse Vitis, Muscadinia, and Wide Hybrid Populations. *J. Amer. Soc. Hort. Sci*. [doi:10.21273/jashs05580-25](https://doi.org/10.21273/jashs05580-25)
+- Marais et al. 2025. Plant sex-determining genes and the genetics of the evolution towards dioecy. *Journal of Experimental Botany*. [doi:10.1093/jxb/eraf224](https://doi.org/10.1093/jxb/eraf224)
