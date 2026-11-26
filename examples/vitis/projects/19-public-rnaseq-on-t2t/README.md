@@ -123,6 +123,29 @@ Each paper: introduction from the gap above; one results section per figure; met
 - Risk: The default annotation may differ from the Grapedia release; gene IDs are mapped rather than assumed equal.
 - Novelty: checked against the existing work above (Crossref-verified DOIs). Repeat the search before writing; anything marked [待确认] is not yet verified.
 
+## Risks and how to handle them
+
+Added 2026-11-26. Each row names a risk, the evidence behind it, and a concrete check or fallback. Sources cited here were read for this section and their DOIs were checked on Crossref; preprints are marked.
+
+| Area | Risk | Check or mitigation |
+|---|---|---|
+| Data access and licence | The broad RNA-seq set (DS15) is an open query ([data/DOWNLOADS.md](../../data/DOWNLOADS.md)); INSDC data are free and open ([INSDC 2024](https://doi.org/10.1093/nar/gkae1058)). | Freeze the run list with the query date. |
+| Reference mapping bias in ASE | At heterozygous SNPs, reads carrying the reference allele map more often; masking SNPs removed the overall bias but left 5 to 10% of SNPs biased ([Degner et al. 2009](https://doi.org/10.1093/bioinformatics/btp579)). STAR+WASP reduces this bias ([Asiimwe et al. 2024](https://doi.org/10.1101/2024.01.21.576391), preprint). | Use WASP filtering, or map to a phased diploid reference of the same cultivar; drop SNPs that fail a simulation check. |
+| Phased references | In a phased tetraploid grape, only 23.4% of 17,750 allele pairs with directional bias kept a consistent dominance direction across fruit development ([Zhang et al. 2026](https://doi.org/10.1093/plphys/kiag330)). ASE in grape is stage-dependent. | Report ASE per tissue and stage, never pooled across stages. |
+| Grafting and environment | Scion gene expression was driven by the interaction of rootstock and environment in field vines ([Harris et al. 2023](https://doi.org/10.1186/s12870-023-04223-w)). Grafting is used in nearly 80% of commercial vines (same source), and public metadata may not record the rootstock. | Record rootstock and site where known and include them as covariates; restrict eQTL to studies with one site or a recorded design. |
+| Pooling across studies | A drought atlas combined 1,107 public datasets from Illumina (631) and SOLiD (476) runs ([Vidal Valenzuela et al. 2025](https://doi.org/10.1101/2025.03.31.646369), preprint). Platforms and studies differ strongly. | Keep platform as a factor; use study-wise normalisation; test whether clustering follows study rather than tissue. |
+| Sample size and power | A grape cis-eQTL analysis used 10 genotypes ([Martínez-García et al. 2022](https://doi.org/10.1038/s41598-022-11689-5)); public studies rarely sample many genotypes in one tissue. | Compute power for the largest single-tissue genotype set before promising eQTL or sQTL; below it, report ASE only. |
+| Clones, synonyms and pedigree | Clones of one cultivar appear as separate genotypes. | Collapse genotypes using variants called from the RNA-seq itself, matched to project 08. |
+| Computing cost | Re-quantifying thousands of runs is the main cost. | Use pseudo-alignment for the atlas and full alignment only for ASE and sQTL subsets. |
+
+**Recent and competing work (search of 2024 to 2026 literature on 2026-11-26)**
+
+- A drought-focused atlas has already re-analysed 1,107 public datasets on the T2T assembly ([Vidal Valenzuela et al. 2025](https://doi.org/10.1101/2025.03.31.646369), preprint), and an open expression platform exists for grapevine ([Djari et al. 2024](https://doi.org/10.1073/pnas.2403750121)). A uniform T2T atlas is therefore partly done; sQTL and ASE across heterozygous cultivars remain the new part.
+
+**What would end the idea, and the fallback.** If no single-tissue set has enough genotypes, eQTL and sQTL are underpowered. The fallback is an ASE paper on cultivars with phased references, plus the atlas as a resource.
+
+**Journal-level realism.** Specialty plant genomics; mid-field only with a solid sQTL set.
+
 ## Rough estimates
 
 - Compute: medium to large [draft]
@@ -162,3 +185,9 @@ Public inputs: [DS15](../../data/DS15-rnaseq-public-vitis/), [DS01](../../data/D
 - Patro et al. 2017. Salmon provides fast and bias-aware quantification of transcript expression. *Nature Methods*. [doi:10.1038/nmeth.4197](https://doi.org/10.1038/nmeth.4197)
 - Taylor-Weiner et al. 2019. Scaling computational genomics to millions of individuals with GPUs. *Genome Biology*. [doi:10.1186/s13059-019-1836-7](https://doi.org/10.1186/s13059-019-1836-7)
 - van de Geijn et al. 2015. WASP: allele-specific software for robust molecular quantitative trait locus discovery. *Nature Methods*. [doi:10.1038/nmeth.3582](https://doi.org/10.1038/nmeth.3582)
+- INSDC 2024. The international nucleotide sequence database collaboration (INSDC): enhancing global participation. *Nucleic Acids Research*. [doi:10.1093/nar/gkae1058](https://doi.org/10.1093/nar/gkae1058)
+- Degner et al. 2009. Effect of read-mapping biases on detecting allele-specific expression from RNA-sequencing data. *Bioinformatics*. [doi:10.1093/bioinformatics/btp579](https://doi.org/10.1093/bioinformatics/btp579)
+- Asiimwe et al. 2024. STAR+WASP reduces reference bias in the allele-specific mapping of RNA-seq reads. *bioRxiv* (preprint). [doi:10.1101/2024.01.21.576391](https://doi.org/10.1101/2024.01.21.576391)
+- Zhang et al. 2026. Phased T2T genome of a tetraploid grapevine reveals segmental allopolyploid origin and allele-specific alternative splicing during fruit development. *Plant Physiology*. [doi:10.1093/plphys/kiag330](https://doi.org/10.1093/plphys/kiag330)
+- Harris et al. 2023. Grapevine scion gene expression is driven by rootstock and environment interaction. *BMC Plant Biology*. [doi:10.1186/s12870-023-04223-w](https://doi.org/10.1186/s12870-023-04223-w)
+- Vidal Valenzuela et al. 2025. Developing the Grapevine Hydric Stress Atlas: A Meta-Analysis Resource for Exploring transcriptome Responses to Drought. *bioRxiv* (preprint). [doi:10.1101/2025.03.31.646369](https://doi.org/10.1101/2025.03.31.646369)

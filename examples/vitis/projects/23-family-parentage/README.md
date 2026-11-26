@@ -90,6 +90,28 @@ Each paper: introduction from the gap above; one results section per figure; met
 - Risk: An edge count is not a meiosis count; mixing them would inflate later recombination work.
 - Novelty: checked against the existing work above (Crossref-verified DOIs). Repeat the search before writing; anything marked [待确认] is not yet verified.
 
+## Risks and how to handle them
+
+Added 2026-11-26. Each row names a risk, the evidence behind it, and a concrete check or fallback. Sources cited here were read for this section and their DOIs were checked on Crossref; preprints are marked.
+
+| Area | Risk | Check or mitigation |
+|---|---|---|
+| Data access and licence | Runs of the 3,525-accession panel (DS11) were blocked on the public listing check; INSDC panels are available ([data/DOWNLOADS.md](../../data/DOWNLOADS.md)). | Plan on INSDC panels; add DS11 only if access is obtained. |
+| No positive controls | A parentage atlas of 840 olive cultivars validated its assignments with 13 seedlings from known crosses ([Gómez-Gálvez et al. 2026](https://doi.org/10.1186/s12870-026-08504-y)). Without such controls, error rates are unknown. | Include public samples from documented crosses (mapping-population parents and offspring) as controls and report the error rate on them. |
+| Low depth | Pedigree links can be reconstructed from very low-coverage data with methods built for it ([Snyder-Mackler et al. 2016](https://doi.org/10.1534/genetics.116.187492)); hard Mendelian-error counts on low depth mimic exclusions (see above). | Use genotype-likelihood or IBD-based relationship estimates; count Mendelian errors only at sites above a depth threshold. |
+| Clones, synonyms and pedigree | Identical genotypes persist for centuries ([Noraz et al. 2026](https://doi.org/10.1038/s41467-026-70166-z)), and selfing, crossing and cloning all occur in the Pinot noir pedigree ([Xiao et al. 2025](https://doi.org/10.1038/s41467-025-56817-7)). A clone can look like a parent-offspring pair at low depth, and selfed offspring have one parent. | Separate clone pairs (near-complete identity, few somatic differences) from parent-offspring pairs first; allow selfing in the pedigree model. |
+| Array data | Many grape collections use arrays (Vitis18K, [de Oliveira et al. 2026](https://doi.org/10.1371/journal.pone.0343491); Vitis22K, [Costantini et al. 2026](https://doi.org/10.3389/fpls.2026.1771381)). | Keep a shared SNP set so array-genotyped records can be tested too. |
+| Sample size and power | Untestable links (missing parents) can outnumber testable ones. | Report supported, contradicted and untestable counts; do not infer from untestable links. |
+| Computing cost | Small once genotypes exist. | Reuse the project 08 identity SNP set. |
+
+**Recent and competing work (search of 2024 to 2026 literature on 2026-11-26)**
+
+- The olive atlas is the closest design in another clonal fruit crop. In grape, recent parentage studies cover national collections with arrays (see Background); no check of reported links across public whole-genome data was found.
+
+**What would end the idea, and the fallback.** If too few parent-offspring sets are testable in public data, the meiosis count for project 24 is small. The fallback is a validated relationship table without the meiosis estimate.
+
+**Journal-level realism.** Specialty plant genetics or germplasm journal.
+
 ## Rough estimates
 
 - Compute: small to medium [draft]
@@ -125,3 +147,9 @@ Public inputs: [DS10](../../data/DS10-reseq-472-vitis/), [DS12](../../data/DS12-
 - Magris et al. 2021. The genomes of 204 Vitis vinifera accessions reveal the origin of European wine grapes. *Nature Communications*. [doi:10.1038/s41467-021-27487-y](https://doi.org/10.1038/s41467-021-27487-y)
 - Manichaikul et al. 2010. Robust relationship inference in genome-wide association studies. *Bioinformatics*. [doi:10.1093/bioinformatics/btq559](https://doi.org/10.1093/bioinformatics/btq559)
 - O'Connell et al. 2014. A General Approach for Haplotype Phasing across the Full Spectrum of Relatedness. *PLoS Genetics*. [doi:10.1371/journal.pgen.1004234](https://doi.org/10.1371/journal.pgen.1004234)
+- Gómez-Gálvez et al. 2026. An olive parentage atlas: founder cultivars, regional diversification, and implications for breeding programs. *BMC Plant Biology*. [doi:10.1186/s12870-026-08504-y](https://doi.org/10.1186/s12870-026-08504-y)
+- Snyder-Mackler et al. 2016. Efficient Genome-Wide Sequencing and Low-Coverage Pedigree Analysis from Noninvasively Collected Samples. *Genetics*. [doi:10.1534/genetics.116.187492](https://doi.org/10.1534/genetics.116.187492)
+- Noraz et al. 2026. Ancient DNA reveals 4000 years of grapevine diversity, viticulture and clonal propagation in France. *Nature Communications*. [doi:10.1038/s41467-026-70166-z](https://doi.org/10.1038/s41467-026-70166-z)
+- Xiao et al. 2025. Impacts of reproductive systems on grapevine genome and breeding. *Nature Communications*. [doi:10.1038/s41467-025-56817-7](https://doi.org/10.1038/s41467-025-56817-7)
+- de Oliveira et al. 2026. Genome-wide association study in a diverse grapevine collection provides insights into the genetic basis of berry size and cluster architecture traits. *PLOS One*. [doi:10.1371/journal.pone.0343491](https://doi.org/10.1371/journal.pone.0343491)
+- Costantini et al. 2026. An advanced genotyping tool to inspect grapevine variability: the Axiom®Vitis22K SNP array. *Frontiers in Plant Science*. [doi:10.3389/fpls.2026.1771381](https://doi.org/10.3389/fpls.2026.1771381)
