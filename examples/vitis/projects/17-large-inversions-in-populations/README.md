@@ -112,6 +112,29 @@ Each paper: introduction from the gap above; one results section per figure; met
 - Risk: Uses the sample set from project 08.
 - Novelty: checked against the existing work above (Crossref-verified DOIs). Repeat the search before writing; anything marked [待确认] is not yet verified.
 
+## Risks and how to handle them
+
+Added 2026-11-26. Each row names a risk, the evidence behind it, and a concrete check or fallback. Sources cited here were read for this section and their DOIs were checked on Crossref; preprints are marked.
+
+| Area | Risk | Check or mitigation |
+|---|---|---|
+| Data access and licence | Assemblies, graph and INSDC panels are listed as available ([data/DOWNLOADS.md](../../data/DOWNLOADS.md)). | Freeze versions; the sample set comes from project 08. |
+| Inversions are common but often neutral | Across 35 songbird species large inversion polymorphisms were widespread, and in genome-wide studies they are generally hard to link to phenotypes ([Pegan et al. 2025](https://doi.org/10.1093/gbe/evaf205)). | Do not assume selection; test suppressed recombination and haplotype structure first, and treat adaptive claims as a separate, optional step. |
+| Genotyping from short reads | Large complex SVs can be genotyped from a pangenome graph ([Rice et al. 2023](https://doi.org/10.1186/s12915-023-01758-0)), but inversions with repeat-rich breakpoints are hard (see above). | Use two independent signals: graph genotypes at breakpoints and SNP-based haplotype blocks; keep only inversions where both agree. |
+| Recombination tests | Structural context decided how inversions changed the recombination landscape in 374 F1 seedlings of a pineapple cross ([Fang et al. 2026](https://doi.org/10.1093/hr/uhag189)). | Where family data exist (project 24), compare crossovers inside and outside each inversion directly. |
+| Reference bias and genome choice | Inversions are defined relative to the assemblies compared; between-haplotype inversions exist within single cultivars ([Djari et al. 2024](https://doi.org/10.1073/pnas.2403750121)). | Polarise each inversion with an outgroup assembly and report orientation per haplotype. |
+| Clones, synonyms and pedigree | Related samples inflate haplotype frequencies. | One sample per genotype; account for known pedigrees. |
+| Sample size and power | Rare inversions have few carriers for LD tests. | Fix a minimum carrier count. |
+| Computing cost | Assembly comparisons are moderate; graph genotyping of panels is larger. | Genotype only candidate breakpoints, not whole genomes. |
+
+**Recent and competing work (search of 2024 to 2026 literature on 2026-11-26)**
+
+- A synthesis of recombination suppression in plants covers inversions, sex chromosomes and speciation ([Zhang et al. 2026](https://doi.org/10.1111/nph.71026)). Grape SV surveys of single cultivars ([Maestri et al. 2022](https://doi.org/10.1186/s12864-022-08389-9)), between-haplotype comparisons ([Djari et al. 2024](https://doi.org/10.1073/pnas.2403750121)) and haplotype-resolved 3D genomes ([Peng et al. 2026](https://doi.org/10.1002/advs.202521838)) cover only a few cultivars; a population-level inversion atlas for grape was not found.
+
+**What would end the idea, and the fallback.** If few large inversions segregate within *V. vinifera* (most being fixed between species), there is little to test at population level. The fallback is a between-species inversion catalogue with breakpoint annotation.
+
+**Journal-level realism.** Mid-field genome biology or evolution; a broad venue would need a clear trait or adaptation link (see the suggested journal level below).
+
 ## Rough estimates
 
 - Compute: medium [draft]
@@ -149,3 +172,10 @@ Public inputs: [DS02](../../data/DS02-grapepan-v1/), [DS03](../../data/DS03-viti
 - Shi et al. 2023. The complete reference genome for grapevine (Vitis vinifera L.) genetics and breeding. *Horticulture Research*. [doi:10.1093/hr/uhad061](https://doi.org/10.1093/hr/uhad061)
 - Todesco et al. 2020. Massive haplotypes underlie ecotypic differentiation in sunflowers. *Nature*. [doi:10.1038/s41586-020-2467-6](https://doi.org/10.1038/s41586-020-2467-6)
 - Wellenreuther et al. 2018. Eco-Evolutionary Genomics of Chromosomal Inversions. *Trends in Ecology & Evolution*. [doi:10.1016/j.tree.2018.04.002](https://doi.org/10.1016/j.tree.2018.04.002)
+- Pegan et al. 2025. Large Inversion Polymorphisms are Widespread in North American Songbirds. *Genome Biology and Evolution*. [doi:10.1093/gbe/evaf205](https://doi.org/10.1093/gbe/evaf205)
+- Rice et al. 2023. A pangenome graph reference of 30 chicken genomes allows genotyping of large and complex structural variants. *BMC Biology*. [doi:10.1186/s12915-023-01758-0](https://doi.org/10.1186/s12915-023-01758-0)
+- Fang et al. 2026. The heterozygous pineapple genome demonstrates the importance of haplotype-resolved plant genomes. *Horticulture Research*. [doi:10.1093/hr/uhag189](https://doi.org/10.1093/hr/uhag189)
+- Djari et al. 2024. Haplotype-resolved genome assembly and implementation of VitExpress, an open interactive transcriptomic platform for grapevine. *Proceedings of the National Academy of Sciences*. [doi:10.1073/pnas.2403750121](https://doi.org/10.1073/pnas.2403750121)
+- Zhang et al. 2026. Recombination suppression in plant adaptation and speciation. *New Phytologist*. [doi:10.1111/nph.71026](https://doi.org/10.1111/nph.71026)
+- Maestri et al. 2022. ‘Nebbiolo’ genome assembly allows surveying the occurrence and functional implications of genomic structural variations in grapevines (Vitis vinifera L.). *BMC Genomics*. [doi:10.1186/s12864-022-08389-9](https://doi.org/10.1186/s12864-022-08389-9)
+- Peng et al. 2026. Haplotype‐Resolved 3D Genomic Landscapes and Their Impacts on Agronomic Traits in Grapevine. *Advanced Science*. [doi:10.1002/advs.202521838](https://doi.org/10.1002/advs.202521838)

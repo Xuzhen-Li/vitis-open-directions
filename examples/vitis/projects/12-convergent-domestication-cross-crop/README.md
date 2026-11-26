@@ -112,6 +112,29 @@ Each paper: introduction from the gap above; one results section per figure; met
 - Risk: Novelty: no dedicated literature search on this topic has been done beyond the grape literature base yet [待确认: repeat the search before writing].
 - Novelty: checked against the existing work above (Crossref-verified DOIs). Repeat the search before writing; anything marked [待确认] is not yet verified.
 
+## Risks and how to handle them
+
+Added 2026-11-26. Each row names a risk, the evidence behind it, and a concrete check or fallback. Sources cited here were read for this section and their DOIs were checked on Crossref; preprints are marked.
+
+| Area | Risk | Check or mitigation |
+|---|---|---|
+| Data access and licence | Most other-crop panels have FASTQ on ENA, but the apple SNP file named in its paper was not found and the Pan-Potato portal was partly down on the check ([data/DOWNLOADS.md](../../data/DOWNLOADS.md)). | Use raw reads from INSDC for every crop and call variants the same way; do not depend on portal files. |
+| A null result is likely | In maize and sorghum, the overall number of genes with parallel selection signatures was not different from chance, although several classic domestication genes did show them ([Lai et al. 2018](https://doi.org/10.1111/tpj.13806)). | Preregister the power of the matched null (how much excess sharing could be detected) so that a null result is interpretable. |
+| Duplication history as a confounder | Genes retained from ancient whole-genome duplications were enriched among domestication candidates in 14 of 22 crops, while small-scale duplicates were under-represented ([McKibben et al. 2026](https://doi.org/10.64898/2026.03.09.710542), preprint). Grape and other crops differ in polyploidy history. | Match the null on paleolog status and copy number as well as on gene length and diversity. |
+| Different domestication syndromes | Domestication syndromes and genetic architectures vary widely among crops ([Alam et al. 2024](https://doi.org/10.1093/plcell/koae013)); a perennial, clonally propagated fruit crop need not share targets with annual seed crops. | Group crops by life history and propagation and test within groups as well as overall. |
+| Reference bias and genome choice | Reference choice changes which windows are outliers ([Thorburn et al. 2023](https://doi.org/10.1111/1755-0998.13838)). | Use one reference per crop, fixed in advance, and repeat the grape scan on a second reference. |
+| Sample size and power | Scan power differs with panel size (see above). | Downsample every crop to the same number of wild and domesticated samples. |
+| Clones, synonyms and pedigree | Clonally propagated crops may contain duplicate genotypes that inflate sample counts. | Remove duplicates by genotype before scans. |
+| Computing cost | Re-calling variants for several crops from raw reads is the largest cost. | Use published VCFs where they can be checked against raw reads on a subset. |
+
+**Recent and competing work (search of 2024 to 2026 literature on 2026-11-26)**
+
+- The paleolog result across 22 crops ([McKibben et al. 2026](https://doi.org/10.64898/2026.03.09.710542), preprint) is the closest cross-crop analysis found; it tests gene classes rather than shared orthologues, so the orthologue-level question remains open.
+
+**What would end the idea, and the fallback.** If sharing does not exceed the matched null, convergence at gene level is not supported. The fallback is a null-result paper with the power analysis, or a pathway-level test.
+
+**Journal-level realism.** The maize and sorghum null result appeared in *The Plant Journal*; a grape-centred cross-crop test fits mid-field at most unless it finds strong excess sharing.
+
 ## Rough estimates
 
 - Compute: large [draft]
@@ -153,3 +176,7 @@ Public inputs: [DS10](../../data/DS10-reseq-472-vitis/), [DS12](../../data/DS12-
 - Wu et al. 2018. Genomics of the origin and evolution of Citrus. *Nature*. [doi:10.1038/nature25447](https://doi.org/10.1038/nature25447)
 - Yeaman et al. 2016. Convergent local adaptation to climate in distantly related conifers. *Science*. [doi:10.1126/science.aaf7812](https://doi.org/10.1126/science.aaf7812)
 - Zhou et al. 2017. Evolutionary genomics of grape (Vitis vinifera ssp. vinifera) domestication. *Proceedings of the National Academy of Sciences*. [doi:10.1073/pnas.1709257114](https://doi.org/10.1073/pnas.1709257114)
+- Lai et al. 2018. Largely unlinked gene sets targeted by selection for domestication syndrome phenotypes in maize and sorghum. *The Plant Journal*. [doi:10.1111/tpj.13806](https://doi.org/10.1111/tpj.13806)
+- McKibben et al. 2026. The Genomic Legacy of Ancient Polyploidy in Crop Domestication. *bioRxiv* (preprint). [doi:10.64898/2026.03.09.710542](https://doi.org/10.64898/2026.03.09.710542)
+- Alam et al. 2024. Domestication and the evolution of crops: variable syndromes, complex genetic architectures, and ecological entanglements. *The Plant Cell*. [doi:10.1093/plcell/koae013](https://doi.org/10.1093/plcell/koae013)
+- Thorburn et al. 2023. Origin matters: Using a local reference genome improves measures in population genomics. *Molecular Ecology Resources*. [doi:10.1111/1755-0998.13838](https://doi.org/10.1111/1755-0998.13838)

@@ -123,6 +123,29 @@ Each paper: introduction from the gap above; one results section per figure; met
 - Risk: Clone dates may be undocumented; the rate paper runs only when enough dated, independent branches are available.
 - Novelty: checked against the existing work above (Crossref-verified DOIs). Repeat the search before writing; anything marked [待确认] is not yet verified.
 
+## Risks and how to handle them
+
+Added 2026-11-26. Each row names a risk, the evidence behind it, and a concrete check or fallback. Sources cited here were read for this section and their DOIs were checked on Crossref; preprints are marked.
+
+| Area | Risk | Check or mitigation |
+|---|---|---|
+| Data access and licence | Clone panels in DS13 are available, but the accession list of one recent clone study could not be read and is still to be confirmed ([data/DOWNLOADS.md](../../data/DOWNLOADS.md)). | Plan on the confirmed accessions only; add the rest when their runs are found. |
+| Short reads miss part of the signal | With ONT data on 23 Pinot noir clones, somatic SNPs were mostly rare and depleted from coding regions, and SVs among clones sat mostly in repeats and centromeric repeats ([Callipo et al. 2026](https://doi.org/10.1186/s13059-026-04184-x)). The same study notes that short reads miss large structural variation, so short-read panels will under-count the SV part. | Restrict the cross-cultivar spectrum to SNVs outside masked repeats; treat SVs as out of scope unless long reads exist. |
+| Pooling across studies | Some clone studies used reduced-representation sequencing (138 clones of six varieties, [Villano et al. 2023](https://doi.org/10.3389/fpls.2023.1201287)), not WGS. | Use WGS studies only for spectra; use reduced-representation data only to check clone relationships. |
+| Reference bias and genome choice | Calling against a single reference may add false somatic calls where the two haplotypes differ; a phased Malbec assembly allowed haplotype-aware analysis of clones ([Calderón et al. 2024](https://doi.org/10.1093/hr/uhae080)). | Use the phased assembly of the same cultivar where one exists; otherwise mask regions with poor mappability on PN_T2T. |
+| Cell layers | Roots derive from the L2 layer only, while leaves contain L1 and L2 ([Sichel et al. 2023](https://doi.org/10.1186/s12864-023-09453-8)). Stem-cell population size, branching bottlenecks and mutation rate can be estimated from cell-layer-enriched sequencing ([Johannes 2025](https://doi.org/10.1093/molbev/msaf165)). | Where root and leaf (L2 versus L1 plus L2) data exist, estimate the layer of each variant and report rates per layer. |
+| Rate calibration | In two tropical trees, somatic mutations accumulated with time rather than with growth ([Satake et al. 2024](https://doi.org/10.7554/elife.88456.3)). | Express rates per year since the documented clone split, not per propagation cycle; show the result under both if cycle counts exist. |
+| Clones, synonyms and pedigree | Clone names and dates can be wrong. | Check clone relationships genetically (shared somatic variants) before using dates. |
+| Computing cost | Moderate: re-calling clone panels at a common depth. | Downsample to a common depth once and store the BAM subsets. |
+
+**Recent and competing work (search of 2024 to 2026 literature on 2026-11-26)**
+
+- The Pinot noir long-read clone map ([Callipo et al. 2026](https://doi.org/10.1186/s13059-026-04184-x)) and the Tempranillo resequencing (see Background) cover single cultivars in depth. A synthesis of clonal diversity in grapevine is available ([Callipo et al. 2025](https://doi.org/10.1007/s00122-025-04986-w)). A comparison of spectra across cultivars with one artefact mask was not found.
+
+**What would end the idea, and the fallback.** If spectra do not differ between cultivars once study effects are modelled, the biology question has a null answer. The fallback is the artefact audit as a methods paper; the rate paper runs only if enough dated, independent branches exist.
+
+**Journal-level realism.** Mid-field genome biology or evolution; with the Pinot noir map already in *Genome Biology*, a broader venue would need a clear between-cultivar difference.
+
 ## Rough estimates
 
 - Compute: medium [draft]
@@ -164,3 +187,8 @@ Public inputs: [DS13](../../data/DS13-clone-somatic-variation/), [DS01](../../da
 - Orr et al. 2020. A phylogenomic approach reveals a low somatic mutation rate in a long-lived plant. *Proceedings of the Royal Society B: Biological Sciences*. [doi:10.1098/rspb.2019.2364](https://doi.org/10.1098/rspb.2019.2364)
 - Schmid-Siegert et al. 2017. Low number of fixed somatic mutations in a long-lived oak tree. *Nature Plants*. [doi:10.1038/s41477-017-0066-9](https://doi.org/10.1038/s41477-017-0066-9)
 - Tello et al. 2025. Genome resequencing and custom genotyping elucidates the origin and dissemination history of an emblematic grapevine cultivar, ‘Tempranillo Tinto’. *Horticulture Research*. [doi:10.1093/hr/uhaf237](https://doi.org/10.1093/hr/uhaf237)
+- Villano et al. 2023. Genetic diversity and signature of divergence in the genome of grapevine clones of Southern Italy varieties. *Frontiers in Plant Science*. [doi:10.3389/fpls.2023.1201287](https://doi.org/10.3389/fpls.2023.1201287)
+- Calderón et al. 2024. Diploid genome assembly of the Malbec grapevine cultivar enables haplotype-aware analysis of transcriptomic differences underlying clonal phenotypic variation. *Horticulture Research*. [doi:10.1093/hr/uhae080](https://doi.org/10.1093/hr/uhae080)
+- Johannes 2025. Somatic Evolution of Stem Cell Mutations in Long-Lived Plants. *Molecular Biology and Evolution*. [doi:10.1093/molbev/msaf165](https://doi.org/10.1093/molbev/msaf165)
+- Satake et al. 2024. Somatic mutation rates scale with time not growth rate in long-lived tropical trees. *eLife*. [doi:10.7554/elife.88456.3](https://doi.org/10.7554/elife.88456.3)
+- Callipo et al. 2025. Harnessing clonal diversity in grapevine: from genomic insights to modern breeding applications. *Theoretical and Applied Genetics*. [doi:10.1007/s00122-025-04986-w](https://doi.org/10.1007/s00122-025-04986-w)
