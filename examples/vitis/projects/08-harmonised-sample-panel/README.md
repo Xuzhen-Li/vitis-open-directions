@@ -139,6 +139,31 @@ Added 2026-11-26. Each row names a risk, the evidence behind it, and a concrete 
 
 **Journal-level realism.** A data or resource journal; this is infrastructure for the other projects rather than a stand-alone biology paper.
 
+## Reference study in another species
+
+Added 2026-11-26. Published studies that already did this kind of work in another species, to plan the grape version against. Every DOI was checked on Crossref. Figures are described, not copied; a figure redrawn for a grape paper would be marked "Redrawn after" its source. The last bullet for each study lists what a grape results section would need; it is a planning suggestion, not a finding of that study.
+
+### Urrestarazu et al. 2016
+
+- **Paper:** [Urrestarazu et al. 2016](https://doi.org/10.1186/s12870-016-0818-0), *BMC Plant Biology*.
+- **Species:** Apple, germplasm collections in several European countries.
+- **What was done:** SSR data from several collections were pooled; duplicates and synonyms were identified, leaving 1,859 unique diploid genotypes; genetic structure and parentage were analysed.
+- **Figures:** Fig. 1 STRUCTURE ancestry (K = 3); Fig. 2 PCoA; Fig. 3 neighbour-joining tree; Fig. 4 group composition by country of origin.
+- **What a grape results section would need:** a cross-collection identity table (duplicates, synonyms, label conflicts); the number of unique genotypes; structure; parent reconstruction.
+
+### Osorio-Guarín et al. 2025
+
+- **Paper:** [Osorio-Guarín et al. 2025](https://doi.org/10.3389/fpls.2025.1632888), *Frontiers in Plant Science* (PMC12271136). Licence CC BY 4.0: figures may be reused with credit; none are copied here.
+- **Species:** cacao, two germplasm banks.
+- **What was done:** 4,653 trees were genotyped and 77 SNPs kept after filtering; 12.4% of trees were mislabelled and 53.1% were genetically redundant; core collections of 246 and 190 samples were defined.
+- **Figures:** Fig. 1 genotype accumulation curve (unique genotypes against number of loci); Fig. 2 PCA of the two collections; Fig. 3 supervised structure against 10 reference populations; Fig. 4 field view of the main genetic groups.
+- **What its results section needed:** proof that the marker set separates genotypes, mislabel and redundancy rates, population structure, and a reduced core set.
+- **Grape version:** an accumulation curve for the identity SNP set, rates of duplicate genotypes and of name conflicts across public sources, structure against reference groups, and the de-duplicated core table that the population projects use.
+
+### Q1-level bar
+
+Target: a first-quartile (Q1) journal in plant science, genetics or evolution. Quartile lists change each year, so the journal is chosen from the current list at submission [to confirm]. To compete at that level, the grape paper needs: this is a resource on its own and fits a data or resource journal. To reach Q1 it should be joined with project 23 (relationship checks with error rates) so that the released identity table is used to answer a question about grape history or breeding.
+
 ## Rough estimates
 
 - Compute: medium to large (downloads) [draft]
@@ -186,3 +211,5 @@ Public inputs: [DS10](../../data/DS10-reseq-472-vitis/), [DS11](../../data/DS11-
 - Javed et al. 2020. Detecting sample swaps in diverse NGS data types using linkage disequilibrium. *Nature Communications*. [doi:10.1038/s41467-020-17453-5](https://doi.org/10.1038/s41467-020-17453-5)
 - Noraz et al. 2026. Ancient DNA reveals 4000 years of grapevine diversity, viticulture and clonal propagation in France. *Nature Communications*. [doi:10.1038/s41467-026-70166-z](https://doi.org/10.1038/s41467-026-70166-z)
 - Costantini et al. 2026. An advanced genotyping tool to inspect grapevine variability: the Axiom®Vitis22K SNP array. *Frontiers in Plant Science*. [doi:10.3389/fpls.2026.1771381](https://doi.org/10.3389/fpls.2026.1771381)
+- Urrestarazu et al. 2016. Analysis of the genetic diversity and structure across a wide range of germplasm reveals prominent gene flow in apple at the European level. *BMC Plant Biology*. [doi:10.1186/s12870-016-0818-0](https://doi.org/10.1186/s12870-016-0818-0)
+- Osorio-Guarín et al. 2025. Assessing genetic redundancy and diversity in Colombian cacao germplasm banks using SNP fingerprinting. *Frontiers in Plant Science*. [doi:10.3389/fpls.2025.1632888](https://doi.org/10.3389/fpls.2025.1632888)

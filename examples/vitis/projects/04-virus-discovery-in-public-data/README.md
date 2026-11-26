@@ -133,6 +133,40 @@ Added 2026-11-26. Each row names a risk, the evidence behind it, and a concrete 
 
 **Journal-level realism.** Archive-mining papers appear in *Journal of Virology*, *Archives of Virology* and *Viruses*. A grape-only screen fits that specialty level; mid-field only if several new viruses are confirmed with assembled genomes.
 
+## Reference study in another species
+
+Added 2026-11-26. Published studies that already did this kind of work in another species, to plan the grape version against. Every DOI was checked on Crossref. Figures are described, not copied; a figure redrawn for a grape paper would be marked "Redrawn after" its source. The last bullet for each study lists what a grape results section would need; it is a planning suggestion, not a finding of that study.
+
+### Edgar et al. 2022
+
+- **Paper:** [Edgar et al. 2022](https://doi.org/10.1038/s41586-021-04332-2), *Nature*.
+- **Species:** All of the Sequence Read Archive (animals, plants, fungi and environmental samples).
+- **What was done:** The cloud alignment platform Serratus searched 5.7 million SRA runs for RNA-dependent RNA polymerase (RdRP) sequences, found new RNA viruses on the order of one hundred thousand, and released a public database.
+- **Figures:** Fig. 1 the searched data (bases by sample type, run release dates, geography of RdRP-positive samples); Fig. 2 RdRP in the SRA (palmprints and species-like units); Fig. 3 expansion of Coronaviridae; Fig. 4 expansion of deltaviruses and large phages; Extended Data Fig. 1 platform architecture and Extended Data Fig. 2 palmprint contig analysis (other Extended Data figures were not listed).
+- **What a grape results section would need:** a list of searched samples with metadata (library type, tissue, country); virus hit counts and new species-like units; phylogenetic placement; a discussion of host attribution (contamination and non-infecting sources).
+
+### Gilbert et al. 2019
+
+- **Paper:** [Gilbert et al. 2019](https://doi.org/10.1371/journal.pone.0219207), *PLOS ONE*.
+- **Note:** Method reference only: the journal is not first-quartile.
+- **Species:** Fungi (public transcriptomes).
+- **What was done:** Fungal public transcriptomes in the SRA were screened systematically with an RdRP-based workflow, and new mycovirus genomes were found and annotated.
+- **Figures:** Fig. 1 Sankey diagram of fungal hosts and virus status; Fig. 2 dsRNA virus RdRP tree; Fig. 3 a new non-segmented RNA virus compared with Amalgaviridae and Partitiviridae; Fig. 4 an alternavirus; Fig. 5 two proposed partitivirus genera; Fig. 6 trees of three (+)ssRNA families; Fig. 7 tobamo-like viruses; Fig. 8 four new (+)ssRNA viruses; Fig. 9 a yadokarivirus genome; Fig. 10 the discovery workflow.
+- **What a grape results section would need:** a screening flow chart and a sample and host summary; a tree and genome structure per virus family; the basis for naming and classifying new viruses.
+
+### Jiang et al. 2019
+
+- **Paper:** [Jiang et al. 2019](https://doi.org/10.1186/s12985-019-1257-y), *Virology Journal* (PMC6902351). Licence CC BY 4.0: figures may be reused with credit; none are copied here.
+- **Species:** alfalfa (*Medicago sativa*), with *M. truncatula* datasets.
+- **What was done:** public *Medicago* transcriptomes from the Sequence Read Archive (655 datasets in Fig. 1) were mapped to the host references; unmapped reads were aligned to viral genomes and assembled with SPAdes; some assemblies were confirmed by RACE and RT-PCR; 23 viruses were found, several not reported in alfalfa before, with coding-complete genomes for two cnidium vein yellowing virus strains, lychnis mottle virus and Cactus virus X.
+- **Figures:** Fig. 1 virus presence across the datasets; Fig. 2 read coverage of a new amalgavirus; Fig. 3 RACE products; Fig. 4 genome organisation; Fig. 5 pairwise identity of RdRp sequences; Fig. 6 phylogeny; Fig. 7 to 10 genome organisation, identity and phylogenies of the other viruses.
+- **What its results section needed:** a dataset-by-virus presence matrix, genome completeness, an independent confirmation, and phylogenetic placement.
+- **Grape version:** the same matrix and phylogenies for grape datasets. Laboratory confirmation is outside this project, so replace Fig. 3 with in-silico checks: detection in independent BioProjects, even read coverage along the genome, absence from negative-control libraries, and host attribution as in the risk table above.
+
+### Q1-level bar
+
+Target: a first-quartile (Q1) journal in plant science, genetics or evolution. Quartile lists change each year, so the journal is chosen from the current list at submission [to confirm]. To compete at that level, the grape paper needs: complete or near-complete genomes for new viruses, evidence that each hit comes from a plant sample rather than contamination, and one ecological or agronomic pattern (tissue, region, cultivar or year) across a large set of public samples.
+
 ## Rough estimates
 
 - Compute: medium [draft]
@@ -175,3 +209,5 @@ Public inputs: [DS15](../../data/DS15-rnaseq-public-vitis/), [DS10](../../data/D
 - Kutnjak et al. 2021. A Primer on the Analysis of High-Throughput Sequencing Data for Detection of Plant Viruses. *Microorganisms*. [doi:10.3390/microorganisms9040841](https://doi.org/10.3390/microorganisms9040841)
 - Pérez et al. 2026. Expanding the Orchidaceae virome through analysis of public-domain sequencing data. *Journal of Virology*. [doi:10.1128/jvi.00624-26](https://doi.org/10.1128/jvi.00624-26)
 - Sidharthan 2026. Plant transcriptome data mining identified twenty-two putative novel taxa in the family Closteroviridae. *Archives of Virology*. [doi:10.1007/s00705-026-06537-0](https://doi.org/10.1007/s00705-026-06537-0)
+- Gilbert et al. 2019. Hiding in plain sight: New virus genomes discovered via a systematic analysis of fungal public transcriptomes. *PLOS ONE*. [doi:10.1371/journal.pone.0219207](https://doi.org/10.1371/journal.pone.0219207)
+- Jiang et al. 2019. Identification of emerging viral genomes in transcriptomic datasets of alfalfa (Medicago sativa L.). *Virology Journal*. [doi:10.1186/s12985-019-1257-y](https://doi.org/10.1186/s12985-019-1257-y)

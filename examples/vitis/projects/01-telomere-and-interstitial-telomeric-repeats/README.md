@@ -148,6 +148,33 @@ Added 2026-11-26. Each row names a risk, the evidence behind it, and a concrete 
 
 **Journal-level realism.** With a cross-species long-read telomere survey already public as a preprint, a grape-only length table fits a specialty journal. Only a clear ITS signal at known fusion or rearrangement points would support a higher venue.
 
+## Reference study in another species
+
+Added 2026-11-26. Published studies that already did this kind of work in another species, to plan the grape version against. Every DOI was checked on Crossref. Figures are described, not copied; a figure redrawn for a grape paper would be marked "Redrawn after" its source. The last bullet for each study lists what a grape results section would need; it is a planning suggestion, not a finding of that study.
+
+### Biocanin et al. 2026
+
+- **Paper:** [Biocanin et al. 2026](https://doi.org/10.64898/2026.05.10.723265), *bioRxiv (preprint)*.
+- **Note:** Preprint, not yet published in a journal; licence CC BY-NC-ND 4.0, so figures are described, not reused. Full text read from the bioRxiv JATS record.
+- **Species:** *Arabidopsis thaliana*, the Col-CC assembly, mutation accumulation lines and natural accessions.
+- **What was done:** Telomeric motifs were mapped in telomeres, interstitial telomeric repeats (ITRs) and centromeric satellites. Long reads from mutation accumulation lines and forward simulations indicated that ITRs arise from centromeres as mosaic centromeric-telomeric satellites that expand in place into higher-order repeats; ITRs lack CENH3 and other centromere or telomere chromatin marks; across natural accessions ITR size varies abruptly and independently of telomere length, partly through transposon-associated block duplications.
+- **Figures:** Fig. 1 telomeric motifs populate ITRs and centromeric satellites (including telomere length per chromosome end from long reads); Fig. 2 long ITRs form as higher-order repeats of telomeric and centromeric mosaic satellites; Fig. 3 ITRs show no centromere or telomere chromatin hallmarks (epigenome landscape, CENH3 levels in overexpressing lines); Fig. 4 ITR content varies independently of telomere length, population structure and environment; Fig. 5 transposon-associated ITR block duplications (syntenic variation of one ITR among accessions).
+- **What a grape results section would need:** telomere length per chromosome end and an ITR inventory per haplotype; the distance of ITRs to centromeric satellites and a test for mosaic telomeric-centromeric units; ITR size across *Vitis* and *Muscadinia* compared with telomere length; transposon-associated block duplications at ITRs.
+
+### Choi et al. 2021
+
+- **Paper:** [Choi et al. 2021](https://doi.org/10.1093/plcell/koab022), *The Plant Cell* (PMC8599780). Licence CC BY-NC-ND 4.0: figures are not copied here; any redraw is marked "Redrawn after Choi et al. 2021".
+- **Species:** *Arabidopsis thaliana*, with rice and maize as replication species.
+- **What was done:** telomere length was estimated from whole-genome resequencing (k-mer counts of the telomere repeat) and checked with terminal restriction fragment (TRF) assays across natural accessions; GWAS found 13 associated regions, one containing *TERT*; a selective sweep test was run at the *TERT* region; telomere length was correlated with flowering time in all three species.
+- **Figures:** Fig. 1 repeat k-mer profile and distribution of length estimates; Fig. 2 GWAS Manhattan plots for the k-mer and TRF estimates; Fig. 3 length against latitude and longitude; Fig. 4 length against life-history traits; Fig. 5 selection statistics around the GWAS peak; Fig. 6 length against flowering time in rice and maize; Fig. 7 shared genetic architecture of flowering time and telomere length.
+- **What its results section needed:** a sequence-based estimate validated by an independent assay; an association scan with a candidate gene; a selection test at that gene; a trait correlation replicated in other species.
+- **Grape version:** k-mer estimates from public resequencing (Fig. 1 and 2 equivalents), checked against telomere lengths measured in long-read assemblies of the same accessions instead of TRF; clones of one cultivar used as replicates of one genotype; GWAS only if the estimate passes the check; geography and trait panels (Fig. 3 and 4 equivalents) read with the clonal and technology confounders in the risk table above.
+- **Further results a grape version would need:** a telomere motif check and an array length table for each near-complete haplotype; a telomere length model with assembly technology as a covariate; positions of interstitial telomeric sequences and their link to karyotype change; k-mer based length estimates in populations.
+
+### Q1-level bar
+
+Target: a first-quartile (Q1) journal in plant science, genetics or evolution. Quartile lists change each year, so the journal is chosen from the current list at submission [to confirm]. To compete at that level, the grape paper needs: telomere lengths checked against an independent measure (published k-mer estimates or another assembly technology, used as a covariate), plus one biological link beyond description, for example a population association with a life-history trait or a telomerase-region signal, as in the *Arabidopsis* study. A table of array lengths alone fits a specialty journal.
+
 ## Rough estimates
 
 - Compute: small [draft]
@@ -196,3 +223,4 @@ Public inputs: [DS01](../../data/DS01-pn40024-references/), [DS02](../../data/DS
 - Noraz et al. 2026. Ancient DNA reveals 4000 years of grapevine diversity, viticulture and clonal propagation in France. *Nature Communications*. [doi:10.1038/s41467-026-70166-z](https://doi.org/10.1038/s41467-026-70166-z)
 - Garrido-Ramos et al. 2026. Detailed re-analysis of satellitome mapping facilitated by the telomere-to-telomere (T2T) assembly of bread wheat genome. *Plant Molecular Biology*. [doi:10.1007/s11103-026-01745-3](https://doi.org/10.1007/s11103-026-01745-3)
 - Wang et al. 2026. Origin and evolution of grapevine genomes. *bioRxiv* (preprint). [doi:10.64898/2026.04.20.719760](https://doi.org/10.64898/2026.04.20.719760)
+- Biocanin et al. 2026. Centromeric origin of megabase-scale Arabidopsis interstitial telomeric repeat domains. *bioRxiv* (preprint). [doi:10.64898/2026.05.10.723265](https://doi.org/10.64898/2026.05.10.723265)

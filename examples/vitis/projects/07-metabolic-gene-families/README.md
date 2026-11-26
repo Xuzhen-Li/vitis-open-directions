@@ -138,6 +138,44 @@ Added 2026-11-26. Each row names a risk, the evidence behind it, and a concrete 
 
 **Journal-level realism.** Specialty plant biology or horticultural genomics journal, as for the grape gene-family papers read here.
 
+## Reference study in another species
+
+Added 2026-11-26. Published studies that already did this kind of work in another species, to plan the grape version against. Every DOI was checked on Crossref. Figures are described, not copied; a figure redrawn for a grape paper would be marked "Redrawn after" its source. The last bullet for each study lists what a grape results section would need; it is a planning suggestion, not a finding of that study.
+
+### Lynch et al. 2025
+
+- **Paper:** [Lynch et al. 2025](https://doi.org/10.1038/s41586-025-09065-0), *Nature*.
+- **Species:** *Cannabis sativa*, 193 genomes (181 new and 12 published) from 144 samples.
+- **What was done:** A cannabis pangenome was built; population structure, transposons and SVs were described; the cannabinoid synthase genes showed very low diversity although they sit in a variable region with pseudogenised paralogues, SVs and distinct transposon arrangements; copy numbers of pathway genes and terpene synthases were counted per assembly.
+- **Figures:** Fig. 1 pangenome architecture and at least five populations; Fig. 2 transposons shape the pangenome; Fig. 3 SV frequencies by population and their non-random distribution; Fig. 4 the cannabinoid pathway, with gene copy numbers per assembly, diversity and synteny; Fig. 5 duplication and diversification of acyl-lipid thioesterase genes and the varin cannabinoid phenotype; Extended Data Fig. 7 terpene synthase copy number across the pangenome (chromosomes 5 and 6 are copy-number hotspots); other Extended Data figures cover genome similarity, the anchor genome, assembly quality, centromeres and telomeres, SV caller comparison, disease resistance genes, expression by sex and SV range. Licence CC BY 4.0 (PMC12286863).
+- **What a grape results section would need:** copy number per assembly for each pathway gene family (STS, TPS, CCD, LOX); diversity and synteny of each cluster region; pseudogenised paralogues and transposon arrangement around clusters; a link from copy-number or sequence variants to a metabolite phenotype.
+
+### Külheim et al. 2015
+
+- **Paper:** [Külheim et al. 2015](https://doi.org/10.1186/s12864-015-1598-x), *BMC Genomics*.
+- **Note:** Method reference only: the journal is not first-quartile, and the study uses one genome without birth-death rates.
+- **Species:** *Eucalyptus grandis*, with *E. globulus*.
+- **What was done:** 113 putatively functional terpene synthase (TPS) genes were identified in the *E. grandis* genome; clusters, gene structure, expression in tissues and phylogeny compared with grape and *Arabidopsis* were analysed, and products of some enzymes were tested in vitro.
+- **Figures:** Fig. 1 phylogeny of the 113 TPS genes; Fig. 2 a 400 kb multi-gene cluster; Fig. 3 gene structure and motifs; Fig. 4 expression heatmap in seven tissues; Fig. 5 to 7 subfamily phylogenies compared with grape and *Arabidopsis*; Fig. 8 GC traces of in vitro products.
+- **What a grape results section would need:** TPS and STS copy number and cluster structure per haplotype; subfamily phylogeny; collapse checks in cluster regions; expression support.
+
+### Tong et al. 2025
+
+- **Paper:** [Tong et al. 2025](https://doi.org/10.1016/j.xplc.2024.101190), *Plant Communications* (PMC11783906). Licence CC BY 4.0: figures may be reused with credit; none are copied here.
+- **Species:** barley, 20 genome assemblies (the bHLH transcription factor family).
+- **What was done:** 161 to 176 bHLH genes per genome were grouped into 201 orthologous gene groups (140 core, 12 softcore, 29 shell, 20 cloud); a genome scan found on average 1.5 un-annotated core bHLH genes per genome; whole-genome and segmental duplicates explained most core expansion, small-scale duplication most dispensable genes; genes with copy-number variation had more nearby transposable elements; selection and expression were compared between core and dispensable genes.
+- **Figures:** Fig. 1 genes per assembly and the core and dispensable split; Fig. 2 phylogeny with rice; Fig. 3 copy-number heatmap; Fig. 4 duplication types and nearby transposable elements; Fig. 5 Ka, Ks and Ka/Ks for core and dispensable genes; Fig. 6 pantranscriptome expression.
+- **What its results section needed:** a family census on every assembly with a scan for un-annotated copies, a core and dispensable split, duplication mode, selection and expression.
+- **Grape version:** the same six panels for STS, TPS, CCD and LOX across grape haplotypes; the genome scan for un-annotated copies doubles as the annotation check, and read depth over tandem arrays addresses the collapse risk above; expression comes from project 19.
+
+### Coverage note
+
+Külheim et al. 2015 analyses a single genome and gives no birth-death rates. Lynch et al. 2025 adds gene copy number across a pangenome, but its full text does not use a birth-death rate model; a template with such rates is still to be found [to confirm].
+
+### Q1-level bar
+
+Target: a first-quartile (Q1) journal in plant science, genetics or evolution. Quartile lists change each year, so the journal is chosen from the current list at submission [to confirm]. To compete at that level, the grape paper needs: copy number per haplotype with collapse checks in each cluster, a rate or selection estimate across *Vitis* that the single-genome studies lack, and a link to expression or to a trait such as aroma or stilbene content.
+
 ## Rough estimates
 
 - Compute: medium [draft]
@@ -179,3 +217,6 @@ Public inputs: [DS01](../../data/DS01-pn40024-references/), [DS02](../../data/DS
 - Denton et al. 2014. Extensive Error in the Number of Genes Inferred from Draft Genome Assemblies. *PLoS Computational Biology*. [doi:10.1371/journal.pcbi.1003998](https://doi.org/10.1371/journal.pcbi.1003998)
 - Bosman et al. 2023. Grapevine genome analysis demonstrates the role of gene copy number variation in the formation of monoterpenes. *Frontiers in Plant Science*. [doi:10.3389/fpls.2023.1112214](https://doi.org/10.3389/fpls.2023.1112214)
 - Chepca et al. 2026. Genetic analysis of grapevine wood composition identifies glycosyltransferases involved in the biosynthesis of stilbene glycosides. *bioRxiv* (preprint). [doi:10.64898/2026.10.24.761503](https://doi.org/10.64898/2026.10.24.761503)
+- Lynch et al. 2025. Domesticated cannabinoid synthases amid a wild mosaic cannabis pangenome. *Nature*. [doi:10.1038/s41586-025-09065-0](https://doi.org/10.1038/s41586-025-09065-0)
+- Külheim et al. 2015. The Eucalyptus terpene synthase gene family. *BMC Genomics*. [doi:10.1186/s12864-015-1598-x](https://doi.org/10.1186/s12864-015-1598-x)
+- Tong et al. 2025. Pangenome and pantranscriptome as the new reference for gene-family characterization: A case study of basic helix-loop-helix (bHLH) genes in barley. *Plant Communications*. [doi:10.1016/j.xplc.2024.101190](https://doi.org/10.1016/j.xplc.2024.101190)

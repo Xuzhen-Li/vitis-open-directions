@@ -13,6 +13,8 @@ This folder applies the [six-dimension gap framework](../../framework/GAP_FRAMEW
 | [projects/](projects/) | 26 projects; 01 to 22 have a README (the plan) and a STATUS page, 23 to 26 have a STATUS page only | `projects/` |
 | [INDEX.md](INDEX.md) | which modules each project uses, and how projects split into papers | `docs/INDEX.md` |
 | [RANKING.md](RANKING.md) | frozen scores, independent re-scoring and the adjustment register | `docs/RANKING.md` |
+| [RISKS.md](RISKS.md) | risks shared by many projects and the largest risk for each project, with checks (added 2026-11-26) | none (new) |
+| [REFERENCE_STUDIES.md](REFERENCE_STUDIES.md) | reference studies in other species for each project, the Q1-level bar, and the projects whose scope changed (added 2026-11-26) | none (new) |
 | [DEFAULTS.md](DEFAULTS.md) | defaults for open items | `docs/DEFAULTS.md` |
 | [NOT_KEPT.md](NOT_KEPT.md) | directions checked and left out, with the papers that cover them | `docs/NOT_KEPT.md` |
 | [METHOD_LINES.md](METHOD_LINES.md) | the four method lines (projects 23 to 26) | `docs/METHOD_LINES.md` |
