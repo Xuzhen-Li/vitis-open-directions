@@ -114,6 +114,31 @@ Added 2026-11-26. Each row names a risk, the evidence behind it, and a concrete 
 
 **Journal-level realism.** Mid-field genetics or evolution; the maize study in *PNAS* shows a higher venue is possible with a clear domestication contrast.
 
+## Reference study in another species
+
+Added 2026-11-26. Published studies that already did this kind of work in another species, to plan the grape version against. Every DOI was checked on Crossref. Figures are described, not copied; a figure redrawn for a grape paper would be marked "Redrawn after" its source. The last bullet for each study lists what a grape results section would need; it is a planning suggestion, not a finding of that study.
+
+### Brazier and Glémin 2024
+
+- **Paper:** [Brazier and Glémin 2024](https://doi.org/10.1093/molbev/msae183), *Molecular Biology and Evolution*.
+- **Species:** 11 flowering plants, with human as a control.
+- **What was done:** Fine-scale LD-based recombination maps were built from polymorphism data for 11 plants; hotspots were inferred and recombination gradients within genes were analysed.
+- **Figures:** Fig. 1 recombination is concentrated in hotspots; Fig. 2 recombination rates around and within genes; Fig. 3 gradients concentrated at transcription start and end sites; Fig. 4 gradients by exon and intron rank; Fig. 5 gradients are robust to polymorphism level and correlate with crossover rate; Fig. 6 diversity of gradients across species; Fig. 7 model fits.
+- **What a grape results section would need:** an LD-based map; hotspot detection; relation to genome features; comparison with genetic maps.
+
+### Dreissig et al. 2019
+
+- **Paper:** [Dreissig et al. 2019](https://doi.org/10.1093/molbev/msz141), *Molecular Biology and Evolution* (PMC6736446). Licence CC BY 4.0: figures may be reused with credit; none are copied here.
+- **Species:** barley, wild populations and domesticated landraces.
+- **What was done:** recombination landscapes were estimated with a population genetics approach; high rates sat in more interstitial regions in wild barley and in distal regions in landraces; among wild subpopulations the effective rate varied with temperature, isothermality and solar radiation, and rose with annual precipitation.
+- **Figures:** Fig. 1 sampling; Fig. 2 landscapes of wild barley and landraces compared; Fig. 3 population recombination rate, effective population size and per-generation rate in 55 wild subpopulations; Fig. 4 rate against environmental variables; Fig. 5 landscapes of selected subpopulations.
+- **What its results section needed:** landscapes compared between wild and domesticated groups after separating the population rate from effective population size (Fig. 3), and covariates tested across subpopulations.
+- **Grape version:** Fig. 2 and 3 equivalents for wild and cultivated grape; dividing by effective population size is the step that answers the demography risk above, and pedigree crossovers from project 23 give an independent check.
+
+### Q1-level bar
+
+Target: a first-quartile (Q1) journal in plant science, genetics or evolution. Quartile lists change each year, so the journal is chosen from the current list at submission [to confirm]. To compete at that level, the grape paper needs: wild and cultivated maps with a demography-matched null model, a check against pedigree or genetic maps, and hotspot or gene-gradient features compared with the 11 plants in Brazier and Glémin 2024.
+
 ## Rough estimates
 
 - Compute: medium [draft]
@@ -158,3 +183,5 @@ Public inputs: [DS10](../../data/DS10-reseq-472-vitis/), [DS12](../../data/DS12-
 - Barroso et al. 2019. Inference of recombination maps from a single pair of genomes and its application to ancient samples. *PLOS Genetics*. [doi:10.1371/journal.pgen.1008449](https://doi.org/10.1371/journal.pgen.1008449)
 - Fang et al. 2026. The heterozygous pineapple genome demonstrates the importance of haplotype-resolved plant genomes. *Horticulture Research*. [doi:10.1093/hr/uhag189](https://doi.org/10.1093/hr/uhag189)
 - Epstein et al. 2026. Evolution of maize recombination landscape during domestication. *Proceedings of the National Academy of Sciences*. [doi:10.1073/pnas.2534336123](https://doi.org/10.1073/pnas.2534336123)
+- Brazier and Glémin 2024. Diversity in Recombination Hotspot Characteristics and Gene Structure Shape Fine-Scale Recombination Patterns in Plant Genomes. *Molecular Biology and Evolution*. [doi:10.1093/molbev/msae183](https://doi.org/10.1093/molbev/msae183)
+- Dreissig et al. 2019. Variation in Recombination Rate Is Shaped by Domestication and Environmental Conditions in Barley. *Molecular Biology and Evolution*. [doi:10.1093/molbev/msz141](https://doi.org/10.1093/molbev/msz141)

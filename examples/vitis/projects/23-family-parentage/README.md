@@ -112,6 +112,28 @@ Added 2026-11-26. Each row names a risk, the evidence behind it, and a concrete 
 
 **Journal-level realism.** Specialty plant genetics or germplasm journal.
 
+## Reference study in another species
+
+Added 2026-11-26. Published studies that already did this kind of work in another species, to plan the grape version against. Every DOI was checked on Crossref. Figures are described, not copied; a figure redrawn for a grape paper would be marked "Redrawn after" its source. The last bullet for each study lists what a grape results section would need; it is a planning suggestion, not a finding of that study.
+
+### Muranty et al. 2020
+
+- **Paper:** [Muranty et al. 2020](https://doi.org/10.1186/s12870-019-2171-6), *BMC Plant Biology* (PMC6941274). Licence CC BY 4.0: figures may be reused with credit; none are copied here.
+- **Species:** apple, over 1,400 mostly old cultivars kept by grafting, about 253,000 SNPs.
+- **What was done:** simple exclusion tests that count Mendelian errors found more than one thousand parent-offspring relations and 295 complete parent-offspring families; for 26 pairs a grandparent couple was found for the missing parent.
+- **Figures:** Fig. 1 Mendelian error counts in candidate parent-offspring duos; Fig. 2 pedigree network of 832 individuals; Fig. 3 error counts in candidate trios; Fig. 4 and 5 error counts in grandparent groups with about 25,000 and about 253,000 SNPs; Fig. 6 one reconstructed multi-generation pedigree.
+- **What its results section needed:** error-count distributions with a clear gap between true and false relations, a network view, and the effect of marker density on the tests.
+- **Grape version:** Fig. 1, 3 and 4 equivalents on the de-duplicated grape panel, with the gap between true and false relations shown separately for high- and low-depth samples; the network (Fig. 2) feeds the meiosis count of project 24.
+- **Further results a grape version would need:** detection of parent-offspring pairs and trios with thresholds; a relationship network; a multi-generation pedigree; inbreeding.
+
+### Coverage note
+
+Muranty et al. 2020 used SNP array data, not whole-genome resequencing, so its thresholds do not transfer directly to low-depth resequencing data.
+
+### Q1-level bar
+
+Target: a first-quartile (Q1) journal in plant science, genetics or evolution. Quartile lists change each year, so the journal is chosen from the current list at submission [to confirm]. To compete at that level, the grape paper needs: a relationship table tested on crosses of known parentage with error rates, and a pedigree result that matters for grape history; joining with project 08 or 24 strengthens the case.
+
 ## Rough estimates
 
 - Compute: small to medium [draft]
@@ -153,3 +175,4 @@ Public inputs: [DS10](../../data/DS10-reseq-472-vitis/), [DS12](../../data/DS12-
 - Xiao et al. 2025. Impacts of reproductive systems on grapevine genome and breeding. *Nature Communications*. [doi:10.1038/s41467-025-56817-7](https://doi.org/10.1038/s41467-025-56817-7)
 - de Oliveira et al. 2026. Genome-wide association study in a diverse grapevine collection provides insights into the genetic basis of berry size and cluster architecture traits. *PLOS One*. [doi:10.1371/journal.pone.0343491](https://doi.org/10.1371/journal.pone.0343491)
 - Costantini et al. 2026. An advanced genotyping tool to inspect grapevine variability: the Axiom®Vitis22K SNP array. *Frontiers in Plant Science*. [doi:10.3389/fpls.2026.1771381](https://doi.org/10.3389/fpls.2026.1771381)
+- Muranty et al. 2020. Using whole-genome SNP data to reconstruct a large multi-generation pedigree in apple germplasm. *BMC Plant Biology*. [doi:10.1186/s12870-019-2171-6](https://doi.org/10.1186/s12870-019-2171-6)

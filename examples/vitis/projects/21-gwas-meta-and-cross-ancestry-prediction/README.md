@@ -137,6 +137,31 @@ Added 2026-11-26. Each row names a risk, the evidence behind it, and a concrete 
 
 **Journal-level realism.** Specialty plant breeding or horticulture journal; a data note if the stop rule triggers.
 
+## Reference study in another species
+
+Added 2026-11-26. Published studies that already did this kind of work in another species, to plan the grape version against. Every DOI was checked on Crossref. Figures are described, not copied; a figure redrawn for a grape paper would be marked "Redrawn after" its source. The last bullet for each study lists what a grape results section would need; it is a planning suggestion, not a finding of that study.
+
+### Yang et al. 2025
+
+- **Paper:** [Yang et al. 2025](https://doi.org/10.1038/s41467-025-58081-1), *Nature Communications*.
+- **Species:** Rice, six populations.
+- **What was done:** GWAS in six rice populations were combined by meta-analysis on a graph pangenome, including PAV; 156 QTL were found, and candidate genes for grain width and length were tested with CRISPR.
+- **Figures:** Fig. 1 study design; Fig. 2 trait-associated variants found by the meta-analysis (156 QTL); Fig. 3 meta-GWAS for grain width and functional analysis; Fig. 4 meta-GWAS for grain length and functional analysis.
+- **What a grape results section would need:** GWAS per population and the meta-analysis; loci found only by the meta-analysis; PAV and SV associations; validation of candidate genes.
+
+### Minamikawa et al. 2017
+
+- **Paper:** [Minamikawa et al. 2017](https://doi.org/10.1038/s41598-017-05100-x), *Scientific Reports* (PMC5498537). Licence CC BY 4.0: figures may be reused with credit; none are copied here.
+- **Species:** citrus, a parental population of 111 varieties and a breeding population of 676 individuals from 35 full-sib families.
+- **What was done:** both populations were genotyped at 1,841 SNPs and scored for 17 fruit quality traits; combining them raised GWAS power and prediction accuracy; a multi-kernel model with additive and dominance effects helped some traits; GBLUP with a linear kernel was more robust than a Gaussian kernel.
+- **Figures:** Fig. 1 LD decay; Fig. 2 genetic and phenotypic structure; Fig. 3 Manhattan plots for 17 traits; Fig. 4 prediction models compared; Fig. 5 prediction of distribution tails; Fig. 6 accuracy in the breeding population.
+- **What its results section needed:** LD decay and structure, a combined association scan, several prediction models compared, and accuracy in a population not used for training.
+- **Grape version:** Fig. 3 equivalents from meta-analysis of published grape summary statistics, and Fig. 4 and 6 equivalents for prediction across populations, if the phenotype inventory passes (risk above).
+
+### Q1-level bar
+
+Target: a first-quartile (Q1) journal in plant science, genetics or evolution. Quartile lists change each year, so the journal is chosen from the current list at submission [to confirm]. To compete at that level, the grape paper needs: a meta-analysis that finds loci missed by single studies, cross-population prediction accuracy, and at least one candidate supported by other evidence, as in the rice study.
+
 ## Rough estimates
 
 - Compute: small to medium [draft]
@@ -175,3 +200,5 @@ Public inputs: [DS22](../../data/DS22-phenotypes-and-gwas-summaries/), [DS02](..
 - Gan et al. 2025. Deep learning empowers genomic selection of pest-resistant grapevine. *Horticulture Research*. [doi:10.1093/hr/uhaf128](https://doi.org/10.1093/hr/uhaf128)
 - De Walsche et al. 2025. metaGE: Investigating genotype x environment interactions through GWAS meta-analysis. *PLOS Genetics*. [doi:10.1371/journal.pgen.1011553](https://doi.org/10.1371/journal.pgen.1011553)
 - Brault et al. 2024. Enhancing grapevine breeding efficiency through genomic prediction and selection index. *G3: Genes, Genomes, Genetics*. [doi:10.1093/g3journal/jkae038](https://doi.org/10.1093/g3journal/jkae038)
+- Yang et al. 2025. GWAS meta-analysis using a graph-based pan-genome enhanced gene mining efficiency for agronomic traits in rice. *Nature Communications*. [doi:10.1038/s41467-025-58081-1](https://doi.org/10.1038/s41467-025-58081-1)
+- Minamikawa et al. 2017. Genome-wide association study and genomic prediction in citrus: Potential of genomics-assisted breeding for fruit quality traits. *Scientific Reports*. [doi:10.1038/s41598-017-05100-x](https://doi.org/10.1038/s41598-017-05100-x)

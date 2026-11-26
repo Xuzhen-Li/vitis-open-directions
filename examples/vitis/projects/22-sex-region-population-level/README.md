@@ -31,6 +31,21 @@ At population level, 556 wild and domesticated accessions showed high LD at the 
 
 What are the haplotype diversity and genealogical relationships of wild M and F haplotypes and cultivated H and F haplotypes of the sex-determining region?
 
+## Scope update (2026-11-26)
+
+Added 2026-11-26. This section narrows or reframes the plan above; where the two differ, this section applies. Earlier text is kept unchanged.
+
+**Stays demoted; one question kept.** The cross-genus question is answered ([Massonnet et al. 2025](https://doi.org/10.1038/s41467-025-61387-9)). The question kept is population-level: how many times, and from which wild male lineages, did the hermaphrodite haplotype of cultivated grape arise, and how diverse are wild male and female haplotypes across the range?
+
+Target: a first-quartile (Q1) journal in plant science, genetics or evolution. Quartile lists change each year, so the journal is chosen from the current list at submission [to confirm]. The points below are what the paper needs to compete at that level.
+
+- Enough sexed wild samples across the range (minimum set in the preregistration) to estimate haplotype diversity and genealogies.
+- Haplotype-aware genotyping of the sex-determining region, checked against the published haplotype assemblies.
+- Population statistics by sex-linkage class across the range, as in the reference study below.
+- A dated genealogy of hermaphrodite haplotypes with the clonal confounders in the risk table handled.
+
+**Gate.** The project starts only if the inventory of sexed wild samples reaches the preregistered minimum; otherwise it stays parked.
+
 ## Hypotheses, planned figures and criteria
 
 No results are given here. Each row says what would count as support; the exact thresholds go into the preregistration.
@@ -132,6 +147,31 @@ Added 2026-11-26. Each row names a risk, the evidence behind it, and a concrete 
 
 **Journal-level realism.** Specialty plant evolution journal; the cross-genus result already sits in *Nature Communications*.
 
+## Reference study in another species
+
+Added 2026-11-26. Published studies that already did this kind of work in another species, to plan the grape version against. Every DOI was checked on Crossref. Figures are described, not copied; a figure redrawn for a grape paper would be marked "Redrawn after" its source. The last bullet for each study lists what a grape results section would need; it is a planning suggestion, not a finding of that study.
+
+### Torres et al. 2018
+
+- **Paper:** [Torres et al. 2018](https://doi.org/10.1038/s41467-018-06375-y), *Nature Communications*.
+- **Species:** Date palms (*Phoenix*, several species).
+- **What was done:** Male-specific k-mers were found in sequencing data across the genus; the sex-determining region was located, compared with oil palm, selection was inferred, and a two-locus model was proposed.
+- **Figures:** Fig. 1 genus-wide male-specific k-mers; Fig. 2 male-specific BACs and scaffolds; Fig. 3 the sex-determining region; Fig. 4 a model of the evolution of dioecy.
+- **What a grape results section would need:** a genus-wide k-mer screen; location of the sex-determining region; comparison of the two haplotypes; inference of selection.
+
+### Veltsos et al. 2019
+
+- **Paper:** [Veltsos et al. 2019](https://doi.org/10.1534/genetics.119.302045), *Genetics* (PMC6614902). The PubMed Central record states no reuse licence: figures are not copied here; any redraw is marked "Redrawn after Veltsos et al. 2019".
+- **Species:** *Mercurialis annua*, a diploid dioecious herb.
+- **What was done:** cytology, a genome assembly, genetic maps, exome resequencing of natural populations and transcriptomes identified the largest linkage group as the sex chromosome; about one-third of the Y (568 transcripts, 22.3 cM in the female map) has stopped recombining.
+- **Figures:** Fig. 1 karyotype; Fig. 2 male and female genetic maps; Fig. 3 synonymous divergence between X and Y; Fig. 4 dN/dS on X, Y and outgroup branches; Fig. 5 transcript metrics along the sex chromosome; Fig. 6 sex-biased and sex-linked genes; Fig. 7 FST and other SNP statistics by sex-linkage class across the species range.
+- **What its results section needed:** a defined non-recombining region, X and Y divergence, and population statistics from sexed samples across the range.
+- **Grape version:** Fig. 3 and 7 equivalents for the grape sex-determining region from sexed wild samples; this is the population-level question kept in the Scope update above.
+
+### Q1-level bar
+
+Target: a first-quartile (Q1) journal in plant science, genetics or evolution. Quartile lists change each year, so the journal is chosen from the current list at submission [to confirm]. To compete at that level, the grape paper needs the points listed in the Scope update section above, which applies to this project.
+
 ## Rough estimates
 
 - Compute: small [draft]
@@ -169,3 +209,5 @@ Public inputs: [DS09](../../data/DS09-sex-locus-haplotypes/), [DS10](../../data/
 - Ramos et al. 2020. Portuguese wild grapevine genome re-sequencing (Vitis vinifera sylvestris). *Scientific Reports*. [doi:10.1038/s41598-020-76012-6](https://doi.org/10.1038/s41598-020-76012-6)
 - Vaughn et al. 2026. Diagnostic KASP Markers for Flower Sex and Stenospermocarpic Seedlessness in Diverse Vitis, Muscadinia, and Wide Hybrid Populations. *J. Amer. Soc. Hort. Sci*. [doi:10.21273/jashs05580-25](https://doi.org/10.21273/jashs05580-25)
 - Marais et al. 2025. Plant sex-determining genes and the genetics of the evolution towards dioecy. *Journal of Experimental Botany*. [doi:10.1093/jxb/eraf224](https://doi.org/10.1093/jxb/eraf224)
+- Torres et al. 2018. Genus-wide sequencing supports a two-locus model for sex-determination in Phoenix. *Nature Communications*. [doi:10.1038/s41467-018-06375-y](https://doi.org/10.1038/s41467-018-06375-y)
+- Veltsos et al. 2019. Early Sex-Chromosome Evolution in the Diploid Dioecious Plant Mercurialis annua. *Genetics*. [doi:10.1534/genetics.119.302045](https://doi.org/10.1534/genetics.119.302045)
