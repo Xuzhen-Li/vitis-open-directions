@@ -34,6 +34,21 @@ Hemizygous genes on autosomes were compared across 22 genomes with clonal, outcr
 
 Do hemizygous SVs that arose between clones sit in different genomic contexts from hemizygous SVs inherited at the cultivar's sexual origin, and how do inherited hemizygous SVs relate to recombination and repeat density in cultivated versus wild grapes?
 
+## Scope update (2026-11-26)
+
+Added 2026-11-26. This section narrows or reframes the plan above; where the two differ, this section applies. Earlier text is kept unchanged.
+
+**Narrowed scope: inherited versus clonal hemizygous differences within grape.** The cross-crop comparison of clonal and sexual hemizygosity is partly answered ([Peng et al. 2025](https://doi.org/10.1073/pnas.2422487122)). The project now asks only: within grape, how do hemizygous SVs that arose between clones of one cultivar differ from hemizygous SVs inherited at its sexual origin, in size, repeat context, gene content and expression?
+
+Target: a first-quartile (Q1) journal in plant science, genetics or evolution. Quartile lists change each year, so the journal is chosen from the current list at submission [to confirm]. The points below are what the paper needs to compete at that level.
+
+- Clone families with several sequenced clones per cultivar, so clonal SVs (present in some clones) and inherited SVs (present in all clones and traceable to a parent haplotype) are separated.
+- Long-read or assembly confirmation for a stated share of both classes, with depth and loss-of-heterozygosity evidence as in the reference study below.
+- Allele-specific expression of genes in both classes (project 19) as the functional readout.
+- Known clonal colour-loss events used as positive controls.
+
+**Fallback.** If too few clone families have enough clones, report inherited hemizygous SVs only and drop the clonal contrast.
+
 ## Hypotheses, planned figures and criteria
 
 No results are given here. Each row says what would count as support; the exact thresholds go into the preregistration.
@@ -148,6 +163,32 @@ Added 2026-11-26. Each row names a risk, the evidence behind it, and a concrete 
 
 **Journal-level realism.** The cross-crop result appeared in *PNAS*; a grape-specific follow-up fits mid-field unless the inherited versus clonal contrast is clear and new.
 
+## Reference study in another species
+
+Added 2026-11-26. Published studies that already did this kind of work in another species, to plan the grape version against. Every DOI was checked on Crossref. Figures are described, not copied; a figure redrawn for a grape paper would be marked "Redrawn after" its source. The last bullet for each study lists what a grape results section would need; it is a planning suggestion, not a finding of that study.
+
+### Wang et al. 2021
+
+- **Paper:** [Wang et al. 2021](https://doi.org/10.1038/s41477-021-00941-x), *Nature Plants*.
+- **Note:** Only the figure titles were read, not the captions.
+- **Species:** Sweet orange, 114 somatic mutants.
+- **What was done:** A reference genome and six diploid mutant genomes were assembled; 114 somatic mutants were resequenced; somatic SNVs, SVs and transposon movements were classified and linked to fruit acidity.
+- **Figures:** Fig. 1 sampling across South China and mutant phenotypes; Fig. 2 PCA and relationships; Fig. 3 genomic positions of somatic variants; Fig. 4 classes of somatic transposon movements; Fig. 5 history of divergence and spread.
+- **What a grape results section would need:** SV and transposon detection between clones; the genomic distribution of somatic variants; association with phenotype.
+
+### Ríos et al. 2008
+
+- **Paper:** [Ríos et al. 2008](https://doi.org/10.1186/1471-2164-9-381), *BMC Genomics* (PMC2533677). Licence CC BY 2.0: figures may be reused with credit; none are copied here.
+- **Species:** clementine (*Citrus clementina*), a heterozygous, vegetatively propagated fruit tree.
+- **What was done:** two fast-neutron mutants expected to carry hemizygous deletions were studied; array comparative genomic hybridization found under-represented genes; homologues were placed on poplar, *Arabidopsis* and grapevine chromosomes; one deletion was mapped physically, and its genes were linked to expression and a chlorophyll phenotype; SNP alleles of one deleted gene were compared between mutant and wild type.
+- **Figures:** Fig. 1 the protocol; Fig. 2 and 3 homologues on other genomes; Fig. 4 and 6 gene content and order of the deletion; Fig. 5 physical mapping; Fig. 7 chlorophyll a/b ratio; Fig. 8 expression of genes in the deletion; Fig. 9 SNP alleles in a deleted gene.
+- **What its results section needed:** detection of a hemizygous deletion on a heterozygous background, confirmation by loss of one allele at heterozygous sites, mapping of its boundaries, and expression of the affected genes.
+- **Grape version and what grape adds:** the same confirmation logic (depth drop plus loss of heterozygosity, boundaries from long reads, allele-specific expression) applied to natural variation; grape adds the split the citrus mutants could not give, between hemizygous SVs that arose between clones and those inherited at the sexual origin (see Scope update above).
+
+### Q1-level bar
+
+Target: a first-quartile (Q1) journal in plant science, genetics or evolution. Quartile lists change each year, so the journal is chosen from the current list at submission [to confirm]. To compete at that level, the grape paper needs the points listed in the Scope update section above, which applies to this project.
+
 ## Rough estimates
 
 - Compute: medium [draft]
@@ -192,3 +233,5 @@ Public inputs: [DS02](../../data/DS02-grapepan-v1/), [DS03](../../data/DS03-viti
 - Sirén et al. 2021. Pangenomics enables genotyping of known structural variants in 5202 diverse genomes. *Science*. [doi:10.1126/science.abg8871](https://doi.org/10.1126/science.abg8871)
 - Nardone et al. 2025. A Hitchhiker Guide to Structural Variant Calling: A Comprehensive Benchmark Through Different Sequencing Technologies. *Biomedicines*. [doi:10.3390/biomedicines13081949](https://doi.org/10.3390/biomedicines13081949)
 - Alañón-Sánchez et al. 2026. A complex reciprocal translocation is linked to reduced gamete viability in a loose-bunch grapevine somatic variant. *BMC Plant Biology*. [doi:10.1186/s12870-026-08212-7](https://doi.org/10.1186/s12870-026-08212-7)
+- Wang et al. 2021. Somatic variations led to the selection of acidic and acidless orange cultivars. *Nature Plants*. [doi:10.1038/s41477-021-00941-x](https://doi.org/10.1038/s41477-021-00941-x)
+- Ríos et al. 2008. Characterization of hemizygous deletions in Citrus using array-Comparative Genomic Hybridization and microsynteny comparisons with the poplar genome. *BMC Genomics*. [doi:10.1186/1471-2164-9-381](https://doi.org/10.1186/1471-2164-9-381)

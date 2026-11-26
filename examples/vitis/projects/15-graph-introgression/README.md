@@ -141,6 +141,31 @@ Added 2026-11-26. Each row names a risk, the evidence behind it, and a concrete 
 
 **Journal-level realism.** Mid-field genetics or molecular ecology; with SNP painting already shown, a broad venue would need adaptive SV-only tracts.
 
+## Reference study in another species
+
+Added 2026-11-26. Published studies that already did this kind of work in another species, to plan the grape version against. Every DOI was checked on Crossref. Figures are described, not copied; a figure redrawn for a grape paper would be marked "Redrawn after" its source. The last bullet for each study lists what a grape results section would need; it is a planning suggestion, not a finding of that study.
+
+### Meng et al. 2025
+
+- **Paper:** [Meng et al. 2025](https://doi.org/10.1038/s41467-025-60254-x), *Nature Communications*.
+- **Species:** *Gossypium barbadense*, with *G. hirsutum*.
+- **What was done:** 12 new assemblies and 17 published tetraploid cotton assemblies were used to build a graph pangenome; SVs, selection, introgression between the two species (haplotypes on chromosome A01) and an SV-based GWAS were analysed.
+- **Figures:** Fig. 1 assembly and genome composition; Fig. 2 pangenome; Fig. 3 SVs; Fig. 4 selection signals in improvement; Fig. 5 chromosome A01 haplotypes in 710 accessions; Fig. 6 SV-based GWAS for fibre quality and yield.
+- **What a grape results section would need:** introgressed regions at SV level; classes and frequencies of introgressed haplotypes; association of introgressed SVs with traits.
+
+### Liang et al. 2025
+
+- **Paper:** [Liang et al. 2025](https://doi.org/10.1093/molbev/msaf088), *Molecular Biology and Evolution* (PMC12042805). Licence CC BY-NC 4.0: figures are not copied here; any redraw is marked "Redrawn after Liang et al. 2025".
+- **Species:** two oaks, *Quercus variabilis* (22 assemblies) and *Q. acutissima*.
+- **What was done:** 543,372 SVs were found; SNP and SV outliers for local adaptation did not overlap; 29% to 37% of candidate SNPs lay in a 250 kb region on chromosome 9 with eight duplicated ERF genes; candidate SNPs there were shared between the species, and advantageous variants were introgressed from western *Q. acutissima* into *Q. variabilis*.
+- **Figures:** Fig. 1 assemblies and pangenome; Fig. 2 SVs per accession; Fig. 3 genetic groups and demography; Fig. 4 local adaptation scans; Fig. 5 parallelism within and outside the chromosome 9 region; Fig. 6 haplotype tree and evidence of adaptive introgression.
+- **What its results section needed:** SVs and SNPs scanned separately, an introgressed region shown with a haplotype tree, and the direction of transfer.
+- **Grape version:** introgression tracts from wild species into cultivated grape called at SV level on the graph and compared with SNP-based painting (the risk above); Fig. 6 equivalents for the strongest tracts.
+
+### Q1-level bar
+
+Target: a first-quartile (Q1) journal in plant science, genetics or evolution. Quartile lists change each year, so the journal is chosen from the current list at submission [to confirm]. To compete at that level, the grape paper needs: introgression called at SV level and compared with SNP-based calls, haplotype frequencies across panels, and an association of introgressed SVs with traits, as in the cotton study.
+
 ## Rough estimates
 
 - Compute: medium to large [draft]
@@ -184,3 +209,5 @@ Public inputs: [DS02](../../data/DS02-grapepan-v1/), [DS03](../../data/DS03-viti
 - Shi et al. 2024. Vitis rotundifolia Genes Introgressed with RUN1 and RPV1: Poor Recombination and Impact on V. vinifera Berry Transcriptome. *Plants*. [doi:10.3390/plants13152095](https://doi.org/10.3390/plants13152095)
 - Kopalli et al. 2025. Toward a standardized framework for pangenome graph evaluation: assessing crop plant pangenome variation graph construction from multiple assemblies. *GigaScience*. [doi:10.1093/gigascience/giaf121](https://doi.org/10.1093/gigascience/giaf121)
 - Chedid et al. 2025. Impact of the introgression of resistance loci on agro-œnological traits in grapevine interspecific hybrids. *bioRxiv* (preprint). [doi:10.1101/2025.03.31.646340](https://doi.org/10.1101/2025.03.31.646340)
+- Meng et al. 2025. Pangenome analysis reveals yield- and fiber-related diversity and interspecific gene flow in Gossypium barbadense L. *Nature Communications*. [doi:10.1038/s41467-025-60254-x](https://doi.org/10.1038/s41467-025-60254-x)
+- Liang et al. 2025. Pan-Genome Analysis Reveals Local Adaptation to Climate Driven by Introgression in Oak Species. *Molecular Biology and Evolution*. [doi:10.1093/molbev/msaf088](https://doi.org/10.1093/molbev/msaf088)

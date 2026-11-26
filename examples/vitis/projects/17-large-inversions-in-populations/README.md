@@ -135,6 +135,32 @@ Added 2026-11-26. Each row names a risk, the evidence behind it, and a concrete 
 
 **Journal-level realism.** Mid-field genome biology or evolution; a broad venue would need a clear trait or adaptation link (see the suggested journal level below).
 
+## Reference study in another species
+
+Added 2026-11-26. Published studies that already did this kind of work in another species, to plan the grape version against. Every DOI was checked on Crossref. Figures are described, not copied; a figure redrawn for a grape paper would be marked "Redrawn after" its source. The last bullet for each study lists what a grape results section would need; it is a planning suggestion, not a finding of that study.
+
+### Todesco et al. 2020
+
+- **Paper:** [Todesco et al. 2020](https://doi.org/10.1038/s41586-020-2467-6), *Nature*.
+- **Note:** Only the figure titles were read, not the captions.
+- **Species:** Wild sunflowers, 1,506 individuals.
+- **What was done:** Resequencing found 37 large non-recombining haplotype blocks, which were associated with ecological traits and environmental variables and were often linked to SVs.
+- **Figures:** Fig. 1 population structure and association; Fig. 2 a large introgression carrying a functional FT1 copy causes early flowering; Fig. 3 large non-recombining haplotypes control dune adaptation; Fig. 4 haplotype blocks are common and linked to SVs; Fig. 5 blocks are highly differentiated and associated with traits and environment.
+- **What a grape results section would need:** discovery of inversions and haplotype blocks; population genotyping; tests of suppressed recombination; association with traits and environment.
+
+### Zhou et al. 2023
+
+- **Paper:** [Zhou et al. 2023](https://doi.org/10.1038/s41467-023-37004-y), *Nature Communications* (PMC10030860). Licence CC BY 4.0: figures may be reused with credit; none are copied here.
+- **Species:** Asian rice, 73 assemblies plus two wild relatives.
+- **What was done:** a pan-genome index of 1,769 non-redundant inversions was built, spanning about 29% of the Nipponbare reference; the inversion rate was estimated at about 700 per million years; inversions were linked to gene expression, recombination rate and linkage disequilibrium.
+- **Figures:** Fig. 1 inversion discovery against number of genomes; Fig. 2 genome-wide distribution and hotspots; Fig. 3 a tree built from inversions; Fig. 4 species-specific, population-specific and shared inversions; Fig. 5 transposable elements at inversions; Fig. 6 expression of genes at breakpoints; Fig. 7 LD around large inversions.
+- **What its results section needed:** a non-redundant index from assemblies, a discovery curve, frequency classes, breakpoint features, and effects on expression and LD.
+- **Grape version:** the same index from grape assemblies; population frequencies from short reads are read through LD signatures (Fig. 7 equivalent) and checked against assemblies, which addresses the short-read genotyping risk above.
+
+### Q1-level bar
+
+Target: a first-quartile (Q1) journal in plant science, genetics or evolution. Quartile lists change each year, so the journal is chosen from the current list at submission [to confirm]. To compete at that level, the grape paper needs: an inversion catalogue confirmed in assemblies, population frequencies, a test of suppressed recombination, and an association with a trait or with environment, as in the sunflower study.
+
 ## Rough estimates
 
 - Compute: medium [draft]
@@ -179,3 +205,4 @@ Public inputs: [DS02](../../data/DS02-grapepan-v1/), [DS03](../../data/DS03-viti
 - Zhang et al. 2026. Recombination suppression in plant adaptation and speciation. *New Phytologist*. [doi:10.1111/nph.71026](https://doi.org/10.1111/nph.71026)
 - Maestri et al. 2022. ‘Nebbiolo’ genome assembly allows surveying the occurrence and functional implications of genomic structural variations in grapevines (Vitis vinifera L.). *BMC Genomics*. [doi:10.1186/s12864-022-08389-9](https://doi.org/10.1186/s12864-022-08389-9)
 - Peng et al. 2026. Haplotype‐Resolved 3D Genomic Landscapes and Their Impacts on Agronomic Traits in Grapevine. *Advanced Science*. [doi:10.1002/advs.202521838](https://doi.org/10.1002/advs.202521838)
+- Zhou et al. 2023. Pan-genome inversion index reveals evolutionary insights into the subpopulation structure of Asian rice. *Nature Communications*. [doi:10.1038/s41467-023-37004-y](https://doi.org/10.1038/s41467-023-37004-y)

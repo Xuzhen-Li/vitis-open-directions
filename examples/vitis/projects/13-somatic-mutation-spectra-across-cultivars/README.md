@@ -146,6 +146,40 @@ Added 2026-11-26. Each row names a risk, the evidence behind it, and a concrete 
 
 **Journal-level realism.** Mid-field genome biology or evolution; with the Pinot noir map already in *Genome Biology*, a broader venue would need a clear between-cultivar difference.
 
+## Reference study in another species
+
+Added 2026-11-26. Published studies that already did this kind of work in another species, to plan the grape version against. Every DOI was checked on Crossref. Figures are described, not copied; a figure redrawn for a grape paper would be marked "Redrawn after" its source. The last bullet for each study lists what a grape results section would need; it is a planning suggestion, not a finding of that study.
+
+### Hofmeister et al. 2020
+
+- **Paper:** [Hofmeister et al. 2020](https://doi.org/10.1186/s13059-020-02162-5), *Genome Biology*.
+- **Species:** *Populus trichocarpa*.
+- **What was done:** The Stettler genome was assembled; two stems of one wild tree, which resprouted after the top was lost about 300 years ago, were compared to estimate yearly somatic mutation and epimutation rates.
+- **Figures:** Fig. 1 photo and scheme of the sampled tree; Fig. 2 somatic mutations are mostly transitions and mostly outside genes; Fig. 3 epimutation rates by site, region and genome feature; Fig. 4 somatic stability of differentially methylated regions; Fig. 5 expression in relation to divergence age and methylation.
+- **What a grape results section would need:** sampling design and age estimate; high-confidence somatic SNVs and their spectrum; a yearly rate; SV analysis.
+
+### Orr et al. 2020
+
+- **Paper:** [Orr et al. 2020](https://doi.org/10.1098/rspb.2019.2364), *Proceedings of the Royal Society B*.
+- **Note:** Method reference only: the journal is not first-quartile.
+- **Species:** *Eucalyptus melliodora*.
+- **What was done:** A method to measure somatic mutations within one plant was developed and used to estimate the rate in a long-lived, phenotypically mosaic tree.
+- **Figures:** Fig. 1 the sequenced individual and its eight branch-tip samples; Fig. 2 the tree built from somatic mutations compared with the physical branching.
+- **What a grape results section would need:** multi-branch sampling; detection with false-positive control; a test of the mutation tree against the physical tree; a rate estimate.
+
+### Xian et al. 2025
+
+- **Paper:** [Xian et al. 2025](https://doi.org/10.1093/g3journal/jkaf143), *G3* (PMC12341919). Licence CC BY 4.0: figures may be reused with credit; none are copied here.
+- **Species:** pedunculate oak (*Quercus robur*), one 234-year-old tree.
+- **What was done:** new HiFi data gave a pseudo-haploid and a partly phased diploid assembly; short reads were assigned to the better-fitting reference by alignment score and mapping quality; 198 high-confidence somatic mutations were found, against 17 found before with the same short reads, raising the estimated annual mutation rate fivefold.
+- **Figures:** Fig. 1 assembly graphs and centromeric satellite copy number; Fig. 2 haploid versus diploid references for short-read alignment and expected allele fractions of layer-specific mutations; Fig. 3 the somatic mutations found.
+- **What its results section needed:** a reference that matches the heterozygous genome, an explicit model of low allele fractions from cell layers, and a before-and-after comparison of mutation counts.
+- **Grape version:** grape is also highly heterozygous, so the same read-assignment step between haplotype-resolved and collapsed references is used before spectra are compared across cultivars; layer-aware allele-fraction thresholds follow the cell-layer row in the risk table above.
+
+### Q1-level bar
+
+Target: a first-quartile (Q1) journal in plant science, genetics or evolution. Quartile lists change each year, so the journal is chosen from the current list at submission [to confirm]. To compete at that level, the grape paper needs: high-confidence somatic variants in many cultivars with rates where clone ages are known, long-read validation, and a test of one biological factor (age, cell layer or environment), as in the *Populus* study.
+
 ## Rough estimates
 
 - Compute: medium [draft]
@@ -192,3 +226,4 @@ Public inputs: [DS13](../../data/DS13-clone-somatic-variation/), [DS01](../../da
 - Johannes 2025. Somatic Evolution of Stem Cell Mutations in Long-Lived Plants. *Molecular Biology and Evolution*. [doi:10.1093/molbev/msaf165](https://doi.org/10.1093/molbev/msaf165)
 - Satake et al. 2024. Somatic mutation rates scale with time not growth rate in long-lived tropical trees. *eLife*. [doi:10.7554/elife.88456.3](https://doi.org/10.7554/elife.88456.3)
 - Callipo et al. 2025. Harnessing clonal diversity in grapevine: from genomic insights to modern breeding applications. *Theoretical and Applied Genetics*. [doi:10.1007/s00122-025-04986-w](https://doi.org/10.1007/s00122-025-04986-w)
+- Xian et al. 2025. Minimizing detection bias of somatic mutations in a highly heterozygous oak genome. *G3: Genes, Genomes, Genetics*. [doi:10.1093/g3journal/jkaf143](https://doi.org/10.1093/g3journal/jkaf143)

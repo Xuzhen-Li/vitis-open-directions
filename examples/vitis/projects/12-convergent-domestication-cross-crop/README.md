@@ -31,6 +31,21 @@ Perennial fruit crops are domesticated differently from annuals: long generation
 
 Do grape and other crops share selected genes or pathways more often than expected under a matched null?
 
+## Scope update (2026-11-26)
+
+Added 2026-11-26. This section narrows or reframes the plan above; where the two differ, this section applies. Earlier text is kept unchanged.
+
+**Null result preregistered as publishable.** A null result is likely (see [Lai et al. 2018](https://doi.org/10.1111/tpj.13806) and the risk table below). The preregistration states that a well-powered null is a result: the paper then reports the upper bound on convergence that the data can exclude.
+
+Target: a first-quartile (Q1) journal in plant science, genetics or evolution. Quartile lists change each year, so the journal is chosen from the current list at submission [to confirm]. The points below are what the paper needs to compete at that level.
+
+- A matched null that controls for gene length, recombination rate, gene family size and ancient duplications.
+- A power calculation before the scans: the smallest excess of shared genes the design can detect.
+- A smaller, deeper scope if needed: grape and two or three crops with public wild and domestic panels, rather than many crops with uneven data.
+- One worked locus shown only if it passes the null, as in the sheep and goat study used as the reference below.
+
+**Fallback.** If the panels for the comparison crops are too uneven for a matched design, drop to grape plus one crop.
+
 ## Hypotheses, planned figures and criteria
 
 No results are given here. Each row says what would count as support; the exact thresholds go into the preregistration.
@@ -135,6 +150,31 @@ Added 2026-11-26. Each row names a risk, the evidence behind it, and a concrete 
 
 **Journal-level realism.** The maize and sorghum null result appeared in *The Plant Journal*; a grape-centred cross-crop test fits mid-field at most unless it finds strong excess sharing.
 
+## Reference study in another species
+
+Added 2026-11-26. Published studies that already did this kind of work in another species, to plan the grape version against. Every DOI was checked on Crossref. Figures are described, not copied; a figure redrawn for a grape paper would be marked "Redrawn after" its source. The last bullet for each study lists what a grape results section would need; it is a planning suggestion, not a finding of that study.
+
+### Sow et al. 2025
+
+- **Paper:** [Sow et al. 2025](https://doi.org/10.1038/s41477-025-02128-0), *Nature Plants*.
+- **Species:** Wheat and barley, 1,203 accessions.
+- **What was done:** Orthologous groups were defined from the reconstructed ancestral Triticeae karyotype; selection scans were run separately in barley, emmer, durum and bread wheat, and shared signals across crops (orthoSweeps) were tested for enrichment against a random expectation.
+- **Figures:** Fig. 1 Triticeae palaeohistory from ancestral to modern karyotypes; Fig. 2 diversity structure of the 1,203 accessions; Fig. 3 orthoSweeps between wheat and barley; Fig. 4 synchronously differentiated orthologous SNPs; Fig. 5 variation of a diversity index compared with GWAS signals; Fig. 6 species-specific diversity; Fig. 7 a model of convergent selection history.
+- **What a grape results section would need:** orthogroup definition and filters; independent scans per crop; observed versus expected enrichment of shared signals; candidate genes and annotation.
+
+### Alberto et al. 2018
+
+- **Paper:** [Alberto et al. 2018](https://doi.org/10.1038/s41467-018-03206-y), *Nature Communications* (PMC5840369). Licence CC BY 4.0: figures may be reused with credit; none are copied here.
+- **Species:** sheep and goats, with wild Asiatic mouflon and Bezoar ibex from the domestication centre.
+- **What was done:** wild genomes were compared with local, traditional and improved breeds; 20 sweep regions separating domestic from wild were common to both genera, while the patterns of selection differed between species.
+- **Figures:** Fig. 1 sampling relative to the domestication centre; Fig. 2 genome-wide maps of selected regions, specific and shared; Fig. 3 a shared region at *KITLG* in detail.
+- **What its results section needed:** wild-versus-domestic scans in each species, a mapping of regions between genomes, a count of shared regions, and one worked locus.
+- **Grape version:** the same three figures for grape and the comparison crops, with the matched null and power calculation from the Scope update above; a worked locus is shown only if one passes the null.
+
+### Q1-level bar
+
+Target: a first-quartile (Q1) journal in plant science, genetics or evolution. Quartile lists change each year, so the journal is chosen from the current list at submission [to confirm]. To compete at that level, the grape paper needs the points listed in the Scope update section above, which applies to this project.
+
 ## Rough estimates
 
 - Compute: large [draft]
@@ -180,3 +220,5 @@ Public inputs: [DS10](../../data/DS10-reseq-472-vitis/), [DS12](../../data/DS12-
 - McKibben et al. 2026. The Genomic Legacy of Ancient Polyploidy in Crop Domestication. *bioRxiv* (preprint). [doi:10.64898/2026.03.09.710542](https://doi.org/10.64898/2026.03.09.710542)
 - Alam et al. 2024. Domestication and the evolution of crops: variable syndromes, complex genetic architectures, and ecological entanglements. *The Plant Cell*. [doi:10.1093/plcell/koae013](https://doi.org/10.1093/plcell/koae013)
 - Thorburn et al. 2023. Origin matters: Using a local reference genome improves measures in population genomics. *Molecular Ecology Resources*. [doi:10.1111/1755-0998.13838](https://doi.org/10.1111/1755-0998.13838)
+- Sow et al. 2025. Striking convergent selection history of wheat and barley and its potential for breeding. *Nature Plants*. [doi:10.1038/s41477-025-02128-0](https://doi.org/10.1038/s41477-025-02128-0)
+- Alberto et al. 2018. Convergent genomic signatures of domestication in sheep and goats. *Nature Communications*. [doi:10.1038/s41467-018-03206-y](https://doi.org/10.1038/s41467-018-03206-y)

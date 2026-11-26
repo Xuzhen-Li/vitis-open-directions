@@ -141,6 +141,40 @@ Added 2026-11-26. Each row names a risk, the evidence behind it, and a concrete 
 
 **Journal-level realism.** Mid-field chromosome biology or plant genomics if the fusion test works; specialty otherwise.
 
+## Reference study in another species
+
+Added 2026-11-26. Published studies that already did this kind of work in another species, to plan the grape version against. Every DOI was checked on Crossref. Figures are described, not copied; a figure redrawn for a grape paper would be marked "Redrawn after" its source. The last bullet for each study lists what a grape results section would need; it is a planning suggestion, not a finding of that study.
+
+### Wlodzimierz et al. 2023
+
+- **Paper:** [Wlodzimierz et al. 2023](https://doi.org/10.1038/s41586-023-06062-z), *Nature*.
+- **Note:** Only the figure titles were read, not the captions.
+- **Species:** 66 *Arabidopsis thaliana* and 2 *A. lyrata* genomes.
+- **What was done:** 346 centromeres were assembled; diversity within and between species, satellite turnover and ATHILA retrotransposon invasion were analysed.
+- **Figures:** Fig. 1 high diversity of pan-centromeres; Fig. 2 dynamic genetic and epigenetic evolution of arrays; Fig. 3 ATHILA invades satellite arrays; Fig. 4 satellite turnover and transposon dynamics between the two species; Fig. 5 a model of cycles of satellite homogenisation and ATHILA invasion.
+- **What a grape results section would need:** satellite comparison between species; centromere position and length; transposon invasion.
+
+### Naish et al. 2021
+
+- **Paper:** [Naish et al. 2021](https://doi.org/10.1126/science.abi7489), *Science*.
+- **Species:** *Arabidopsis thaliana* Col-0.
+- **What was done:** The centromeres were assembled completely; a CEN180 satellite library was built, and ATHILA invasion, epigenetic organisation and meiotic recombination were analysed.
+- **Figures:** Fig. 1 complete centromere assembly (Circos plot); Fig. 2 the CEN180 satellite library; Fig. 3 ATHILA invasion of centromeres; Fig. 4 epigenetic organisation and meiotic recombination within centromeres (full text read from the author manuscript in PubMed Central).
+- **What a grape results section would need:** a completeness check of each centromere; a satellite monomer library; transposon insertions; epigenetic data where they exist.
+
+### Bao et al. 2026
+
+- **Paper:** [Bao et al. 2026](https://doi.org/10.1038/s41467-026-73769-8), *Nature Communications* (PMC13388940). Licence CC BY-NC-ND 4.0: figures are not copied here; any redraw is marked "Redrawn after Bao et al. 2026".
+- **Species:** *Oryza australiensis* (T2T assembly), compared with other *Oryza* genomes.
+- **What was done:** a 901 Mb T2T assembly allowed annotation of centromeres and telomeres and showed three centromere repositioning mechanisms (inversion-driven shifts, duplication-mediated neocentromeres, and transposon burst-induced neocentromeres); Angela LTR retrotransposon amplification was traced across genomes.
+- **Figures:** Fig. 1 genome features; Fig. 2 centromere positions and their evolution; Fig. 3 repositioning and chromosome arm ratios across *Oryza*; Fig. 4 synteny of centromere regions among species; Fig. 5 transposon amplification history; Fig. 6 Angela LTR elements and divergence time.
+- **What its results section needed:** centromere calls on gapless assemblies, synteny of centromere regions between species, a classification of repositioning events, and the repeat composition of each centromere.
+- **Grape version:** Fig. 2 to 4 equivalents for *Vitis* and *Muscadinia*, including the chromosome 7 fusion; centromere calls state whether they rest on satellite arrays alone or on CENH3 data (risk above).
+
+### Q1-level bar
+
+Target: a first-quartile (Q1) journal in plant science, genetics or evolution. Quartile lists change each year, so the journal is chosen from the current list at submission [to confirm]. To compete at that level, the grape paper needs: complete centromeres across *Vitis* and *Muscadinia* with satellite and transposon dynamics, compared with the *Arabidopsis* pan-centromere work; CENH3 binding data would raise the case further.
+
 ## Rough estimates
 
 - Compute: small to medium [draft]
@@ -184,3 +218,4 @@ Public inputs: [DS01](../../data/DS01-pn40024-references/), [DS02](../../data/DS
 - Chen et al. 2024. The complete genome assembly of Nicotiana benthamiana reveals the genetic and epigenetic landscape of centromeres. *Nature Plants*. [doi:10.1038/s41477-024-01849-y](https://doi.org/10.1038/s41477-024-01849-y)
 - Wang et al. 2024. Telomere-to-telomere and gap-free genome assembly of a susceptible grapevine species (Thompson Seedless) to facilitate grape functional genomics. *Horticulture Research*. [doi:10.1093/hr/uhad260](https://doi.org/10.1093/hr/uhad260)
 - Wang et al. 2026. Origin and evolution of grapevine genomes. *bioRxiv* (preprint). [doi:10.64898/2026.04.20.719760](https://doi.org/10.64898/2026.04.20.719760)
+- Bao et al. 2026. Telomere-to-telomere genome assembly of Oryza australiensis reveals transposon-driven centromere repositioning and shared EE–DD ancestry. *Nature Communications*. [doi:10.1038/s41467-026-73769-8](https://doi.org/10.1038/s41467-026-73769-8)

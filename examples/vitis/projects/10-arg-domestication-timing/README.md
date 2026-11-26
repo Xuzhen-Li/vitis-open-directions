@@ -151,6 +151,39 @@ Added 2026-11-26. Each row names a risk, the evidence behind it, and a concrete 
 
 **Journal-level realism.** Mid-field genetics or molecular evolution. Ancient DNA results already constrain timing, so a broad venue would need ARG dates that add something the archaeological record cannot.
 
+## Reference study in another species
+
+Added 2026-11-26. Published studies that already did this kind of work in another species, to plan the grape version against. Every DOI was checked on Crossref. Figures are described, not copied; a figure redrawn for a grape paper would be marked "Redrawn after" its source. The last bullet for each study lists what a grape results section would need; it is a planning suggestion, not a finding of that study.
+
+### Speidel et al. 2019
+
+- **Paper:** [Speidel et al. 2019](https://doi.org/10.1038/s41588-019-0484-x), *Nature Genetics*.
+- **Species:** Human (1000 Genomes).
+- **What was done:** The Relate method estimates genome-wide genealogies for thousands of samples and was used to estimate population sizes, split times, the evolution of mutation rates and selection.
+- **Figures:** Fig. 1 method overview; Fig. 2 run time and accuracy in simulations; Fig. 3 population sizes and split times; Fig. 4 mutation-rate evolution and evidence of introgression; Fig. 5 tests of selection; Fig. 6 selection on traits (full text read from the author manuscript in PubMed Central).
+- **What a grape results section would need:** ARG inference with quality control; effective population size through time; split and domestication times; allele ages; selection tests.
+
+### Kelleher et al. 2019
+
+- **Paper:** [Kelleher et al. 2019](https://doi.org/10.1038/s41588-019-0483-y), *Nature Genetics*.
+- **Species:** Human (global and UK samples).
+- **What was done:** tsinfer infers tree sequences in large datasets and was used to describe structure in global and UK populations.
+- **Figures:** Fig. 1 tree sequences compared with conventional variant storage; Fig. 2 main steps of the inference; Fig. 3 accuracy of ancestor inference in simulations; Fig. 4 global diversity described by genealogical nearest neighbours; Fig. 5 UK Biobank.
+- **What a grape results section would need:** tree-sequence inference with an accuracy check; genealogical nearest-neighbour structure; allele ages with tsdate.
+
+### Lu et al. 2022
+
+- **Paper:** [Lu et al. 2022](https://doi.org/10.1186/s12284-022-00556-6), *Rice* (PMC8847465). Licence CC BY 4.0: figures may be reused with credit; none are copied here.
+- **Species:** Asian rice and its wild relatives.
+- **What was done:** gene genealogy-based mutation analysis of 101 genes on 12 chromosomes split rice history into two phases; 91 mutations predated the *indica* and *japonica* split; positive selection involved 22 loci; genealogies at some genes supported a hybrid origin.
+- **Figures:** Fig. 1 positions of early mutations; Fig. 2 functional analysis and a gene genealogy; Fig. 3 flow of parental genes into rice and gene types; Fig. 4 genealogies of recombinant alleles.
+- **What its results section needed:** mutations placed on genealogies relative to the population split, and genealogies at known domestication genes.
+- **Grape version and limits:** a title search of open-access records in Europe PMC on 2026-11-26 found no crop study that dates domestication with genome-wide ARGs; the rice study uses per-gene genealogies. The grape version adds genome-wide ARGs, but the dating must pass the calibration check in the risk table above; genealogies at known grape domestication genes are the Fig. 2 and 4 equivalents.
+
+### Q1-level bar
+
+Target: a first-quartile (Q1) journal in plant science, genetics or evolution. Quartile lists change each year, so the journal is chosen from the current list at submission [to confirm]. To compete at that level, the grape paper needs: dates calibrated in a way that handles clonal propagation, checked against ancient DNA or historical records, and selection tests on the genealogies, compared with the published domestication models.
+
 ## Rough estimates
 
 - Compute: large [draft]
@@ -202,3 +235,4 @@ Public inputs: [DS10](../../data/DS10-reseq-472-vitis/), [DS11](../../data/DS11-
 - Wang et al. 2025. Robustness of Ancestral Recombination Graph Inference Tools to Phasing Errors. *bioRxiv* (preprint). [doi:10.1101/2025.11.24.690249](https://doi.org/10.1101/2025.11.24.690249)
 - Thorburn et al. 2023. Origin matters: Using a local reference genome improves measures in population genomics. *Molecular Ecology Resources*. [doi:10.1111/1755-0998.13838](https://doi.org/10.1111/1755-0998.13838)
 - Epstein et al. 2026. Evolution of maize recombination landscape during domestication. *Proceedings of the National Academy of Sciences*. [doi:10.1073/pnas.2534336123](https://doi.org/10.1073/pnas.2534336123)
+- Lu et al. 2022. Early Domestication History of Asian Rice Revealed by Mutations and Genome-Wide Analysis of Gene Genealogies. *Rice*. [doi:10.1186/s12284-022-00556-6](https://doi.org/10.1186/s12284-022-00556-6)
