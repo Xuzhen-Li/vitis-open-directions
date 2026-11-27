@@ -160,6 +160,18 @@ Added 2026-11-26. Published studies that already did this kind of work in anothe
 - **What its results section needed:** a TIP map with a stated pipeline, features of polymorphic TEs, expression links, an association scan, and a functional test.
 - **Grape version:** Fig. 1 to 4 equivalents from public grape data; laboratory tests are outside this project, so Fig. 5 is replaced by expression association of TIPs near genes (project 19) and genotyping accuracy checked on long-read assemblies.
 
+### Baduel et al. 2021
+
+Added 2026-11-27. Figure numbers, figure contents and the results below were read in the paper text and figure legends.
+
+- **Paper:** [Baduel et al. 2021](https://doi.org/10.1186/s13059-021-02348-5), *Genome Biology*, volume 22, article 138 (PMC8101250). Licence CC BY 4.0: figures may be reused with credit; none are copied here.
+- **Species:** *Arabidopsis thaliana*, 1,047 accessions of the 1001 Genomes collection, using public short-read data.
+- **What was done:** TE insertion polymorphisms (TIPs) were called with SPLITREADER (insertions absent from the reference) and TEPID (reference insertions that are missing); after filtering, 23,331 TIPs remained, 21,707 of them non-reference presence variants. TIP frequencies were compared with SNPs, and their fitness effects were estimated; the genetic and climatic factors behind variable transposition were mapped by GWAS and models; expression effects of insertions in or near genes were measured, with FLC and flowering time as an example.
+- **Figures:** Fig. 1 TIPs by superfamily, their density along the genome, the folded frequency spectrum of TIPs against SNPs, fitness effects, TIP frequency by local haplotype age, and pairwise differences of TIPs and SNPs between close and all accessions; Fig. 2 the genetic basis of variable transposition (PCA of recent TIPs, GWAS, the NRPE1 locus); Fig. 3 environmental modulation of transposition; Fig. 4 TE insertions in or near genes, mostly deleterious (genic categories, frequencies by family, expression extremes); Fig. 5 contribution to local adaptation (expression effects, 16 insertions in FLC, climate shifts); Fig. 6 forecast of transposition under future climates.
+- **What its results section needed:** a TIP call set from public reads with stated filters, the TIP spectrum against SNPs, an estimate of how harmful insertions are by position, a link to expression, and an association scan; the paper used mobilisation rate and climate as the association target rather than a crop trait.
+- **Grape version:** the equivalents of Fig. 1 (spectrum against SNPs, with insertion age) and Fig. 4 (insertions by genic category and expression effect) on cultivated grape; because cultivars are clonally propagated, the pairwise comparison of close accessions in Fig. 1g and 1h maps onto comparing clone groups (project 08). The climate and forecast panels (Fig. 3, 5, 6) are outside this project. The Q1 bar stated below does not change: a measured genotyping accuracy, a link to expression and one association with a trait.
+- **Further results a grape version would need:** the frequency spectrum of TIPs against SNPs after clone collapse; insertion age by polymorphism class; TIPs by genic category with expression effect.
+
 ### Q1-level bar
 
 Target: a first-quartile (Q1) journal in plant science, genetics or evolution. Quartile lists change each year, so the journal is chosen from the current list at submission [to confirm]. To compete at that level, the grape paper needs: a TIP map with measured genotyping accuracy, a link to expression, and at least one association with a trait, as in the tomato study.
