@@ -106,3 +106,21 @@ Each of these pages has a section "Scope update (2026-11-26)" after its Question
 - Zhou et al. 2022. Graph pangenome captures missing heritability and empowers tomato breeding. *Nature*. [doi:10.1038/s41586-022-04808-9](https://doi.org/10.1038/s41586-022-04808-9)
 - Zhou et al. 2023. Pan-genome inversion index reveals evolutionary insights into the subpopulation structure of Asian rice. *Nature Communications*. [doi:10.1038/s41467-023-37004-y](https://doi.org/10.1038/s41467-023-37004-y)
 - Zou et al. 2025. The evolutionary dynamics of organellar pan-genomes in Arabidopsis thaliana. *Genome Biology*. [doi:10.1186/s13059-025-03717-0](https://doi.org/10.1186/s13059-025-03717-0)
+
+## Further reference studies added on 2026-11-27
+
+For projects 03, 06, 14 and 25, the figures and results of the studies below were checked against the full text or the figure legends; each project page has the details. Figures are described, not copied.
+
+| Project | Study added or checked | Species | Details |
+|---|---|---|---|
+| [03](projects/03-endogenous-florendoviruses/README.md) | [Vicient 2026](https://doi.org/10.3389/fpls.2026.1886618): figure list confirmed, key results added | 30 chromosome-level *Prunus* assemblies from 15 species | [section](projects/03-endogenous-florendoviruses/README.md#vicient-2026-results-in-numbers-and-the-q1-check) |
+| [06](projects/06-vitis-pan-nlrome/README.md) | [Teasdale et al. 2025](https://doi.org/10.1016/j.chom.2025.07.011) | *Arabidopsis thaliana*, 17 accessions | [section](projects/06-vitis-pan-nlrome/README.md#teasdale-et-al-2025) |
+| [14](projects/14-te-insertion-polymorphisms-cultivated/README.md) | [Baduel et al. 2021](https://doi.org/10.1186/s13059-021-02348-5) | *Arabidopsis thaliana*, 1,047 accessions | [section](projects/14-te-insertion-polymorphisms-cultivated/README.md#baduel-et-al-2021) |
+| [25](projects/25-te-annotation-methods/README.md) | [Kania et al. 2026](https://doi.org/10.1186/s13100-026-00405-z) | simulated sequences modelled on five species, with real *Drosophila melanogaster* data | [section](projects/25-te-annotation-methods/README.md#kania-et-al-2026) |
+
+New references:
+
+- Baduel et al. 2021. Genetic and environmental modulation of transposition shapes the evolutionary potential of Arabidopsis thaliana. *Genome Biology*. [doi:10.1186/s13059-021-02348-5](https://doi.org/10.1186/s13059-021-02348-5)
+- Kania et al. 2026. TE_Bench: a foundational benchmarking workflow for transposable element annotation pipelines. *Mobile DNA*. [doi:10.1186/s13100-026-00405-z](https://doi.org/10.1186/s13100-026-00405-z)
+- Teasdale et al. 2025. Pangenomic context reveals the extent of intraspecific plant NLR evolution. *Cell Host & Microbe*. [doi:10.1016/j.chom.2025.07.011](https://doi.org/10.1016/j.chom.2025.07.011)
+- Vicient 2026. A comprehensive comparative genomic analysis of the endogenous Florendovirus-1 in Prunus. *Frontiers in Plant Science*. [doi:10.3389/fpls.2026.1886618](https://doi.org/10.3389/fpls.2026.1886618)

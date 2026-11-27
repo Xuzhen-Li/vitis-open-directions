@@ -177,6 +177,14 @@ Added 2026-11-26. Published studies that already did this kind of work in anothe
 - **What its results section needed:** lineage classification, copy density per genome against the species tree, a reconstructed consensus genome, element structure and a within-genome tree.
 - **Grape version and what grape adds:** the same five panels for *Vitis* and *Muscadinia*, plus what the *Prunus* study did not do: each insertion is a locus genotyped as present or absent across haplotypes of one species and its wild relatives, so sharing can be tested against the species tree and the domestication split (see Scope update above).
 
+### Vicient 2026: results in numbers and the Q1 check
+
+Added 2026-11-27. Figure numbers, figure contents and the results below were read in the paper text and figure legends.
+
+- **Results it reported:** 781 caulimovirid reverse transcriptase (RT) sequences in 30 assemblies of 15 *Prunus* species, in 18 clusters of the groups Florendovirus and Yendovirus; Florendovirus-1 was the main lineage with 532 sequences (68%). A 7,193-bp Florendovirus-1 consensus was rebuilt from seven complete elements in one almond assembly, with two open reading frames and movement protein, coat protein, aspartic protease, RT and RNase H domains. In almond, 757 fragments covered 0.91 Mb (0.37% of the genome) in 176 loci, and 36% of the loci held several insertions; 77% of complete elements had their integration breakpoint near the Met-tRNA binding site.
+- **Authors and venue:** a single-author paper in *Frontiers in Plant Science*, volume 17, article 1886618, published 2026-09-29. The analysis covers *Prunus* only; grape appears just as a comparison value taken from Geering et al. 2014 (14% of grape florendovirus loci flanked by TA repeats, against 37% of the almond Florendovirus-1 loci).
+- **What the grape version still needs for a Q1 journal:** the *Prunus* study stops at counts per genome and the structure of insertions in one genome. A first-quartile paper on grape needs what that study does not have: each insertion treated as a locus and scored present or absent across haplotypes with flanking-synteny support, a test of sharing against the species tree, and expression evidence from public RNA-seq (see Scope update above). Without these, the grape work repeats Fig. 1 to 5 of the *Prunus* paper in another genus.
+
 ### Coverage note
 
 Geering et al. 2014 includes grape itself; only its dating of orthologous loci in *Oryza* is cross-species. The *Prunus* study is the closest template from another genus, but it does not genotype insertions as present or absent across a population.
